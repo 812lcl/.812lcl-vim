@@ -1,0 +1,373 @@
+" Unite Menu {
+        let g:unite_source_menu_menus = {}
+        nnoremap <LocalLeader>m :Unite menu<CR>
+
+        let g:unite_source_menu_menus.navigation = {
+            \ 'description' : '     navigate by buffers, tabs & windows
+                \                    Map: <Space>n',
+            \}
+        let g:unite_source_menu_menus.navigation.command_candidates = [
+            \['▷ buffers                                                                Map: ,b',
+                \'Unite buffer'],
+            \['▷ tabs                                                                   Map: ',
+                \'Unite tab'],
+            \['▷ windows                                                                Map: ',
+                \'Unite window'],
+            \['▷ location list                                                          Map: <Space>x',
+                \'Unite location_list'],
+            \['▷ quickfix                                                               Map: <Space>z',
+                \'Unite quickfix'],
+            \['▷ next buffer                                                            Map: K',
+                \'bnext'],
+            \['▷ prev buffer                                                            Map: J',
+                \'bprevious'],
+            \['▷ delete buffer                                                          Map: :bd',
+                \'bd'],
+            \['▷ next tab                                                               Map: ,tn',
+                \'tabn'],
+            \['▷ prev tab                                                               Map: ,tp',
+                \'tabp'],
+            \['▷ NERDTree                     (NERDTRee)                                Map: ,w',
+                \'NERDTreeToggle'],
+            \['▷ NERDTreeFind                 (NERDTRee)                                Map: ,wf',
+                \'NERDTreeFind'],
+            \['▷ new vertical window                                                    Map: <C-w>v',
+                \'vsplit'],
+            \['▷ new horizontal window                                                  Map: <C-w>s',
+                \'split'],
+            \['▷ toggle quickfix window                                                 Map: :cw',
+                \'cw'],
+            \['▷ close current window                                                   Map: :c',
+                \'close'],
+            \]
+        nnoremap <LocalLeader>n :Unite menu:navigation<CR>
+
+        let g:unite_source_menu_menus.bookmarks = {
+            \ 'description' : '      bookmarks
+                \                                              Map: <Space>b',
+            \}
+        let g:unite_source_menu_menus.bookmarks.command_candidates = [
+            \['▷ Unite open bookmarks                                                   Map: ',
+                \'Unite bookmark:*'],
+            \['▷ Unite add bookmark                                                     Map: ',
+                \'UniteBookmarkAdd'],
+            \['▷ Text add mark                                                      Map: m[a-zA-Z]',
+                \'normal m,'],
+            \['▷ Add next mark                  (vim-signature)                     Map: m,',
+                \'normal m,'],
+            \['▷ Next mark                      (vim-signature)                     Map: ]`',
+                \'normal ]`'],
+            \['▷ Prev mark                      (vim-signature)                     Map: [`',
+                \'normal [`'],
+            \['▷ Clear mark                     (vim-signature)                     Map: m<Space>',
+                \'normal m '],
+            \]
+        nnoremap <LocalLeader>b :Unite menu:bookmarks<CR>
+
+        let g:unite_source_menu_menus.cscope = {
+            \ 'description' : '         cscope
+                \                                                 Map: <Space>e',
+            \}
+        let g:unite_source_menu_menus.cscope.command_candidates = [
+            \['▷ find definition                            (cscope)                    Map: ,,g',
+                \'normal ,,g'],
+            \['▷ find call it                               (cscope)                    Map: ,,c',
+                \'normal ,,c'],
+            \['▷ find it call                               (cscope)                    Map: ,,d',
+                \'normal ,,d'],
+            \['▷ find c symbol                              (cscope)                    Map: ,,s',
+                \'normal ,,s'],
+            \['▷ find word                                  (cscope)                    Map: ,,4',
+                \'normal ,,4'],
+            \['▷ egrep word                                 (cscope)                    Map: ,,6',
+                \'normal ,,6'],
+            \['▷ find file                                  (cscope)                    Map: ,,7',
+                \'normal ,,7'],
+            \['▷ find include this file                     (cscope)                    Map: ,,8',
+                \'normal ,,8'],
+            \]
+        nnoremap <LocalLeader>e :Unite menu:cscope<CR>
+
+        let g:unite_source_menu_menus.code = {
+            \ 'description' : '           coding
+                \                                                 Map: <Space>c',
+            \}
+        let g:unite_source_menu_menus.code.command_candidates = [
+            \['▷ Count lines of code                                                    Map: ',
+                \'Unite -default-action= output:call\\ LinesOfCode()'],
+            \['▷ Toggle indent lines                        (indent-guides)             Map: ,g',
+                \'IndentLinesToggle'],
+            \['▷ Tagbar                                     (Tagbar)                    Map: ,e',
+                \'Tagbar'],
+            \['▷ Syntastic toggle                           (syntastic)                 Map: ',
+                \'SyntasticToggleMode'],
+            \['▷ Syntastic check & errors                   (syntastic)                 Map: ,r',
+                \'normal ,r'],
+            \['▷ YCM compile and diagnostics                (YouCompleteMe)             Map: ,n',
+                \'normal ,cm'],
+            \['▷ YCM go to definition                       (YouCompleteMe)             Map: ,j',
+                \'normal ,cm'],
+            \['▷ Comment current line                       (nerdcommenter)             Map: ,cc',
+                \'normal ,cc'],
+            \['▷ Same as cc but forces nesting              (nerdcommenter)             Map: ,cn',
+                \'normal ,cn'],
+            \['▷ Uncomment current line                     (nerdcommenter)             Map: ,cu',
+                \'normal ,cu'],
+            \['▷ Comment sexily                             (nerdcommenter)             Map: ,cs',
+                \'normal ,cs'],
+            \['▷ Comment using one set                      (nerdcommenter)             Map: ,cm',
+                \'normal ,cm'],
+            \]
+        nnoremap <LocalLeader>c :Unite menu:code<CR>
+
+        let g:unite_source_menu_menus.files = {
+            \ 'description' : '          files & dirs
+                \                                           Map: <Space>f',
+            \}
+        let g:unite_source_menu_menus.files.command_candidates = [
+            \['▷ open file                                                              Map: ,f',
+                \'Unite -start-insert file'],
+            \['▷ open file with recursive search                                        Map: ',
+                \'Unite -start-insert file_rec/async'],
+            \['▷ session list                                                           Map: <Space>y',
+                \':SessionList'],
+            \['▷ session save                                                           Map: <Space>u',
+                \':SessionSave'],
+            \['▷ session close                                                          Map: <Space>i',
+                \':SessionClose'],
+            \['▷ search directory                                                       Map: ',
+                \'Unite -start-insert directory'],
+            \['▷ search directory with recursive search                                 Map: ',
+                \'Unite -start-insert directory_rec/async'],
+            \['▷ edit new file                                                          Map: ',
+                \'Unite -start-insert file/new'],
+            \['▷ make new directory                                                     Map: ',
+                \'Unite -start-insert directory/new'],
+            \['▷ change working directory                                               Map: ',
+                \'Unite -default-action=lcd directory'],
+            \['▷ know current working directory                                         Map: ',
+                \'Unite output:pwd'],
+            \['▷ search recently used files                                             Map: ,fr',
+                \'Unite -start-insert file_mru'],
+            \['▷ search recently used directories                                       Map: ',
+                \'Unite -start-insert directory_mru'],
+            \['▷ save as root                                                           Map: :w!!',
+                \'exe "write !sudo tee % >/dev/null"'],
+            \['▷ open ranger                                                            Map: <Space>c',
+                \'call RangerChooser()'],
+            \]
+        nnoremap <LocalLeader>f :Unite menu:files<CR>
+
+        let g:unite_source_menu_menus.git = {
+            \ 'description' : '            admin git repositories
+                \                                 Map: <Space>g',
+            \}
+        let g:unite_source_menu_menus.git.command_candidates = [
+            \['▷ git init                                                               Map: ,gn',
+                \'Unite output:echo\ system("git\ init")'],
+            \['▷ next hunk              (gitgutter)                                     Map: gh',
+                \'GitGutterNextHunk'],
+            \['▷ prev hunk              (gitgutter)                                     Map: hg',
+                \'GitGutterPrevHunk'],
+            \['▷ git status             (fugitive)                                      Map: ,gs',
+                \'Gstatus'],
+            \['▷ git diff               (fugitive)                                      Map: ,gd',
+                \'Gdiff'],
+            \['▷ git commit             (fugitive)                                      Map: ,gc',
+                \'Gcommit'],
+            \['▷ git log                (fugitive)                                      Map: ,gl',
+                \'exe "silent Glog | Unite -no-quit quickfix"'],
+            \['▷ git log - all          (fugitive)                                      Map: ,gL',
+                \'exe "silent Glog -all | Unite -no-quit quickfix"'],
+            \['▷ git blame              (fugitive)                                      Map: ,gb',
+                \'Gblame'],
+            \['▷ git add/stage          (fugitive)                                      Map: ,gw',
+                \'Gwrite'],
+            \['▷ git checkout           (fugitive)                                      Map: ,go',
+                \'Gread'],
+            \['▷ git rm                 (fugitive)                                      Map: ,gR',
+                \'Gremove'],
+            \['▷ git mv                 (fugitive)                                      Map: ,gm',
+                \'exe "Gmove " input("destino: ")'],
+            \['▷ git push               (fugitive, buffer output)                       Map: ,gp',
+                \'Git! push'],
+            \['▷ git pull               (fugitive, buffer output)                       Map: ,gP',
+                \'Git! pull'],
+            \['▷ git command            (fugitive, buffer output)                       Map: ,gi',
+                \'exe "Git! " input("comando git: ")'],
+            \['▷ git edit               (fugitive)                                      Map: ,gE',
+                \'exe "command Gedit " input(":Gedit ")'],
+            \['▷ git grep               (fugitive)                                      Map: ,gg',
+                \'exe "silent Ggrep -i ".input("Pattern: ") | Unite -no-quit quickfix'],
+            \['▷ git grep - messages    (fugitive)                                      Map: ,ggm',
+                \'exe "silent Glog --grep=".input("Pattern: ")." | Unite -no-quit quickfix"'],
+            \['▷ git grep - text        (fugitive)                                      Map: ,ggt',
+                \'exe "silent Glog -S".input("Pattern: ")." | Unite -no-quit quickfix"'],
+            \['▷ git cd                 (fugitive)                                      Map: ,gcd',
+                \'Gcd'],
+            \['▷ git lcd                (fugitive)                                      Map: ,glc',
+                \'Glcd'],
+            \['▷ git browse             (fugitive)                                      Map: ,gB',
+                \'Gbrowse'],
+            \['▷ github issues & PR                                                     Map: ,gS',
+                \'normal ,gS'],
+            \]
+        nnoremap <LocalLeader>g :Unite menu:git<CR>
+
+        let g:unite_source_menu_menus.history = {
+            \ 'description' : '        yanks, registers & history
+                \                             Map: <Space>h',
+            \}
+        let g:unite_source_menu_menus.history.command_candidates = [
+            \['▷ yanks                                                                  Map: <Space>p',
+                \'Unite history/yank'],
+            \['▷ registers                                                              Map: <Space>q',
+                \'Unite register'],
+            \['▷ messages                                                               Map: ',
+                \'Unite output:messages'],
+            \['▷ search changes                                                         Map: ',
+                \'Unite change'],
+            \['▷ search jumps                                                           Map: ',
+                \'Unite jump'],
+            \['▷ search tasks                                                           Map: ,t',
+                \'TaskList'],
+            \['▷ undo tree      (Undotree)                                              Map: ,q',
+                \'UndotreeToggle'],
+            \]
+        nnoremap <LocalLeader>h :Unite menu:history<CR>
+
+        let g:unite_source_menu_menus.searching = {
+            \ 'description' : '      searchs inside the current buffer
+                \                      Map: <Space>s',
+            \}
+        let g:unite_source_menu_menus.searching.command_candidates = [
+            \['▷ search line                                                            Map: ',
+                \'Unite -auto-preview -start-insert line'],
+            \['▷ grep (ag → ack → grep)                                                 Map: ,a',
+                \'Unite -auto-preview -winheight=25 -no-quit grep'],
+            \['▷ grep current word                                                      Map: ,A',
+                \'UniteWithCursorWord -auto-preview -winheight=25 -no-quit grep'],
+            \['▷ search word under the cursor in current buffer                         Map: ',
+                \'UniteWithCursorWord -no-split -auto-preview line'],
+            \['▷ search outlines & tags (ctags)                                         Map: ,c',
+                \'Unite -vertical -winwidth=25 -start-insert -direction=topleft -toggle outline'],
+            \['▷ search marks                                                           Map: ,k',
+                \'Unite -auto-preview -winheight=25 mark'],
+            \['▷ find                                                                   Map: ',
+                \'Unite find'],
+            \['▷ vimgrep (very slow)                                                    Map: ',
+                \'Unite vimgrep'],
+            \['▷ trigger easymotion               (easymotion)                          Map: ,,',
+                \''],
+            \]
+        nnoremap <LocalLeader>s :Unite menu:searching<CR>
+
+        let g:unite_source_menu_menus.text = {
+            \ 'description' : '           text edition
+                \                                           Map: <Space>t',
+            \}
+        let g:unite_source_menu_menus.text.command_candidates = [
+            \['▷ toggle search results highlight                                        Map: ,h',
+                \'normal ,h'],
+            \['▷ toggle nu or rnu                                                       Map: ,s',
+                \'normal ,s'],
+            \['▷ show hidden chars                                                      Map: ,l',
+                \'normal ,l'],
+            \['▷ spell check                                                            Map: ,v',
+                \'normal ,v'],
+            \['▷ toggle fold                                                            Map: <Space>o',
+                \'normal <Space>o'],
+            \['▷ multiple-cursors: next               (vim-multiple-cursors)            Map: <C-n>',
+                \'normal <C-n>'],
+            \['▷ multiple-cursors: prev               (vim-multiple-cursors)            Map: <C-p>',
+                \'normal <C-p>'],
+            \['▷ multiple-cursors: skip               (vim-multiple-cursors)            Map: <C-x>',
+                \'normal <C-x>'],
+            \['▷ Dictionary                           (vim-youdao-translater)           Map: ,de',
+                \'Yde'],
+            \['▷ Translate cursor word                (vim-youdao-translater)           Map: ,d',
+                \'Ydc'],
+            \['▷ toggle surround in visualmode        (surround)                        Map: S',
+                \'visual S'],
+            \['▷ add surroundings in visualmode       (surround)                        Map: ys',
+                \''],
+            \['▷ change surroundings in visualmode    (surround)                        Map: cs',
+                \''],
+            \['▷ delete surroundings in visualmode    (surround)                        Map: ds',
+                \''],
+            \]
+        nnoremap <LocalLeader>t :Unite menu:text<CR>
+
+        let g:unite_source_menu_menus.tabularize = {
+            \ 'description' : '     tabularize
+                \                                             Map: <Space>a',
+            \}
+        let g:unite_source_menu_menus.tabularize.command_candidates = [
+            \['▷ Tabularize &                                                           Map: <Space>&',
+                \'Tabularize /&'],
+            \['▷ Tabularize =                                                           Map: <Space>=',
+                \'Tabularize /='],
+            \['▷ Tabularize :                                                           Map: <Space>:',
+                \'Tabularize /:'],
+            \['▷ Tabularize ::                                                          Map: <Space>::',
+                \'Tabularize /:\zs'],
+            \['▷ Tabularize ,                                                           Map: <Space>,',
+                \'Tabularize /,'],
+            \['▷ Tabularize ,,                                                          Map: <Space>,,',
+                \'Tabularize /,\zs'],
+            \['▷ Tabularize <Bar>                                                       Map: <Space><Bar>',
+                \'Tabularize /<Bar>'],
+            \]
+        nnoremap <LocalLeader>a :Unite menu:tabularize<CR>
+
+        let g:unite_source_menu_menus.vim = {
+            \ 'description' : '            vim
+                \                                                    Map: <Space>v',
+            \}
+        let g:unite_source_menu_menus.vim.command_candidates = [
+            \['▷ edit configuration file (vimrc)                                        Map: ',
+                \'edit $MYVIMRC'],
+            \['▷ choose colorscheme                                                     Map: ',
+                \'Unite colorscheme -auto-preview'],
+            \['▷ mappings                                                               Map: ',
+                \'Unite mapping -start-insert'],
+            \['▷ vim commands                                                           Map: ',
+                \'Unite -start-insert command'],
+            \['▷ vim functions                                                          Map: ',
+                \'Unite -start-insert function'],
+            \['▷ vim runtimepath                                                        Map: ',
+                \'Unite -start-insert runtimepath'],
+            \['▷ vim command output                                                     Map: ',
+                \'Unite output'],
+            \['▷ unite sources                                                          Map: ',
+                \'Unite source'],
+            \['▷ kill process                                                           Map: ',
+                \'Unite -default-action=sigkill -start-insert process'],
+            \['▷ launch executable (dmenu like)                                         Map: ',
+                \'Unite -start-insert launcher'],
+            \]
+        nnoremap <LocalLeader>v :Unite menu:vim<CR>
+
+        let g:unite_source_menu_menus.markdown = {
+            \ 'description' : '       preview markdown extra docs
+                \                            Map: <Space>k',
+            \}
+        let g:unite_source_menu_menus.markdown.command_candidates = [
+            \['▷ preview                                                                Map: ',
+                \'Me'],
+            \['▷ refresh                                                                Map: ',
+                \'Mer'],
+            \]
+        nnoremap <LocalLeader>k :Unite -silent menu:markdown<CR>
+
+        let g:unite_source_menu_menus.web = {
+            \ 'description' : '            web development
+                \                                        Map: <Space>w',
+            \}
+        let g:unite_source_menu_menus.web.command_candidates = [
+            \['▷ show emmet tutorial                                                    Map: ',
+                \'h emmet-tutorial'],
+            \]
+        nnoremap <LocalLeader>w :Unite -silent menu:web<CR>
+
+" }
