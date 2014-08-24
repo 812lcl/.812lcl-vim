@@ -33,15 +33,17 @@
 # 寄存器:
 
 # 文件标记:
-'0  5  0  ~/.812lcl-vim/bootstrap.sh
-'1  1  0  ~/.vimrc.bundles
-'2  62  0  ~/.vimrc.bundles
-'3  53  8  ~/.812lcl-vim/.vimrc
-'4  52  0  ~/.vimrc
-'5  63  0  ~/.vimrc.bundle
-'6  248  2  ~/.vimrc
+'0  1  0  ~/.812lcl-vim/.gitignore
+'1  5  0  ~/.812lcl-vim/bootstrap.sh
+'2  1  0  ~/.vimrc.bundles
+'3  62  0  ~/.vimrc.bundles
+'4  53  8  ~/.812lcl-vim/.vimrc
+'5  52  0  ~/.vimrc
+'6  63  0  ~/.vimrc.bundle
+'7  248  2  ~/.vimrc
 
 # 跳转列表 (从新到旧):
+-'  1  0  ~/.812lcl-vim/.gitignore
 -'  5  0  ~/.812lcl-vim/bootstrap.sh
 -'  1  0  ~/.812lcl-vim/bootstrap.sh
 -'  1  0  ~/.vimrc.bundles
@@ -139,10 +141,11 @@
 -'  1  0  ~/.vimrc
 -'  63  0  ~/.vimrc.bundle
 -'  1  0  ~/.vimrc.bundle
--'  63  0  ~/.vimrc.bundle
--'  1  0  ~/.vimrc.bundle
 
 # 文件内的标记历史记录 (从新到旧):
+
+> ~/.812lcl-vim/.gitignore
+	"	1	0
 
 > ~/.812lcl-vim/bootstrap.sh
 	"	5	0
