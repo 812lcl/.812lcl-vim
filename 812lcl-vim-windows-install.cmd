@@ -3,7 +3,7 @@
 
 @set APP_DIR=%HOME%\.812lcl-vim
 IF NOT EXIST "%APP_DIR%" (
-  call git clone https://github.com/812lcl/812lcl-vim.git "%APP_DIR%"
+  call git clone https://github.com/812lcl/vim.git "%APP_DIR%"
 ) ELSE (
 	@set ORIGINAL_DIR=%CD%
     echo updating 812lcl-vim
