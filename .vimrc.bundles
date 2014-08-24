@@ -79,8 +79,9 @@
 
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
-    if !exists('g:812lcl_bundle_groups')
-        let g:812lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite',]
+    if !exists('g:lcl_bundle_groups')
+        "let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite',]
+        let g:lcl_bundle_groups=['general', 'writing', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc',]
     endif
 
     " To override all the included bundles, add the following to your
@@ -89,7 +90,7 @@
     if !exists("g:override_812lcl_bundles")
 
     " General {
-        if count(g:812lcl_bundle_groups, 'general')
+        if count(g:lcl_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'tpope/vim-surround'
@@ -110,7 +111,7 @@
     " }
 
     " General Programming {
-        if count(g:812lcl_bundle_groups, 'programming')
+        if count(g:lcl_bundle_groups, 'programming')
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
             Bundle 'tpope/vim-fugitive'
@@ -125,7 +126,7 @@
     " }
 
     " Snippets & AutoComplete {
-        if count(g:812lcl_bundle_groups, 'snipmate')
+        if count(g:lcl_bundle_groups, 'snipmate')
             Bundle 'garbas/vim-snipmate'
             Bundle 'honza/vim-snippets'
             Bundle 'ervandew/supertab'
@@ -134,14 +135,14 @@
             if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
                 source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
             endif
-        elseif count(g:812lcl_bundle_groups, 'youcompleteme')
+        elseif count(g:lcl_bundle_groups, 'youcompleteme')
             Bundle 'Valloric/YouCompleteMe'
             Bundle 'Shougo/neocomplcache.vim'
             Bundle 'JazzCore/neocomplcache-ultisnips'
             Bundle 'SirVer/ultisnips'
             Bundle 'honza/vim-snippets'
             Bundle 'javacomplete'
-        elseif count(g:812lcl_bundle_groups, 'neocomplcache')
+        elseif count(g:lcl_bundle_groups, 'neocomplcache')
             Bundle 'Shougo/neocomplcache.vim'
             Bundle 'JazzCore/neocomplcache-ultisnips'
             Bundle 'SirVer/ultisnips'
@@ -150,7 +151,7 @@
             "Bundle 'Shougo/neosnippet-snippets'
             Bundle 'ervandew/supertab'
             Bundle 'javacomplete'
-        elseif count(g:812lcl_bundle_groups, 'neocomplete')
+        elseif count(g:lcl_bundle_groups, 'neocomplete')
             Bundle 'Shougo/neocomplete.vim.git'
             Bundle 'Shougo/neosnippet'
             Bundle 'Shougo/neosnippet-snippets'
@@ -162,7 +163,7 @@
     " }
 
     " Python {
-        if count(g:812lcl_bundle_groups, 'python')
+        if count(g:lcl_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
             Bundle 'klen/python-mode'
             Bundle 'yssource/python.vim'
@@ -172,7 +173,7 @@
     " }
 
     " PHP {
-        if count(g:812lcl_bundle_groups, 'php')
+        if count(g:lcl_bundle_groups, 'php')
             Bundle '812lcl/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
@@ -180,7 +181,7 @@
     " }
 
     " Javascript {
-        if count(g:812lcl_bundle_groups, 'javascript')
+        if count(g:lcl_bundle_groups, 'javascript')
             Bundle 'elzr/vim-json'
             Bundle 'groenewege/vim-less'
             Bundle 'pangloss/vim-javascript'
@@ -190,7 +191,7 @@
     " }
 
     " HTML {
-        if count(g:812lcl_bundle_groups, 'html')
+        if count(g:lcl_bundle_groups, 'html')
             "Bundle 'amirh/HTML-AutoCloseTag'
             Bundle 'hail2u/vim-css3-syntax'
             Bundle 'gorodinskiy/vim-coloresque'
@@ -200,7 +201,7 @@
     " }
 
     " Ruby {
-        if count(g:812lcl_bundle_groups, 'ruby')
+        if count(g:lcl_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
@@ -209,7 +210,7 @@
     " }
 
     " Scala {
-        if count(g:812lcl_bundle_groups, 'scala')
+        if count(g:lcl_bundle_groups, 'scala')
             Bundle 'derekwyatt/vim-scala'
             Bundle 'derekwyatt/vim-sbt'
             Bundle 'xptemplate'
@@ -217,7 +218,7 @@
     " }
 
     " Haskell {
-        if count(g:812lcl_bundle_groups, 'haskell')
+        if count(g:lcl_bundle_groups, 'haskell')
             Bundle 'travitch/hasksyn'
             Bundle 'dag/vim2hs'
             Bundle 'Twinside/vim-haskellConceal'
@@ -232,14 +233,14 @@
     " }
 
     " Go Lang {
-        if count(g:812lcl_bundle_groups, 'go')
+        if count(g:lcl_bundle_groups, 'go')
             "Bundle 'Blackrush/vim-gocode'
             Bundle 'fatih/vim-go'
         endif
     " }
 
     " Misc {
-        if count(g:812lcl_bundle_groups, 'misc')
+        if count(g:lcl_bundle_groups, 'misc')
             "Bundle 'wting/rust.vim'
             Bundle 'tpope/vim-markdown'
             "Bundle 'spf13/vim-preview'
@@ -251,7 +252,7 @@
     " }
 
     " Unite   {
-        if count(g:812lcl_bundle_groups, 'unite')
+        if count(g:lcl_bundle_groups, 'unite')
             Bundle 'Shougo/unite.vim'
             Bundle 'Shougo/neomru.vim'
             Bundle 'Shougo/unite-outline'

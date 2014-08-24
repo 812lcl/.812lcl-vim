@@ -93,8 +93,8 @@
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
     " your .vimrc.before.local file:
-    "   let g:812lcl_no_autochdir = 1
-    if !exists('g:812lcl_no_autochdir')
+    "   let g:lcllcl_no_autochdir = 1
+    if !exists('g:lcllcl_no_autochdir')
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
         " Always switch to the current file directory
     endif
@@ -119,7 +119,7 @@
             source $VIMRUNTIME/delmenu.vim
             "source $VIMRUNTIME/menu.vim
 
-            if !exists("g:812lcl_no_big_font")
+            if !exists("g:lcllcl_no_big_font")
                 if LINUX() && has("gui_running")
                     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11,Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
                 elseif OSX() && has("gui_running")
@@ -515,7 +515,7 @@
     " }
 
     " YouCompleteMe {
-        if count(g:812lcl_bundle_groups, 'youcompleteme')
+        if count(g:lcllcl_bundle_groups, 'youcompleteme')
             set completeopt=longest,menu                    " 关掉补全时的预览窗口
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
@@ -545,7 +545,7 @@
     " }
 
     " neocomplete {
-        if count(g:812lcl_bundle_groups, 'neocomplete')
+        if count(g:lcllcl_bundle_groups, 'neocomplete')
             au Filetype c,cpp,java,python let g:neocomplete#enable_at_startup = 0
             au Filetype c,cpp,java,python let g:neocomplete_force_overwrite_completefunc = 0
             let g:acp_enableAtStartup = 0
@@ -560,7 +560,7 @@
     " }
 
     " neocomplcache {
-        elseif count(g:812lcl_bundle_groups, 'neocomplcache')
+        elseif count(g:lcllcl_bundle_groups, 'neocomplcache')
             au Filetype c,cpp,java,python let g:neocomplcache_enable_at_startup = 0
             au Filetype c,cpp,java,python let g:neocomplcache_force_overwrite_completefunc = 0
             let g:acp_enableAtStartup = 0
@@ -585,7 +585,7 @@
                     \ }
 
     " Unite {
-        if count(g:812lcl_bundle_groups, 'unite')
+        if count(g:lcllcl_bundle_groups, 'unite')
             nmap <silent> <Leader>f :Unite file -start-insert<CR>
             nmap <silent> <Leader>fr :Unite file_mru -start-insert<CR>
             nmap <silent> <Leader>b :Unite buffer<CR>
@@ -684,10 +684,10 @@
             " To specify a different directory in which to place the vimbackup,
             " vimviews, vimundo, and vimswap files/directories, add the following to
             " your .vimrc.before.local file:
-            "   let g:812lcl_consolidated_directory = <full path to desired directory>
-            "   eg: let g:812lcl_consolidated_directory = $HOME . '/.vim/'
-            if exists('g:812lcl_consolidated_directory')
-                let common_dir = g:812lcl_consolidated_directory . prefix
+            "   let g:lcllcl_consolidated_directory = <full path to desired directory>
+            "   eg: let g:lcllcl_consolidated_directory = $HOME . '/.vim/'
+            if exists('g:lcllcl_consolidated_directory')
+                let common_dir = g:lcllcl_consolidated_directory . prefix
             else
                 let common_dir = parent . '/.' . prefix
             endif

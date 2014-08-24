@@ -2,7 +2,7 @@
 ############################  SETUP PARAMETERS
 app_name='812lcl-vim'
 app_dir="$HOME/.812lcl-vim"
-[ -z "$git_uri" ] && git_uri='https://github.com/812lcl/812lcl-vim.git'
+[ -z "$git_uri" ] && git_uri='https://github.com/812lcl/vim.git'
 debug_mode='0'
 fork_maintainer='0'
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
@@ -112,6 +112,7 @@ create_symlinks() {
     lnif "$endpath/.vimrc"              "$HOME/.vimrc"
     lnif "$endpath/.vimrc.bundles"      "$HOME/.vimrc.bundles"
     lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
+    lnif "$endpath/.vimrc.menu"       "$HOME/.vimrc.menu"
     lnif "$endpath/.vim"                "$HOME/.vim"
 
     # Useful for fork maintainers
