@@ -67,8 +67,8 @@
     set autoread                    " 文件在Vim之外修改过，自动重新读入
     set timeoutlen=350              " 等待时间,如<leader>键后的输入
     set helpheight=999              " 查看帮助文档全屏
-    set scrolljump=3                " 当光标离开屏幕滑动行数
-    set scrolloff=1                 " 保持在光标上下最少行数
+    set scrolljump=1                " 当光标离开屏幕滑动行数
+    set scrolloff=2                 " 保持在光标上下最少行数
     set showmatch                   " 短暂回显匹配括号
     set pastetoggle=<F8>            " 转换粘贴模式
     set hlsearch                    " 检索时高亮显示匹配项
@@ -121,11 +121,11 @@
 
             if !exists("g:lcl_no_big_font")
                 if LINUX() && has("gui_running")
-                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11,Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
+                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12,Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 12,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
                 elseif OSX() && has("gui_running")
-                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h14
                 elseif WINDOWS() && has("gui_running")
-                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11,Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12,Andale_Mono:h12,Menlo:h12,Consolas:h12,Courier_New:h12
                 endif
             endif
             let g:airline_powerline_fonts = 1                   " 是否使用powerline字体

@@ -23,6 +23,7 @@ call mklink /J "%HOME%\.vim" "%APP_DIR%\.vim"
 IF NOT EXIST "%APP_DIR%\.vim\bundle" (
 	call mkdir "%APP_DIR%\.vim\bundle"
 	call mkdir "%APP_DIR%\.vim\.vimtmp"
+	call mkdir "%APP_DIR%\.vim\.vimtmp\undo"
 )
 
 IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
