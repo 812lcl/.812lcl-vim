@@ -92,11 +92,10 @@
 
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
-    " your .vimrc.before.local file:
+    " your .vimrc.before file:
     "   let g:lcl_no_autochdir = 1
     if !exists('g:lcl_no_autochdir')
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-        " Always switch to the current file directory
     endif
 
     " Instead of reverting the cursor to the last position in the buffer, we
@@ -594,10 +593,10 @@
             nnoremap <LocalLeader>q :Unite register<CR>
             nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=25 quickfix<CR>
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=25 location_list<CR>
-            nnoremap <silent><Leader>a :Unite -silent -auto-preview -winheight=25 -no-quit grep<CR>
-            nnoremap <silent><Leader>A :UniteWithCursorWord -silent -auto-preview -winheight=25 -no-quit grep<CR>
             nnoremap <silent><Leader>c :Unite -start-insert -silent -vertical -winwidth=40 -direction=topleft -toggle outline<CR>
             nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=25 mark<CR>
+            nnoremap <silent><Leader>a :Unite -silent -auto-preview -winheight=25 -no-quit grep<CR>
+            nnoremap <silent><Leader>A :UniteWithCursorWord -silent -auto-preview -winheight=25 -no-quit grep<CR>
 
             call unite#filters#matcher_default#use(['matcher_fuzzy'])
             call unite#filters#sorter_default#use(['sorter_rank'])
@@ -690,7 +689,7 @@
             if exists('g:lcl_consolidated_directory')
                 let common_dir = g:lcl_consolidated_directory . prefix
             else
-                let common_dir = parent . '/.' . prefix
+                let common_dir = parent . '/.vim/.vimtmp/' . prefix
             endif
 
             for [dirname, settingname] in items(dir_list)
@@ -723,20 +722,6 @@
                 NERDTreeFind
                 wincmd l
             endif
-        endfunction
-    " }
-
-    " Strip whitespace {
-        function! StripTrailingWhitespace()
-            " Preparation: save last search, and cursor position.
-            let _s=@/
-            let l = line(".")
-            let c = col(".")
-            " do the business:
-            %s/\s\+$//e
-            " clean up: restore previous search history, and cursor position
-            let @/=_s
-            call cursor(l, c)
         endfunction
     " }
 
@@ -792,7 +777,7 @@
             if &colorcolumn != ''
                 setlocal colorcolumn&
             else
-                setlocal colorcolumn=80
+                setlocal colorcolumn=100
             endif
         endfunction
         nnoremap <LocalLeader>l :call g:ToggleColorColumn()<CR>
