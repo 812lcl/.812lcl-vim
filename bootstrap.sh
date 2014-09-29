@@ -114,6 +114,8 @@ create_symlinks() {
     lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
     lnif "$endpath/.vimrc.menu"       "$HOME/.vimrc.menu"
     lnif "$endpath/.vim"                "$HOME/.vim"
+	mkdir -p "$HOME/.vim/.vimtmp"
+	touch "$HOME/.vim/.vimtmp/viminfo"
 
     if [ -e "$endpath/.vimrc.fork" ]; then
         ln -sf "$endpath/.vimrc.fork" "$HOME/.vimrc.fork"
