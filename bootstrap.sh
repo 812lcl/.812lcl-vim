@@ -2,7 +2,7 @@
 ############################  SETUP PARAMETERS
 app_name='812lcl-vim'
 app_dir="$HOME/.812lcl-vim"
-[ -z "$git_uri" ] && git_uri='https://github.com/812lcl/vim.git'
+[ -z "$git_uri" ] && git_uri='https://github.com/812lcl/.812lcl-vim.git'
 debug_mode='0'
 fork_maintainer='0'
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
@@ -115,9 +115,6 @@ create_symlinks() {
     lnif "$endpath/.vimrc.menu"       "$HOME/.vimrc.menu"
     lnif "$endpath/.vim"                "$HOME/.vim"
 
-    # Useful for fork maintainers
-    touch  "$HOME/.vimrc.local"
-
     if [ -e "$endpath/.vimrc.fork" ]; then
         ln -sf "$endpath/.vimrc.fork" "$HOME/.vimrc.fork"
     elif [ "$fork_maintainer" -eq '1' ]; then
@@ -142,14 +139,14 @@ create_symlinks() {
 setup_vundle() {
     system_shell="$SHELL"
     export SHELL='/bin/sh'
-    
+
     vim \
-        -u "$app_dir/.vimrc.bundles.default" \
+        -u "$app_dir/.vimrc.bundles" \
         "+set nomore" \
         "+BundleInstall!" \
         "+BundleClean" \
         "+qall"
-    
+
     export SHELL="$system_shell"
 
     success "$1"
@@ -173,4 +170,4 @@ clone_vundle    "Successfully cloned vundle"
 setup_vundle    "Now updating/installing plugins using Vundle"
 
 msg             "\nThanks for installing $app_name."
-msg             "© `date +%Y` http://vim.spf13.com/"
+msg             "© `date +%Y` http://812lcl.com/"
