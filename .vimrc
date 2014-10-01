@@ -205,6 +205,8 @@
     nmap j gj
     nmap k gk
     inoremap jj <ESC>
+    vnoremap > >gv
+    vnoremap < <gv
     noremap <Leader>m ggVG
     nnoremap <silent> J :bp<CR>
     nnoremap <silent> K :bn<CR>
