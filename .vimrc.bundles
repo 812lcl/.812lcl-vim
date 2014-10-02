@@ -175,7 +175,7 @@
 
     " PHP {
         if count(g:lcl_bundle_groups, 'php')
-            Bundle '812lcl/PIV'
+            Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
         endif
