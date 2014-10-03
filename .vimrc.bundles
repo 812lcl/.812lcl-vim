@@ -107,6 +107,7 @@
             Bundle 'gcmt/wildfire.vim'
             Bundle 'kshenoy/vim-signature'
             Bundle 'TaskList.vim'
+            Bundle 'Shougo/vimproc'
         endif
     " }
 
