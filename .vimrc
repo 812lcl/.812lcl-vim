@@ -599,7 +599,7 @@
     " }
 
     " neocomplcache {
-        elseif count(g:lcl_bundle_groups, 'neocomplcache')
+        else
             au Filetype c,cpp,java,python let g:neocomplcache_enable_at_startup = 0
             au Filetype c,cpp,java,python let g:neocomplcache_force_overwrite_completefunc = 0
             let g:acp_enableAtStartup = 0
