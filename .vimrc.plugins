@@ -42,20 +42,20 @@
     " }
 
     " Setup Bundle Support {
-        " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype off
-        set rtp+=~/.vim/bundle/vundle
-        call vundle#rc()
+    "    " The next three lines ensure that the ~/.vim/bundle/ system works
+    "    filetype off
+    "    set rtp+=~/.vim/bundle/vundle
+    "    call vundle#rc()
     " }
 
     " Add an UnBundle command {
-        function! UnBundle(arg, ...)
-          let bundle = vundle#config#init_bundle(a:arg, a:000)
-          call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-        endfunction
+    "    function! UnBundle(arg, ...)
+    "      let bundle = vundle#config#init_bundle(a:arg, a:000)
+    "      call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+    "    endfunction
 
-        com! -nargs=+         UnBundle
-        \ call UnBundle(<args>)
+    "    com! -nargs=+         UnBundle
+    "    \ call UnBundle(<args>)
     " }
 
 " }
@@ -64,7 +64,7 @@ call plug#begin('~/.vim/bundle')
 " Plugins {
 
     " Deps {
-        Plug 'gmarik/vundle'
+        "Plug 'gmarik/vundle'
         "Plug 'MarcWeber/vim-addon-mw-utils'
         "Plug 'tomtom/tlib_vim'
         "if executable('ag')
@@ -81,7 +81,7 @@ call plug#begin('~/.vim/bundle')
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:lcl_bundle_groups')
-        let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite',]
+        let g:lcl_bundle_groups=['general', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc', 'unite',]
         "let g:lcl_bundle_groups=['general', 'writing', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'youcompleteme',]
     endif
 
@@ -108,7 +108,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'gcmt/wildfire.vim'
             Plug 'kshenoy/vim-signature'
             Plug 'TaskList.vim'
-            Plug 'Shougo/vimproc'
+            Plug 'Shougo/vimproc', { 'do': 'make' }
         endif
     " }
 
@@ -120,8 +120,8 @@ call plug#begin('~/.vim/bundle')
             Plug 'gregsexton/gitv'
             Plug 'mhinz/vim-signify'
             "Plug 'airblade/vim-gitgutter'
-            "Plug 'mattn/webapi-vim'
-            "Plug 'mattn/gist-vim'
+            Plug 'mattn/webapi-vim'
+            Plug 'mattn/gist-vim'
             "Plug 'tpope/vim-commentary'
             Plug 'scrooloose/nerdcommenter'
             Plug 'godlygeek/tabular'
@@ -140,7 +140,7 @@ call plug#begin('~/.vim/bundle')
                 source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
             endif
         elseif count(g:lcl_bundle_groups, 'youcompleteme')
-            Plug 'Valloric/YouCompleteMe'
+            Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
             Plug 'Shougo/neocomplcache.vim'
             Plug 'JazzCore/neocomplcache-ultisnips'
             Plug 'SirVer/ultisnips'
@@ -189,8 +189,8 @@ call plug#begin('~/.vim/bundle')
             Plug 'elzr/vim-json'
             Plug 'groenewege/vim-less'
             Plug 'pangloss/vim-javascript'
-            "Plug 'briancollins/vim-jst'
-            "Plug 'kchmck/vim-coffee-script'
+            Plug 'briancollins/vim-jst'
+            Plug 'kchmck/vim-coffee-script'
         endif
     " }
 
@@ -251,7 +251,7 @@ call plug#begin('~/.vim/bundle')
             "Plug 'tpope/vim-cucumber'
             "Plug 'cespare/vim-toml'
             "Plug 'quentindecock/vim-cucumber-align-pipes'
-            "Plug 'Puppet-Syntax-Highlighting'
+            Plug 'Puppet-Syntax-Highlighting'
         endif
     " }
 
