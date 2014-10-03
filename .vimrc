@@ -49,7 +49,8 @@
 
 " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
+        "source ~/.vimrc.bundles
+        source ~/.812lcl-vim/.vimrc.plugins
     endif
 " }
 
@@ -505,6 +506,23 @@
             nmap gh <Plug>GitGutterNextHunk
             nmap hg <Plug>GitGutterPrevHunk
             nmap <LocalLeader>d <Plug>GitGutterPreviewHunk
+        endif
+    " }
+
+    " signify {
+        if isdirectory(expand("~/.vim/bundle/vim-signify/"))
+            let g:signify_disable_by_default = 0
+            let g:signify_line_highlight = 0
+            let g:signify_vcs_list = [ 'git', 'svn' ]
+            let g:signify_mapping_next_hunk = 'gh'
+            let g:signify_mapping_prev_hunk = 'hg'
+            let g:signify_sign_add               = '+'
+            let g:signify_sign_change            = '~'
+            let g:signify_sign_delete            = '_'
+            let g:signify_sign_delete_first_line = '‾'
+            highlight SignifySignAdd    ctermfg=blue
+            highlight SignifySignDelete ctermfg=green
+            highlight SignifySignChange ctermfg=red
         endif
     " }
 
