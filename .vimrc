@@ -136,11 +136,11 @@
     " }
 
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        "let g:solarized_termcolors=256
-        "let g:solarized_termtrans=1
-        "let g:solarized_contrast="normal"
-        "let g:solarized_visibility="normal"
-        color molokai             " 载入皮肤主题
+        let g:solarized_termcolors=256
+        let g:solarized_termtrans=1
+        let g:solarized_contrast="normal"
+        let g:solarized_visibility="normal"
+        color solarized             " 载入皮肤主题
         set background=dark
     endif
 
@@ -250,7 +250,7 @@
 
     " vim-airline {
         set laststatus=2                                    " 显示状态栏
-        let g:airline_theme='molokai'                     " 设置主题
+        let g:airline_theme='solarized'                     " 设置主题
         "let g:airline_powerline_fonts = 0                   " 是否使用powerline字体
         let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
         let g:airline#extensions#tabline#tab_nr_type = 1
