@@ -108,9 +108,12 @@ create_symlinks() {
     if [ ! -d "$endpath/.vim/bundle" ]; then
         mkdir -p "$endpath/.vim/bundle"
     fi
+    if [ ! -d "$endpath/.vim/autoload" ]; then
+        mkdir -p "$endpath/.vim/autoload"
+    fi
 
     lnif "$endpath/.vimrc"              "$HOME/.vimrc"
-    lnif "$endpath/.vimrc.bundles"      "$HOME/.vimrc.bundles"
+    lnif "$endpath/.vimrc.plugins"      "$HOME/.vimrc.plugins"
     lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
     lnif "$endpath/.vimrc.menu"         "$HOME/.vimrc.menu"
     lnif "$endpath/.vim"                "$HOME/.vim"
@@ -140,15 +143,15 @@ create_symlinks() {
     debug
 }
 
-setup_vundle() {
+setup_plug() {
     system_shell="$SHELL"
     export SHELL='/bin/sh'
 
     vim \
-        -u "$app_dir/.vimrc.bundles" \
+        -u "$app_dir/.vimrc.plugins" \
         "+set nomore" \
-        "+BundleInstall!" \
-        "+BundleClean" \
+        "+PlugInstall" \
+        "+PlugClean" \
         "+qall"
 
     export SHELL="$system_shell"
@@ -169,9 +172,12 @@ clone_repo      "Successfully cloned $app_name"
 
 create_symlinks "Setting up vim symlinks"
 
-clone_vundle    "Successfully cloned vundle"
+#clone_vundle    "Successfully cloned vundle"
 
-setup_vundle    "Now updating/installing plugins using Vundle"
+curl -fLo ~/.vim/autoload/plug.vim \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+setup_plug    "Now updating/installing plugins using vim-plug"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` http://812lcl.com/"

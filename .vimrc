@@ -49,7 +49,12 @@
 
 " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
-        "source ~/.vimrc.bundles
+        source ~/.vimrc.bundles
+    endif
+" }
+
+" Use bundles config {
+    if filereadable(expand("~/.vimrc.plugins"))
         source ~/.812lcl-vim/.vimrc.plugins
     endif
 " }
