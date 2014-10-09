@@ -572,7 +572,7 @@
             let g:ycm_collect_identifiers_from_tags_files = 1
             let g:ycm_key_invoke_completion = '<C-Space>'
             let g:ycm_use_ultisnips_completer = 1
-            let g:UltiSnipsExpandTrigger = "<C-h>"          " <C-j>代替<Tab>触发ultisnips补全代码段
+            let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
             let g:ycm_semantic_triggers =  {
                         \   'c' : ['->', '.'],
                         \   'objc' : ['->', '.'],
@@ -620,7 +620,7 @@
             let g:neocomplcache_enable_fuzzy_completion = 1         " 开启模糊匹配
             let g:neocomplcache_fuzzy_completion_start_length = 3   " 3个字母后开启模糊匹配
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
-            let g:UltiSnipsExpandTrigger = "<C-h>"          " <C-j>代替<Tab>触发ultisnips补全代码段
+            let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
         endif
     " }
 
