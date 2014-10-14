@@ -49,13 +49,13 @@
     " }
 
     " Add an UnBundle command {
-    function! UnBundle(arg, ...)
-      let bundle = vundle#config#init_bundle(a:arg, a:000)
-      call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-    endfunction
+        function! UnBundle(arg, ...)
+          let bundle = vundle#config#init_bundle(a:arg, a:000)
+          call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+        endfunction
 
-    com! -nargs=+         UnBundle
-    \ call UnBundle(<args>)
+        com! -nargs=+         UnBundle
+        \ call UnBundle(<args>)
     " }
 
 " }
@@ -107,6 +107,8 @@
             Bundle 'gcmt/wildfire.vim'
             Bundle 'kshenoy/vim-signature'
             Bundle 'TaskList.vim'
+            Bundle 'ianva/vim-youdao-translater'
+            Bundle 'Shougo/vimproc'
         endif
     " }
 
@@ -115,12 +117,13 @@
             " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
             Bundle 'tpope/vim-fugitive'
-            Bundle 'airblade/vim-gitgutter'
+            Bundle 'gregsexton/gitv'
             Bundle 'mhinz/vim-signify'
+            "Bundle 'airblade/vim-gitgutter'
             "Bundle 'mattn/webapi-vim'
             "Bundle 'mattn/gist-vim'
-            Bundle 'scrooloose/nerdcommenter'
             "Bundle 'tpope/vim-commentary'
+            Bundle 'scrooloose/nerdcommenter'
             Bundle 'godlygeek/tabular'
             Bundle 'majutsushi/tagbar'
         endif
@@ -175,7 +178,7 @@
 
     " PHP {
         if count(g:lcl_bundle_groups, 'php')
-            Bundle '812lcl/PIV'
+            Bundle 'spf13/PIV'
             Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
         endif
@@ -197,7 +200,7 @@
             Bundle 'hail2u/vim-css3-syntax'
             Bundle 'gorodinskiy/vim-coloresque'
             Bundle 'tpope/vim-haml'
-            Bundle "mattn/emmet-vim"
+            Bundle 'mattn/emmet-vim'
         endif
     " }
 
@@ -227,7 +230,6 @@
             Bundle 'lukerandall/haskellmode-vim'
             Bundle 'eagletmt/neco-ghc'
             Bundle 'eagletmt/ghcmod-vim'
-            Bundle 'Shougo/vimproc'
             Bundle 'adinapoli/cumino'
             Bundle 'bitc/vim-hdevtools'
         endif
@@ -258,10 +260,10 @@
             Bundle 'Shougo/unite.vim'
             Bundle 'Shougo/neomru.vim'
             Bundle 'Shougo/unite-outline'
-            Bundle "osyo-manga/unite-quickfix"
+            Bundle 'osyo-manga/unite-quickfix'
             Bundle 'ujihisa/unite-colorscheme'
-            Bundle "ujihisa/unite-locate"
-            Bundle "tacroe/unite-mark"
+            Bundle 'ujihisa/unite-locate'
+            Bundle 'tacroe/unite-mark'
         endif
         " }
     endif

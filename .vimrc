@@ -53,6 +53,12 @@
     endif
 " }
 
+" Use vim-plug config {
+    if filereadable(expand("~/.vimrc.plugins"))
+        source ~/.812lcl-vim/.vimrc.plugins
+    endif
+" }
+
 " General {
 
     syntax on                       " 关键字上色
@@ -120,30 +126,32 @@
 
             if !exists("g:lcl_no_big_font")
                 if LINUX() && has("gui_running")
-                    set guifont=Sauce\ Code\ Powerline\ 12,Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 12,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
+                    set guifont=Sauce\ Code\ Powerline\ 13,Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 12,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
                 elseif OSX() && has("gui_running")
-                    set guifont=Sauce\ Code\ Powerline\ 12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+                    set guifont=Sauce\ Code\ Powerline\ 13,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h14
                 elseif WINDOWS() && has("gui_running")
-                    set guifont=Sauce\ Code\ Powerline\ 12,Andale_Mono:h12,Menlo:h12,Consolas:h12,Courier_New:h12
+                    set guifont=Sauce\ Code\ Powerline\ 13,Andale_Mono:h12,Menlo:h12,Consolas:h12,Courier_New:h12
                 endif
             endif
-            "let g:airline_powerline_fonts = 1                   " 是否使用powerline字体
         else
             set t_Co=256                                        " 终端显示256色
-            "let g:airline_powerline_fonts = 1                   " 是否使用powerline字体
         endif
 
     " }
 
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        "let g:solarized_termcolors=256
-        "let g:solarized_termtrans=1
-        "let g:solarized_contrast="normal"
-        "let g:solarized_visibility="normal"
-        color molokai             " 载入皮肤主题
-        set background=dark
+        if has('gui_running')
+            color molokai
+        else
+            let g:solarized_termcolors=256
+            let g:solarized_termtrans=1
+            let g:solarized_contrast="normal"
+            let g:solarized_visibility="normal"
+            color solarized             " 载入皮肤主题
+        endif
     endif
 
+    set background=dark
     set tabpagemax=15               " 最多15个Tab
     set showmode                    " 显示当前mode
     set cursorline                  " 高亮当前行
@@ -205,6 +213,8 @@
     nmap j gj
     nmap k gk
     inoremap jj <ESC>
+    vnoremap > >gv
+    vnoremap < <gv
     noremap <Leader>m ggVG
     nnoremap <silent> J :bp<CR>
     nnoremap <silent> K :bn<CR>
@@ -214,6 +224,7 @@
     noremap <silent><Leader>v :set spell! spell?<CR>
     nnoremap <LocalLeader>o @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
     nnoremap <LocalLeader>j <C-w>j:bd<CR>
+    "inoremap <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<C-g>u\<CR>"
 
     " 更方便窗口间移动
     nnoremap <C-h> <C-w>h
@@ -248,8 +259,13 @@
 
     " vim-airline {
         set laststatus=2                                    " 显示状态栏
-        let g:airline_theme='molokai'                     " 设置主题
-        let g:airline_powerline_fonts = 0                   " 是否使用powerline字体
+        if has('gui_running')
+            let g:airline_theme='molokai'                     " 设置主题
+            let g:airline_powerline_fonts = 0                   " 是否使用powerline字体
+        else
+            let g:airline_theme='solarized'                     " 设置主题
+            let g:airline_powerline_fonts = 1                   " 是否使用powerline字体
+        endif
         let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
         let g:airline#extensions#tabline#tab_nr_type = 1
         let g:airline#extensions#tabline#show_tab_nr = 1
@@ -375,6 +391,25 @@
             let g:pymode_options = 0
             let g:pymode_rope = 0
             let g:pymode_doc_bind = '<C-k>'
+            let g:pymode_doc = 1
+            let g:pymode_folding = 1
+            let g:pymode_motion = 1
+            let g:pymode_indent = 1
+            let g:pymode_run = 1
+            let g:pymode_run_bind = '<leader>r'
+            let g:pymode_breakpoint = 1
+            let g:pymode_breakpoint_bind = '<leader>b'
+            let g:pymode_lint = 1
+            let g:pymode_lint_on_write = 1
+            let g:pymode_options_max_line_length = 99
+            let g:pymode_quickfix_minheight = 3
+            let g:pymode_quickfix_maxheight = 6
+            let g:pymode_lint_todo_symbol = 'WW'
+            let g:pymode_lint_comment_symbol = 'CC'
+            let g:pymode_lint_visual_symbol = 'RR'
+            let g:pymode_lint_error_symbol = 'EE'
+            let g:pymode_lint_info_symbol = 'II'
+            let g:pymode_lint_pyflakes_symbol = 'FF'
         endif
     " }
 
@@ -487,6 +522,23 @@
         endif
     " }
 
+    " signify {
+        if isdirectory(expand("~/.vim/bundle/vim-signify/"))
+            let g:signify_disable_by_default = 0
+            let g:signify_line_highlight = 0
+            let g:signify_vcs_list = [ 'git', 'svn' ]
+            let g:signify_mapping_next_hunk = 'gh'
+            let g:signify_mapping_prev_hunk = 'hg'
+            let g:signify_sign_add               = '+'
+            let g:signify_sign_change            = '~'
+            let g:signify_sign_delete            = '_'
+            let g:signify_sign_delete_first_line = '‾'
+            highlight SignifySignAdd    ctermfg=blue
+            highlight SignifySignDelete ctermfg=green
+            highlight SignifySignChange ctermfg=red
+        endif
+    " }
+
     " Syntastic {
         let g:syntastic_chek_on_open=1
         let g:syntastic_error_symbol = '✗'
@@ -518,7 +570,7 @@
         if count(g:lcl_bundle_groups, 'youcompleteme')
             set completeopt=longest,menu                    " 关掉补全时的预览窗口
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
-            let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+            let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
             let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1}
             let g:ycm_complete_in_comments = 1              " 评论中也应用补全
@@ -526,7 +578,8 @@
             let g:ycm_seed_identifiers_with_syntax = 1
             let g:ycm_collect_identifiers_from_tags_files = 1
             let g:ycm_key_invoke_completion = '<C-Space>'
-            let g:UltiSnipsExpandTrigger = "<C-j>"          " <C-j>代替<Tab>触发ultisnips补全代码段
+            let g:ycm_use_ultisnips_completer = 1
+            let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
             let g:ycm_semantic_triggers =  {
                         \   'c' : ['->', '.'],
                         \   'objc' : ['->', '.'],
@@ -560,7 +613,7 @@
     " }
 
     " neocomplcache {
-        elseif count(g:lcl_bundle_groups, 'neocomplcache')
+        else
             au Filetype c,cpp,java,python let g:neocomplcache_enable_at_startup = 0
             au Filetype c,cpp,java,python let g:neocomplcache_force_overwrite_completefunc = 0
             let g:acp_enableAtStartup = 0
@@ -574,7 +627,7 @@
             let g:neocomplcache_enable_fuzzy_completion = 1         " 开启模糊匹配
             let g:neocomplcache_fuzzy_completion_start_length = 3   " 3个字母后开启模糊匹配
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
-            let g:UltiSnipsExpandTrigger = "<C-j>"          " <C-j>代替<Tab>触发ultisnips补全代码段
+            let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
         endif
     " }
 
