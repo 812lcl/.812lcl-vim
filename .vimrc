@@ -120,17 +120,17 @@
 
             if !exists("g:lcl_no_big_font")
                 if LINUX() && has("gui_running")
-                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12,Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 12,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
+                    set guifont=Sauce\ Code\ Powerline\ 12,Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 12,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
                 elseif OSX() && has("gui_running")
-                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+                    set guifont=Sauce\ Code\ Powerline\ 12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h14
                 elseif WINDOWS() && has("gui_running")
-                    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12,Andale_Mono:h12,Menlo:h12,Consolas:h12,Courier_New:h12
+                    set guifont=Sauce\ Code\ Powerline\ 12,Andale_Mono:h12,Menlo:h12,Consolas:h12,Courier_New:h12
                 endif
             endif
-            let g:airline_powerline_fonts = 1                   " 是否使用powerline字体
+            "let g:airline_powerline_fonts = 1                   " 是否使用powerline字体
         else
             set t_Co=256                                        " 终端显示256色
-            let g:airline_powerline_fonts = 0                   " 是否使用powerline字体
+            "let g:airline_powerline_fonts = 1                   " 是否使用powerline字体
         endif
 
     " }
@@ -249,7 +249,7 @@
     " vim-airline {
         set laststatus=2                                    " 显示状态栏
         let g:airline_theme='molokai'                     " 设置主题
-        "let g:airline_powerline_fonts = 0                   " 是否使用powerline字体
+        let g:airline_powerline_fonts = 0                   " 是否使用powerline字体
         let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
         let g:airline#extensions#tabline#tab_nr_type = 1
         let g:airline#extensions#tabline#show_tab_nr = 1
