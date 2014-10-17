@@ -7,15 +7,14 @@ IF NOT EXIST "%APP_DIR%" (
 ) ELSE (
 	@set ORIGINAL_DIR=%CD%
     echo updating 812lcl-vim
-    chdir /d "%APP_DIR%" 
+    chdir /d "%APP_DIR%"
 	call git pull
     chdir /d "%ORIGINAL_DIR%"
-	call cd "%APP_DIR%" 
+	call cd "%APP_DIR%"
 )
 
 call mklink "%HOME%\.vimrc" "%APP_DIR%\.vimrc"
 call mklink "%HOME%\_vimrc" "%APP_DIR%\.vimrc"
-call mklink "%HOME%\.vimrc.bundles" "%APP_DIR%\.vimrc.bundles"
 call mklink "%HOME%\.vimrc.plugins" "%APP_DIR%\.vimrc.plugins"
 call mklink "%HOME%\.vimrc.before" "%APP_DIR%\.vimrc.before"
 call mklink "%HOME%\.vimrc.menu" "%APP_DIR%\.vimrc.menu"
@@ -27,12 +26,18 @@ IF NOT EXIST "%APP_DIR%\.vim\bundle" (
 	call mkdir "%APP_DIR%\.vim\.vimtmp\undo"
 )
 
-IF NOT EXIST "%HOME%/.vim/bundle/vundle" (
-	call git clone https://github.com/gmarik/vundle.git "%HOME%/.vim/bundle/vundle"
+IF NOT EXIST "%HOME%\vim-plug" (
+	call git clone https://github.com/junegunn/vim-plug.git "%HOME%\vim-plug"
 ) ELSE (
-  call cd "%HOME%/.vim/bundle/vundle"
-  call git pull
-  call cd %HOME%
+	@set ORIGINAL_DIR=%CD%
+	echo updating vim-plug
+	chdir "%HOME%\vim-plug"
+	call git pull
+	chdir /d "%ORIGINAL_DIR%"
+	call cd "%APP_DIR%"
 )
 
-call vim -u "%APP_DIR%/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+call mkdir "%APP_DIR%\.vim\autoload"
+call copy "%HOME%\vim-plug\plug.vim" "%APP_DIR%\.vim\autoload"
+
+call gvim -u "%APP_DIR%/.vimrc.plugins" +PlugInstall! +PlugClean +qall
