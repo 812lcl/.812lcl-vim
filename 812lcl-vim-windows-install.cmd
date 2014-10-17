@@ -38,6 +38,10 @@ IF NOT EXIST "%HOME%\vim-plug" (
 )
 
 call mkdir "%APP_DIR%\.vim\autoload"
+call mkdir "%APP_DIR%\.vim\static"
+call mkdir "%APP_DIR%\.vim\syntax"
 call copy "%HOME%\vim-plug\plug.vim" "%APP_DIR%\.vim\autoload"
+call copy "%APP_DIR%\static" "%APP_DIR%\.vim\static"
+call copy "%APP_DIR%\syntax" "%APP_DIR%\.vim\syntax"
 
 call gvim -u "%APP_DIR%/.vimrc.plugins" +PlugInstall! +PlugClean +qall
