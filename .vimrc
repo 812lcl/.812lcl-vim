@@ -47,12 +47,6 @@
     endif
 " }
 
-" Use bundles config {
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
-    endif
-" }
-
 " Use vim-plug config {
     if filereadable(expand("~/.vimrc.plugins"))
         source ~/.812lcl-vim/.vimrc.plugins
