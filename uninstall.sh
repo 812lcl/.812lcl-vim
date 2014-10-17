@@ -12,7 +12,6 @@ die() {
 }
 
 rm $HOME/.vimrc
-rm $HOME/.vimrc.bundles
 rm $HOME/.vimrc.plugins
 rm $HOME/.vimrc.before
 rm $HOME/.vimrc.menu
