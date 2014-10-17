@@ -62,12 +62,12 @@ call plug#begin('~/.vim/bundle')
 
     " In your .vimrc.before.local file
     " list only the plugin groups you will use
+    " 'general', 'writing', 'programming', 'youcompleteme', 'neocomplcache', 'neocomplete', 'python', 'php', 'javascript', 'html', 'ruby', 'scala', ,'haskell','go', 'misc', 'unite', 'others'
     if !exists('g:lcl_bundle_groups')
         if has('win32') || has('win64')
             let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite',]
         elseif
             let g:lcl_bundle_groups=['general', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc', 'unite', 'others']
-            "let g:lcl_bundle_groups=['general', 'writing', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'youcompleteme',]
         endif
     endif
 
