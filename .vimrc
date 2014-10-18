@@ -341,7 +341,7 @@
         map <Leader>w :NERDTreeToggle<CR>
         map <leader>wf :NERDTreeFind<CR>
         let NERDTreeWinPos=0                    " 在左侧
-        let NERDTreeWinSize=25                  " 设置宽度
+        let NERDTreeWinSize=35                  " 设置宽度
         let NERDTreeShowHidden=1                " 显示隐藏文件
         let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
         let NERDTreeShowBookmarks=1             " 显示书签
@@ -428,7 +428,7 @@
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
             nnoremap <silent> <Leader>e :TagbarToggle<CR>
             let g:tagbar_left = 0                   " 在右侧
-            let g:tagbar_width = 25                 " 设置宽度
+            let g:tagbar_width = 30                 " 设置宽度
 
             " If using go please install the gotags program using the following
             " go install github.com/jstemmer/gotags

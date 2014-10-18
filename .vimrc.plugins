@@ -132,56 +132,80 @@ call plug#begin('~/.vim/bundle')
     " Python {
         if count(g:lcl_bundle_groups, 'python')
             " Pick either python-mode or pyflakes & pydoc
-            Plug 'klen/python-mode'
-            Plug 'yssource/python.vim'
-            Plug 'python_match.vim'
-            Plug 'pythoncomplete'
-            Plug 'jmcantrell/vim-virtualenv'
+            Plug 'klen/python-mode', { 'on': [] }
+            Plug 'yssource/python.vim', { 'on': [] }
+            Plug 'python_match.vim', { 'on': [] }
+            Plug 'pythoncomplete', { 'on': [] }
+            Plug 'jmcantrell/vim-virtualenv', { 'on': [] }
+            augroup load_python
+                autocmd!
+                au FileType python call plug#load('python-mode', 'python.vim', 'python_match.vim', 'pythoncomplete', 'vim-virtualenv') | autocmd! load_python
+            augroup END
         endif
     " }
 
     " PHP {
         if count(g:lcl_bundle_groups, 'php')
-            Plug 'spf13/PIV'
-            Plug 'arnaud-lb/vim-php-namespace'
-            Plug 'beyondwords/vim-twig'
+            Plug 'spf13/PIV', { 'on': [] }
+            Plug 'arnaud-lb/vim-php-namespace', { 'on': [] }
+            Plug 'beyondwords/vim-twig', { 'on': [] }
+            augroup load_php
+                autocmd!
+                au FileType php call plug#load('PIV', 'vim-php-namespace', 'vim-twig') | autocmd! load_php
+            augroup END
         endif
     " }
 
     " Javascript {
         if count(g:lcl_bundle_groups, 'javascript')
-            Plug 'elzr/vim-json'
-            Plug 'groenewege/vim-less'
-            Plug 'pangloss/vim-javascript'
-            Plug 'briancollins/vim-jst'
-            Plug 'kchmck/vim-coffee-script'
+            Plug 'elzr/vim-json', { 'on': [] }
+            Plug 'groenewege/vim-less', { 'on': [] }
+            Plug 'pangloss/vim-javascript', { 'on': [] }
+            Plug 'briancollins/vim-jst', { 'on': [] }
+            Plug 'kchmck/vim-coffee-script', { 'on': [] }
+            augroup load_javascript
+                autocmd!
+                au FileType javascript call plug#load('vim-json', 'vim-less', 'vim-javascript', 'vim-jst', 'vim-coffee-script') | autocmd! load_javascript
+            augroup END
         endif
     " }
 
     " HTML {
         if count(g:lcl_bundle_groups, 'html')
-            "Plug 'amirh/HTML-AutoCloseTag'
-            Plug 'hail2u/vim-css3-syntax'
-            Plug 'gorodinskiy/vim-coloresque'
-            Plug 'tpope/vim-haml'
-            Plug 'mattn/emmet-vim'
+            "Plug 'amirh/HTML-AutoCloseTag', { 'on': [] }
+            Plug 'hail2u/vim-css3-syntax', { 'on': [] }
+            Plug 'gorodinskiy/vim-coloresque', { 'on': [] }
+            Plug 'tpope/vim-haml', { 'on': [] }
+            Plug 'mattn/emmet-vim', { 'on': [] }
+            augroup load_html
+                autocmd!
+                au FileType html call plug#load('vim-css3-syntax', 'vim-coloresque', 'vim-haml', 'emmet-vim') | autocmd! load_html
+            augroup END
         endif
     " }
 
     " Ruby {
         if count(g:lcl_bundle_groups, 'ruby')
-            Plug 'tpope/vim-rails'
+            Plug 'tpope/vim-rails', { 'on': [] }
             let g:rubycomplete_buffer_loading = 1
             "let g:rubycomplete_classes_in_global = 1
             "let g:rubycomplete_rails = 1
+            augroup load_ruby
+                autocmd!
+                au FileType ruby call plug#load('vim-rails') | autocmd! load_ruby
+            augroup END
         endif
     " }
 
     " Scala {
         if count(g:lcl_bundle_groups, 'scala')
-            Plug 'derekwyatt/vim-scala'
-            Plug 'derekwyatt/vim-sbt'
-            Plug 'xptemplate'
+            Plug 'derekwyatt/vim-scala', { 'on': [] }
+            Plug 'derekwyatt/vim-sbt', { 'on': [] }
+            Plug 'xptemplate', { 'on': [] }
+            augroup load_scala
+                autocmd!
+                au FileType scala call plug#load('vim-scala', 'vim-sbt', 'xptemplate') | autocmd! load_scala
+            augroup END
         endif
     " }
 
