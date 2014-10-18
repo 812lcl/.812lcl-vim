@@ -133,16 +133,14 @@
 
     " }
 
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        if has('gui_running')
-            color molokai
-        else
-            let g:solarized_termcolors=256
-            let g:solarized_termtrans=1
-            let g:solarized_contrast="normal"
-            let g:solarized_visibility="normal"
-            color solarized             " 载入皮肤主题
-        endif
+    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim")) && !WINDOWS()
+        let g:solarized_termcolors=256
+        let g:solarized_termtrans=1
+        let g:solarized_contrast="normal"
+        let g:solarized_visibility="normal"
+        color solarized             " 载入皮肤主题
+    else
+        color molokai
     endif
 
     set background=dark
@@ -253,12 +251,15 @@
 
     " vim-airline {
         set laststatus=2                                    " 显示状态栏
-        if has('gui_running')
-            let g:airline_theme='molokai'                     " 设置主题
-            let g:airline_powerline_fonts = 0                   " 是否使用powerline字体
+        if WINDOWS()
+            let g:airline_theme='molokai'                   " 设置主题
+            let g:airline_powerline_fonts = 0               " 是否使用powerline字体
+        elseif has('gui_running')
+            let g:airline_theme='solarized'
+            let g:airline_powerline_fonts = 0
         else
-            let g:airline_theme='solarized'                     " 设置主题
-            let g:airline_powerline_fonts = 1                   " 是否使用powerline字体
+            let g:airline_theme='solarized'
+            let g:airline_powerline_fonts = 1
         endif
         let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
         let g:airline#extensions#tabline#tab_nr_type = 1
@@ -756,20 +757,6 @@
             endfor
         endfunction
         call InitializeDirectories()
-    " }
-
-    " Initialize NERDTree as needed {
-        function! NERDTreeInitAsNeeded()
-            redir => bufoutput
-            buffers!
-            redir END
-            let idx = stridx(bufoutput, "NERD_tree")
-            if idx > -1
-                NERDTreeMirror
-                NERDTreeFind
-                wincmd l
-            endif
-        endfunction
     " }
 
     " Shell command {
