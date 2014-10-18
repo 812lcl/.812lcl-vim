@@ -105,7 +105,7 @@ call plug#begin('~/.vim/bundle')
                 source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
             endif
         elseif count(g:lcl_bundle_groups, 'youcompleteme')
-            Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+            Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
             Plug 'Shougo/neocomplcache.vim'
             Plug 'JazzCore/neocomplcache-ultisnips'
             Plug 'SirVer/ultisnips'
