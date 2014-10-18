@@ -216,7 +216,7 @@
     noremap <silent><Leader>v :set spell! spell?<CR>
     nnoremap <LocalLeader>o @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
     nnoremap <LocalLeader>j <C-w>j:bd<CR>
-    "inoremap <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<C-g>u\<CR>"
+    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " 更方便窗口间移动
     nnoremap <C-h> <C-w>h
