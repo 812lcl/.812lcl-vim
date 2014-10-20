@@ -429,6 +429,7 @@
             nnoremap <silent> <Leader>e :TagbarToggle<CR>
             let g:tagbar_left = 0                   " 在右侧
             let g:tagbar_width = 30                 " 设置宽度
+            let g:tagbar_sort = 0                   " 按出现顺序排序
 
             " If using go please install the gotags program using the following
             " go install github.com/jstemmer/gotags
