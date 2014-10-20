@@ -341,7 +341,7 @@
         map <Leader>w :NERDTreeToggle<CR>
         map <leader>wf :NERDTreeFind<CR>
         let NERDTreeWinPos=0                    " 在左侧
-        let NERDTreeWinSize=35                  " 设置宽度
+        let NERDTreeWinSize=30                  " 设置宽度
         let NERDTreeShowHidden=1                " 显示隐藏文件
         let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
         let NERDTreeShowBookmarks=1             " 显示书签
