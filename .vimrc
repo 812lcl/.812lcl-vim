@@ -430,6 +430,8 @@
             let g:tagbar_left = 0                   " 在右侧
             let g:tagbar_width = 30                 " 设置宽度
             let g:tagbar_sort = 0                   " 按出现顺序排序
+            let g:tagbar_iconchars = ['▸', '▾']
+
 
             " If using go please install the gotags program using the following
             " go install github.com/jstemmer/gotags
@@ -560,6 +562,13 @@
         autocmd FileType css set omnifunc=csscomplete#CompleteCSS
         autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
         autocmd FileType java inoremap <buffer> . .<C-X><C-O><C-P>
+    " }
+
+    " supertab {
+        if isdirectory(expand("~/.vim/bundle/supertab"))
+            let g:SuperTabMappingForward = '<s-tab>'
+            let g:SuperTabMappingBackward = '<tab>'
+        endif
     " }
 
     " YouCompleteMe {
