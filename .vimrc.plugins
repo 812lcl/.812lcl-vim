@@ -174,12 +174,12 @@ call plug#begin('~/.vim/bundle')
         if count(g:lcl_bundle_groups, 'html')
             "Plug 'amirh/HTML-AutoCloseTag', { 'on': [] }
             Plug 'hail2u/vim-css3-syntax', { 'on': [] }
-            Plug 'gorodinskiy/vim-coloresque', { 'on': [] }
+            Plug 'gorodinskiy/vim-coloresque'
             Plug 'tpope/vim-haml', { 'on': [] }
             Plug 'mattn/emmet-vim', { 'on': [] }
             augroup load_html
                 autocmd!
-                au FileType html call plug#load('vim-css3-syntax', 'vim-coloresque', 'vim-haml', 'emmet-vim') | autocmd! load_html
+                au FileType html call plug#load('vim-css3-syntax', 'vim-haml', 'emmet-vim') | autocmd! load_html
             augroup END
         endif
     " }

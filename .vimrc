@@ -291,6 +291,12 @@
         endif
     " }
 
+    " EasyMotion {
+        if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
+            map f <Plug>(easymotion-prefix)
+        endif
+    " }
+
     " persistent_undo {
         set nobackup noswapfile
         set history=200
@@ -821,7 +827,7 @@
             if &colorcolumn != ''
                 setlocal colorcolumn&
             else
-                setlocal colorcolumn=100
+                setlocal colorcolumn=80
             endif
         endfunction
         nnoremap <LocalLeader>l :call g:ToggleColorColumn()<CR>
