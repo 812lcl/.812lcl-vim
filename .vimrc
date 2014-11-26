@@ -293,7 +293,9 @@
 
     " EasyMotion {
         if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
-            map f <Plug>(easymotion-prefix)
+            map <Leader><Leader> <Plug>(easymotion-prefix)
+            map f <Plug>(easymotion-f)
+            map F <Plug>(easymotion-F)
         endif
     " }
 
