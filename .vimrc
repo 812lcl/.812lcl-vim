@@ -66,7 +66,7 @@
     set splitbelow                  " 新分割窗口在下边
     set autoread                    " 文件在Vim之外修改过，自动重新读入
     set timeoutlen=350              " 等待时间,如<leader>键后的输入
-    set helpheight=999              " 查看帮助文档全屏
+    "set helpheight=30               " 查看帮助文档全屏
     set scrolljump=1                " 当光标离开屏幕滑动行数
     set scrolloff=2                 " 保持在光标上下最少行数
     set showmatch                   " 短暂回显匹配括号
@@ -389,15 +389,19 @@
         endif
 
         if isdirectory(expand("~/.vim/bundle/python-mode"))
-            let g:pymode_lint_checkers = ['pyflakes']
+            let g:pymode = 1
+            let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
-            let g:pymode_rope = 0
+            let g:pymode_rope = 1
+            let g:pymode_rope_goto_definition_bind = '<C-c>g'
             let g:pymode_doc_bind = '<C-k>'
             let g:pymode_doc = 1
             let g:pymode_folding = 1
             let g:pymode_motion = 1
-            let g:pymode_indent = 1
+            let g:pymode_indent = ['pep8']
+            "let g:pymode_indent = 1
+            let g:pymode_virtualenv = 1
             let g:pymode_run = 1
             let g:pymode_run_bind = '<leader>r'
             let g:pymode_breakpoint = 1
@@ -413,6 +417,8 @@
             let g:pymode_lint_error_symbol = 'EE'
             let g:pymode_lint_info_symbol = 'II'
             let g:pymode_lint_pyflakes_symbol = 'FF'
+            let g:pymode_syntax = 1
+            let g:pymode_syntax_all = 1
         endif
     " }
 
@@ -581,7 +587,7 @@
 
     " YouCompleteMe {
         if count(g:lcl_bundle_groups, 'youcompleteme')
-            set completeopt=longest,menu                    " 关掉补全时的预览窗口
+            set completeopt=longest,menuone,preview                    " 关掉补全时的预览窗口
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
