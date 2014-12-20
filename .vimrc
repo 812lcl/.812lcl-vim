@@ -399,8 +399,7 @@
             let g:pymode_doc = 1
             let g:pymode_folding = 1
             let g:pymode_motion = 1
-            let g:pymode_indent = ['pep8']
-            "let g:pymode_indent = 1
+            let g:pymode_indent = 1
             let g:pymode_virtualenv = 1
             let g:pymode_run = 1
             let g:pymode_run_bind = '<leader>r'
@@ -548,6 +547,8 @@
             highlight SignifySignAdd    ctermfg=blue
             highlight SignifySignDelete ctermfg=green
             highlight SignifySignChange ctermfg=red
+            nmap gh <plug>(signify-next-hunk)
+            nmap hg <plug>(signify-prev-hunk)
         endif
     " }
 
@@ -587,7 +588,7 @@
 
     " YouCompleteMe {
         if count(g:lcl_bundle_groups, 'youcompleteme')
-            set completeopt=longest,menuone,preview                    " 关掉补全时的预览窗口
+            set completeopt=longest,menuone                    " 关掉补全时的预览窗口
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
