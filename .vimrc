@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
 "             __   _  ____  _        _              _
 "           //  \\/ |/__  || |  ____| |     __   __(_)_ __ ___
 "           \\__//| |  / / | | / __/| |_____\ \ / /| | '_ ` _ \
@@ -544,9 +544,9 @@
             let g:signify_sign_change            = '~'
             let g:signify_sign_delete            = '_'
             let g:signify_sign_delete_first_line = '‾'
-            highlight SignifySignAdd    ctermfg=blue
-            highlight SignifySignDelete ctermfg=green
-            highlight SignifySignChange ctermfg=red
+            hi SignifySignAdd    ctermfg=blue
+            hi SignifySignDelete ctermfg=green
+            hi SignifySignChange ctermfg=red
             nmap gh <plug>(signify-next-hunk)
             nmap hg <plug>(signify-prev-hunk)
         endif
@@ -837,6 +837,7 @@
                 setlocal colorcolumn&
             else
                 setlocal colorcolumn=80
+                " hi colorcolumn ctermbg=red
             endif
         endfunction
         nnoremap <LocalLeader>l :call g:ToggleColorColumn()<CR>
