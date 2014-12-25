@@ -68,7 +68,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'tpope/vim-surround'
             Plug 'kien/ctrlp.vim'
             Plug 'sessionman.vim'
-            Plug 'restore_view.vim'
+            "Plug 'restore_view.vim'
             Plug 'matchit.zip'
             Plug 'bling/vim-airline'
             Plug 'Lokaltog/vim-easymotion'

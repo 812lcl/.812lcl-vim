@@ -93,7 +93,7 @@
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
     " your .vimrc.before file:
-    "   let g:lcl_no_autochdir = 1
+    let g:lcl_no_autochdir = 1
     if !exists('g:lcl_no_autochdir')
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     endif
@@ -195,6 +195,7 @@
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o       " 下一行不自动添加注释
     au BufLeave * let b:winview = winsaveview()                                     " 切换buffer时保持光标所在行在窗口中到位置
     au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " }
 
@@ -309,8 +310,6 @@
             set undodir=~/.vim/.vimtmp/undo
         endif
         set viminfo+=n$HOME/.vim/.vimtmp/viminfo
-        set viewoptions=folds,options,cursor,unix,slash                 " restore_view.vim
-        set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize  " sessionman.vim
     " }
 
     " Ctags {
@@ -375,6 +374,7 @@
 
     " sessionman.vim {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
+        "set viewoptions=folds,options,cursor,unix,slash                 " restore_view.vim
         if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
             nmap <LocalLeader>y :SessionList<CR>
             nmap <LocalLeader>u :SessionSave<CR>
