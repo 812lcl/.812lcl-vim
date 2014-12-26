@@ -86,7 +86,7 @@
     language message zh_CN.UTF-8
     set dict+=$HOME/.vim/static/dict_with_cases
 
-    set mouse=a                 " Automatically enable mouse usage
+    set mouse=v                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
