@@ -205,7 +205,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\' remain <Leader>y u i o p g
+    let mapleader=","           " 映射<leader>键,默认'\' remain <Leader>y u i o p t
     let maplocalleader=" "      " 映射<localleader>键
     nmap j gj
     nmap k gk
@@ -221,6 +221,7 @@
     noremap <silent><Leader>v :set spell! spell?<CR>
     nnoremap <LocalLeader>o @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
     nnoremap <LocalLeader>j <C-w>j:bd<CR>
+    nnoremap <LocalLeader>; :cw<CR>
     inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " 更方便窗口间移动
@@ -538,8 +539,6 @@
             let g:signify_disable_by_default = 0
             let g:signify_line_highlight = 0
             let g:signify_vcs_list = [ 'git', 'svn' ]
-            let g:signify_mapping_next_hunk = 'gh'
-            let g:signify_mapping_prev_hunk = 'hg'
             let g:signify_sign_add               = '+'
             let g:signify_sign_change            = '~'
             let g:signify_sign_delete            = '_'
@@ -549,6 +548,14 @@
             hi SignifySignChange ctermfg=red
             nmap gh <plug>(signify-next-hunk)
             nmap hg <plug>(signify-prev-hunk)
+            omap ic <plug>(signify-motion-inner-pending)
+            xmap ic <plug>(signify-motion-inner-visual)
+            omap ac <plug>(signify-motion-outer-pending)
+            xmap ac <plug>(signify-motion-outer-visual)
+            nnoremap gt :SignifyToggle<CR>
+            nnoremap hl :SignifyToggleHighlight<CR>
+            nnoremap gr :SignifyRefresh<CR>
+            nnoremap gd :SignifyDebug<CR>
         endif
     " }
 
@@ -837,7 +844,7 @@
                 setlocal colorcolumn&
             else
                 setlocal colorcolumn=80
-                " hi colorcolumn ctermbg=red
+                hi colorcolumn ctermbg=grey
             endif
         endfunction
         nnoremap <LocalLeader>l :call g:ToggleColorColumn()<CR>
