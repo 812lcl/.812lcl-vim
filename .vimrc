@@ -134,7 +134,7 @@
 
     " }
 
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim")) && !has('gui_running')
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="high"
@@ -160,8 +160,7 @@
     hi CursorLineNr ctermfg=red guifg=red
     hi VertSplit ctermbg=Grey ctermfg=Grey cterm=none guibg=Grey guifg=Grey
     hi Visual ctermbg=81 ctermfg=black cterm=none guibg=cyan guifg=black
-    hi Comment ctermfg=blue guifg=gray
-    hi Statement ctermfg=cyan guifg=cyan
+    hi Comment ctermfg=white guifg=white
     hi DiffAdd ctermbg=blue ctermfg=white guibg=blue guifg=white
     hi DiffDelete ctermbg=green ctermfg=none guibg=green
     hi DiffChange ctermbg=red ctermfg=White guibg=red guifg=White
@@ -259,10 +258,11 @@
         set laststatus=2                                    " 显示状态栏
         if has('gui_running')
             let g:airline_powerline_fonts = 0               " 是否使用powerline字体
+            let g:airline_theme='molokai'                   " 设置主题
         else
             let g:airline_powerline_fonts = 1
+            let g:airline_theme='solarized'                 " 设置主题
         endif
-        let g:airline_theme='solarized'                     " 设置主题
         let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
         let g:airline#extensions#tabline#tab_nr_type = 1
         let g:airline#extensions#tabline#show_tab_nr = 1
