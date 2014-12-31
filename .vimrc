@@ -121,11 +121,11 @@
 
             if !exists("g:lcl_no_big_font")
                 if LINUX()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 12,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
+                    set guifont=Sauce\ Code\ Powerline\ 13,Andale\ Mono\ Regular\ 13,Menlo\ Regular\ 13,Consolas\ Regular\ 13,Courier\ New\ Regular\ 14
                 elseif OSX()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+                    set guifont=Sauce\ Code\ Powerline\ 13,Andale\ Mono\ Regular:h13,Menlo\ Regular:h13,Consolas\ Regular:h13,Courier\ New\ Regular:h13
                 elseif WINDOWS()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Andale_Mono:h12,Menlo:h12,Consolas:h12,Courier_New:h12
+                    set guifont=Sauce\ Code\ Powerline\ 13,Andale_Mono:h13,Menlo:h13,Consolas:h13,Courier_New:h13
                 endif
             endif
         else
@@ -159,8 +159,8 @@
 
     hi CursorLineNr ctermfg=red guifg=red
     hi VertSplit ctermbg=Grey ctermfg=Grey cterm=none guibg=Grey guifg=Grey
-    hi Visual ctermbg=81 ctermfg=black cterm=none guibg=cyan guifg=black
-    hi Comment ctermfg=white guifg=white
+    hi Visual ctermbg=cyan ctermfg=black cterm=none guibg=cyan guifg=black
+    hi Comment ctermfg=lightgrey guifg=lightgrey
     hi DiffAdd ctermbg=blue ctermfg=white guibg=blue guifg=white
     hi DiffDelete ctermbg=green ctermfg=none guibg=green
     hi DiffChange ctermbg=red ctermfg=White guibg=red guifg=White
@@ -844,7 +844,7 @@
                 setlocal colorcolumn&
             else
                 setlocal colorcolumn=80
-                hi colorcolumn ctermbg=grey
+                hi colorcolumn ctermbg=grey guibg=grey
             endif
         endfunction
         nnoremap <LocalLeader>l :call g:ToggleColorColumn()<CR>
