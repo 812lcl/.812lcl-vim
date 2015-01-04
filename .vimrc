@@ -394,7 +394,7 @@
             let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
-            let g:pymode_rope = 1
+            let g:pymode_rope = 0
             let g:pymode_rope_goto_definition_bind = '<C-c>g'
             let g:pymode_doc_bind = '<C-k>'
             let g:pymode_doc = 1
