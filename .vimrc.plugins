@@ -63,7 +63,7 @@ call plug#begin('~/.vim/bundle')
 
     " General {
         if count(g:lcl_bundle_groups, 'general')
-            Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+            Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFind' }
             Plug 'altercation/vim-colors-solarized'
             Plug 'tpope/vim-surround'
             Plug 'kien/ctrlp.vim'

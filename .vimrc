@@ -346,8 +346,8 @@
     " }
 
     " NerdTree {
-        map <Leader>w :NERDTreeToggle<CR>
-        map <leader>wf :NERDTreeFind<CR>
+        map <Leader>wf :NERDTreeToggle<CR>
+        map <leader>w :NERDTreeFind<CR>
         let NERDTreeWinPos=0                    " 在左侧
         let NERDTreeWinSize=30                  " 设置宽度
         let NERDTreeShowHidden=1                " 显示隐藏文件
