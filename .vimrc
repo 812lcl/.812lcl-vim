@@ -159,7 +159,7 @@
 
     hi CursorLineNr ctermfg=red guifg=red
     hi VertSplit ctermbg=Grey ctermfg=Grey cterm=none guibg=Grey guifg=Grey
-    hi Visual ctermbg=cyan ctermfg=black cterm=none guibg=cyan guifg=black
+    hi Visual ctermbg=cyan ctermfg=white cterm=none guibg=cyan guifg=black
     hi Comment ctermfg=lightgrey guifg=lightgrey
     hi DiffAdd ctermbg=blue ctermfg=white guibg=blue guifg=white
     hi DiffDelete ctermbg=green ctermfg=none guibg=green
@@ -391,7 +391,7 @@
 
         if isdirectory(expand("~/.vim/bundle/python-mode"))
             let g:pymode = 1
-            let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+            let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_rope = 0
@@ -445,6 +445,8 @@
             let g:tagbar_width = 30                 " 设置宽度
             let g:tagbar_sort = 0                   " 按出现顺序排序
             let g:tagbar_iconchars = ['▸', '▾']
+            autocmd BufEnter *.sh nested :TagbarOpen
+            autocmd FileType c,cpp,python,java,vim nested :TagbarOpen
 
 
             " If using go please install the gotags program using the following
