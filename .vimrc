@@ -445,8 +445,10 @@
             let g:tagbar_width = 30                 " 设置宽度
             let g:tagbar_sort = 0                   " 按出现顺序排序
             let g:tagbar_iconchars = ['▸', '▾']
-            autocmd BufEnter *.sh nested :TagbarOpen
-            autocmd FileType c,cpp,python,java,vim nested :TagbarOpen
+            if !&diff
+                autocmd BufEnter *.sh nested :TagbarOpen
+                autocmd FileType c,cpp,python,java,vim nested :TagbarOpen
+            endif
 
 
             " If using go please install the gotags program using the following
