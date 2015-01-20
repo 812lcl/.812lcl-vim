@@ -348,7 +348,7 @@
     " NerdTree {
         map <Leader>wf :NERDTreeToggle<CR>
         map <leader>w :NERDTreeFind<CR>
-        let NERDTreeWinPos=1                    " 在左侧
+        let NERDTreeWinPos=0                    " 在左侧
         let NERDTreeWinSize=30                  " 设置宽度
         let NERDTreeShowHidden=1                " 显示隐藏文件
         let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
@@ -441,7 +441,7 @@
     " TagBar {
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
             nnoremap <silent> <Leader>e :TagbarToggle<CR>
-            let g:tagbar_left = 1                   " 在右侧
+            let g:tagbar_left = 0                   " 在右侧
             let g:tagbar_width = 30                 " 设置宽度
             let g:tagbar_sort = 0                   " 按出现顺序排序
             let g:tagbar_iconchars = ['▸', '▾']
