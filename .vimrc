@@ -470,7 +470,7 @@
 
     " indentLine {
         if isdirectory(expand("~/.vim/bundle/indentLine/"))
-            let g:indentLine_enabled=0
+            let g:indentLine_enabled=1
             nmap <Leader>g :IndentLinesToggle<CR>
         endif
     " }
