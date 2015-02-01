@@ -74,7 +74,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'Lokaltog/vim-easymotion'
             Plug 'flazz/vim-colorschemes'
             Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-            Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle' }
+            Plug 'Yggdroot/indentLine'
             Plug 'gcmt/wildfire.vim'
             Plug 'kshenoy/vim-signature'
             Plug 'TaskList.vim'
