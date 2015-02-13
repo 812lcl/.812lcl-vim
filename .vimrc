@@ -134,17 +134,16 @@
 
     " }
 
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim")) && !has('gui_running')
+    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="high"
         let g:solarized_visibility="normal"
         let g:solarized_hitrail=1
         colorscheme solarized             " 载入皮肤主题
-    else
-        let g:molokai_original=0
-        let g:rehash256=1
-        colorscheme molokai
+        if OSX()
+            let g:solarized_termcolors=16
+        endif
     endif
 
     set background=dark
@@ -258,11 +257,10 @@
         set laststatus=2                                    " 显示状态栏
         if has('gui_running')
             let g:airline_powerline_fonts = 0               " 是否使用powerline字体
-            let g:airline_theme='molokai'                   " 设置主题
         else
             let g:airline_powerline_fonts = 1
-            let g:airline_theme='solarized'                 " 设置主题
         endif
+        let g:airline_theme='solarized'                     " 设置主题
         let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
         let g:airline#extensions#tabline#tab_nr_type = 1
         let g:airline#extensions#tabline#show_tab_nr = 1
