@@ -135,13 +135,13 @@
     " }
 
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+        colorscheme solarized             " 载入皮肤主题
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="high"
         let g:solarized_visibility="normal"
         let g:solarized_hitrail=1
-        colorscheme solarized             " 载入皮肤主题
-        if OSX()
+        if !has('gui_running')
             let g:solarized_termcolors=16
         endif
     endif
