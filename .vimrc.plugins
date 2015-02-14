@@ -239,7 +239,7 @@ call plug#begin('~/.vim/bundle')
             "Plug 'tpope/vim-cucumber'
             "Plug 'cespare/vim-toml'
             "Plug 'quentindecock/vim-cucumber-align-pipes'
-            Plug 'Puppet-Syntax-Highlighting'
+            "Plug 'Puppet-Syntax-Highlighting'
         endif
     " }
 
@@ -252,14 +252,15 @@ call plug#begin('~/.vim/bundle')
             Plug 'ujihisa/unite-colorscheme'
             Plug 'ujihisa/unite-locate'
             Plug 'tacroe/unite-mark'
+            Plug 'kmnk/vim-unite-svn'
         endif
     " }
 
     " Others {
         if count(g:lcl_bundle_groups, 'others')
             Plug 'Shougo/vimproc', { 'do': 'make' }
-            Plug 'mattn/webapi-vim'
-            Plug 'mattn/gist-vim'
+            "Plug 'mattn/webapi-vim'
+            "Plug 'mattn/gist-vim'
             Plug 'christoomey/vim-tmux-navigator'
             Plug 'ianva/vim-youdao-translater'
         endif

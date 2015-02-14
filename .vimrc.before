@@ -17,7 +17,7 @@
 " 812lcl options {
 
     " Prevent automatically changing to open file directory
-    "   let g:lcl_no_autochdir = 1
+       let g:lcl_no_autochdir = 1
 
     " Disable views
     "   let g:lcl_no_views = 1

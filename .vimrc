@@ -49,7 +49,7 @@
 
 " Use vim-plug config {
     if filereadable(expand("~/.vimrc.plugins"))
-        source ~/.812lcl-vim/.vimrc.plugins
+        source ~/.vimrc.plugins
     endif
 " }
 
@@ -86,16 +86,16 @@
     language message zh_CN.UTF-8
     set dict+=$HOME/.vim/static/dict_with_cases
 
-    set mouse=v                 " Automatically enable mouse usage
-    set mousehide               " Hide the mouse cursor while typing
+    set mouse=v                     " Automatically enable mouse usage
+    set mousehide                   " Hide the mouse cursor while typing
     scriptencoding utf-8
 
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
     " your .vimrc.before file:
-    let g:lcl_no_autochdir = 1
+    "   let g:lcl_no_autochdir = 1
     if !exists('g:lcl_no_autochdir')
-        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+        au BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     endif
 
     " Instead of reverting the cursor to the last position in the buffer, we
@@ -117,7 +117,6 @@
             set mouse=a
             set lines=40                " 40 lines of text instead of 24
             source $VIMRUNTIME/delmenu.vim
-            "source $VIMRUNTIME/menu.vim
 
             if !exists("g:lcl_no_big_font")
                 if LINUX()
@@ -129,13 +128,13 @@
                 endif
             endif
         else
-            set t_Co=256                                        " 终端显示256色
+            set t_Co=256                    " 终端显示256色
         endif
 
     " }
 
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        colorscheme solarized             " 载入皮肤主题
+        colorscheme solarized               " 载入皮肤主题
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="high"
@@ -235,12 +234,6 @@
     cnoremap <C-n> <Down>
     cmap w!! SudoWrite %
 
-    " Tab操作
-    nnoremap <Leader>tc :tabc<CR>
-    nnoremap <Leader>tn :tabn<CR>
-    nnoremap <Leader>tp :tabp<CR>
-    nnoremap <Leader>te :tabe<Space>
-
     " 修正易错命令
     command -bang -nargs=* Q q<bang>
     command -bang -nargs=* Wa wa<bang>
@@ -252,52 +245,6 @@
 " }
 
 " Plugins {
-
-    " vim-airline {
-        set laststatus=2                                    " 显示状态栏
-        if has('gui_running')
-            let g:airline_powerline_fonts = 0               " 是否使用powerline字体
-        else
-            let g:airline_powerline_fonts = 1
-        endif
-        let g:airline_theme='solarized'                     " 设置主题
-        let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
-        let g:airline#extensions#tabline#tab_nr_type = 1
-        let g:airline#extensions#tabline#show_tab_nr = 1
-        let g:airline#extensions#tabline#show_tab_type = 1
-        let g:airline#extensions#tabline#buffer_nr_show = 0
-
-        if g:airline_powerline_fonts != 1
-            let g:airline_left_sep=''
-            let g:airline_right_sep=''
-            let g:airline#extensions#tabline#left_sep=''
-            let g:airline#extensions#tabline#right_sep=''
-        endif
-
-        function! AirlineInit()
-            let g:airline_section_a = airline#section#create(['mode'])
-            let g:airline_section_b = airline#section#create_left(['branch','hunks'])
-            let g:airline_section_c = airline#section#create(['%f'])
-            let g:airline_section_y = airline#section#create(['ffenc','%4b'])
-            let g:airline_section_z = airline#section#create(['%P',':','%4l',',','%3c'])
-        endfunction
-        autocmd VimEnter * call AirlineInit()
-    " }
-
-    " UndoTree {
-        if isdirectory(expand("~/.vim/bundle/undotree/"))
-            nmap <silent> <Leader>q :UndotreeToggle<CR>
-            let g:undotree_SetFocusWhenToggle = 1
-        endif
-    " }
-
-    " EasyMotion {
-        if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
-            map <Leader><Leader> <Plug>(easymotion-prefix)
-            map f <Plug>(easymotion-f)
-            map F <Plug>(easymotion-F)
-        endif
-    " }
 
     " persistent_undo {
         set nobackup noswapfile
@@ -343,32 +290,85 @@
         nmap <Leader><Leader>8 :cs find i <C-R>=expand("<cfile>")<CR><CR>
     " }
 
+    " vim-airline {
+        if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+            set laststatus=2                                    " 显示状态栏
+            if has('gui_running')
+                let g:airline_powerline_fonts = 0               " 是否使用powerline字体
+            else
+                let g:airline_powerline_fonts = 1
+            endif
+            let g:airline_theme='solarized'                     " 设置主题
+            let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
+            let g:airline#extensions#tabline#tab_nr_type = 1
+            let g:airline#extensions#tabline#show_tab_nr = 1
+            let g:airline#extensions#tabline#show_tab_type = 1
+            let g:airline#extensions#tabline#buffer_nr_show = 0
+
+            if g:airline_powerline_fonts != 1
+                let g:airline_left_sep=''
+                let g:airline_right_sep=''
+                let g:airline#extensions#tabline#left_sep=''
+                let g:airline#extensions#tabline#right_sep=''
+            endif
+
+            function! AirlineInit()
+                let g:airline_section_a = airline#section#create(['mode'])
+                let g:airline_section_b = airline#section#create_left(['branch','hunks'])
+                let g:airline_section_c = airline#section#create(['%f'])
+                let g:airline_section_y = airline#section#create(['ffenc','%4b'])
+                let g:airline_section_z = airline#section#create(['%P',':','%4l',',','%3c'])
+            endfunction
+            au VimEnter * call AirlineInit()
+        endif
+    " }
+
+    " UndoTree {
+        if isdirectory(expand("~/.vim/bundle/undotree/"))
+            nmap <silent> <Leader>q :UndotreeToggle<CR>
+            let g:undotree_SetFocusWhenToggle = 1
+        endif
+    " }
+
+    " EasyMotion {
+        if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
+            map <Leader><Leader> <Plug>(easymotion-prefix)
+            map f <Plug>(easymotion-f)
+            map F <Plug>(easymotion-F)
+        endif
+    " }
+
     " NerdTree {
-        map <Leader>wf :NERDTreeToggle<CR>
-        map <leader>w :NERDTreeFind<CR>
-        let NERDTreeWinPos=0                    " 在左侧
-        let NERDTreeWinSize=30                  " 设置宽度
-        let NERDTreeShowHidden=1                " 显示隐藏文件
-        let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
-        let NERDTreeShowBookmarks=1             " 显示书签
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        if isdirectory(expand("~/.vim/bundle/nerdtree/"))
+            map <Leader>wf :NERDTreeToggle<CR>
+            map <leader>w :NERDTreeFind<CR>
+            let NERDShutUp=1
+            let NERDTreeWinPos=0                    " 在左侧
+            let NERDTreeWinSize=30                  " 设置宽度
+            let NERDTreeShowHidden=1                " 显示隐藏文件
+            let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
+            let NERDTreeShowBookmarks=1             " 显示书签
+            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        endif
     " }
 
     " Tabularize {
-        nmap <LocalLeader>& :Tabularize /&<CR>
-        vmap <LocalLeader>& :Tabularize /&<CR>
-        nmap <LocalLeader>= :Tabularize /=<CR>
-        vmap <LocalLeader>= :Tabularize /=<CR>
-        nmap <LocalLeader>: :Tabularize /:<CR>
-        vmap <LocalLeader>: :Tabularize /:<CR>
-        nmap <LocalLeader>:: :Tabularize /:\zs<CR>
-        vmap <LocalLeader>:: :Tabularize /:\zs<CR>
-        nmap <LocalLeader>, :Tabularize /,<CR>
-        vmap <LocalLeader>, :Tabularize /,<CR>
-        nmap <LocalLeader>,, :Tabularize /,\zs<CR>
-        vmap <LocalLeader>,, :Tabularize /,\zs<CR>
-        nmap <LocalLeader><Bar> :Tabularize /<Bar><CR>
-        vmap <LocalLeader><Bar> :Tabularize /<Bar><CR>
+        if isdirectory(expand("~/.vim/bundle/tabular/"))
+            nmap <LocalLeader>& :Tabularize /&<CR>
+            vmap <LocalLeader>& :Tabularize /&<CR>
+            nmap <LocalLeader>= :Tabularize /=<CR>
+            vmap <LocalLeader>= :Tabularize /=<CR>
+            nmap <LocalLeader>: :Tabularize /:<CR>
+            vmap <LocalLeader>: :Tabularize /:<CR>
+            nmap <LocalLeader>:: :Tabularize /:\zs<CR>
+            vmap <LocalLeader>:: :Tabularize /:\zs<CR>
+            nmap <LocalLeader>, :Tabularize /,<CR>
+            vmap <LocalLeader>, :Tabularize /,<CR>
+            nmap <LocalLeader>,, :Tabularize /,\zs<CR>
+            vmap <LocalLeader>,, :Tabularize /,\zs<CR>
+            nmap <LocalLeader><Bar> :Tabularize /<Bar><CR>
+            vmap <LocalLeader><Bar> :Tabularize /<Bar><CR>
+        endif
     " }
 
     " sessionman.vim {
@@ -387,7 +387,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.vim/bundle/python-mode"))
+        if isdirectory(expand("~/.vim/bundle/python-mode")) && has('python')
             let g:pymode = 1
             let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
             let g:pymode_trim_whitespaces = 0
@@ -421,19 +421,21 @@
     " }
 
     " ctrlp {
-        let g:ctrlp_map = '<c-p>'
-        let g:ctrlp_cmd = 'CtrlP'
-        let g:ctrlp_open_multiple_files = 'v'   " <C-Z><C-O>时垂直分屏打开多个文件
-        let g:ctrlp_working_path_mode= 'ra'
-        let g:ctrlp_match_window_bottom= 1
-        let g:ctrlp_max_height= 10
-        let g:ctrlp_match_window_reversed=0
-        let g:ctrlp_mruf_max=500
-        let g:ctrlp_follow_symlinks=1
-        let g:ctrlp_custom_ignore = {
-          \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-          \ 'file': '\v\.(log|jpg|png|jpeg|exe|so|dll|zip|swp)$',
-          \ }
+        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+            let g:ctrlp_map = '<c-p>'
+            let g:ctrlp_cmd = 'CtrlP'
+            let g:ctrlp_open_multiple_files = 'v'   " <C-Z><C-O>时垂直分屏打开多个文件
+            let g:ctrlp_working_path_mode= 'ra'
+            let g:ctrlp_match_window_bottom= 1
+            let g:ctrlp_max_height= 10
+            let g:ctrlp_match_window_reversed=0
+            let g:ctrlp_mruf_max=500
+            let g:ctrlp_follow_symlinks=1
+            let g:ctrlp_custom_ignore = {
+              \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+              \ 'file': '\v\.(log|jpg|png|jpeg|exe|so|dll|zip|swp)$',
+              \ }
+        endif
     " }
 
     " TagBar {
@@ -444,8 +446,8 @@
             let g:tagbar_sort = 0                   " 按出现顺序排序
             let g:tagbar_iconchars = ['▸', '▾']
             if !&diff
-                autocmd BufEnter *.sh nested :TagbarOpen
-                autocmd FileType c,cpp,python,java,vim nested :TagbarOpen
+                au BufEnter *.sh nested :TagbarOpen
+                au FileType c,cpp,python,java,vim nested :TagbarOpen
             endif
 
 
@@ -522,7 +524,7 @@
             endif
             noremap <Leader>dq :Gdiffoff<CR>
         endif
-        "}
+    " }
 
     " gitgutter {
         if isdirectory(expand("~/.vim/bundle/vim-gitgutter/"))
@@ -562,30 +564,32 @@
     " }
 
     " Syntastic {
-        let g:syntastic_chek_on_open=1
-        let g:syntastic_error_symbol = '✗'
-        let g:syntastic_warning_symbol = '⚠'
-        let g:syntastic_always_populate_loc_list=1
-        let g:syntastic_loc_list_height = 6
-        let g:syntastic_enable_highlighting = 0
-        hi SyntasticError ctermbg=red guibg=red
-        hi SyntasticWarning ctermbg=yellow guibg=yellow
-        nmap <Leader>r :SyntasticCheck<CR>:Errors<CR>
-        nmap <Leader>x :lnext<CR>
-        nmap <Leader>z :lpre<CR>
+        if isdirectory(expand("~/.vim/bundle/syntastic/"))
+            let g:syntastic_chek_on_open=1
+            let g:syntastic_error_symbol = '✗'
+            let g:syntastic_warning_symbol = '⚠'
+            let g:syntastic_always_populate_loc_list=1
+            let g:syntastic_loc_list_height = 6
+            let g:syntastic_enable_highlighting = 0
+            hi SyntasticError ctermbg=red guibg=red
+            hi SyntasticWarning ctermbg=yellow guibg=yellow
+            nmap <Leader>r :SyntasticCheck<CR>:Errors<CR>
+            nmap <Leader>x :lnext<CR>
+            nmap <Leader>z :lpre<CR>
+        endif
     " }
 
     " OmniComplete {
-        autocmd FileType c set omnifunc=ccomplete#Complete
-        autocmd FileType java set omnifunc=javacomplete#Complete
-        autocmd FileType python set omnifunc=pythoncomplete#Complete
-        autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-        autocmd FileType ruby set omnifunc=rubycomplete#Complete
-        autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-        autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType java inoremap <buffer> . .<C-X><C-O><C-P>
+        au FileType c set omnifunc=ccomplete#Complete
+        au FileType java set omnifunc=javacomplete#Complete
+        au FileType python set omnifunc=pythoncomplete#Complete
+        au FileType php set omnifunc=phpcomplete#CompletePHP
+        au FileType ruby set omnifunc=rubycomplete#Complete
+        au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+        au FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
+        au FileType css set omnifunc=csscomplete#CompleteCSS
+        au FileType xml set omnifunc=xmlcomplete#CompleteTags
+        au FileType java inoremap <buffer> . .<C-X><C-O><C-P>
     " }
 
     " supertab {
@@ -597,7 +601,7 @@
 
     " YouCompleteMe {
         if count(g:lcl_bundle_groups, 'youcompleteme')
-            set completeopt=longest,menuone                    " 关掉补全时的预览窗口
+            set completeopt=longest,menuone                 " 关掉补全时的预览窗口
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
@@ -626,7 +630,7 @@
         endif
     " }
 
-    " neocomplete {
+    " neocomplete or neocomplcache {
         if count(g:lcl_bundle_groups, 'neocomplete')
             au Filetype c,cpp,java,python let g:neocomplete#enable_at_startup = 0
             au Filetype c,cpp,java,python let g:neocomplete_force_overwrite_completefunc = 0
@@ -639,10 +643,7 @@
             let g:neocomplete_force_overwrite_completefunc = 1
             let g:neocomplete#sources#syntax#min_keyword_length = 3
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
-    " }
-
-    " neocomplcache {
-        else
+        elseif count(g:lcl_bundle_groups, 'neocomplcache')
             au Filetype c,cpp,java,python let g:neocomplcache_enable_at_startup = 0
             au Filetype c,cpp,java,python let g:neocomplcache_force_overwrite_completefunc = 0
             let g:acp_enableAtStartup = 0
@@ -661,10 +662,13 @@
     " }
 
     " Wildfire {
-        let g:wildfire_objects = {
-                    \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
-                    \ "html,xml" : ["at"],
-                    \ }
+        if isdirectory(expand("~/.vim/bundle/wildfire.vim/"))
+            let g:wildfire_objects = {
+                        \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
+                        \ "html,xml" : ["at"],
+                        \ }
+        endif
+    " }
 
     " Unite {
         if count(g:lcl_bundle_groups, 'unite')
@@ -725,9 +729,6 @@
     " }
 
     " Misc {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            let g:NERDShutUp=1
-        endif
         if isdirectory(expand("~/.vim/bundle/matchit.zip"))
             let b:match_ignorecase = 1
         endif
@@ -884,7 +885,7 @@
     " }
 
     " Unite {
-        autocmd FileType unite call s:unite_settings()
+        au FileType unite call s:unite_settings()
         function! s:unite_settings()
             imap <buffer> <C-j> <Plug>(unite_select_next_line)
             imap <buffer> <C-k> <Plug>(unite_select_previous_line)
