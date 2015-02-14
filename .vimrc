@@ -668,7 +668,6 @@
                         \ "html,xml" : ["at"],
                         \ }
         endif
-    " }
 
     " Unite {
         if count(g:lcl_bundle_groups, 'unite')
