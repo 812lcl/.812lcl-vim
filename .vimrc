@@ -389,7 +389,8 @@
 
         if isdirectory(expand("~/.vim/bundle/python-mode")) && has('python')
             let g:pymode = 1
-            let g:pymode_lint_checkers = ['pyflakes', 'mccabe']
+            let g:pymode_lint_checkers = ['pyflakes', 'mccabe', 'pep8']
+            let g:pymode_lint_ignore = "E501,W"
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_rope = 0
