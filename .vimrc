@@ -212,6 +212,7 @@
     vnoremap < <gv
     noremap <Leader>x :lnext<CR>
     noremap <Leader>z :lpre<CR>
+    noremap <Leader>p :lclose<CR>
     noremap <Leader>m ggVG
     nnoremap <silent> J :bp<CR>
     nnoremap <silent> K :bn<CR>
@@ -428,7 +429,6 @@
             let g:pymode_syntax_builtin_types = g:pymode_syntax_all
             noremap <Leader>y :PymodeLint<CR>:Unite -silent -auto-preview -winheight=25 location_list<CR>
             noremap <Leader>u :PymodeLintAuto<CR>
-            noremap <Leader>i :PymodeLintToggle<CR>
         endif
     " }
 
@@ -579,7 +579,7 @@
             let g:syntastic_check_on_open = 1
             let g:syntastic_error_symbol = '✗'
             let g:syntastic_warning_symbol = '⚠'
-            let g:syntastic_auto_loc_list = 1
+            let g:syntastic_auto_loc_list = 2
             let g:syntastic_check_on_wq = 0
             let g:syntastic_always_populate_loc_list=1
             let g:syntastic_loc_list_height = 6
@@ -587,6 +587,8 @@
             let g:syntastic_mode_map = { "passive_filetypes": ["python"] }
             hi SyntasticError ctermbg=red guibg=red
             hi SyntasticWarning ctermbg=yellow guibg=yellow
+            noremap <Leader>i :SyntasticCheck<CR>:Unite -silent -auto-preview -winheight=25 location_list<CR>
+            noremap <Leader>o :Errors<CR>
         endif
     " }
 
