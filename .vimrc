@@ -193,6 +193,7 @@
     au FileType yaml setlocal ts=2 sts=2 sw=2 et
     au FileType html setlocal ts=2 sts=2 sw=2 et
     au FileType css setlocal ts=2 sts=2 sw=2 et
+    au FileType python setlocal textwidth=80
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o       " 下一行不自动添加注释
     au BufLeave * let b:winview = winsaveview()                                     " 切换buffer时保持光标所在行在窗口中到位置
     au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
@@ -202,13 +203,15 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\' remain <Leader>y u i o p t
+    let mapleader=","           " 映射<leader>键,默认'\' remain <Leader>o p
     let maplocalleader=" "      " 映射<localleader>键
     nmap j gj
     nmap k gk
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
+    noremap <Leader>x :lnext<CR>
+    noremap <Leader>z :lpre<CR>
     noremap <Leader>m ggVG
     nnoremap <silent> J :bp<CR>
     nnoremap <silent> K :bn<CR>
@@ -389,8 +392,8 @@
 
         if isdirectory(expand("~/.vim/bundle/python-mode")) && has('python')
             let g:pymode = 1
-            let g:pymode_lint_checkers = ['pyflakes', 'mccabe', 'pep8']
-            let g:pymode_lint_ignore = "E501,W"
+            let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+            let g:pymode_lint_ignore = "E501,F401,W0401"
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_rope = 0
@@ -407,17 +410,25 @@
             let g:pymode_breakpoint_bind = '<leader>b'
             let g:pymode_lint = 1
             let g:pymode_lint_on_write = 1
-            let g:pymode_options_max_line_length = 99
-            let g:pymode_quickfix_minheight = 3
-            let g:pymode_quickfix_maxheight = 6
-            let g:pymode_lint_todo_symbol = 'WW'
-            let g:pymode_lint_comment_symbol = 'CC'
-            let g:pymode_lint_visual_symbol = 'RR'
-            let g:pymode_lint_error_symbol = 'EE'
-            let g:pymode_lint_info_symbol = 'II'
-            let g:pymode_lint_pyflakes_symbol = 'FF'
+            let g:pymode_quickfix_minheight = 6
+            let g:pymode_quickfix_maxheight = 10
+            let g:pymode_lint_todo_symbol = 'W'
+            let g:pymode_lint_comment_symbol = 'C'
+            let g:pymode_lint_visual_symbol = 'R'
+            let g:pymode_lint_error_symbol = 'E'
+            let g:pymode_lint_info_symbol = 'I'
+            let g:pymode_lint_pyflakes_symbol = 'F'
             let g:pymode_syntax = 1
             let g:pymode_syntax_all = 1
+            let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+            let g:pymode_syntax_string_format = g:pymode_syntax_all
+            let g:pymode_syntax_string_templates = g:pymode_syntax_all
+            let g:pymode_syntax_doctests = g:pymode_syntax_all
+            let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+            let g:pymode_syntax_builtin_types = g:pymode_syntax_all
+            noremap <Leader>y :PymodeLint<CR>:Unite -silent -auto-preview -winheight=25 location_list<CR>
+            noremap <Leader>u :PymodeLintAuto<CR>
+            noremap <Leader>i :PymodeLintToggle<CR>
         endif
     " }
 
@@ -450,7 +461,6 @@
                 au BufEnter *.sh nested :TagbarOpen
                 au FileType c,cpp,python,java,vim nested :TagbarOpen
             endif
-
 
             " If using go please install the gotags program using the following
             " go install github.com/jstemmer/gotags
@@ -566,17 +576,17 @@
 
     " Syntastic {
         if isdirectory(expand("~/.vim/bundle/syntastic/"))
-            let g:syntastic_chek_on_open=1
+            let g:syntastic_check_on_open = 1
             let g:syntastic_error_symbol = '✗'
             let g:syntastic_warning_symbol = '⚠'
+            let g:syntastic_auto_loc_list = 1
+            let g:syntastic_check_on_wq = 0
             let g:syntastic_always_populate_loc_list=1
             let g:syntastic_loc_list_height = 6
             let g:syntastic_enable_highlighting = 0
+            let g:syntastic_mode_map = { "passive_filetypes": ["python"] }
             hi SyntasticError ctermbg=red guibg=red
             hi SyntasticWarning ctermbg=yellow guibg=yellow
-            nmap <Leader>r :SyntasticCheck<CR>:Errors<CR>
-            nmap <Leader>x :lnext<CR>
-            nmap <Leader>z :lpre<CR>
         endif
     " }
 
