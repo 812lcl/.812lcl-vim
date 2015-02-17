@@ -78,6 +78,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'gcmt/wildfire.vim'
             Plug 'kshenoy/vim-signature'
             Plug 'TaskList.vim'
+            Plug 'mbbill/fencview'
         endif
     " }
 

@@ -250,7 +250,7 @@
 
 " Plugins {
 
-    " persistent_undo {
+    " persistent_undo encoding {
         set nobackup noswapfile
         set history=200
         if has('persistent_undo')
@@ -260,6 +260,7 @@
             set undodir=~/.vim/.vimtmp/undo
         endif
         set viminfo+=n$HOME/.vim/.vimtmp/viminfo
+        let g:fencview_autodetect = 1
     " }
 
     " Ctags {
