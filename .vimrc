@@ -203,7 +203,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\' remain <Leader>o p
+    let mapleader=","           " 映射<leader>键,默认'\'
     let maplocalleader=" "      " 映射<localleader>键
     nmap j gj
     nmap k gk
@@ -354,6 +354,7 @@
             let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
             let NERDTreeShowBookmarks=1             " 显示书签
             let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+            au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
         endif
     " }
 
@@ -694,8 +695,8 @@
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=25 location_list<CR>
             nnoremap <silent><Leader>c :Unite -start-insert -silent -vertical -winwidth=40 -direction=topleft -toggle outline<CR>
             nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=25 mark<CR>
-            nnoremap <silent><Leader>a :Unite -silent -auto-preview -winheight=25 -no-quit grep<CR>
-            nnoremap <silent><Leader>A :UniteWithCursorWord -silent -auto-preview -winheight=25 -no-quit grep<CR>
+            nnoremap <silent><Leader>A :Unite -silent -auto-preview -winheight=25 -no-quit grep<CR>
+            nnoremap <silent><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=25 -no-quit grep<CR>
 
             call unite#filters#matcher_default#use(['matcher_fuzzy'])
             call unite#filters#sorter_default#use(['sorter_rank'])
