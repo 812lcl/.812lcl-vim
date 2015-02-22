@@ -702,13 +702,16 @@
             call unite#filters#sorter_default#use(['sorter_rank'])
             call unite#custom#source('file_mru,file_rec,file_rec/async,grep,locate',
                         \ 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/'], '\|'))
-            let g:unite_prompt = '>>> '
+            call unite#custom#profile('default', 'context', {
+                        \   'prompt' : '>>> ',
+                        \   'prompt_direction' : 'top',
+                        \   'start_insert' : 0,
+                        \   'auto_resize' : 1,
+                        \   'update_time' : 200
+                        \ })
             let g:unite_marked_icon = '✓'
-            let g:unite_winheight = 16
-            let g:unite_update_time = 200
             let g:unite_split_rule = 'botright'
             let g:unite_source_history_yank_enable = 1
-            let g:unite_enable_start_insert = 0
             let g:unite_force_overwrite_statusline = 0
             let g:unite_data_directory = $HOME.'/.vim/.vimtmp/unite'
             let g:unite_source_buffer_time_format = '(%d-%m-%Y %H:%M:%S) '
