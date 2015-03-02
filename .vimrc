@@ -221,7 +221,7 @@
     noremap <silent><Leader>l :set list! list?<CR>
     noremap <silent><Leader>v :set spell! spell?<CR>
     nnoremap <LocalLeader>o @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-    nnoremap <LocalLeader>j <C-w>j:bd<CR>
+    nnoremap <LocalLeader>j <C-w>j:q<CR>
     nnoremap <LocalLeader>; :cw<CR>
     inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 

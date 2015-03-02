@@ -262,7 +262,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'Shougo/vimproc', { 'do': 'make' }
             "Plug 'mattn/webapi-vim'
             "Plug 'mattn/gist-vim'
-            Plug 'christoomey/vim-tmux-navigator'
+            "Plug 'christoomey/vim-tmux-navigator'
             Plug 'ianva/vim-youdao-translater'
         endif
     " }
