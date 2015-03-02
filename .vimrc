@@ -117,6 +117,7 @@
             set mouse=a
             set lines=40                " 40 lines of text instead of 24
             source $VIMRUNTIME/delmenu.vim
+            au GUIEnter * simalt ~x
 
             if !exists("g:lcl_no_big_font")
                 if LINUX()
