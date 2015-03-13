@@ -194,7 +194,7 @@
     au FileType yaml setlocal ts=2 sts=2 sw=2 et
     au FileType html setlocal ts=2 sts=2 sw=2 et
     au FileType css setlocal ts=2 sts=2 sw=2 et
-    au FileType python setlocal textwidth=80
+    au FileType python setlocal textwidth=100
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o       " 下一行不自动添加注释
     au BufLeave * let b:winview = winsaveview()                                     " 切换buffer时保持光标所在行在窗口中到位置
     au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
@@ -261,7 +261,7 @@
             set undodir=~/.vim/.vimtmp/undo
         endif
         set viminfo+=n$HOME/.vim/.vimtmp/viminfo
-        let g:fencview_autodetect = 1
+        let g:fencview_autodetect = 0
     " }
 
     " Ctags {
@@ -580,8 +580,8 @@
     " Syntastic {
         if isdirectory(expand("~/.vim/bundle/syntastic/"))
             let g:syntastic_check_on_open = 1
-            let g:syntastic_error_symbol = '✗'
-            let g:syntastic_warning_symbol = '⚠'
+            let g:syntastic_error_symbol = 'E'
+            let g:syntastic_warning_symbol = 'W'
             let g:syntastic_auto_loc_list = 2
             let g:syntastic_check_on_wq = 0
             let g:syntastic_always_populate_loc_list=1
@@ -864,7 +864,7 @@
             if &colorcolumn != ''
                 setlocal colorcolumn&
             else
-                setlocal colorcolumn=80
+                setlocal colorcolumn=100
                 hi colorcolumn ctermbg=grey guibg=grey
             endif
         endfunction
