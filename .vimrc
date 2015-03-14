@@ -396,8 +396,16 @@
 
         if isdirectory(expand("~/.vim/bundle/python-mode")) && has('python')
             let g:pymode = 1
+            let g:pymode_lint = 1
+            let g:pymode_lint_on_write = 1
             let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
             let g:pymode_lint_ignore = "E501,F401,W0401"
+            let g:pymode_lint_todo_symbol = 'W'
+            let g:pymode_lint_comment_symbol = 'C'
+            let g:pymode_lint_visual_symbol = 'R'
+            let g:pymode_lint_error_symbol = 'E'
+            let g:pymode_lint_info_symbol = 'I'
+            let g:pymode_lint_pyflakes_symbol = 'F'
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_rope = 0
@@ -412,16 +420,8 @@
             let g:pymode_run_bind = '<leader>r'
             let g:pymode_breakpoint = 1
             let g:pymode_breakpoint_bind = '<leader>b'
-            let g:pymode_lint = 1
-            let g:pymode_lint_on_write = 1
             let g:pymode_quickfix_minheight = 6
             let g:pymode_quickfix_maxheight = 10
-            let g:pymode_lint_todo_symbol = 'W'
-            let g:pymode_lint_comment_symbol = 'C'
-            let g:pymode_lint_visual_symbol = 'R'
-            let g:pymode_lint_error_symbol = 'E'
-            let g:pymode_lint_info_symbol = 'I'
-            let g:pymode_lint_pyflakes_symbol = 'F'
             let g:pymode_syntax = 1
             let g:pymode_syntax_all = 1
             let g:pymode_syntax_string_formatting = g:pymode_syntax_all
