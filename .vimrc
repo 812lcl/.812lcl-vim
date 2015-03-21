@@ -462,7 +462,7 @@
             let g:tagbar_iconchars = ['▸', '▾']
             if !&diff
                 au BufEnter *.sh nested :TagbarOpen
-                au FileType c,cpp,python,java,vim nested :TagbarOpen
+                au FileType c,cpp,python,java,vim,php nested :TagbarOpen
             endif
 
             " If using go please install the gotags program using the following
