@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
 "             __   _  ____  _        _               _
 "           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___
 "           \\__//| |  / / | | / __/| | _____\ \ / /| | '_ ` _ \
@@ -68,7 +68,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'tpope/vim-surround'
             Plug 'kien/ctrlp.vim'
             Plug 'sessionman.vim'
-            "Plug 'restore_view.vim'
+            " Plug 'restore_view.vim'
             Plug 'matchit.zip'
             Plug 'bling/vim-airline'
             Plug 'Lokaltog/vim-easymotion'
@@ -78,6 +78,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'gcmt/wildfire.vim'
             Plug 'kshenoy/vim-signature'
             Plug 'TaskList.vim'
+            " Plug 'VOoM'
             Plug 'mbbill/fencview'
         endif
     " }

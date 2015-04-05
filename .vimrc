@@ -280,7 +280,7 @@
         if filereadable("cscope.out")
             cs add cscope.out
         elseif filereadable("tags")
-            set tags=./tags
+            set tags=$PWD/tags
         endif
         nmap <Leader><Leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
         nmap <Leader><Leader>1 :cs find g<Space>
@@ -845,6 +845,9 @@
             call cursor(l, c)
         endfunction
         nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+        nmap _# :call Preserve("%s/\\r$//e")<CR>
+        nmap _@ :retab<CR>
+        nmap _% :retab<CR>:call Preserve("%s/\\r$//e")<CR>:call Preserve("%s/\\s\\+$//e")<CR>
         nmap <Leader>= :call Preserve("normal gg=G")<CR>
     " }
 
