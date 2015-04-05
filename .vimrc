@@ -206,8 +206,6 @@
 
     let mapleader=","           " 映射<leader>键,默认'\'
     let maplocalleader=" "      " 映射<localleader>键
-    nmap j gj
-    nmap k gk
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
