@@ -259,7 +259,9 @@
             set undodir=~/.vim/.vimtmp/undo
         endif
         set viminfo+=n$HOME/.vim/.vimtmp/viminfo
-        let g:fencview_autodetect = 0
+        if isdirectory(expand("~/.vim/bundle/fencview/"))
+            let g:fencview_autodetect = 1
+        endif
     " }
 
     " Ctags {
