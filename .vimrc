@@ -616,7 +616,7 @@
     " }
 
     " YouCompleteMe {
-        if count(g:lcl_bundle_groups, 'youcompleteme')
+        if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
             set completeopt=longest,menuone                 " 关掉补全时的预览窗口
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
@@ -628,7 +628,6 @@
             let g:ycm_collect_identifiers_from_tags_files = 1
             let g:ycm_key_invoke_completion = '<C-Space>'
             let g:ycm_use_ultisnips_completer = 1
-            let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
             let g:ycm_semantic_triggers =  {
                         \   'c' : ['->', '.'],
                         \   'objc' : ['->', '.'],
@@ -657,6 +656,7 @@
             let g:neocomplete#enable_camel_case = 1
             let g:neocomplete#enable_auto_delimiter = 1
             let g:neocomplete_force_overwrite_completefunc = 1
+            let g:neocomplete#enable_fuzzy_completion = 1
             let g:neocomplete#sources#syntax#min_keyword_length = 3
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
         elseif count(g:lcl_bundle_groups, 'neocomplcache')
@@ -673,6 +673,8 @@
             let g:neocomplcache_enable_fuzzy_completion = 1         " 开启模糊匹配
             let g:neocomplcache_fuzzy_completion_start_length = 3   " 3个字母后开启模糊匹配
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
+        endif
+        if isdirectory(expand("~/.vim/bundle/ultisnips/"))
             let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
         endif
     " }
