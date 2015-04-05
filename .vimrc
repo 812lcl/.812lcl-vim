@@ -696,7 +696,7 @@
             nnoremap <LocalLeader>q :Unite register<CR>
             nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=25 quickfix<CR>
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=25 location_list<CR>
-            nnoremap <silent><Leader>c :Unite -start-insert -silent -vertical -winwidth=40 -direction=topleft -toggle outline<CR>
+            nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline<CR>
             nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=25 mark<CR>
             nnoremap <silent><Leader>A :Unite -silent -auto-preview -winheight=25 -no-quit grep<CR>
             nnoremap <silent><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=25 -no-quit grep<CR>
