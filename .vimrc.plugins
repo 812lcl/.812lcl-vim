@@ -52,7 +52,7 @@ call plug#begin('~/.vim/bundle')
         if has('win32') || has('win64')
             let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite',]
         else
-            let g:lcl_bundle_groups=['general', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc', 'unite', 'others']
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc', 'unite', 'others', 'php']
         endif
     endif
 
