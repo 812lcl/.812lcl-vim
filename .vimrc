@@ -260,7 +260,7 @@
         endif
         set viminfo+=n$HOME/.vim/.vimtmp/viminfo
         if isdirectory(expand("~/.vim/bundle/fencview/"))
-            let g:fencview_autodetect = 1
+            let g:fencview_autodetect = 0
         endif
     " }
 
