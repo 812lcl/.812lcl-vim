@@ -121,11 +121,11 @@
 
             if !exists("g:lcl_no_big_font")
                 if LINUX()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Andale\ Mono\ Regular\ 13,Menlo\ Regular\ 13,Consolas\ Regular\ 13,Courier\ New\ Regular\ 14
+                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas\ Regular\ 13,Courier\ New\ Regular\ 14,Andale\ Mono\ Regular\ 13,Menlo\ Regular\ 13
                 elseif OSX()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Andale\ Mono\ Regular:h13,Menlo\ Regular:h13,Consolas\ Regular:h13,Courier\ New\ Regular:h13
+                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas\ Regular:h13,Courier\ New\ Regular:h13,Andale\ Mono\ Regular:h13,Menlo\ Regular:h13
                 elseif WINDOWS()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Andale_Mono:h13,Menlo:h13,Consolas:h13,Courier_New:h13
+                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas:h13,Courier_New:h13,Andale_Mono:h13,Menlo:h13
                 endif
             endif
         else
@@ -356,6 +356,7 @@
             let NERDTreeShowBookmarks=1             " 显示书签
             let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
             au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+            " au VimEnter * NERDTree
         endif
     " }
 
@@ -621,7 +622,7 @@
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
-            let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1}
+            let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1, 'php': 1}
             let g:ycm_complete_in_comments = 1              " 评论中也应用补全
             let g:ycm_min_num_of_chars_for_completion = 2   " 两个字开始补全
             let g:ycm_seed_identifiers_with_syntax = 1
@@ -647,8 +648,8 @@
 
     " neocomplete or neocomplcache {
         if count(g:lcl_bundle_groups, 'neocomplete')
-            au Filetype c,cpp,java,python let g:neocomplete#enable_at_startup = 0
-            au Filetype c,cpp,java,python let g:neocomplete_force_overwrite_completefunc = 0
+            au Filetype c,cpp,java,python,php let g:neocomplete#enable_at_startup = 0
+            au Filetype c,cpp,java,python,php let g:neocomplete_force_overwrite_completefunc = 0
             let g:acp_enableAtStartup = 0
             let g:neocomplete#max_list = 15
             let g:neocomplete#enable_at_startup = 1
@@ -660,8 +661,8 @@
             let g:neocomplete#sources#syntax#min_keyword_length = 3
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
         elseif count(g:lcl_bundle_groups, 'neocomplcache')
-            au Filetype c,cpp,java,python let g:neocomplcache_enable_at_startup = 0
-            au Filetype c,cpp,java,python let g:neocomplcache_force_overwrite_completefunc = 0
+            au Filetype c,cpp,java,python,php let g:neocomplcache_enable_at_startup = 0
+            au Filetype c,cpp,java,python,php let g:neocomplcache_force_overwrite_completefunc = 0
             let g:acp_enableAtStartup = 0
             let g:neocomplcache_max_list = 15
             let g:neocomplcache_enable_at_startup = 1
@@ -689,8 +690,10 @@
 
     " Unite {
         if count(g:lcl_bundle_groups, 'unite')
-            nmap <silent> <Leader>f :Unite file -start-insert<CR>
+            nmap <silent> <Leader>f :Unite file_rec/async -start-insert<CR>
             nmap <silent> <Leader>fr :Unite file_mru -start-insert<CR>
+            nmap <silent> <Leader>fd :Unite -start-insert directory_rec/async<CR>
+            nmap <silent> <Leader>dr :Unite file_mru -start-insert<CR>
             nmap <silent> <Leader>b :Unite buffer<CR>
             nnoremap <LocalLeader>p :Unite history/yank<CR>
             nnoremap <LocalLeader>q :Unite register<CR>
@@ -912,7 +915,10 @@
         function! s:unite_settings()
             imap <buffer> <C-j> <Plug>(unite_select_next_line)
             imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+            nmap <buffer> <C-h> <C-w>h
+            nmap <buffer> <C-j> <C-w>j
             nmap <buffer> <C-k> <C-w>k
+            nmap <buffer> <C-l> <C-w>l
         endfunction
     " }
 " }

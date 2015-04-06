@@ -220,7 +220,7 @@
         if count(g:lcl_bundle_groups, 'misc')
             "Plug 'wting/rust.vim'
             Plug 'tpope/vim-markdown'
-            "Plug 'spf13/vim-preview'
+            Plug 'spf13/vim-preview'
             "Plug 'tpope/vim-cucumber'
             "Plug 'cespare/vim-toml'
             "Plug 'quentindecock/vim-cucumber-align-pipes'
