@@ -109,6 +109,7 @@
             Plug 'SirVer/ultisnips'
             Plug 'honza/vim-snippets'
             Plug 'javacomplete'
+            Plug 'clang-complete'
         elseif count(g:lcl_bundle_groups, 'neocomplete')
             Plug 'Shougo/neocomplete.vim'
             Plug 'Shougo/neosnippet'
