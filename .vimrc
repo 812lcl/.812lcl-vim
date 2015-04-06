@@ -79,6 +79,7 @@
     set wildmode=list:longest,full  " 命令模式补全模式
     set foldenable                  " 启动折叠
     set foldmethod=marker           " 设置折叠模式
+    set completeopt=longest,menuone " 关掉补全时的预览窗口
     set encoding=utf-8              " 编码，使汉语正常显示
     set termencoding=utf-8,gb18030,ucs-bom,cp936,gb2312,big5,euc-jp,euc-kr,latin1
     set fileencodings=utf-8,gb18030,ucs-bom,cp936,gb2312,big5,euc-jp,euc-kr,latin1
@@ -462,8 +463,7 @@
             let g:tagbar_sort = 0                   " 按出现顺序排序
             let g:tagbar_iconchars = ['▸', '▾']
             if !&diff
-                au BufEnter *.sh nested :TagbarOpen
-                au FileType c,cpp,python,java,vim,php nested :TagbarOpen
+                au FileType c,cpp,python,java,vim,php,sh nested :TagbarOpen
             endif
 
             " If using go please install the gotags program using the following
@@ -618,7 +618,6 @@
 
     " YouCompleteMe {
         if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
-            set completeopt=longest,menuone                 " 关掉补全时的预览窗口
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
@@ -656,7 +655,7 @@
             let g:neocomplete#enable_smart_case = 1
             let g:neocomplete#enable_camel_case = 1
             let g:neocomplete#enable_auto_delimiter = 1
-            let g:neocomplete_force_overwrite_completefunc = 0
+            let g:neocomplete_force_overwrite_completefunc = 1
             let g:neocomplete#enable_fuzzy_completion = 1
             let g:neocomplete#sources#syntax#min_keyword_length = 3
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
@@ -670,7 +669,7 @@
             let g:neocomplcache_enable_camel_case_completion = 1
             let g:neocomplcache_enable_underbar_completion = 1
             let g:neocomplcache_enable_auto_delimiter = 1
-            let g:neocomplcache_force_overwrite_completefunc = 0
+            let g:neocomplcache_force_overwrite_completefunc = 1
             let g:neocomplcache_enable_fuzzy_completion = 1         " 开启模糊匹配
             let g:neocomplcache_fuzzy_completion_start_length = 3   " 3个字母后开启模糊匹配
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
