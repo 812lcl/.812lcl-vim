@@ -643,6 +643,7 @@
                         \ }
             nnoremap <Leader>n :YcmForceCompileAndDiagnostics<CR>
             nnoremap <Leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+            let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
         endif
     " }
 
@@ -670,6 +671,7 @@
             let g:neocomplcache_fuzzy_completion_start_length = 3   " 3个字母后开启模糊匹配
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
             au Filetype c,cpp,java,python,php let g:neocomplcache_enable_at_startup = 0
+            au BufLeave *.c,*.cpp,*.java,*.py,*.php set completefunc=neocomplcache#complete
         endif
         if isdirectory(expand("~/.vim/bundle/ultisnips/"))
             let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
