@@ -102,6 +102,7 @@
     " Instead of reverting the cursor to the last position in the buffer, we
     " set it to the first line when editing a git commit message
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+    au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
 
 " }
 
@@ -927,3 +928,25 @@
         source ~/.vimrc.local
     endif
 " }
+
+
+    let g:startify_custom_header = [
+            \ '       __   _  ____  _        _               _           ',
+            \ '     //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___  ',
+            \ '     \\__//| |  / / | | / __/| | _____\ \ / /| | ''_ ` _ \ ',
+            \ '     //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |',
+            \ '     \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|',
+            \ '',
+            \ '',
+            \ ]
+
+    let g:startify_list_order = [
+            \ ['   My most recently', '   used files'],
+            \ 'files',
+            \ ['   My most recently used files in the current directory:'],
+            \ 'dir',
+            \ ['   These are my sessions:'],
+            \ 'sessions',
+            \ ['   These are my bookmarks:'],
+            \ 'bookmarks',
+            \ ]
