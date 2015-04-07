@@ -79,7 +79,7 @@
             Plug 'TaskList.vim'
             Plug 'mbbill/fencview'
             Plug 'ervandew/supertab'
-            Plug 'mhinz/vim-startify'
+            " Plug 'mhinz/vim-startify'
             " Plug 'restore_view.vim'
             " Plug 'VOoM'
         endif
