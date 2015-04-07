@@ -654,12 +654,10 @@
             let g:neocomplete#enable_smart_case = 1
             let g:neocomplete#enable_camel_case = 1
             let g:neocomplete#enable_auto_delimiter = 1
-            let g:neocomplete_force_overwrite_completefunc = 1
             let g:neocomplete#enable_fuzzy_completion = 1
             let g:neocomplete#sources#syntax#min_keyword_length = 3
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
             au Filetype c,cpp,java,python,php let g:neocomplete#enable_at_startup = 0
-            au Filetype c,cpp,java,python,php let g:neocomplete_force_overwrite_completefunc = 0
         elseif count(g:lcl_bundle_groups, 'neocomplcache')
             let g:acp_enableAtStartup = 0
             let g:neocomplcache_max_list = 15
@@ -668,12 +666,10 @@
             let g:neocomplcache_enable_camel_case_completion = 1
             let g:neocomplcache_enable_underbar_completion = 1
             let g:neocomplcache_enable_auto_delimiter = 1
-            let g:neocomplcache_force_overwrite_completefunc = 1
             let g:neocomplcache_enable_fuzzy_completion = 1         " 开启模糊匹配
             let g:neocomplcache_fuzzy_completion_start_length = 3   " 3个字母后开启模糊匹配
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
             au Filetype c,cpp,java,python,php let g:neocomplcache_enable_at_startup = 0
-            au Filetype c,cpp,java,python,php let g:neocomplcache_force_overwrite_completefunc = 0
         endif
         if isdirectory(expand("~/.vim/bundle/ultisnips/"))
             let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
