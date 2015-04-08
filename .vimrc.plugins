@@ -101,18 +101,19 @@
     " Snippets & AutoComplete {
         if count(g:lcl_bundle_groups, 'youcompleteme')
             Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
-            Plug 'SirVer/ultisnips'
-            Plug 'honza/vim-snippets'
-            Plug 'javacomplete'
         endif
         if count(g:lcl_bundle_groups, 'neocomplcache')
             Plug 'Shougo/neocomplcache.vim'
             Plug 'JazzCore/neocomplcache-ultisnips'
+            Plug 'SirVer/ultisnips'
+            Plug 'honza/vim-snippets'
+            Plug 'javacomplete'
             " Plug 'clang-complete'
         elseif count(g:lcl_bundle_groups, 'neocomplete')
             Plug 'Shougo/neocomplete.vim'
             Plug 'Shougo/neosnippet'
             Plug 'Shougo/neosnippet-snippets'
+            Plug 'javacomplete'
         endif
     " }
 
