@@ -66,7 +66,7 @@
     set splitbelow                  " 新分割窗口在下边
     set autoread                    " 文件在Vim之外修改过，自动重新读入
     set timeoutlen=350              " 等待时间,如<leader>键后的输入
-    "set helpheight=30               " 查看帮助文档全屏
+    set helpheight=20               " 查看帮助文档高度
     set scrolljump=1                " 当光标离开屏幕滑动行数
     set scrolloff=2                 " 保持在光标上下最少行数
     set showmatch                   " 短暂回显匹配括号
@@ -207,7 +207,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'
+    let mapleader=","           " 映射<leader>键,默认'\'    n j
     let maplocalleader=" "      " 映射<localleader>键
     inoremap jj <ESC>
     vnoremap > >gv
@@ -410,7 +410,6 @@
             let g:pymode_options = 0
             let g:pymode_rope = 0
             let g:pymode_rope_goto_definition_bind = '<C-c>g'
-            let g:pymode_doc_bind = '<C-k>'
             let g:pymode_doc = 1
             let g:pymode_folding = 1
             let g:pymode_motion = 1
@@ -505,7 +504,7 @@
             nnoremap <Leader>gR :Gremove<CR>
             nnoremap <Leader>gm :Gmove<Space>
             nnoremap <Leader>gc :Gcommit<CR>
-            nnoremap <Leader>gd :Gdiff<CR>
+            nnoremap <Leader>gd :Gvdiff<CR>
             nnoremap <Leader>gb :Gblame<CR>
             nnoremap <Leader>gB :Gbrowse<CR>
             nnoremap <Leader>gp :Git! push<CR>
@@ -536,18 +535,6 @@
                 command Gdiffoff diffoff | q | Gedit
             endif
             noremap <Leader>dq :Gdiffoff<CR>
-        endif
-    " }
-
-    " gitgutter {
-        if isdirectory(expand("~/.vim/bundle/vim-gitgutter/"))
-            let g:gitgutter_enabled = 1
-            let g:gitgutter_highlight_lines = 0
-            let g:gitgutter_map_keys = 0
-            let g:gitgutter_sign_column_always = 1
-            nmap gh <Plug>GitGutterNextHunk
-            nmap hg <Plug>GitGutterPrevHunk
-            nmap <LocalLeader>d <Plug>GitGutterPreviewHunk
         endif
     " }
 
@@ -638,8 +625,6 @@
                         \   'lua' : ['.', ':'],
                         \   'erlang' : [':'],
                         \ }
-            nnoremap <Leader>n :YcmForceCompileAndDiagnostics<CR>
-            nnoremap <Leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
             let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
         endif
     " }
@@ -736,6 +721,18 @@
                     source ~/.vimrc.menu
                 endif
             " }
+        endif
+    " }
+
+    " vim-unite-svn {
+        if isdirectory(expand("~/.vim/bundle/vim-unite-svn/"))
+            nmap <LocalLeader>d :Unite svn/diff<CR>
+        endif
+    " }
+
+    " fencview {
+        if isdirectory(expand("~/.vim/bundle/fencview/"))
+            nmap <Leader>r :FencAutoDetect<CR>
         endif
     " }
 
