@@ -136,7 +136,7 @@
 
     " Javascript {
         if count(g:lcl_bundle_groups, 'javascript')
-            Plug 'elzr/vim-json'
+            Plug 'elzr/vim-json', { 'for': 'json' }
             Plug 'groenewege/vim-less', { 'for': 'javascript' }
             Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
             Plug 'briancollins/vim-jst', { 'for': 'javascript' }
@@ -147,9 +147,9 @@
     " HTML {
         if count(g:lcl_bundle_groups, 'html')
             Plug 'hail2u/vim-css3-syntax', { 'for': 'html' }
-            Plug 'gorodinskiy/vim-coloresque'
             Plug 'tpope/vim-haml', { 'for': 'html' }
             Plug 'mattn/emmet-vim', { 'for': 'html' }
+            " Plug 'gorodinskiy/vim-coloresque', { 'for': ['html', 'vim', 'css'] }
             " Plug 'amirh/HTML-AutoCloseTag', { 'for': 'html' }
         endif
     " }

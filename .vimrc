@@ -123,11 +123,11 @@
 
             if !exists("g:lcl_no_big_font")
                 if LINUX()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas\ Regular\ 13,Courier\ New\ Regular\ 14,Andale\ Mono\ Regular\ 13,Menlo\ Regular\ 13
+                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas\ Regular\ 13,Courier\ New\ Regular\ 14
                 elseif OSX()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas\ Regular:h13,Courier\ New\ Regular:h13,Andale\ Mono\ Regular:h13,Menlo\ Regular:h13
+                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas\ Regular:h13,Courier\ New\ Regular:h13
                 elseif WINDOWS()
-                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas:h13,Courier_New:h13,Andale_Mono:h13,Menlo:h13
+                    set guifont=Sauce\ Code\ Powerline\ 13,Consolas:h13,Courier_New:h13
                 endif
             endif
         else
@@ -261,14 +261,9 @@
             set undodir=~/.vim/.vimtmp/undo
         endif
         set viminfo+=n$HOME/.vim/.vimtmp/viminfo
-        if isdirectory(expand("~/.vim/bundle/fencview/"))
-            let g:fencview_autodetect = 0
-        endif
     " }
 
     " Ctags {
-        set tags=./tags;/,~/.vimtags
-
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
         if gitroot != ''
@@ -358,7 +353,6 @@
             let NERDTreeShowBookmarks=1             " 显示书签
             let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
             au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-            " au VimEnter * NERDTree
         endif
     " }
 
