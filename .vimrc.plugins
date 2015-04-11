@@ -57,13 +57,13 @@
     endif
 
     " To override all the included bundles, add the following to your
-    " .vimrc.bundles.local file:
+    " .vimrc.plugins.local file:
     "   let g:override_812lcl_bundles = 1
     if !exists("g:override_812lcl_bundles")
 
     " General {
         if count(g:lcl_bundle_groups, 'general')
-            Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFind' }
+            Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
             Plug 'altercation/vim-colors-solarized'
             Plug 'tpope/vim-surround'
             Plug 'kien/ctrlp.vim'
@@ -77,8 +77,8 @@
             Plug 'gcmt/wildfire.vim'
             Plug 'kshenoy/vim-signature'
             Plug 'TaskList.vim'
-            Plug 'mbbill/fencview'
-            Plug 'ervandew/supertab'
+            Plug 'mbbill/fencview', { 'on': 'FencAutoDetect' }
+            " Plug 'ervandew/supertab'
             " Plug 'mhinz/vim-startify'
             " Plug 'restore_view.vim'
             " Plug 'VOoM'
@@ -87,7 +87,6 @@
 
     " General Programming {
         if count(g:lcl_bundle_groups, 'programming')
-            " Pick one of the checksyntax, jslint, or syntastic
             Plug 'scrooloose/syntastic'
             Plug 'tpope/vim-fugitive'
             Plug 'gregsexton/gitv', { 'on': 'Gitv' }
@@ -100,7 +99,7 @@
 
     " Snippets & AutoComplete {
         if count(g:lcl_bundle_groups, 'youcompleteme')
-            Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang --system-boost' }
+            Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
         endif
         if count(g:lcl_bundle_groups, 'neocomplcache')
             Plug 'Shougo/neocomplcache.vim'
@@ -119,81 +118,56 @@
 
     " Python {
         if count(g:lcl_bundle_groups, 'python')
-            " Pick either python-mode or pyflakes & pydoc
-            Plug 'klen/python-mode', { 'on': [] }
-            Plug 'yssource/python.vim', { 'on': [] }
-            Plug 'python_match.vim', { 'on': [] }
-            Plug 'pythoncomplete', { 'on': [] }
-            Plug 'jmcantrell/vim-virtualenv', { 'on': [] }
-            augroup load_python
-                autocmd!
-                au FileType python call plug#load('python-mode', 'python.vim', 'python_match.vim', 'pythoncomplete', 'vim-virtualenv') | autocmd! load_python
-            augroup END
+            Plug 'klen/python-mode', { 'for': 'python' }
+            Plug 'yssource/python.vim', { 'for': 'python' }
+            Plug 'python_match.vim', { 'for': 'python' }
+            Plug 'pythoncomplete', { 'for': 'python' }
+            Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
         endif
     " }
 
     " PHP {
         if count(g:lcl_bundle_groups, 'php')
-            Plug 'spf13/PIV', { 'on': [] }
-            Plug 'arnaud-lb/vim-php-namespace', { 'on': [] }
-            Plug 'beyondwords/vim-twig', { 'on': [] }
-            augroup load_php
-                autocmd!
-                au FileType php call plug#load('PIV', 'vim-php-namespace', 'vim-twig') | autocmd! load_php
-            augroup END
+            Plug 'spf13/PIV', { 'for': 'php' }
+            Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+            Plug 'beyondwords/vim-twig', { 'for': 'php' }
         endif
     " }
 
     " Javascript {
         if count(g:lcl_bundle_groups, 'javascript')
-            Plug 'elzr/vim-json', { 'on': [] }
-            Plug 'groenewege/vim-less', { 'on': [] }
-            Plug 'pangloss/vim-javascript', { 'on': [] }
-            Plug 'briancollins/vim-jst', { 'on': [] }
-            Plug 'kchmck/vim-coffee-script', { 'on': [] }
-            augroup load_javascript
-                autocmd!
-                au FileType javascript call plug#load('vim-json', 'vim-less', 'vim-javascript', 'vim-jst', 'vim-coffee-script') | autocmd! load_javascript
-            augroup END
+            Plug 'elzr/vim-json'
+            Plug 'groenewege/vim-less', { 'for': 'javascript' }
+            Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+            Plug 'briancollins/vim-jst', { 'for': 'javascript' }
+            Plug 'kchmck/vim-coffee-script', { 'for': 'javascript' }
         endif
     " }
 
     " HTML {
         if count(g:lcl_bundle_groups, 'html')
-            "Plug 'amirh/HTML-AutoCloseTag', { 'on': [] }
-            Plug 'hail2u/vim-css3-syntax', { 'on': [] }
+            Plug 'hail2u/vim-css3-syntax', { 'for': 'html' }
             Plug 'gorodinskiy/vim-coloresque'
-            Plug 'tpope/vim-haml', { 'on': [] }
-            Plug 'mattn/emmet-vim', { 'on': [] }
-            augroup load_html
-                autocmd!
-                au FileType html call plug#load('vim-css3-syntax', 'vim-haml', 'emmet-vim') | autocmd! load_html
-            augroup END
+            Plug 'tpope/vim-haml', { 'for': 'html' }
+            Plug 'mattn/emmet-vim', { 'for': 'html' }
+            " Plug 'amirh/HTML-AutoCloseTag', { 'for': 'html' }
         endif
     " }
 
     " Ruby {
         if count(g:lcl_bundle_groups, 'ruby')
-            Plug 'tpope/vim-rails', { 'on': [] }
+            Plug 'tpope/vim-rails', { 'for': 'ruby' }
             let g:rubycomplete_buffer_loading = 1
-            "let g:rubycomplete_classes_in_global = 1
-            "let g:rubycomplete_rails = 1
-            augroup load_ruby
-                autocmd!
-                au FileType ruby call plug#load('vim-rails') | autocmd! load_ruby
-            augroup END
+            " let g:rubycomplete_classes_in_global = 1
+            " let g:rubycomplete_rails = 1
         endif
     " }
 
     " Scala {
         if count(g:lcl_bundle_groups, 'scala')
-            Plug 'derekwyatt/vim-scala', { 'on': [] }
-            Plug 'derekwyatt/vim-sbt', { 'on': [] }
-            Plug 'xptemplate', { 'on': [] }
-            augroup load_scala
-                autocmd!
-                au FileType scala call plug#load('vim-scala', 'vim-sbt', 'xptemplate') | autocmd! load_scala
-            augroup END
+            Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+            Plug 'derekwyatt/vim-sbt', { 'for': 'scala' }
+            Plug 'xptemplate', { 'for': 'scala' }
         endif
     " }
 
@@ -213,7 +187,7 @@
 
     " Go Lang {
         if count(g:lcl_bundle_groups, 'go')
-            "Plug 'Blackrush/vim-gocode'
+            " Plug 'Blackrush/vim-gocode'
             Plug 'fatih/vim-go'
             Plug 'jstemmer/gotags'
         endif
@@ -221,13 +195,13 @@
 
     " Misc {
         if count(g:lcl_bundle_groups, 'misc')
-            "Plug 'wting/rust.vim'
             Plug 'tpope/vim-markdown'
             Plug 'spf13/vim-preview'
-            "Plug 'tpope/vim-cucumber'
-            "Plug 'cespare/vim-toml'
-            "Plug 'quentindecock/vim-cucumber-align-pipes'
-            "Plug 'Puppet-Syntax-Highlighting'
+            " Plug 'wting/rust.vim'
+            " Plug 'tpope/vim-cucumber'
+            " Plug 'cespare/vim-toml'
+            " Plug 'quentindecock/vim-cucumber-align-pipes'
+            " Plug 'Puppet-Syntax-Highlighting'
         endif
     " }
 
@@ -247,18 +221,18 @@
     " Others {
         if count(g:lcl_bundle_groups, 'others')
             Plug 'Shougo/vimproc', { 'do': 'make' }
-            "Plug 'mattn/webapi-vim'
-            "Plug 'mattn/gist-vim'
-            "Plug 'christoomey/vim-tmux-navigator'
             Plug 'ianva/vim-youdao-translater'
+            " Plug 'mattn/webapi-vim'
+            " Plug 'mattn/gist-vim'
+            " Plug 'christoomey/vim-tmux-navigator'
         endif
     " }
     endif
 " }
 
 " Use local bundles config if available {
-    if filereadable(expand("~/.vimrc.bundles.local"))
-        source ~/.vimrc.bundles.local
+    if filereadable(expand("~/.vimrc.plugins.local"))
+        source ~/.vimrc.plugins.local
     endif
     call plug#end()
 " }
