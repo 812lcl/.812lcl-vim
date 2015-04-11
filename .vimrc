@@ -218,6 +218,8 @@
     noremap <Leader>m ggVG
     nnoremap <silent> J :bp<CR>
     nnoremap <silent> K :bn<CR>
+    vnoremap <silent> J :m '>+1<CR>gv=gv
+    vnoremap <silent> K :m '<-2<CR>gv=gv
     noremap <silent><Leader>h :noh<CR>
     noremap <silent><Leader>s :set rnu! rnu?<CR>
     noremap <silent><Leader>l :set list! list?<CR>
