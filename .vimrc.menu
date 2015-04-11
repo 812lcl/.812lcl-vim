@@ -273,7 +273,7 @@
                 \'normal ,v'],
             \['> toggle fold                                                            Map: <Space>o',
                 \'normal <Space>o'],
-            \['> FencAutoDetect                       (fencview)                        Map: ,r',
+            \['> FencAutoDetect                       (fencview)                        Map: ,n',
                 \'FencAutoDetect'],
             \['> Dictionary                           (vim-youdao-translater)           Map: ,de',
                 \'Yde'],

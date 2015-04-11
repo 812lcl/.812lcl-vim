@@ -207,7 +207,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    n j
+    let mapleader=","           " 映射<leader>键,默认'\'    j
     let maplocalleader=" "      " 映射<localleader>键
     inoremap jj <ESC>
     vnoremap > >gv
@@ -228,6 +228,7 @@
     nnoremap <LocalLeader>j <C-w>j:q<CR>
     nnoremap <LocalLeader>; :cw<CR>
     inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    nnoremap <silent> <C-k> K
 
     " 更方便窗口间移动
     nnoremap <C-h> <C-w>h
@@ -411,6 +412,7 @@
             let g:pymode_rope = 0
             let g:pymode_rope_goto_definition_bind = '<C-c>g'
             let g:pymode_doc = 1
+            let g:pymode_doc_bind = '<C-k>'
             let g:pymode_folding = 1
             let g:pymode_motion = 1
             let g:pymode_indent = 1
@@ -732,7 +734,7 @@
 
     " fencview {
         if isdirectory(expand("~/.vim/bundle/fencview/"))
-            nmap <Leader>r :FencAutoDetect<CR>
+            nmap <Leader>n :FencAutoDetect<CR>
         endif
     " }
 
