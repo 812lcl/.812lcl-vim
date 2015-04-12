@@ -379,6 +379,13 @@
         endif
     " }
 
+    " vim-easy-align {
+        if isdirectory(expand("~/.vim/bundle/vim-easy-align/"))
+            vmap <Enter> <Plug>(EasyAlign)
+            nmap ga <Plug>(EasyAlign)
+        endif
+    " }
+
     " sessionman.vim {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         "set viewoptions=folds,options,cursor,unix,slash                 " restore_view.vim

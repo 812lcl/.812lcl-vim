@@ -321,28 +321,32 @@
     nnoremap <LocalLeader>t :Unite menu:text<CR>
 " }
 
-" tabularize {
-    let g:unite_source_menu_menus.tabularize = {
-        \ 'description' : '     tabularize
+" EasyAlign {
+    let g:unite_source_menu_menus.EasyAlign = {
+        \ 'description' : '     EasyAlign
             \                                             Map: <Space>a',
         \}
-    let g:unite_source_menu_menus.tabularize.command_candidates = [
-        \['> Tabularize &                                                           Map: <Space>&',
-            \'Tabularize /&'],
-        \['> Tabularize =                                                           Map: <Space>=',
-            \'Tabularize /='],
-        \['> Tabularize :                                                           Map: <Space>:',
-            \'Tabularize /:'],
-        \['> Tabularize ::                                                          Map: <Space>::',
-            \'Tabularize /:\zs'],
-        \['> Tabularize ,                                                           Map: <Space>,',
-            \'Tabularize /,'],
-        \['> Tabularize ,,                                                          Map: <Space>,,',
-            \'Tabularize /,\zs'],
-        \['> Tabularize <Bar>                                                       Map: <Space><Bar>',
-            \'Tabularize /<Bar>'],
+    let g:unite_source_menu_menus.EasyAlign.command_candidates = [
+        \['> EasyAlign =                                                            Map: <Enter>=',
+            \'EasyAlign ='],
+        \['> EasyAlign *=                                                           Map: <Enter>*=',
+            \'EasyAlign *='],
+        \['> EasyAlign **=                                                          Map: <Enter>**=',
+            \'EasyAlign **='],
+        \['> EasyAlign 2=                                                           Map: <Enter>2=',
+            \'EasyAlign 2='],
+        \['> EasyAlign :                                                            Map: <Enter>:',
+            \'EasyAlign :'],
+        \['> EasyAlign #                                                            Map: <Enter>#',
+            \'EasyAlign #'],
+        \['> EasyAlign ,                                                            Map: <Enter>,',
+            \'EasyAlign ,'],
+        \['> EasyAlign &                                                            Map: <Enter>&',
+            \'EasyAlign &'],
+        \['> EasyAlign <Bar>                                                        Map: <Enter><Bar>',
+            \'EasyAlign <Bar>'],
         \]
-    nnoremap <LocalLeader>a :Unite menu:tabularize<CR>
+    nnoremap <LocalLeader>a :Unite menu:EasyAlign<CR>
 " }
 
 " vim {
@@ -381,8 +385,20 @@
             \                            Map: <Space>k',
         \}
     let g:unite_source_menu_menus.markdown.command_candidates = [
-        \['> preview                                                                Map: ',
-            \'Preview'],
+        \['> Preview                                                                Map: ',
+            \'w'],
+        \['> Does not resize nor move the windows                                   Map: ',
+            \':Xmark'],
+        \['> On the right                                                           Map: ',
+            \'Xmark>'],
+        \['> On the left                                                            Map: ',
+            \'Xmark<'],
+        \['> On the top                                                             Map: ',
+            \'Xmark+'],
+        \['> On the bottom                                                          Map: ',
+            \'Xmark-'],
+        \['> Turn off Xmark                                                         Map: ',
+            \'Xmark!'],
         \]
     nnoremap <LocalLeader>k :Unite -silent menu:markdown<CR>
 " }
