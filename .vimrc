@@ -251,6 +251,13 @@
     command -bang -nargs=* -complete=file Wq wq<bang> <args>
     command -bang -nargs=* -complete=file WQ wq<bang> <args>
 
+    " Markdown
+    nnoremap <leader>1 m`yypVr=``
+    nnoremap <leader>2 m`yypVr-``
+    nnoremap <leader>3 m`^i### <esc>``4l
+    nnoremap <leader>4 m`^i#### <esc>``5l
+    nnoremap <leader>5 m`^i##### <esc>``6l
+
 " }
 
 " Plugins {
@@ -866,6 +873,8 @@
         endfunction
         xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
         xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+        xnoremap <Leader>j :s@\%V@@gn<Left><Left><Left><Left>
+        nnoremap <Leader>j :%s@@@gn<Left><Left><Left><Left><CR>
     " }
 
     " ToogleColorColumn {

@@ -197,7 +197,9 @@
     " Misc {
         if count(g:lcl_bundle_groups, 'misc')
             Plug 'tpope/vim-markdown'
-            Plug 'junegunn/vim-xmark', { 'do': 'make' }
+            if has('mac')
+                Plug 'junegunn/vim-xmark', { 'do': 'make' }
+            endif
             " Plug 'spf13/vim-preview'
             " Plug 'wting/rust.vim'
             " Plug 'tpope/vim-cucumber'
