@@ -323,8 +323,8 @@
 
 " EasyAlign {
     let g:unite_source_menu_menus.EasyAlign = {
-        \ 'description' : '     EasyAlign
-            \                                             Map: <Space>a',
+        \ 'description' : '      EasyAlign
+            \                                              Map: <Space>a',
         \}
     let g:unite_source_menu_menus.EasyAlign.command_candidates = [
         \['> EasyAlign =                                                            Map: <Enter>=',
