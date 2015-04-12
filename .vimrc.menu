@@ -335,6 +335,8 @@
             \'EasyAlign **='],
         \['> EasyAlign 2=                                                           Map: <Enter>2=',
             \'EasyAlign 2='],
+        \['> EasyAlign =<                                                           Map: <Enter><Right>=',
+            \'EasyAlign =<'],
         \['> EasyAlign :                                                            Map: <Enter>:',
             \'EasyAlign :'],
         \['> EasyAlign #                                                            Map: <Enter>#',
