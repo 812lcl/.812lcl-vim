@@ -228,7 +228,7 @@
     nnoremap <LocalLeader>j <C-w>j:q<CR>
     nnoremap <LocalLeader>; :cw<CR>
     inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    nnoremap <silent> <C-u> K
+    nnoremap <silent> <C-p> K
 
     " 更方便窗口间移动
     nnoremap <C-h> <C-w>h
@@ -426,7 +426,7 @@
             let g:pymode_rope = 0
             let g:pymode_rope_goto_definition_bind = '<C-c>g'
             let g:pymode_doc = 1
-            let g:pymode_doc_bind = '<C-u>'
+            let g:pymode_doc_bind = '<C-p>'
             let g:pymode_folding = 1
             let g:pymode_motion = 1
             let g:pymode_indent = 1
