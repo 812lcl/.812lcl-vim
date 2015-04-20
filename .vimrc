@@ -207,7 +207,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    j
+    let mapleader=","           " 映射<leader>键,默认'\'
     let maplocalleader=" "      " 映射<localleader>键
     inoremap jj <ESC>
     vnoremap > >gv
@@ -215,7 +215,7 @@
     noremap <Leader>x :lnext<CR>
     noremap <Leader>z :lpre<CR>
     noremap <Leader>p :lclose<CR>
-    noremap <Leader>m ggVG
+    noremap <Leader>n ggVG
     nnoremap <silent> J :bp<CR>
     nnoremap <silent> K :bn<CR>
     vnoremap <silent> J :m '>+1<CR>gv=gv
@@ -748,7 +748,7 @@
 
     " fencview {
         if isdirectory(expand("~/.vim/bundle/fencview/"))
-            nmap <Leader>n :FencAutoDetect<CR>
+            nmap <Leader>m :FencAutoDetect<CR>
         endif
     " }
 
