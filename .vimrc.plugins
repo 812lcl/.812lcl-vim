@@ -50,7 +50,7 @@
     " 'python', 'php', 'javascript', 'html', 'ruby', 'scala', ,'haskell','go', 'misc', 'unite', 'others'
     if !exists('g:lcl_bundle_groups')
         if has('win32') || has('win64')
-            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite',]
+            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite', 'php']
         elseif has('macunix')
             let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite', 'others', 'php']
         else
