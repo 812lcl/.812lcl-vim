@@ -197,7 +197,7 @@
     au FileType yaml setlocal ts=2 sts=2 sw=2 et
     au FileType html setlocal ts=2 sts=2 sw=2 et
     au FileType css setlocal ts=2 sts=2 sw=2 et
-    au FileType python setlocal textwidth=100
+    " au FileType python setlocal textwidth=100
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o       " 下一行不自动添加注释
     au BufLeave * let b:winview = winsaveview()                                     " 切换buffer时保持光标所在行在窗口中到位置
     au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
