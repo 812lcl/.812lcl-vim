@@ -280,15 +280,33 @@
         if gitroot != ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
+
+        function s:FindFile(file)
+            let curdir = getcwd()
+            let found = curdir
+            while !filereadable(a:file) && found != "/"
+                cd ..
+                let found = getcwd()
+            endwhile
+            execute "cd " . curdir
+            return found
+        endfunction
+
+        let $CTAGS_DIR=s:FindFile("tags")
+        let $CTAGS_DB=$CTAGS_DIR."/tags"
+        if filereadable($CTAGS_DB)
+            set tags+=$CTAGS_DB
+        endif
+
     " }
 
     " Cscope {
         set cscopetag
         set cscopequickfix=s-,c-,d-,i-,t-,e-   " 使用QuickFix窗口来显示cscope查找结果
-        if filereadable("cscope.out")
-            cs add cscope.out
-        elseif filereadable("tags")
-            set tags=$PWD/tags
+        let $CSCOPE_DIR=s:FindFile("cscope.out")
+        let $CSCOPE_DB=$CSCOPE_DIR."/cscope.out"
+        if filereadable($CSCOPE_DB)
+            cs add $CSCOPE_DB $CSCOPE_DIR
         endif
         nmap <Leader><Leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
         nmap <Leader><Leader>1 :cs find g<Space>
@@ -752,6 +770,12 @@
         endif
     " }
 
+    " emmet-vim {
+        if isdirectory(expand("~/.vim/bundle/emmet-vim/"))
+            let g:user_emmet_leader_key='<C-y>'
+        endif
+    " }
+
     " PIV {
         if isdirectory(expand("~/.vim/bundle/PIV"))
             let g:DisableAutoPHPFolding = 0
@@ -931,6 +955,7 @@
             nmap <buffer> <C-l> <C-w>l
         endfunction
     " }
+
 " }
 
 " Use local vimrc if available {
