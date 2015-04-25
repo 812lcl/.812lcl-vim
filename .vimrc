@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
 "             __   _  ____  _        _               _
 "           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___
 "           \\__//| |  / / | | / __/| | _____\ \ / /| | '_ ` _ \

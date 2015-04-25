@@ -6,7 +6,7 @@
 "           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |
 "           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|
 
-"   This is the personal .vimrc.bundles file of 812lcl.
+"   This is the personal .vimrc.plugins file of 812lcl.
 "   You can find me at http://812lcl.com
 " }
 
@@ -46,7 +46,7 @@
 " Plugins {
 
     " In your .vimrc.before.local file, list only the plugin groups you will use
-    " 'general', 'writing', 'programming', 'youcompleteme', 'neocomplcache', 'neocomplete',
+    " 'general', 'programming', 'youcompleteme', 'neocomplcache', 'neocomplete',
     " 'python', 'php', 'javascript', 'html', 'ruby', 'scala', ,'haskell','go', 'misc', 'unite', 'others'
     if !exists('g:lcl_bundle_groups')
         if has('win32') || has('win64')
@@ -110,13 +110,13 @@
             Plug 'JazzCore/neocomplcache-ultisnips'
             Plug 'SirVer/ultisnips'
             Plug 'honza/vim-snippets'
-            Plug 'javacomplete'
+            Plug 'javacomplete', { 'for': 'java' }
             " Plug 'clang-complete'
         elseif count(g:lcl_bundle_groups, 'neocomplete')
             Plug 'Shougo/neocomplete.vim'
             Plug 'Shougo/neosnippet'
             Plug 'Shougo/neosnippet-snippets'
-            Plug 'javacomplete'
+            Plug 'javacomplete', { 'for': 'java' }
         endif
     " }
 
@@ -150,9 +150,9 @@
 
     " HTML {
         if count(g:lcl_bundle_groups, 'html')
-            Plug 'hail2u/vim-css3-syntax', { 'for': 'html' }
-            Plug 'tpope/vim-haml', { 'for': 'html' }
-            Plug 'mattn/emmet-vim', { 'for': 'html' }
+            Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css'] }
+            Plug 'tpope/vim-haml', { 'for': ['html', 'css'] }
+            Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
             " Plug 'gorodinskiy/vim-coloresque', { 'for': ['html', 'vim', 'css'] }
             " Plug 'amirh/HTML-AutoCloseTag', { 'for': 'html' }
         endif
@@ -229,8 +229,10 @@
         if count(g:lcl_bundle_groups, 'others')
             Plug 'Shougo/vimproc', { 'do': 'make' }
             Plug 'ianva/vim-youdao-translater'
-            " Plug 'mattn/webapi-vim'
-            " Plug 'mattn/gist-vim'
+            if has('mac')
+                Plug 'mattn/webapi-vim'
+                Plug 'mattn/gist-vim'
+            endif
             " Plug 'christoomey/vim-tmux-navigator'
         endif
     " }
