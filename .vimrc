@@ -281,6 +281,17 @@
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
 
+        fun! MatchCaseTag()
+            let ic = &ic
+            set noic
+            try
+                exe 'tjump ' . expand('<cword>')
+            finally
+                let &ic = ic
+            endtry
+        endfun
+        nnoremap <silent> <c-]> :call MatchCaseTag()<CR>
+
         function s:FindFile(file)
             let curdir = getcwd()
             let found = curdir
