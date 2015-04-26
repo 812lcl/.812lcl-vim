@@ -452,8 +452,6 @@
             let g:pymode_lint_pyflakes_symbol = 'F'
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
-            let g:pymode_rope = 0
-            let g:pymode_rope_goto_definition_bind = '<C-c>g'
             let g:pymode_doc = 1
             let g:pymode_doc_bind = '<C-p>'
             let g:pymode_folding = 1
@@ -474,6 +472,15 @@
             let g:pymode_syntax_doctests = g:pymode_syntax_all
             let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
             let g:pymode_syntax_builtin_types = g:pymode_syntax_all
+            let g:pymode_rope = 1
+            let g:pymode_rope_lookup_project = 1
+            let g:pymode_rope_completion = 0
+            let g:pymode_rope_show_doc_bind = '<Leader><Leader>d'
+            let g:pymode_rope_goto_definition_bind = '<Leader><Leader>g'
+            let g:pymode_rope_organize_imports_bind = '<Leader><Leader>ro'
+            let g:pymode_rope_rename_bind = '<leader><Leader>rr'
+            let g:pymode_rope_rename_module_bind = '<leader><Leader>r1r'
+            let g:pymode_rope_module_to_package_bind = '<leader><Leader>r1p'
             noremap <Leader>y :PymodeLint<CR>:Unite -silent -auto-preview -winheight=25 location_list<CR>
             noremap <Leader>u :PymodeLintAuto<CR>
         endif
