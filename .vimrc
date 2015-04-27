@@ -512,7 +512,7 @@
             let g:tagbar_sort = 0                   " 按出现顺序排序
             let g:tagbar_iconchars = ['▸', '▾']
             if !&diff
-                au FileType c,cpp,python,java,vim,php,sh nested :TagbarOpen
+                au FileType c,cpp,python,java,vim,php,sh,perl nested :TagbarOpen
             endif
 
             " If using go please install the gotags program using the following
