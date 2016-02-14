@@ -71,6 +71,8 @@
             Plug 'sessionman.vim'
             Plug 'matchit.zip'
             Plug 'bling/vim-airline'
+            Plug 'vim-airline/vim-airline-themes'
+            Plug 'vim-scripts/DoxygenToolkit.vim'
             Plug 'Lokaltog/vim-easymotion'
             Plug 'flazz/vim-colorschemes'
             Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -102,6 +104,7 @@
     " Snippets & AutoComplete {
         if count(g:lcl_bundle_groups, 'youcompleteme')
             Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
+            " Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
         else
             Plug 'ervandew/supertab'
         endif
