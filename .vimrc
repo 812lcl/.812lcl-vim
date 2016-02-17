@@ -193,7 +193,7 @@
     set softtabstop=4               " 退格删除缩进
     set autoindent                  " 与前一行同样等级缩进
     set backspace=indent,eol,start  " 退格可删除缩进和原有字符
-    au FileType ruby setlocal ts=2 sts=2 sw=2 et
+    " au FileType ruby setlocal ts=2 sts=2 sw=2 et
     au FileType yaml setlocal ts=2 sts=2 sw=2 et
     au FileType html setlocal ts=2 sts=2 sw=2 et
     au FileType css setlocal ts=2 sts=2 sw=2 et
@@ -617,7 +617,7 @@
 
     " Syntastic {
         if isdirectory(expand("~/.vim/bundle/syntastic/"))
-            let g:syntastic_check_on_open = 1
+            let g:syntastic_check_on_open = 0
             let g:syntastic_error_symbol = 'E'
             let g:syntastic_warning_symbol = 'W'
             let g:syntastic_auto_loc_list = 2
@@ -914,7 +914,7 @@
         nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
         nmap _# :call Preserve("%s/\\r$//e")<CR>
         nmap _@ :retab<CR>
-        nmap _% :retab<CR>:call Preserve("%s/\\r$//e")<CR>:call Preserve("%s/\\s\\+$//e")<CR>
+        nmap _% :retab<CR>:call Preserve("%s/\\r$//e")<CR>:call Preserve("%s/\\s\\+$//e")<CR>gg=G
         nmap <Leader>= :call Preserve("normal gg=G")<CR>
     " }
 
