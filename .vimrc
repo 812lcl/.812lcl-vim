@@ -677,7 +677,7 @@
                         \   'lua' : ['.', ':'],
                         \   'erlang' : [':'],
                         \ }
-            let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+            let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
         endif
     " }
 
@@ -721,6 +721,16 @@
                         \ "html,xml" : ["at"],
                         \ }
         endif
+    " }
+
+    " Doxygentoolkit {
+        let g:DoxygenToolkit_authorName="liuchunlei <liuchunlei@baidu.com>"
+        let g:DoxygenToolkit_briefTag_funcName="yes"
+        let g:DoxygenToolkit_versionString="1.0.0.0"
+        let g:doxygen_enhanced_color=1
+        :map <F4> :DoxAuthor<CR>
+        :map <F5> :Dox<CR>
+    " }
 
     " Unite {
         if count(g:lcl_bundle_groups, 'unite')
@@ -944,36 +954,64 @@
         endfunction
     " }
 
-    " 以下function有外部依赖
-
-    " Linesofcode {
-        function! LinesOfCode()                         " 统计代码行数，需要cloc
-            echo system('cloc --quiet '.bufname("%"))
+    " TitleInsert {
+        function! TitleInsert()
+            call setline(1,"#!/bin/env python")
+            call append(1,"# -*- coding: utf-8 -*-")
+            call append(2,'""""')
+            call append(3,"Program: ")
+            call append(4,"Description: ")
+            call append(5,"Author: Flyaway - flyaway1217@gmail.com")
+            call append(6,"Date: " . strftime("%Y-%m-%d %H:%M:%S"))
+            call append(7,"Last modified: " . strftime("%Y-%m-%d %H:%M:%S"))
+            call append(8,"Python release: 3.3.2")
+            call append(9,'"""')
         endfunction
-    " }
 
-    " Rangerchooser {
-        function! RangerChooser()                       " Ranger文件管理器
-            exec "silent !ranger --choosefile=/tmp/chosenfile " . expand("%:p:h")
-            if filereadable('/tmp/chosenfile')
-                exec 'edit ' . system('cat /tmp/chosenfile')
-                call system('rm /tmp/chosenfile')
+        function! DateInsert()
+            call cursor(7,1)
+            if search('Last modified') != 0
+                let line = line('.')
+                call setline(line,"Last modified: " . strftime("%Y-%m-%d %H:%M:%S"))
             endif
-            redraw!
         endfunction
-        map <LocalLeader>r :call RangerChooser()<CR>
+
+        :map <F2> :call TitleInsert()<CR>ggjjjA
+        :autocmd FileWritePre,BufWritePre *.py ks|call DateInsert()|'s
     " }
 
-    " Unite {
-        au FileType unite call s:unite_settings()
-        function! s:unite_settings()
-            imap <buffer> <C-j> <Plug>(unite_select_next_line)
-            imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-            nmap <buffer> <C-h> <C-w>h
-            nmap <buffer> <C-j> <C-w>j
-            nmap <buffer> <C-k> <C-w>k
-            nmap <buffer> <C-l> <C-w>l
-        endfunction
+    " 以下function有外部依赖 {
+
+        " Linesofcode {
+            function! LinesOfCode()                         " 统计代码行数，需要cloc
+                echo system('cloc --quiet '.bufname("%"))
+            endfunction
+        " }
+
+        " Rangerchooser {
+            function! RangerChooser()                       " Ranger文件管理器
+                exec "silent !ranger --choosefile=/tmp/chosenfile " . expand("%:p:h")
+                if filereadable('/tmp/chosenfile')
+                    exec 'edit ' . system('cat /tmp/chosenfile')
+                    call system('rm /tmp/chosenfile')
+                endif
+                redraw!
+            endfunction
+            map <LocalLeader>r :call RangerChooser()<CR>
+        " }
+
+        " Unite {
+            au FileType unite call s:unite_settings()
+            function! s:unite_settings()
+                imap <buffer> <C-j> <Plug>(unite_select_next_line)
+                imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+                nmap <buffer> <C-h> <C-w>h
+                nmap <buffer> <C-j> <C-w>j
+                nmap <buffer> <C-k> <C-w>k
+                nmap <buffer> <C-l> <C-w>l
+            endfunction
+        " }
+
     " }
 
 " }
