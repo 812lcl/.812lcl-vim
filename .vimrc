@@ -956,27 +956,27 @@
 
     " TitleInsert {
         function! TitleInsert()
-            call setline(1,"#!/bin/env python")
-            call append(1,"# -*- coding: utf-8 -*-")
-            call append(2,'""""')
-            call append(3,"Program: ")
-            call append(4,"Description: ")
-            call append(5,"Author: Flyaway - flyaway1217@gmail.com")
-            call append(6,"Date: " . strftime("%Y-%m-%d %H:%M:%S"))
-            call append(7,"Last modified: " . strftime("%Y-%m-%d %H:%M:%S"))
-            call append(8,"Python release: 3.3.2")
+            call setline(1,"#!/usr/bin/env python")
+            call setline(2,"# -*- coding: utf-8 -*-")
+            call append(2,'"""')
+            call append(3,"@file    : " . expand('%:t'))
+            call append(4,"@brief   : ")
+            call append(5,"@author  : liuchunlei <liuchunlei@baidu.com>")
+            call append(6,"@date    : " . strftime("%Y-%m-%d %H:%M:%S"))
+            call append(7,"@update  : " . strftime("%Y-%m-%d %H:%M:%S"))
+            call append(8,"@version : 1.0.0.0")
             call append(9,'"""')
         endfunction
 
         function! DateInsert()
             call cursor(7,1)
-            if search('Last modified') != 0
+            if search('@update  : ') != 0
                 let line = line('.')
-                call setline(line,"Last modified: " . strftime("%Y-%m-%d %H:%M:%S"))
+                call setline(line,"@update  : " . strftime("%Y-%m-%d %H:%M:%S"))
             endif
         endfunction
 
-        :map <F2> :call TitleInsert()<CR>ggjjjA
+        :map <F2> :call TitleInsert()<CR>5GA
         :autocmd FileWritePre,BufWritePre *.py ks|call DateInsert()|'s
     " }
 
