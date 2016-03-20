@@ -103,8 +103,8 @@
 
     " Snippets & AutoComplete {
         if count(g:lcl_bundle_groups, 'youcompleteme')
-            Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
-            " Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
+            " Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
+            Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
         else
             Plug 'ervandew/supertab'
         endif
@@ -230,12 +230,12 @@
 
     " Others {
         if count(g:lcl_bundle_groups, 'others')
-            Plug 'Shougo/vimproc', { 'do': 'make' }
-            Plug 'ianva/vim-youdao-translater'
             if has('mac')
                 Plug 'mattn/webapi-vim'
                 Plug 'mattn/gist-vim'
             endif
+            Plug 'Shougo/vimproc', { 'do': 'make' }
+            " Plug 'ianva/vim-youdao-translater'
             " Plug 'christoomey/vim-tmux-navigator'
         endif
     " }
