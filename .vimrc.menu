@@ -241,8 +241,6 @@
             \                             Map: <Space>h',
         \}
     let g:unite_source_menu_menus.history.command_candidates = [
-        \['> yanks                                                                  Map: <Space>p',
-            \'Unite history/yank'],
         \['> registers                                                              Map: <Space>q',
             \'Unite register'],
         \['> messages                                                               Map: ',
@@ -305,10 +303,6 @@
             \'normal <Space>o'],
         \['> FencAutoDetect                       (fencview)                        Map: ,m',
             \'FencAutoDetect'],
-        \['> Dictionary                           (vim-youdao-translater)           Map: ,de',
-            \'Yde'],
-        \['> Translate cursor word                (vim-youdao-translater)           Map: ,d',
-            \'Ydc'],
         \['> toggle surround in visualmode        (surround)                        Map: S',
             \'visual S'],
         \['> add surroundings in visualmode       (surround)                        Map: ys',

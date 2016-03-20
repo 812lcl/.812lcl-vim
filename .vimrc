@@ -207,8 +207,8 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'
-    let maplocalleader=" "      " 映射<localleader>键
+    let mapleader=","           " 映射<leader>键,默认'\'    remain d
+    let maplocalleader=" "      " 映射<localleader>键       remain p
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
@@ -539,14 +539,6 @@
         endif
     " }
 
-    " vim-youdao-translater {
-        if isdirectory(expand("~/.vim/bundle/vim-youdao-translater"))
-            vnoremap <silent> <Leader>d <Esc>:Ydv<CR>
-            nnoremap <silent> <Leader>d <Esc>:Ydc<CR>
-            noremap <Leader>de :Yde<CR>
-        endif
-    " }
-
     " Fugitive {
         if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
             nnoremap <Leader>gn :Unite output:echo\ system("git\ init")<CR>
@@ -739,7 +731,6 @@
             nmap <silent> <Leader>fd :Unite -start-insert directory_rec/async<CR>
             nmap <silent> <Leader>dr :Unite file_mru -start-insert<CR>
             nmap <silent> <Leader>b :Unite buffer<CR>
-            nnoremap <LocalLeader>p :Unite history/yank<CR>
             nnoremap <LocalLeader>q :Unite register<CR>
             nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=25 quickfix<CR>
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=25 location_list<CR>
