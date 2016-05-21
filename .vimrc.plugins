@@ -47,14 +47,14 @@
 
     " In your .vimrc.before.local file, list only the plugin groups you will use
     " 'general', 'programming', 'youcompleteme', 'neocomplcache', 'neocomplete',
-    " 'python', 'php', 'javascript', 'html', 'ruby', 'scala', ,'haskell','go', 'misc', 'unite', 'others'
+    " 'python', 'php', 'html', 'ruby', 'haskell','go', 'misc', 'unite', 'others'
     if !exists('g:lcl_bundle_groups')
         if has('win32') || has('win64')
-            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite', 'php']
+            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'php']
         elseif has('macunix')
-            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite', 'others', 'php']
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php']
         else
-            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'javascript', 'html', 'misc', 'unite', 'others', 'php']
+            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php']
         endif
     endif
 
@@ -80,6 +80,7 @@
             Plug 'kshenoy/vim-signature'
             Plug 'TaskList.vim'
             Plug 'mbbill/fencview', { 'on': 'FencAutoDetect' }
+            Plug 'sheerun/vim-polyglot'
             " Plug 'kien/ctrlp.vim'
             " Plug 'gcmt/wildfire.vim'
             " Plug 'mhinz/vim-startify'
@@ -104,7 +105,8 @@
     " Snippets & AutoComplete {
         if count(g:lcl_bundle_groups, 'youcompleteme')
             " Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
-            Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
+            " Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
+            Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer' }
         else
             Plug 'ervandew/supertab'
         endif
@@ -137,24 +139,12 @@
         if count(g:lcl_bundle_groups, 'php')
             Plug 'spf13/PIV', { 'for': 'php' }
             Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
-            Plug 'beyondwords/vim-twig', { 'for': 'php' }
-        endif
-    " }
-
-    " Javascript {
-        if count(g:lcl_bundle_groups, 'javascript')
-            Plug 'elzr/vim-json', { 'for': 'json' }
-            Plug 'groenewege/vim-less', { 'for': 'javascript' }
-            Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-            Plug 'briancollins/vim-jst', { 'for': 'javascript' }
-            Plug 'kchmck/vim-coffee-script', { 'for': 'javascript' }
         endif
     " }
 
     " HTML {
         if count(g:lcl_bundle_groups, 'html')
             Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css'] }
-            Plug 'tpope/vim-haml', { 'for': ['html', 'css'] }
             Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
             " Plug 'gorodinskiy/vim-coloresque', { 'for': ['html', 'vim', 'css'] }
             " Plug 'amirh/HTML-AutoCloseTag', { 'for': 'html' }
@@ -167,14 +157,6 @@
             let g:rubycomplete_buffer_loading = 1
             " let g:rubycomplete_classes_in_global = 1
             " let g:rubycomplete_rails = 1
-        endif
-    " }
-
-    " Scala {
-        if count(g:lcl_bundle_groups, 'scala')
-            Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-            Plug 'derekwyatt/vim-sbt', { 'for': 'scala' }
-            Plug 'xptemplate', { 'for': 'scala' }
         endif
     " }
 
@@ -195,7 +177,6 @@
     " Go Lang {
         if count(g:lcl_bundle_groups, 'go')
             " Plug 'Blackrush/vim-gocode'
-            Plug 'fatih/vim-go'
             Plug 'jstemmer/gotags'
         endif
     " }
