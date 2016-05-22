@@ -212,6 +212,7 @@
     " Others {
         if count(g:lcl_bundle_groups, 'others')
             if has('mac')
+                Plug 'rizzatti/dash.vim'
                 Plug 'mattn/webapi-vim'
                 Plug 'mattn/gist-vim'
             endif

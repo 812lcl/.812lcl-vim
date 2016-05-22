@@ -229,6 +229,9 @@
     nnoremap <LocalLeader>; :cw<CR>
     inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
     nnoremap <silent> <C-p> K
+    if OSX()
+        nmap <silent> <C-p> <Plug>DashSearch
+    endif
 
     " 更方便窗口间移动
     nnoremap <C-h> <C-w>h
@@ -453,7 +456,6 @@
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
             let g:pymode_doc = 1
-            let g:pymode_doc_bind = '<C-p>'
             let g:pymode_folding = 1
             let g:pymode_motion = 1
             let g:pymode_indent = 1
@@ -483,6 +485,9 @@
             let g:pymode_rope_module_to_package_bind = '<leader><Leader>r1p'
             noremap <Leader>y :PymodeLint<CR>:Unite -silent -auto-preview -winheight=25 location_list<CR>
             noremap <Leader>u :PymodeLintAuto<CR>
+            if !OSX()
+                let g:pymode_doc_bind = '<C-p>'
+            endif
         endif
     " }
 
