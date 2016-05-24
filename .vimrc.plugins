@@ -54,7 +54,7 @@
         elseif has('macunix')
             let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php']
         else
-            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php']
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php']
         endif
     endif
 
@@ -104,9 +104,13 @@
 
     " Snippets & AutoComplete {
         if count(g:lcl_bundle_groups, 'youcompleteme')
-            " Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
-            " Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
-            Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer' }
+            if has('mac')
+                " Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
+                " Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
+                Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer' }
+            elseif has('unix')
+                Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+            endif
         else
             Plug 'ervandew/supertab'
         endif
