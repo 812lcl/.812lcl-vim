@@ -445,7 +445,7 @@
             let g:pymode = 1
             let g:pymode_lint = 1
             let g:pymode_lint_on_write = 1
-            let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+            let g:pymode_lint_checkers = ['pyflakes', 'pep8']
             let g:pymode_lint_ignore = "E501,F401,W0401,E265"
             let g:pymode_lint_todo_symbol = 'W'
             let g:pymode_lint_comment_symbol = 'C'
