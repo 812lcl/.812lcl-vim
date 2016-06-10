@@ -445,8 +445,8 @@
             let g:pymode = 1
             let g:pymode_lint = 1
             let g:pymode_lint_on_write = 1
-            let g:pymode_lint_checkers = ['pyflakes', 'pep8']
-            let g:pymode_lint_ignore = "E501,F401,W0401,E265"
+            let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8']
+            let g:pymode_lint_ignore = "E501,F401,W0401,E265,C0301"
             let g:pymode_lint_todo_symbol = 'W'
             let g:pymode_lint_comment_symbol = 'C'
             let g:pymode_lint_visual_symbol = 'R'
@@ -483,7 +483,7 @@
             let g:pymode_rope_rename_bind = '<leader><Leader>rr'
             let g:pymode_rope_rename_module_bind = '<leader><Leader>r1r'
             let g:pymode_rope_module_to_package_bind = '<leader><Leader>r1p'
-            noremap <Leader>y :PymodeLint<CR>:Unite -silent -auto-preview -winheight=25 location_list<CR>
+            noremap <Leader>y :PymodeLint<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
             noremap <Leader>u :PymodeLintAuto<CR>
             if !OSX()
                 let g:pymode_doc_bind = '<C-p>'
@@ -625,7 +625,7 @@
             let g:syntastic_mode_map = { "passive_filetypes": ["python"] }
             hi SyntasticError ctermbg=red guibg=red
             hi SyntasticWarning ctermbg=yellow guibg=yellow
-            noremap <Leader>i :SyntasticCheck<CR>:Unite -silent -auto-preview -winheight=25 location_list<CR>
+            noremap <Leader>i :SyntasticCheck<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
             noremap <Leader>o :Errors<CR>
         endif
     " }
@@ -737,12 +737,12 @@
             nmap <silent> <Leader>dr :Unite file_mru -start-insert<CR>
             nmap <silent> <Leader>b :Unite buffer<CR>
             nnoremap <LocalLeader>q :Unite register<CR>
-            nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=25 quickfix<CR>
-            nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=25 location_list<CR>
+            nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=10 location_list<CR>
             nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline<CR>
-            nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=25 mark<CR>
-            nnoremap <silent><Leader>A :Unite -silent -auto-preview -winheight=25 -no-quit grep<CR>
-            nnoremap <silent><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=25 -no-quit grep<CR>
+            nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=10 mark<CR>
+            nnoremap <silent><Leader>A :Unite -silent -auto-preview -winheight=10 -no-quit grep<CR>
+            nnoremap <silent><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=10 -no-quit grep<CR>
 
             call unite#filters#matcher_default#use(['matcher_fuzzy'])
             call unite#filters#sorter_default#use(['sorter_rank'])
