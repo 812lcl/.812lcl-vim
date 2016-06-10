@@ -82,7 +82,6 @@
             Plug 'mbbill/fencview', { 'on': 'FencAutoDetect' }
             Plug 'sheerun/vim-polyglot'
             " Plug 'kien/ctrlp.vim'
-            " Plug 'gcmt/wildfire.vim'
             " Plug 'mhinz/vim-startify'
             " Plug 'restore_view.vim'
             " Plug 'VOoM'

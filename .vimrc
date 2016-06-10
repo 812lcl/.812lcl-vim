@@ -711,15 +711,6 @@
         endif
     " }
 
-    " Wildfire {
-        if isdirectory(expand("~/.vim/bundle/wildfire.vim/"))
-            let g:wildfire_objects = {
-                        \ "*" : ["i'", 'i"', "i)", "i]", "i}", "ip"],
-                        \ "html,xml" : ["at"],
-                        \ }
-        endif
-    " }
-
     " Doxygentoolkit {
         let g:DoxygenToolkit_authorName="liuchunlei <liuchunlei@baidu.com>"
         let g:DoxygenToolkit_briefTag_funcName="yes"
