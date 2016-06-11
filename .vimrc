@@ -487,6 +487,8 @@
             noremap <Leader>u :PymodeLintAuto<CR>
             if !OSX()
                 let g:pymode_doc_bind = '<C-p>'
+            else
+                let g:pymode_doc = 0
             endif
         endif
     " }
