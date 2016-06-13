@@ -659,7 +659,7 @@
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
             let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1}
             let g:ycm_complete_in_comments = 1              " 评论中也应用补全
-            let g:ycm_min_num_of_chars_for_completion = 2   " 两个字开始补全
+            let g:ycm_min_num_of_chars_for_completion = 1   " 两个字开始补全
             let g:ycm_seed_identifiers_with_syntax = 1
             let g:ycm_collect_identifiers_from_tags_files = 1
             let g:ycm_key_invoke_completion = '<C-Space>'
