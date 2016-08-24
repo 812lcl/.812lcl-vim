@@ -386,16 +386,46 @@
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree/"))
-            map <Leader>wf :NERDTreeToggle<CR>
             map <leader>w :NERDTreeFind<CR>
+            map <Leader>wf :NERDTreeToggle<CR>:wincmd w<CR>
+            map <Leader>ww :NERDTreeClose<CR>
             let NERDShutUp=1
             let NERDTreeWinPos=0                    " 在左侧
             let NERDTreeWinSize=30                  " 设置宽度
-            let NERDTreeShowHidden=1                " 显示隐藏文件
-            let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
+            let NERDTreeShowHidden=0                " 显示隐藏文件
+            let NERDTreeQuitOnOpen=0                " 打开后退出NERDTree
             let NERDTreeShowBookmarks=1             " 显示书签
-            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-            au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.out$', '\.bzr']
+            let NERDTreeSortOrder=['\/$', 'BCLOUD', 'Makefile', '\.sh$', '\.py$', '\.rb$', '\.php$', '*', '\.xml$', '\.conf$', '\.log$', '\~$']
+            au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+        endif
+    " }
+
+    " nerdtree-git-plugin {
+        if LINUX()
+            let g:NERDTreeIndicatorMapCustom = {
+                \ "Modified"  : "*",
+                \ "Staged"    : "+",
+                \ "Untracked" : "?",
+                \ "Renamed"   : ">",
+                \ "Unmerged"  : "═",
+                \ "Deleted"   : "x",
+                \ "Dirty"     : "✗",
+                \ "Clean"     : "✔︎",
+                \ "Unknown"   : "?"
+                \ }
+        elseif OSX() || WINDOWS()
+            let g:NERDTreeIndicatorMapCustom = {
+                \ "Modified"  : "✹",
+                \ "Staged"    : "✚",
+                \ "Untracked" : "✭",
+                \ "Renamed"   : "➜",
+                \ "Unmerged"  : "═",
+                \ "Deleted"   : "✖",
+                \ "Dirty"     : "✗",
+                \ "Clean"     : "✔︎",
+                \ "Unknown"   : "?"
+                \ }
         endif
     " }
 
@@ -446,7 +476,7 @@
             let g:pymode_lint = 1
             let g:pymode_lint_on_write = 1
             let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8']
-            let g:pymode_lint_ignore = "E501,F401,W0401,E265,C0301"
+            let g:pymode_lint_ignore = "E501,F401,W0401,E265,C0301,W0511,w0621"
             let g:pymode_lint_todo_symbol = 'W'
             let g:pymode_lint_comment_symbol = 'C'
             let g:pymode_lint_visual_symbol = 'R'
