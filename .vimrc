@@ -548,6 +548,10 @@
             let g:tagbar_width = 30                 " 设置宽度
             let g:tagbar_sort = 0                   " 按出现顺序排序
             let g:tagbar_iconchars = ['▸', '▾']
+            let g:tagbar_autoshowtag = 1
+            let g:tagbar_autoclose = 0
+            let g:tagbar_autopreview = 0
+            let g:tagbar_previewwin_pos = "rightbelow"
             if !&diff
                 au FileType c,cpp,python,java,vim,php,sh,perl,ruby nested :TagbarOpen
             endif
