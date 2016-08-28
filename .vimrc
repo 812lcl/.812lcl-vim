@@ -387,7 +387,7 @@
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree/"))
             map <leader>w :NERDTreeFind<CR>
-            map <Leader>wf :NERDTreeToggle<CR>:wincmd w<CR>
+            map <Leader>wf :NERDTreeToggle<CR><c-w>w
             map <Leader>ww :NERDTreeClose<CR>
             let NERDShutUp=1
             let NERDTreeWinPos=0                    " 在左侧
