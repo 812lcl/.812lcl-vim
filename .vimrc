@@ -386,13 +386,11 @@
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree/"))
-            map <leader>w :NERDTreeFind<CR>
-            map <Leader>wf :NERDTreeToggle<CR><c-w>w
-            map <Leader>ww :NERDTreeClose<CR>
+            map <leader>wf :NERDTreeFind<CR>
             let NERDShutUp=1
             let NERDTreeWinPos=0                    " 在左侧
             let NERDTreeWinSize=30                  " 设置宽度
-            let NERDTreeShowHidden=0                " 显示隐藏文件
+            let NERDTreeShowHidden=1                " 显示隐藏文件
             let NERDTreeQuitOnOpen=0                " 打开后退出NERDTree
             let NERDTreeShowBookmarks=1             " 显示书签
             let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.out$', '\.bzr']
@@ -1070,6 +1068,42 @@
                 nmap <buffer> <C-k> <C-w>k
                 nmap <buffer> <C-l> <C-w>l
             endfunction
+        " }
+
+        " nerdtree and tagbar {
+            function! ToggleNERDTreeAndTagbar()
+                let w:jumpbacktohere = 1
+
+                " Detect which plugins are open
+                if exists('t:NERDTreeBufName')
+                    let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+                else
+                    let nerdtree_open = 0
+                endif
+                let tagbar_open = bufwinnr('__Tagbar__') != -1
+
+                " Perform the appropriate action
+                if nerdtree_open && tagbar_open
+                    NERDTreeClose
+                elseif nerdtree_open
+                    TagbarOpen
+                elseif tagbar_open
+                    NERDTree
+                else
+                    NERDTree
+                    TagbarOpen
+                endif
+
+                " Jump back to the original window
+                for window in range(1, winnr('$'))
+                    execute window . 'wincmd w'
+                    if exists('w:jumpbacktohere')
+                        unlet w:jumpbacktohere
+                        break
+                    endif
+                endfor
+            endfunction
+            nnoremap <leader>w :call ToggleNERDTreeAndTagbar()<CR>
         " }
 
     " }

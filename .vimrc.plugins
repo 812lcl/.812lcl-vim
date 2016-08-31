@@ -65,8 +65,8 @@
 
     " General {
         if count(g:lcl_bundle_groups, 'general')
-            Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-            Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+            Plug 'scrooloose/nerdtree'
+            Plug 'Xuyuanp/nerdtree-git-plugin'
             Plug 'altercation/vim-colors-solarized'
             Plug 'tpope/vim-surround'
             Plug 'sessionman.vim'
