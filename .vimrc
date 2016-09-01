@@ -1088,9 +1088,9 @@
                 elseif nerdtree_open
                     TagbarOpen
                 elseif tagbar_open
-                    NERDTree
+                    NERDTreeFind
                 else
-                    NERDTree
+                    NERDTreeFind
                     TagbarOpen
                 endif
 
