@@ -207,7 +207,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    remain d
+    let mapleader=","           " 映射<leader>键,默认'\'
     let maplocalleader=" "      " 映射<localleader>键       remain p
     inoremap jj <ESC>
     vnoremap > >gv
@@ -1104,6 +1104,21 @@
                 endfor
             endfunction
             nnoremap <leader>w :call ToggleNERDTreeAndTagbar()<CR>
+
+            " Zoom / Restore window.
+            function! s:ZoomToggle() abort
+                if exists('t:zoomed') && t:zoomed
+                    execute t:zoom_winrestcmd
+                    let t:zoomed = 0
+                else
+                    let t:zoom_winrestcmd = winrestcmd()
+                    resize
+                    vertical resize
+                    let t:zoomed = 1
+                endif
+            endfunction
+            command! ZoomToggle call s:ZoomToggle()
+            nnoremap <silent> <Leader>d :ZoomToggle<CR>
         " }
 
     " }
