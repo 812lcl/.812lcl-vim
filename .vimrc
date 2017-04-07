@@ -474,7 +474,7 @@
             let g:pymode_lint = 1
             let g:pymode_lint_on_write = 1
             let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8']
-            let g:pymode_lint_ignore = "E501,F401,W0401,E265,C0301,W0511,w0621,C0111"
+            let g:pymode_lint_ignore = "E501,F401,W0401,E265,C0301,W0511,w0621,C0111,W0622"
             let g:pymode_lint_todo_symbol = 'W'
             let g:pymode_lint_comment_symbol = 'C'
             let g:pymode_lint_visual_symbol = 'R'
@@ -490,7 +490,7 @@
             let g:pymode_virtualenv = 1
             let g:pymode_run = 1
             let g:pymode_run_bind = '<leader>r'
-            let g:pymode_breakpoint = 1
+            let g:pymode_breakpoint = 0
             let g:pymode_breakpoint_bind = '<leader>b'
             let g:pymode_quickfix_minheight = 6
             let g:pymode_quickfix_maxheight = 10
