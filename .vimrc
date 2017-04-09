@@ -65,6 +65,7 @@
     set splitright                  " 新分割窗口在右边
     set splitbelow                  " 新分割窗口在下边
     set autoread                    " 文件在Vim之外修改过，自动重新读入
+    set autowrite                   " make时自动保存文件
     set timeoutlen=350              " 等待时间,如<leader>键后的输入
     set helpheight=20               " 查看帮助文档高度
     set scrolljump=1                " 当光标离开屏幕滑动行数
@@ -197,6 +198,7 @@
     au FileType yaml setlocal ts=2 sts=2 sw=2 et
     au FileType html setlocal ts=2 sts=2 sw=2 et
     au FileType css setlocal ts=2 sts=2 sw=2 et
+    au FileType go setlocal ts=4 sts=4 sw=4 noet
     " au FileType python setlocal textwidth=100
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o       " 下一行不自动添加注释
     au BufLeave * let b:winview = winsaveview()                                     " 切换buffer时保持光标所在行在窗口中到位置
@@ -551,7 +553,7 @@
             let g:tagbar_autopreview = 0
             let g:tagbar_previewwin_pos = "rightbelow"
             if !&diff
-                au FileType c,cpp,python,java,vim,php,sh,perl,ruby nested :TagbarOpen
+                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go nested :TagbarOpen
             endif
 
             " If using go please install the gotags program using the following
@@ -656,7 +658,8 @@
             let g:syntastic_always_populate_loc_list=1
             let g:syntastic_loc_list_height = 6
             let g:syntastic_enable_highlighting = 0
-            let g:syntastic_mode_map = { "passive_filetypes": ["python"] }
+            let g:syntastic_mode_map = { "passive_filetypes": ["python", "go"] }
+            let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
             hi SyntasticError ctermbg=red guibg=red
             hi SyntasticWarning ctermbg=yellow guibg=yellow
             noremap <Leader>i :SyntasticCheck<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
@@ -689,7 +692,7 @@
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
-            let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1}
+            let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1, 'go': 1}
             let g:ycm_complete_in_comments = 1              " 评论中也应用补全
             let g:ycm_min_num_of_chars_for_completion = 1   " 两个字开始补全
             let g:ycm_seed_identifiers_with_syntax = 1
@@ -698,6 +701,7 @@
             let g:ycm_use_ultisnips_completer = 1
             let g:ycm_semantic_triggers =  {
                         \   'c' : ['->', '.'],
+                        \   'go' : ['.'],
                         \   'objc' : ['->', '.'],
                         \   'ocaml' : ['.', '#'],
                         \   'cpp,objcpp' : ['->', '.', '::'],
@@ -723,7 +727,7 @@
             let g:neocomplete#enable_fuzzy_completion = 1
             let g:neocomplete#sources#syntax#min_keyword_length = 3
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
-            au Filetype c,cpp,java,python,php let g:neocomplete#enable_at_startup = 0
+            au Filetype c,cpp,java,python,php,go let g:neocomplete#enable_at_startup = 0
         elseif count(g:lcl_bundle_groups, 'neocomplcache')
             let g:acp_enableAtStartup = 0
             let g:neocomplcache_max_list = 15
@@ -736,8 +740,8 @@
             let g:neocomplcache_fuzzy_completion_start_length = 3   " 3个字母后开启模糊匹配
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
             if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
-                au Filetype c,cpp,java,python,php let g:neocomplcache_enable_at_startup = 0
-                au BufLeave *.c,*.cpp,*.java,*.py,*.php set completefunc=neocomplcache#complete
+                au Filetype c,cpp,java,python,php,go let g:neocomplcache_enable_at_startup = 0
+                au BufLeave *.c,*.cpp,*.java,*.py,*.php,*.go set completefunc=neocomplcache#complete
             endif
         endif
         if isdirectory(expand("~/.vim/bundle/ultisnips/"))
@@ -764,7 +768,7 @@
             nnoremap <LocalLeader>q :Unite register<CR>
             nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=10 quickfix<CR>
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=10 location_list<CR>
-            nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline<CR>
+            nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline -start-insert<CR>
             nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=10 mark<CR>
             nnoremap <silent><Leader>A :Unite -silent -auto-preview -winheight=10 -no-quit grep<CR>
             nnoremap <silent><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=10 -no-quit grep<CR>
@@ -851,6 +855,50 @@
     " JSON {
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
         let g:vim_json_syntax_conceal = 0
+    " }
+
+    " Go {
+        if isdirectory(expand("~/.vim/bundle/vim-go"))
+            let g:go_fmt_autosave = 1
+            let g:go_fmt_fail_silently = 0
+            let g:go_fmt_command = "goimports"
+            let g:go_list_type = "locationlist"
+            let g:go_snippet_case_type = "snakecase"    " json tag case type ["snakecase", "camelcase"]
+
+            let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+            let g:go_metalinter_autosave = 0
+            let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+            let g:go_metalinter_deadline = "5s"
+
+            let g:go_highlight_types = 1
+            let g:go_highlight_fields = 1
+            let g:go_highlight_functions = 1
+            let g:go_highlight_methods = 1
+            let g:go_highlight_build_constraints = 1
+            let g:go_highlight_generate_tags = 1
+
+            let g:go_template_autocreate = 0
+            let g:go_doc_keywordprg_enabled = 0
+            let g:go_auto_sameids = 1
+            " let g:go_auto_type_info = 1
+            " set updatetime=100
+
+            au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+            au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+            au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+
+            " run :GoBuild or :GoTestCompile based on the go file
+            function! s:build_go_files()
+                let l:file = expand('%')
+                if l:file =~# '^\f\+_test\.go$'
+                    call go#cmd#Test(0, 1)
+                elseif l:file =~# '^\f\+\.go$'
+                    call go#cmd#Build(0)
+                endif
+            endfunction
+
+            " au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+        endif
     " }
 
 " }
@@ -998,7 +1046,7 @@
         endfunction
 
         :map <F2> :call TitleInsert()<CR>5GA
-        :autocmd FileWritePre,BufWritePre *.py ks|call DateInsert()|'s
+        :au FileWritePre,BufWritePre *.py ks|call DateInsert()|'s
     " }
 
     " Indent Python in the Google way {

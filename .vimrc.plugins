@@ -52,9 +52,9 @@
         if has('win32') || has('win64')
             let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'php']
         elseif has('macunix')
-            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php']
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php', 'go']
         else
-            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php']
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php', 'go']
         endif
     endif
 
@@ -98,6 +98,7 @@
             Plug 'scrooloose/nerdcommenter'
             Plug 'majutsushi/tagbar'
             Plug 'junegunn/vim-easy-align'
+            Plug 'AndrewRadev/splitjoin.vim'
             " Plug 'godlygeek/tabular'
         endif
     " }
@@ -181,7 +182,8 @@
     " Go Lang {
         if count(g:lcl_bundle_groups, 'go')
             " Plug 'Blackrush/vim-gocode'
-            Plug 'jstemmer/gotags'
+            Plug 'fatih/vim-go', { 'for': 'go' }
+            " Plug 'jstemmer/gotags'
         endif
     " }
 
