@@ -344,20 +344,27 @@
         if isdirectory(expand("~/.vim/bundle/vim-airline/"))
             set laststatus=2                                    " 显示状态栏
             if has('gui_running')
-                let g:airline_powerline_fonts = 0               " 是否使用powerline字体
+                let g:airline_powerline_fonts = 0
             else
                 let g:airline_powerline_fonts = 1
             endif
             if colors_name == 'molokai'
-                let g:airline_theme='powerlineish'                     " 设置主题
+                let g:airline_theme='powerlineish'
             elseif colors_name == 'solarized'
-                let g:airline_theme='solarized'                     " 设置主题
+                let g:airline_theme='solarized'
             endif
             let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
             let g:airline#extensions#tabline#tab_nr_type = 1
             let g:airline#extensions#tabline#show_tab_nr = 1
             let g:airline#extensions#tabline#show_tab_type = 1
             let g:airline#extensions#tabline#buffer_nr_show = 0
+
+            let g:airline#extensions#whitespace#enabled = 1
+            let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
+            let g:airline#extensions#whitespace#trailing_format = 'trail[%s]'
+            let g:airline#extensions#whitespace#mixed_indent_format = 'indent[%s]'
+            let g:airline#extensions#whitespace#long_format = 'long[%s]'
+            let g:airline#extensions#whitespace#mixed_indent_file_format = 'indent-f[%s]'
 
             if g:airline_powerline_fonts != 1
                 let g:airline_left_sep=''
