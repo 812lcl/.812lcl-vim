@@ -165,7 +165,7 @@
     " hi Comment ctermfg=lightgrey guifg=lightgrey
     hi CursorLineNr ctermfg=red guifg=red
     hi VertSplit ctermbg=Grey ctermfg=Grey cterm=none guibg=Grey guifg=Grey
-    hi Visual ctermbg=cyan ctermfg=white cterm=none guibg=cyan guifg=black
+    hi Visual ctermbg=white ctermfg=darkgrey cterm=none guibg=cyan guifg=black
     hi DiffAdd ctermbg=blue ctermfg=white guibg=blue guifg=white
     hi DiffDelete ctermbg=green ctermfg=lightgrey guibg=green
     hi DiffChange ctermbg=red ctermfg=White guibg=red guifg=White
