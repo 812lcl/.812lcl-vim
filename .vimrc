@@ -138,8 +138,10 @@
 
     " }
 
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        colorscheme solarized               " 载入皮肤主题
+    colorscheme molokai             " 载入皮肤主题
+    if colors_name == 'molokai'
+        let g:molokai_original = 1
+    elseif colors_name == 'solarized' && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
         let g:solarized_contrast="high"
@@ -160,10 +162,10 @@
     hi clear SignColumn             " 标记列背景和主题背景匹配
     hi clear LineNr                 " 当前行列背景和主题背景匹配
 
+    " hi Comment ctermfg=lightgrey guifg=lightgrey
     hi CursorLineNr ctermfg=red guifg=red
     hi VertSplit ctermbg=Grey ctermfg=Grey cterm=none guibg=Grey guifg=Grey
     hi Visual ctermbg=cyan ctermfg=white cterm=none guibg=cyan guifg=black
-    hi Comment ctermfg=lightgrey guifg=lightgrey
     hi DiffAdd ctermbg=blue ctermfg=white guibg=blue guifg=white
     hi DiffDelete ctermbg=green ctermfg=lightgrey guibg=green
     hi DiffChange ctermbg=red ctermfg=White guibg=red guifg=White
@@ -346,7 +348,11 @@
             else
                 let g:airline_powerline_fonts = 1
             endif
-            let g:airline_theme='solarized'                     " 设置主题
+            if colors_name == 'molokai'
+                let g:airline_theme='powerlineish'                     " 设置主题
+            elseif colors_name == 'solarized'
+                let g:airline_theme='solarized'                     " 设置主题
+            endif
             let g:airline#extensions#tabline#enabled = 1        " 顶部tab栏显示
             let g:airline#extensions#tabline#tab_nr_type = 1
             let g:airline#extensions#tabline#show_tab_nr = 1

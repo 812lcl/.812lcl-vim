@@ -68,6 +68,7 @@
             Plug 'scrooloose/nerdtree'
             Plug 'Xuyuanp/nerdtree-git-plugin'
             Plug 'altercation/vim-colors-solarized'
+            Plug 'tomasr/molokai'
             Plug 'tpope/vim-surround'
             Plug 'sessionman.vim'
             Plug 'matchit.zip'
@@ -151,7 +152,7 @@
         if count(g:lcl_bundle_groups, 'html')
             Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css'] }
             Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
-            " Plug 'gorodinskiy/vim-coloresque', { 'for': ['html', 'vim', 'css'] }
+            Plug 'gorodinskiy/vim-coloresque', { 'for': ['html', 'vim', 'css'] }
             " Plug 'amirh/HTML-AutoCloseTag', { 'for': 'html' }
         endif
     " }

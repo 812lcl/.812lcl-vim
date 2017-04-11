@@ -121,6 +121,7 @@ create_symlinks() {
     touch "$HOME/.vim/.vimtmp/viminfo"
     cp -rf $app_dir/static $endpath/.vim/
     cp -rf $app_dir/syntax $endpath/.vim/
+    cp -rf $app_dir/autoload $endpath/.vim/
 
     if [ -e "$endpath/.vimrc.fork" ]; then
         ln -sf "$endpath/.vimrc.fork" "$HOME/.vimrc.fork"
