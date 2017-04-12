@@ -169,7 +169,7 @@
     hi DiffAdd ctermbg=blue ctermfg=white guibg=blue guifg=white
     hi DiffDelete ctermbg=green ctermfg=lightgrey guibg=green
     hi DiffChange ctermbg=red ctermfg=White guibg=red guifg=White
-    hi DiffText ctermbg=yellow ctermfg=lightgrey guibg=yellow guifg=black
+    hi DiffText ctermbg=yellow ctermfg=darkgrey guibg=yellow guifg=black
 
     if has('cmdline_info')
         set showcmd                 " 右下角显示当前操作
