@@ -702,10 +702,11 @@
 
     " YouCompleteMe {
         if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
+            au BufEnter *.c,*.cpp,*.java,*.py,*.php,*.go set completefunc=youcompleteme#Complete
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
-            let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1, 'go': 1}
+            let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1, 'php': 1, 'go': 1}
             let g:ycm_complete_in_comments = 1              " 评论中也应用补全
             let g:ycm_min_num_of_chars_for_completion = 1   " 两个字开始补全
             let g:ycm_seed_identifiers_with_syntax = 1
@@ -740,7 +741,10 @@
             let g:neocomplete#enable_fuzzy_completion = 1
             let g:neocomplete#sources#syntax#min_keyword_length = 3
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
-            au Filetype c,cpp,java,python,php,go let g:neocomplete#enable_at_startup = 0
+            if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
+                au Filetype c,cpp,java,python,php,go let g:neocomplete#enable_at_startup = 0
+                au BufLeave *.c,*.cpp,*.java,*.py,*.php,*.go set completefunc=neocomplete#complete
+            endif
         elseif count(g:lcl_bundle_groups, 'neocomplcache')
             let g:acp_enableAtStartup = 0
             let g:neocomplcache_max_list = 15
