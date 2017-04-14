@@ -224,7 +224,7 @@
                 Plug 'mattn/gist-vim'
             endif
             Plug 'Shougo/vimproc', { 'do': 'make' }
-            " Plug 'ianva/vim-youdao-translater'
+            Plug 'ianva/vim-youdao-translater'
             " Plug 'christoomey/vim-tmux-navigator'
         endif
     " }
