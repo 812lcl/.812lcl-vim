@@ -900,6 +900,7 @@
             " let g:go_auto_type_info = 1
             " set updatetime=100
 
+            au FileType go nnoremap <silent> <C-p> :GoDoc<CR>
             au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
             au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
             au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
@@ -915,6 +916,14 @@
             endfunction
 
             " au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+        endif
+    " }
+
+    " vim-youdao-translater {
+        if isdirectory(expand("~/.vim/bundle/vim-youdao-translater"))
+            nmap <Leader>yd :Ydc<CR>
+            nmap <Leader>ye :Yde<CR>
+            nmap <Leader>yv :Ydv<CR>
         endif
     " }
 
