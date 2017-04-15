@@ -19,7 +19,6 @@
 
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
         if has('win32') || has('win64')
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 
@@ -83,10 +82,6 @@
             Plug 'TaskList.vim'
             Plug 'mbbill/fencview', { 'on': 'FencAutoDetect' }
             Plug 'sheerun/vim-polyglot'
-            " Plug 'kien/ctrlp.vim'
-            " Plug 'mhinz/vim-startify'
-            " Plug 'restore_view.vim'
-            " Plug 'VOoM'
         endif
     " }
 
@@ -100,7 +95,6 @@
             Plug 'majutsushi/tagbar'
             Plug 'junegunn/vim-easy-align'
             Plug 'AndrewRadev/splitjoin.vim'
-            " Plug 'godlygeek/tabular'
         endif
     " }
 
@@ -111,7 +105,7 @@
                 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
                 Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer' }
             elseif has('unix')
-                Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+                Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
             endif
         else
             Plug 'ervandew/supertab'
@@ -122,7 +116,6 @@
             Plug 'SirVer/ultisnips'
             Plug 'honza/vim-snippets'
             Plug 'javacomplete', { 'for': 'java' }
-            " Plug 'clang-complete'
         elseif count(g:lcl_bundle_groups, 'neocomplete')
             Plug 'Shougo/neocomplete.vim'
             Plug 'Shougo/neosnippet'
@@ -153,16 +146,12 @@
             Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css'] }
             Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
             Plug 'gorodinskiy/vim-coloresque', { 'for': ['html', 'vim', 'css'] }
-            " Plug 'amirh/HTML-AutoCloseTag', { 'for': 'html' }
         endif
     " }
 
     " Ruby {
         if count(g:lcl_bundle_groups, 'ruby')
             Plug 'tpope/vim-rails', { 'for': 'ruby' }
-            let g:rubycomplete_buffer_loading = 1
-            " let g:rubycomplete_classes_in_global = 1
-            " let g:rubycomplete_rails = 1
         endif
     " }
 
@@ -182,9 +171,7 @@
 
     " Go Lang {
         if count(g:lcl_bundle_groups, 'go')
-            " Plug 'Blackrush/vim-gocode'
             Plug 'fatih/vim-go', { 'for': 'go' }
-            " Plug 'jstemmer/gotags'
         endif
     " }
 
@@ -194,7 +181,6 @@
             if has('mac')
                 Plug 'junegunn/vim-xmark', { 'do': 'make' }
             endif
-            " Plug 'spf13/vim-preview'
             " Plug 'wting/rust.vim'
             " Plug 'tpope/vim-cucumber'
             " Plug 'cespare/vim-toml'
@@ -225,7 +211,6 @@
             endif
             Plug 'Shougo/vimproc', { 'do': 'make' }
             Plug 'ianva/vim-youdao-translater'
-            " Plug 'christoomey/vim-tmux-navigator'
         endif
     " }
     endif

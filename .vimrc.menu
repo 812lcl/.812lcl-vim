@@ -121,8 +121,6 @@
             \'Tagbar'],
         \['> Syntastic check                            (syntastic)                 Map: ,i',
             \'normal ,i'],
-        \['> Syntastic show errors                      (syntastic)                 Map: ,o',
-            \'normal ,o'],
         \['> Comment current line                       (nerdcommenter)             Map: ,cc',
             \'normal ,cc'],
         \['> Same as cc but forces nesting              (nerdcommenter)             Map: ,cn',
@@ -183,9 +181,9 @@
             \                                 Map: <Space>g',
         \}
     let g:unite_source_menu_menus.git.command_candidates = [
-        \['> next hunk                                                              Map: gh',
+        \['> next hunk              (vim-signify)                                   Map: gh',
             \'GitGutterNextHunk'],
-        \['> prev hunk                                                              Map: hg',
+        \['> prev hunk              (vim-signify)                                   Map: hg',
             \'GitGutterPrevHunk'],
         \['> git init               (fugitive)                                      Map: ,gn',
             \'Unite output:echo\ system("git\ init")'],

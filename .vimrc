@@ -33,7 +33,6 @@
 
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
         if WINDOWS()
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
@@ -196,12 +195,8 @@
     set softtabstop=4               " 退格删除缩进
     set autoindent                  " 与前一行同样等级缩进
     set backspace=indent,eol,start  " 退格可删除缩进和原有字符
-    " au FileType ruby setlocal ts=2 sts=2 sw=2 et
-    au FileType yaml setlocal ts=2 sts=2 sw=2 et
-    au FileType html setlocal ts=2 sts=2 sw=2 et
-    au FileType css setlocal ts=2 sts=2 sw=2 et
-    au FileType go setlocal ts=4 sts=4 sw=4 noet
     " au FileType python setlocal textwidth=100
+    au FileType go setlocal ts=4 sts=4 sw=4 noet
     au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o       " 下一行不自动添加注释
     au BufLeave * let b:winview = winsaveview()                                     " 切换buffer时保持光标所在行在窗口中到位置
     au BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
@@ -211,15 +206,15 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'
-    let maplocalleader=" "      " 映射<localleader>键       remain p
+    let mapleader=","           " 映射<leader>键,默认'\'    remain r y o p [ ] ; ' . / 6~10, maybe l v
+    let maplocalleader=" "      " 映射<localleader>键       remain p maybe ;
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
     noremap <Leader>x :lnext<CR>
     noremap <Leader>z :lpre<CR>
-    noremap <Leader>p :lclose<CR>
     noremap <Leader>n ggVG
+    noremap <Leader>du :diffupdate<CR>
     nnoremap <silent> J :bp<CR>
     nnoremap <silent> K :bn<CR>
     vnoremap <silent> J :m '>+1<CR>gv=gv
@@ -315,7 +310,6 @@
         if filereadable($CTAGS_DB)
             set tags+=$CTAGS_DB
         endif
-
     " }
 
     " Cscope {
@@ -442,25 +436,6 @@
         endif
     " }
 
-    " Tabularize {
-        if isdirectory(expand("~/.vim/bundle/tabular/"))
-            nmap <LocalLeader>& :Tabularize /&<CR>
-            vmap <LocalLeader>& :Tabularize /&<CR>
-            nmap <LocalLeader>= :Tabularize /=<CR>
-            vmap <LocalLeader>= :Tabularize /=<CR>
-            nmap <LocalLeader>: :Tabularize /:<CR>
-            vmap <LocalLeader>: :Tabularize /:<CR>
-            nmap <LocalLeader>:: :Tabularize /:\zs<CR>
-            vmap <LocalLeader>:: :Tabularize /:\zs<CR>
-            nmap <LocalLeader>, :Tabularize /,<CR>
-            vmap <LocalLeader>, :Tabularize /,<CR>
-            nmap <LocalLeader>,, :Tabularize /,\zs<CR>
-            vmap <LocalLeader>,, :Tabularize /,\zs<CR>
-            nmap <LocalLeader><Bar> :Tabularize /<Bar><CR>
-            vmap <LocalLeader><Bar> :Tabularize /<Bar><CR>
-        endif
-    " }
-
     " vim-easy-align {
         if isdirectory(expand("~/.vim/bundle/vim-easy-align/"))
             vmap <Enter> <Plug>(EasyAlign)
@@ -470,7 +445,6 @@
 
     " sessionman.vim {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        "set viewoptions=folds,options,cursor,unix,slash                 " restore_view.vim
         if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
             nmap <LocalLeader>y :SessionList<CR>
             nmap <LocalLeader>u :SessionSave<CR>
@@ -479,7 +453,6 @@
     " }
 
     " PyMode {
-        " Disable if python support not present
         if !has('python')
             let g:pymode = 0
         endif
@@ -503,10 +476,8 @@
             let g:pymode_motion = 1
             let g:pymode_indent = 1
             let g:pymode_virtualenv = 1
-            let g:pymode_run = 1
-            let g:pymode_run_bind = '<leader>r'
+            let g:pymode_run = 0
             let g:pymode_breakpoint = 0
-            let g:pymode_breakpoint_bind = '<leader>b'
             let g:pymode_quickfix_minheight = 6
             let g:pymode_quickfix_maxheight = 10
             let g:pymode_syntax = 1
@@ -526,10 +497,10 @@
             let g:pymode_rope_rename_bind = '<leader><Leader>rr'
             let g:pymode_rope_rename_module_bind = '<leader><Leader>r1r'
             let g:pymode_rope_module_to_package_bind = '<leader><Leader>r1p'
-            noremap <Leader>y :PymodeLint<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
+            au BufEnter *.py noremap <Leader>i :PymodeLint<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
             noremap <Leader>u :PymodeLintAuto<CR>
             if !OSX()
-                let g:pymode_doc_bind = '<C-p>'
+            ,   let g:pymode_doc_bind = '<C-p>'
             else
                 let g:pymode_doc = 0
             endif
@@ -569,9 +540,7 @@
                 au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go nested :TagbarOpen
             endif
 
-            " If using go please install the gotags program using the following
-            " go install github.com/jstemmer/gotags
-            " And make sure gotags is in your path
+            " If using go please install the gotags program
             let g:tagbar_type_go = {
                 \ 'ctagstype' : 'go',
                 \ 'kinds'     : [  'p:package', 'i:imports:1', 'c:constants', 'v:variables',
@@ -626,9 +595,6 @@
             nnoremap <Leader>gcd :Gcd<CR>
             nnoremap <Leader>glc :Glcd<CR>
 
-            " for the diffmode
-            noremap <Leader>du :diffupdate<CR>
-
             if !exists(":Gdiffoff")
                 command Gdiffoff diffoff | q | Gedit
             endif
@@ -671,12 +637,12 @@
             let g:syntastic_always_populate_loc_list=1
             let g:syntastic_loc_list_height = 6
             let g:syntastic_enable_highlighting = 0
-            let g:syntastic_mode_map = { "passive_filetypes": ["python", "go"] }
+            let g:syntastic_mode_map = { 'mode': 'active', "passive_filetypes": ["go", "python"] }
             let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
             hi SyntasticError ctermbg=red guibg=red
             hi SyntasticWarning ctermbg=yellow guibg=yellow
             noremap <Leader>i :SyntasticCheck<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
-            noremap <Leader>o :Errors<CR>
+            au BufLeave *.py,*.go noremap <Leader>i :SyntasticCheck<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
         endif
     " }
 
@@ -726,7 +692,7 @@
                         \   'lua' : ['.', ':'],
                         \   'erlang' : [':'],
                         \ }
-            let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+            " let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
         endif
     " }
 
@@ -767,7 +733,7 @@
     " }
 
     " Doxygentoolkit {
-        let g:DoxygenToolkit_authorName="liuchunlei <liuchunlei@baidu.com>"
+        let g:DoxygenToolkit_authorName="liuchunlei <812liuchunlei@163.com>"
         let g:DoxygenToolkit_briefTag_funcName="yes"
         let g:DoxygenToolkit_versionString="1.0.0.0"
         let g:doxygen_enhanced_color=1
@@ -785,7 +751,7 @@
             nnoremap <LocalLeader>q :Unite register<CR>
             nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=10 quickfix<CR>
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=10 location_list<CR>
-            nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline -start-insert<CR>
+            nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline<CR>
             nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=10 mark<CR>
             nnoremap <silent><Leader>A :Unite -silent -auto-preview -winheight=10 -no-quit grep<CR>
             nnoremap <silent><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=10 -no-quit grep<CR>
@@ -814,12 +780,10 @@
                 let g:unite_source_grep_command='ag'
                 let g:unite_source_grep_default_opts='--nocolor --nogroup -a -S'
                 let g:unite_source_grep_recursive_opt=''
-                let g:unite_source_grep_search_word_highlight = 1
             elseif executable('ack')
                 let g:unite_source_grep_command='ack'
                 let g:unite_source_grep_default_opts='--no-group --no-color'
                 let g:unite_source_grep_recursive_opt=''
-                let g:unite_source_grep_search_word_highlight = 1
             endif
 
             " Unite menu {
@@ -880,7 +844,7 @@
             let g:go_fmt_fail_silently = 0
             let g:go_fmt_command = "goimports"
             let g:go_list_type = "locationlist"
-            let g:go_snippet_case_type = "snakecase"    " json tag case type ["snakecase", "camelcase"]
+            let g:go_snippet_case_type = "snakecase"
 
             let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
             let g:go_metalinter_autosave = 0
@@ -904,6 +868,7 @@
             au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
             au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
             au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+            au BufEnter *.go noremap <Leader>i :GoMetaLinter<CR>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
@@ -921,9 +886,9 @@
 
     " vim-youdao-translater {
         if isdirectory(expand("~/.vim/bundle/vim-youdao-translater"))
-            nmap <Leader>yd :Ydc<CR>
-            nmap <Leader>ye :Yde<CR>
-            nmap <Leader>yv :Ydv<CR>
+            nmap <Leader><Leader>d :Ydc<CR>
+            nmap <Leader><Leader>e :Yde<CR>
+            nmap <Leader><Leader>v :Ydv<CR>
         endif
     " }
 
@@ -1056,7 +1021,7 @@
             call append(2,'"""')
             call append(3,"@file    : " . expand('%:t'))
             call append(4,"@brief   : ")
-            call append(5,"@author  : liuchunlei <liuchunlei@baidu.com>")
+            call append(5,"@author  : liuchunlei <812liuchunlei@163.com>")
             call append(6,"@date    : " . strftime("%Y-%m-%d %H:%M:%S"))
             call append(7,"@update  : " . strftime("%Y-%m-%d %H:%M:%S"))
             call append(8,"@version : 1.0.0.0")
