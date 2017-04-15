@@ -868,7 +868,7 @@
             au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
             au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
             au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-            au BufEnter *.go noremap <Leader>i :GoMetaLinter<CR>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            au BufEnter *.go noremap <Leader>i :GoMetaLinter<CR>
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
