@@ -599,6 +599,7 @@
         let g:doxygen_enhanced_color=1
         au FileType c,cpp map <F2> :DoxAuthor<CR>
         au FileType c,cpp map <F3> :Dox<CR>
+        au BufEnter *.py map <F2> :call TitleInsert()<CR>5GA
     " }
 
     " OmniComplete {
@@ -806,11 +807,12 @@
             " let g:go_auto_type_info = 1
             " set updatetime=100
 
-            au FileType go nnoremap <silent> <C-p> :GoDoc<CR>
             au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
             au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
             au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-            au BufEnter *.go noremap <Leader>i :GoMetaLinter<CR>
+
+            au FileType go nnoremap <silent> <C-p> :GoDoc<CR>
+            au BufEnter *.go nnoremap <Leader>i :GoMetaLinter<CR>
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
@@ -1017,16 +1019,18 @@
 
     " TitleInsert {
         function! TitleInsert()
-            call setline(1,"#!/usr/bin/env python")
-            call setline(2,"# -*- coding: utf-8 -*-")
-            call append(2,'"""')
-            call append(3,"@file    : " . expand('%:t'))
-            call append(4,"@brief   : ")
-            call append(5,"@author  : liuchunlei <812liuchunlei@163.com>")
-            call append(6,"@date    : " . strftime("%Y-%m-%d %H:%M:%S"))
-            call append(7,"@update  : " . strftime("%Y-%m-%d %H:%M:%S"))
-            call append(8,"@version : 1.0.0.0")
-            call append(9,'"""')
+            if( &filetype == "python" )
+                call setline(1,"#!/usr/bin/env python")
+                call setline(2,"# -*- coding: utf-8 -*-")
+                call append(2,'"""')
+                call append(3,"@file    : " . expand('%:t'))
+                call append(4,"@brief   : ")
+                call append(5,"@author  : liuchunlei <812liuchunlei@163.com>")
+                call append(6,"@date    : " . strftime("%Y-%m-%d %H:%M:%S"))
+                call append(7,"@update  : " . strftime("%Y-%m-%d %H:%M:%S"))
+                call append(8,"@version : 1.0.0.0")
+                call append(9,'"""')
+            endif
         endfunction
 
         function! DateInsert()
@@ -1039,6 +1043,7 @@
 
         au Filetype python map <F2> :call TitleInsert()<CR>5GA
         au FileWritePre,BufWritePre *.py ks|call DateInsert()|'s
+        au BufEnter *.c,*.cpp,*.h map <F2> :DoxAuthor<CR>
     " }
 
     " Indent Python in the Google way {
