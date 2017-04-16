@@ -682,7 +682,7 @@
             endif
         endif
         if isdirectory(expand("~/.vim/bundle/ultisnips/"))
-            let g:UltiSnipsExpandTrigger = "<C-l>"          " <C-j>代替<Tab>触发ultisnips补全代码段
+            let g:UltiSnipsExpandTrigger = "<C-j>"          " <C-j>代替<Tab>触发ultisnips补全代码段
         endif
     " }
 
