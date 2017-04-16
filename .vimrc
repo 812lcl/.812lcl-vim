@@ -104,7 +104,6 @@
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
     au FileType vim setlocal keywordprg=:help
-    au FileType vim nnoremap <silent> <C-p> K
 
 " }
 
@@ -207,7 +206,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    remain r y o p [ ] ; ' . / 6~10, maybe l v
+    let mapleader=","           " 映射<leader>键,默认'\'    remain r y o p [ ] ; ' . / 6~10; maybe l v; overwrite <F2> <c-p> K
     let maplocalleader=" "      " 映射<localleader>键       remain p maybe ;
     inoremap jj <ESC>
     vnoremap > >gv
@@ -811,8 +810,12 @@
             au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
             au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 
-            au FileType go nnoremap <silent> <C-p> :GoDoc<CR>
+            au BufEnter *.go nnoremap <silent> <C-p> :GoDoc<CR>
             au BufEnter *.go nnoremap <Leader>i :GoMetaLinter<CR>
+            au BufLeave *.go nnoremap <silent> <C-p> K
+            if OSX()
+                au BufLeave *.go nmap <silent> <C-p> <Plug>DashSearch
+            endif
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
