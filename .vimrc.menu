@@ -113,6 +113,8 @@
             \                                                 Map: <Space>c',
         \}
     let g:unite_source_menu_menus.code.command_candidates = [
+        \['> Edit snippets                              (UltiSnips)                 Map: ',
+            \':UltiSnipsEdit'],
         \['> Count lines of code                                                    Map: ',
             \'Unite -default-action= output:call\\ LinesOfCode()'],
         \['> Toggle indent lines                        (indent-guides)             Map: ,g',

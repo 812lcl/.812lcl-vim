@@ -104,6 +104,7 @@
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
     au FileType vim setlocal keywordprg=:help
+    au FileType vim nnoremap <silent> <C-p> K
 
 " }
 
@@ -424,7 +425,7 @@
             let g:tagbar_autopreview = 0
             let g:tagbar_previewwin_pos = "rightbelow"
             if !&diff
-                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go nested :TagbarOpen
+                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go,snippets nested :TagbarOpen
             endif
 
             " If using go please install the gotags program
@@ -596,8 +597,8 @@
         let g:DoxygenToolkit_briefTag_funcName="yes"
         let g:DoxygenToolkit_versionString="1.0.0.0"
         let g:doxygen_enhanced_color=1
-        :map <F4> :DoxAuthor<CR>
-        :map <F5> :Dox<CR>
+        au FileType c,cpp map <F2> :DoxAuthor<CR>
+        au FileType c,cpp map <F3> :Dox<CR>
     " }
 
     " OmniComplete {
@@ -659,7 +660,7 @@
             let g:neocomplete#enable_camel_case = 1
             let g:neocomplete#enable_auto_delimiter = 1
             let g:neocomplete#enable_fuzzy_completion = 1
-            let g:neocomplete#sources#syntax#min_keyword_length = 3
+            let g:neocomplete#sources#syntax#min_keyword_length = 1
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
             if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
                 au Filetype c,cpp,java,python,php,go let g:neocomplete#enable_at_startup = 0
@@ -673,8 +674,9 @@
             let g:neocomplcache_enable_camel_case_completion = 1
             let g:neocomplcache_enable_underbar_completion = 1
             let g:neocomplcache_enable_auto_delimiter = 1
-            let g:neocomplcache_enable_fuzzy_completion = 1         " 开启模糊匹配
-            let g:neocomplcache_fuzzy_completion_start_length = 3   " 3个字母后开启模糊匹配
+            let g:neocomplcache_min_keyword_length = 1
+            let g:neocomplcache_enable_fuzzy_completion = 1
+            let g:neocomplcache_fuzzy_completion_start_length = 3
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
             if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
                 au Filetype c,cpp,java,python,php,go let g:neocomplcache_enable_at_startup = 0
@@ -682,7 +684,10 @@
             endif
         endif
         if isdirectory(expand("~/.vim/bundle/ultisnips/"))
-            let g:UltiSnipsExpandTrigger = "<C-j>"          " <C-j>代替<Tab>触发ultisnips补全代码段
+            let g:UltiSnipsExpandTrigger = "<C-j>"
+            let g:UltiSnipsEnableSnipMate = 1
+            let g:UltiSnipsSnippetsDir = "~/.vim/mysnippets"
+            let g:UltiSnipsSnippetDirectories = ["mysnippets", "UltiSnips"]
         endif
     " }
 
@@ -1032,8 +1037,8 @@
             endif
         endfunction
 
-        :map <F2> :call TitleInsert()<CR>5GA
-        :au FileWritePre,BufWritePre *.py ks|call DateInsert()|'s
+        au Filetype python map <F2> :call TitleInsert()<CR>5GA
+        au FileWritePre,BufWritePre *.py ks|call DateInsert()|'s
     " }
 
     " Indent Python in the Google way {
