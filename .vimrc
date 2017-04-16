@@ -276,64 +276,6 @@
         set viminfo+=n$HOME/.vim/.vimtmp/viminfo
     " }
 
-    " Ctags {
-        " Make tags placed in .git/tags file available in all levels of a repository
-        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-        if gitroot != ''
-            let &tags = &tags . ',' . gitroot . '/.git/tags'
-        endif
-
-        fun! MatchCaseTag()
-            let ic = &ic
-            set noic
-            try
-                exe 'tjump ' . expand('<cword>')
-            finally
-                let &ic = ic
-            endtry
-        endfun
-        nnoremap <silent> <c-]> :call MatchCaseTag()<CR>
-
-        function s:FindFile(file)
-            let curdir = getcwd()
-            let found = curdir
-            while !filereadable(a:file) && found != "/"
-                cd ..
-                let found = getcwd()
-            endwhile
-            execute "cd " . curdir
-            return found
-        endfunction
-
-        let $CTAGS_DIR=s:FindFile("tags")
-        let $CTAGS_DB=$CTAGS_DIR."/tags"
-        if filereadable($CTAGS_DB)
-            set tags+=$CTAGS_DB
-        endif
-    " }
-
-    " Cscope {
-        set cscopetag
-        set cscopequickfix=s-,c-,d-,i-,t-,e-   " 使用QuickFix窗口来显示cscope查找结果
-        let $CSCOPE_DIR=s:FindFile("cscope.out")
-        let $CSCOPE_DB=$CSCOPE_DIR."/cscope.out"
-        if filereadable($CSCOPE_DB)
-            cs add $CSCOPE_DB $CSCOPE_DIR
-        endif
-        nmap <Leader><Leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-        nmap <Leader><Leader>1 :cs find g<Space>
-        nmap <Leader><Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-        nmap <Leader><Leader>2 :cs find d<Space>
-        nmap <Leader><Leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-        nmap <Leader><Leader>3 :cs find c<Space>
-        nmap <Leader><Leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-        nmap <Leader><Leader>0 :cs find s<Space>
-        nmap <Leader><Leader>4 :cs find t <C-R>=expand("<cword>")<CR><CR>
-        nmap <Leader><Leader>6 :cs find e <C-R>=expand("<cword>")<CR><CR>
-        nmap <Leader><Leader>7 :cs find f <C-R>=expand("<cfile>")<CR><CR>
-        nmap <Leader><Leader>8 :cs find i <C-R>=expand("<cfile>")<CR><CR>
-    " }
-
     " vim-airline {
         if isdirectory(expand("~/.vim/bundle/vim-airline/"))
             set laststatus=2                                    " 显示状态栏
@@ -449,61 +391,6 @@
             nmap <LocalLeader>y :SessionList<CR>
             nmap <LocalLeader>u :SessionSave<CR>
             nmap <LocalLeader>i :SessionClose<CR>
-        endif
-    " }
-
-    " PyMode {
-        if !has('python')
-            let g:pymode = 0
-        endif
-
-        if isdirectory(expand("~/.vim/bundle/python-mode")) && has('python')
-            let g:pymode = 1
-            let g:pymode_lint = 1
-            let g:pymode_lint_on_write = 1
-            let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8']
-            let g:pymode_lint_ignore = "E501,F401,W0401,E265,C0301,W0511,w0621,C0111,W0622"
-            let g:pymode_lint_todo_symbol = 'W'
-            let g:pymode_lint_comment_symbol = 'C'
-            let g:pymode_lint_visual_symbol = 'R'
-            let g:pymode_lint_error_symbol = 'E'
-            let g:pymode_lint_info_symbol = 'I'
-            let g:pymode_lint_pyflakes_symbol = 'F'
-            let g:pymode_trim_whitespaces = 0
-            let g:pymode_options = 0
-            let g:pymode_doc = 1
-            let g:pymode_folding = 1
-            let g:pymode_motion = 1
-            let g:pymode_indent = 1
-            let g:pymode_virtualenv = 1
-            let g:pymode_run = 0
-            let g:pymode_breakpoint = 0
-            let g:pymode_quickfix_minheight = 6
-            let g:pymode_quickfix_maxheight = 10
-            let g:pymode_syntax = 1
-            let g:pymode_syntax_all = 1
-            let g:pymode_syntax_string_formatting = g:pymode_syntax_all
-            let g:pymode_syntax_string_format = g:pymode_syntax_all
-            let g:pymode_syntax_string_templates = g:pymode_syntax_all
-            let g:pymode_syntax_doctests = g:pymode_syntax_all
-            let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
-            let g:pymode_syntax_builtin_types = g:pymode_syntax_all
-            let g:pymode_rope = 1
-            let g:pymode_rope_lookup_project = 1
-            let g:pymode_rope_completion = 0
-            let g:pymode_rope_show_doc_bind = '<Leader><Leader>d'
-            let g:pymode_rope_goto_definition_bind = '<Leader><Leader>g'
-            let g:pymode_rope_organize_imports_bind = '<Leader><Leader>ro'
-            let g:pymode_rope_rename_bind = '<leader><Leader>rr'
-            let g:pymode_rope_rename_module_bind = '<leader><Leader>r1r'
-            let g:pymode_rope_module_to_package_bind = '<leader><Leader>r1p'
-            au BufEnter *.py noremap <Leader>i :PymodeLint<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
-            noremap <Leader>u :PymodeLintAuto<CR>
-            if !OSX()
-            ,   let g:pymode_doc_bind = '<C-p>'
-            else
-                let g:pymode_doc = 0
-            endif
         endif
     " }
 
@@ -627,6 +514,64 @@
         endif
     " }
 
+    " Ctags {
+        " Make tags placed in .git/tags file available in all levels of a repository
+        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+        if gitroot != ''
+            let &tags = &tags . ',' . gitroot . '/.git/tags'
+        endif
+
+        fun! MatchCaseTag()
+            let ic = &ic
+            set noic
+            try
+                exe 'tjump ' . expand('<cword>')
+            finally
+                let &ic = ic
+            endtry
+        endfun
+        nnoremap <silent> <c-]> :call MatchCaseTag()<CR>
+
+        function s:FindFile(file)
+            let curdir = getcwd()
+            let found = curdir
+            while !filereadable(a:file) && found != "/"
+                cd ..
+                let found = getcwd()
+            endwhile
+            execute "cd " . curdir
+            return found
+        endfunction
+
+        let $CTAGS_DIR=s:FindFile("tags")
+        let $CTAGS_DB=$CTAGS_DIR."/tags"
+        if filereadable($CTAGS_DB)
+            set tags+=$CTAGS_DB
+        endif
+    " }
+
+    " Cscope {
+        set cscopetag
+        set cscopequickfix=s-,c-,d-,i-,t-,e-   " 使用QuickFix窗口来显示cscope查找结果
+        let $CSCOPE_DIR=s:FindFile("cscope.out")
+        let $CSCOPE_DB=$CSCOPE_DIR."/cscope.out"
+        if filereadable($CSCOPE_DB)
+            cs add $CSCOPE_DB $CSCOPE_DIR
+        endif
+        au FileType c,cpp nmap <Leader><Leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+        au FileType c,cpp nmap <Leader><Leader>1 :cs find g<Space>
+        au FileType c,cpp nmap <Leader><Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+        au FileType c,cpp nmap <Leader><Leader>2 :cs find d<Space>
+        au FileType c,cpp nmap <Leader><Leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+        au FileType c,cpp nmap <Leader><Leader>3 :cs find c<Space>
+        au FileType c,cpp nmap <Leader><Leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+        au FileType c,cpp nmap <Leader><Leader>0 :cs find s<Space>
+        au FileType c,cpp nmap <Leader><Leader>4 :cs find t <C-R>=expand("<cword>")<CR><CR>
+        au FileType c,cpp nmap <Leader><Leader>6 :cs find e <C-R>=expand("<cword>")<CR><CR>
+        au FileType c,cpp nmap <Leader><Leader>7 :cs find f <C-R>=expand("<cfile>")<CR><CR>
+        au FileType c,cpp nmap <Leader><Leader>8 :cs find i <C-R>=expand("<cfile>")<CR><CR>
+    " }
+
     " Syntastic {
         if isdirectory(expand("~/.vim/bundle/syntastic/"))
             let g:syntastic_check_on_open = 0
@@ -644,6 +589,15 @@
             noremap <Leader>i :SyntasticCheck<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
             au BufLeave *.py,*.go noremap <Leader>i :SyntasticCheck<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
         endif
+    " }
+
+    " Doxygentoolkit {
+        let g:DoxygenToolkit_authorName="liuchunlei <812liuchunlei@163.com>"
+        let g:DoxygenToolkit_briefTag_funcName="yes"
+        let g:DoxygenToolkit_versionString="1.0.0.0"
+        let g:doxygen_enhanced_color=1
+        :map <F4> :DoxAuthor<CR>
+        :map <F5> :Dox<CR>
     " }
 
     " OmniComplete {
@@ -692,7 +646,7 @@
                         \   'lua' : ['.', ':'],
                         \   'erlang' : [':'],
                         \ }
-            " let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+            let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
         endif
     " }
 
@@ -732,13 +686,147 @@
         endif
     " }
 
-    " Doxygentoolkit {
-        let g:DoxygenToolkit_authorName="liuchunlei <812liuchunlei@163.com>"
-        let g:DoxygenToolkit_briefTag_funcName="yes"
-        let g:DoxygenToolkit_versionString="1.0.0.0"
-        let g:doxygen_enhanced_color=1
-        :map <F4> :DoxAuthor<CR>
-        :map <F5> :Dox<CR>
+    " fencview {
+        if isdirectory(expand("~/.vim/bundle/fencview/"))
+            nmap <Leader>m :FencAutoDetect<CR>
+        endif
+    " }
+
+    " emmet-vim {
+        if isdirectory(expand("~/.vim/bundle/emmet-vim/"))
+            let g:user_emmet_leader_key='<C-y>'
+        endif
+    " }
+
+    " PIV {
+        if isdirectory(expand("~/.vim/bundle/PIV"))
+            let g:DisableAutoPHPFolding = 0
+            let g:PIVAutoClose = 0
+        endif
+    " }
+
+    " Misc {
+        if isdirectory(expand("~/.vim/bundle/matchit.zip"))
+            let b:match_ignorecase = 1
+        endif
+    " }
+
+    " AutoCloseTag {
+        " Make it so AutoCloseTag works for xml and xhtml files as well
+        if isdirectory(expand("~/.vim/bundle/AutoCloseTag"))
+            au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+            nmap <Leader>ac <Plug>ToggleAutoCloseMappings
+        endif
+    " }
+
+    " JSON {
+        nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+        let g:vim_json_syntax_conceal = 0
+    " }
+
+    " PyMode {
+        if !has('python')
+            let g:pymode = 0
+        endif
+
+        if isdirectory(expand("~/.vim/bundle/python-mode")) && has('python')
+            let g:pymode = 1
+            let g:pymode_lint = 1
+            let g:pymode_lint_on_write = 1
+            let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8']
+            let g:pymode_lint_ignore = "E501,F401,W0401,E265,C0301,W0511,w0621,C0111,W0622"
+            let g:pymode_lint_todo_symbol = 'W'
+            let g:pymode_lint_comment_symbol = 'C'
+            let g:pymode_lint_visual_symbol = 'R'
+            let g:pymode_lint_error_symbol = 'E'
+            let g:pymode_lint_info_symbol = 'I'
+            let g:pymode_lint_pyflakes_symbol = 'F'
+            let g:pymode_trim_whitespaces = 0
+            let g:pymode_options = 0
+            let g:pymode_doc = 1
+            let g:pymode_doc_bind = '<C-p>'
+            let g:pymode_folding = 1
+            let g:pymode_motion = 1
+            let g:pymode_indent = 1
+            let g:pymode_virtualenv = 1
+            let g:pymode_run = 0
+            let g:pymode_breakpoint = 0
+            let g:pymode_quickfix_minheight = 6
+            let g:pymode_quickfix_maxheight = 10
+            let g:pymode_syntax = 1
+            let g:pymode_syntax_all = 1
+            let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+            let g:pymode_syntax_string_format = g:pymode_syntax_all
+            let g:pymode_syntax_string_templates = g:pymode_syntax_all
+            let g:pymode_syntax_doctests = g:pymode_syntax_all
+            let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+            let g:pymode_syntax_builtin_types = g:pymode_syntax_all
+            let g:pymode_rope = 1
+            let g:pymode_rope_lookup_project = 1
+            let g:pymode_rope_completion = 0
+            let g:pymode_rope_show_doc_bind = '<Leader><Leader>d'
+            let g:pymode_rope_goto_definition_bind = '<Leader><Leader>g'
+            let g:pymode_rope_organize_imports_bind = '<Leader><Leader>ro'
+            let g:pymode_rope_rename_bind = '<leader><Leader>rr'
+            let g:pymode_rope_rename_module_bind = '<leader><Leader>r1r'
+            let g:pymode_rope_module_to_package_bind = '<leader><Leader>r1p'
+            au BufEnter *.py noremap <Leader>i :PymodeLint<CR>:Unite -silent -auto-preview -winheight=10 location_list<CR>
+            noremap <Leader>u :PymodeLintAuto<CR>
+        endif
+    " }
+
+    " Go {
+        if isdirectory(expand("~/.vim/bundle/vim-go"))
+            let g:go_fmt_autosave = 1
+            let g:go_fmt_fail_silently = 0
+            let g:go_fmt_command = "goimports"
+            let g:go_list_type = "locationlist"
+            let g:go_snippet_case_type = "snakecase"
+
+            let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+            let g:go_metalinter_autosave = 0
+            let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+            let g:go_metalinter_deadline = "5s"
+
+            let g:go_highlight_types = 1
+            let g:go_highlight_fields = 1
+            let g:go_highlight_functions = 1
+            let g:go_highlight_methods = 1
+            let g:go_highlight_build_constraints = 1
+            let g:go_highlight_generate_tags = 1
+
+            let g:go_template_autocreate = 0
+            let g:go_doc_keywordprg_enabled = 0
+            let g:go_auto_sameids = 1
+            " let g:go_auto_type_info = 1
+            " set updatetime=100
+
+            au FileType go nnoremap <silent> <C-p> :GoDoc<CR>
+            au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+            au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+            au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+            au BufEnter *.go noremap <Leader>i :GoMetaLinter<CR>
+
+            " run :GoBuild or :GoTestCompile based on the go file
+            function! s:build_go_files()
+                let l:file = expand('%')
+                if l:file =~# '^\f\+_test\.go$'
+                    call go#cmd#Test(0, 1)
+                elseif l:file =~# '^\f\+\.go$'
+                    call go#cmd#Build(0)
+                endif
+            endfunction
+
+            " au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+        endif
+    " }
+
+    " vim-youdao-translater {
+        if isdirectory(expand("~/.vim/bundle/vim-youdao-translater"))
+            nmap <Leader><Leader>d :Ydc<CR>
+            nmap <Leader><Leader>e :Yde<CR>
+            nmap <Leader><Leader>v :Ydv<CR>
+        endif
     " }
 
     " Unite {
@@ -797,98 +885,6 @@
     " vim-unite-svn {
         if isdirectory(expand("~/.vim/bundle/vim-unite-svn/"))
             nmap <LocalLeader>d :Unite svn/diff<CR>
-        endif
-    " }
-
-    " fencview {
-        if isdirectory(expand("~/.vim/bundle/fencview/"))
-            nmap <Leader>m :FencAutoDetect<CR>
-        endif
-    " }
-
-    " emmet-vim {
-        if isdirectory(expand("~/.vim/bundle/emmet-vim/"))
-            let g:user_emmet_leader_key='<C-y>'
-        endif
-    " }
-
-    " PIV {
-        if isdirectory(expand("~/.vim/bundle/PIV"))
-            let g:DisableAutoPHPFolding = 0
-            let g:PIVAutoClose = 0
-        endif
-    " }
-
-    " Misc {
-        if isdirectory(expand("~/.vim/bundle/matchit.zip"))
-            let b:match_ignorecase = 1
-        endif
-    " }
-
-    " AutoCloseTag {
-        " Make it so AutoCloseTag works for xml and xhtml files as well
-        if isdirectory(expand("~/.vim/bundle/AutoCloseTag"))
-            au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-            nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-        endif
-    " }
-
-    " JSON {
-        nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-        let g:vim_json_syntax_conceal = 0
-    " }
-
-    " Go {
-        if isdirectory(expand("~/.vim/bundle/vim-go"))
-            let g:go_fmt_autosave = 1
-            let g:go_fmt_fail_silently = 0
-            let g:go_fmt_command = "goimports"
-            let g:go_list_type = "locationlist"
-            let g:go_snippet_case_type = "snakecase"
-
-            let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-            let g:go_metalinter_autosave = 0
-            let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-            let g:go_metalinter_deadline = "5s"
-
-            let g:go_highlight_types = 1
-            let g:go_highlight_fields = 1
-            let g:go_highlight_functions = 1
-            let g:go_highlight_methods = 1
-            let g:go_highlight_build_constraints = 1
-            let g:go_highlight_generate_tags = 1
-
-            let g:go_template_autocreate = 0
-            let g:go_doc_keywordprg_enabled = 0
-            let g:go_auto_sameids = 1
-            " let g:go_auto_type_info = 1
-            " set updatetime=100
-
-            au FileType go nnoremap <silent> <C-p> :GoDoc<CR>
-            au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-            au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-            au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-            au BufEnter *.go noremap <Leader>i :GoMetaLinter<CR>
-
-            " run :GoBuild or :GoTestCompile based on the go file
-            function! s:build_go_files()
-                let l:file = expand('%')
-                if l:file =~# '^\f\+_test\.go$'
-                    call go#cmd#Test(0, 1)
-                elseif l:file =~# '^\f\+\.go$'
-                    call go#cmd#Build(0)
-                endif
-            endfunction
-
-            " au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-        endif
-    " }
-
-    " vim-youdao-translater {
-        if isdirectory(expand("~/.vim/bundle/vim-youdao-translater"))
-            nmap <Leader><Leader>d :Ydc<CR>
-            nmap <Leader><Leader>e :Yde<CR>
-            nmap <Leader><Leader>v :Ydv<CR>
         endif
     " }
 
