@@ -207,7 +207,7 @@
 " Key (re)Mappings {
 
     let mapleader=","           " 映射<leader>键,默认'\'    remain r y o p [ ] ; ' . / 6~10; maybe l v; overwrite <F2> <c-p> K
-    let maplocalleader=" "      " 映射<localleader>键       remain p maybe ;
+    let maplocalleader=" "      " 映射<localleader>键       remain ;
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
@@ -225,11 +225,10 @@
     noremap <silent><Leader>v :set spell! spell?<CR>
     nnoremap <LocalLeader>o @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
     nnoremap <LocalLeader>j <C-w>j:q<CR>
-    nnoremap <LocalLeader>; :cw<CR>
     inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
     nnoremap <silent> <C-p> K
     if OSX()
-        nmap <silent> <C-p> <Plug>DashSearch
+        nmap <silent> <LocalLeader>p <Plug>DashSearch
     endif
 
     " 更方便窗口间移动
@@ -810,11 +809,11 @@
             au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
             au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 
-            au BufEnter *.go nnoremap <silent> <C-p> :GoDoc<CR>
             au BufEnter *.go nnoremap <Leader>i :GoMetaLinter<CR>
+            au BufEnter *.go nnoremap <silent> <C-p> :GoDoc<CR>
             au BufLeave *.go nnoremap <silent> <C-p> K
             if OSX()
-                au BufLeave *.go nmap <silent> <C-p> <Plug>DashSearch
+                au BufLeave *.go nmap <silent> <LocalLeader>p <Plug>DashSearch
             endif
 
             " run :GoBuild or :GoTestCompile based on the go file
