@@ -683,7 +683,7 @@
             endif
         endif
         if isdirectory(expand("~/.vim/bundle/ultisnips/"))
-            let g:UltiSnipsExpandTrigger = "<C-j>"
+            let g:UltiSnipsExpandTrigger = "<C-l>"
             let g:UltiSnipsEnableSnipMate = 1
             let g:UltiSnipsSnippetsDir = "~/.vim/mysnippets"
             let g:UltiSnipsSnippetDirectories = ["mysnippets", "UltiSnips"]
