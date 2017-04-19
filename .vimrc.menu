@@ -115,6 +115,8 @@
     let g:unite_source_menu_menus.code.command_candidates = [
         \['> Edit snippets                              (UltiSnips)                 Map: ',
             \':UltiSnipsEdit'],
+        \['> Edit all snippets                          (UltiSnips)                 Map: ',
+            \':UltiSnipsEdit!'],
         \['> Count lines of code                                                    Map: ',
             \'Unite -default-action= output:call\\ LinesOfCode()'],
         \['> Toggle indent lines                        (indent-guides)             Map: ,g',
@@ -382,19 +384,17 @@
         \}
     let g:unite_source_menu_menus.markdown.command_candidates = [
         \['> Preview                                                                Map: ',
-            \'w'],
-        \['> Does not resize nor move the windows                                   Map: ',
             \':Xmark'],
         \['> On the right                                                           Map: ',
-            \'Xmark>'],
+            \':Xmark>'],
         \['> On the left                                                            Map: ',
-            \'Xmark<'],
+            \':Xmark<'],
         \['> On the top                                                             Map: ',
-            \'Xmark+'],
+            \':Xmark+'],
         \['> On the bottom                                                          Map: ',
-            \'Xmark-'],
+            \':Xmark-'],
         \['> Turn off Xmark                                                         Map: ',
-            \'Xmark!'],
+            \':Xmark!'],
         \]
     nnoremap <LocalLeader>k :Unite -silent menu:markdown<CR>
 " }
