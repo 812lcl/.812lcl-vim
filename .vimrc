@@ -207,7 +207,7 @@
 " Key (re)Mappings {
 
     let mapleader=","           " 映射<leader>键,默认'\'    remain y p [ ] ; ' . / 6~10; r o for go; maybe l v; overwrite <F2> <c-p> K
-    let maplocalleader=" "      " 映射<localleader>键       remain [ ' .
+    let maplocalleader=" "      " 映射<localleader>键       remain d [ ' .
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
@@ -893,12 +893,6 @@
                     source ~/.vimrc.menu
                 endif
             " }
-        endif
-    " }
-
-    " vim-unite-svn {
-        if isdirectory(expand("~/.vim/bundle/vim-unite-svn/"))
-            nmap <LocalLeader>d :Unite svn/diff<CR>
         endif
     " }
 
