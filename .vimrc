@@ -206,8 +206,8 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    remain r y o p [ ] ; ' . / 6~10; maybe l v; overwrite <F2> <c-p> K
-    let maplocalleader=" "      " 映射<localleader>键       remain [ ] ' .
+    let mapleader=","           " 映射<leader>键,默认'\'    remain y p [ ] ; ' . / 6~10; r o for go; maybe l v; overwrite <F2> <c-p> K
+    let maplocalleader=" "      " 映射<localleader>键       remain [ ' .
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
