@@ -207,7 +207,7 @@
 " Key (re)Mappings {
 
     let mapleader=","           " 映射<leader>键,默认'\'    remain r y o p [ ] ; ' . / 6~10; maybe l v; overwrite <F2> <c-p> K
-    let maplocalleader=" "      " 映射<localleader>键       remain ;
+    let maplocalleader=" "      " 映射<localleader>键       remain [ ] ' .
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
@@ -801,7 +801,7 @@
 
             let g:go_template_autocreate = 0
             let g:go_doc_keywordprg_enabled = 0
-            let g:go_auto_sameids = 1
+            let g:go_auto_sameids = 0
             " let g:go_auto_type_info = 1
             " set updatetime=100
 
@@ -815,6 +815,9 @@
             if OSX()
                 au BufLeave *.go nmap <silent> <LocalLeader>p <Plug>DashSearch
             endif
+            au BufEnter *.go nnoremap <LocalLeader>; :GoInfo<CR>
+            au BufEnter *.go nnoremap <Leader>r :GoRun<CR>
+            au BufEnter *.go nnoremap <Leader>o :GoSameIdsAutoToggle<CR>
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
