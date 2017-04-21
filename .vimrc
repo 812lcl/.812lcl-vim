@@ -558,18 +558,18 @@
         if filereadable($CSCOPE_DB)
             cs add $CSCOPE_DB $CSCOPE_DIR
         endif
-        au FileType c,cpp nmap <Leader><Leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-        au FileType c,cpp nmap <Leader><Leader>1 :cs find g<Space>
-        au FileType c,cpp nmap <Leader><Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-        au FileType c,cpp nmap <Leader><Leader>2 :cs find d<Space>
-        au FileType c,cpp nmap <Leader><Leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-        au FileType c,cpp nmap <Leader><Leader>3 :cs find c<Space>
-        au FileType c,cpp nmap <Leader><Leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-        au FileType c,cpp nmap <Leader><Leader>0 :cs find s<Space>
-        au FileType c,cpp nmap <Leader><Leader>4 :cs find t <C-R>=expand("<cword>")<CR><CR>
-        au FileType c,cpp nmap <Leader><Leader>6 :cs find e <C-R>=expand("<cword>")<CR><CR>
-        au FileType c,cpp nmap <Leader><Leader>7 :cs find f <C-R>=expand("<cfile>")<CR><CR>
-        au FileType c,cpp nmap <Leader><Leader>8 :cs find i <C-R>=expand("<cfile>")<CR><CR>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>1 :cs find g<Space>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>2 :cs find d<Space>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>3 :cs find c<Space>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>0 :cs find s<Space>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>4 :cs find t <C-R>=expand("<cword>")<CR><CR>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>6 :cs find e <C-R>=expand("<cword>")<CR><CR>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>7 :cs find f <C-R>=expand("<cfile>")<CR><CR>
+        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>8 :cs find i <C-R>=expand("<cfile>")<CR><CR>
     " }
 
     " Syntastic {
@@ -596,9 +596,8 @@
         let g:DoxygenToolkit_briefTag_funcName="yes"
         let g:DoxygenToolkit_versionString="1.0.0.0"
         let g:doxygen_enhanced_color=1
-        au FileType c,cpp map <F2> :DoxAuthor<CR>
-        au FileType c,cpp map <F3> :Dox<CR>
-        au BufEnter *.py map <F2> :call TitleInsert()<CR>5GA
+        au BufEnter *.c,*.cpp,*.h map <F2> :DoxAuthor<CR>
+        au BufEnter *.c,*.cpp,*.h map <F3> :Dox<CR>
     " }
 
     " OmniComplete {
@@ -769,7 +768,6 @@
             let g:pymode_rope = 1
             let g:pymode_rope_lookup_project = 1
             let g:pymode_rope_completion = 0
-            let g:pymode_rope_show_doc_bind = '<Leader><Leader>d'
             let g:pymode_rope_goto_definition_bind = '<Leader><Leader>g'
             let g:pymode_rope_organize_imports_bind = '<Leader><Leader>ro'
             let g:pymode_rope_rename_bind = '<leader><Leader>rr'
@@ -819,6 +817,9 @@
             au BufEnter *.go nnoremap <LocalLeader>; :GoInfo<CR>
             au BufEnter *.go nnoremap <Leader>r :GoRun<CR>
             au BufEnter *.go nnoremap <Leader>o :GoSameIdsAutoToggle<CR>
+            au BufEnter *.go nmap <Leader><Leader>g :GoDef<CR>
+            au BufEnter *.go nmap <Leader><Leader>d :GoCallees<CR>
+            au BufEnter *.go nmap <Leader><Leader>c :GoCallers<CR>
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
@@ -1047,9 +1048,8 @@
             endif
         endfunction
 
-        au Filetype python map <F2> :call TitleInsert()<CR>5GA
+        au BufEnter *.py map <F2> :call TitleInsert()<CR>5GA
         au FileWritePre,BufWritePre *.py ks|call DateInsert()|'s
-        au BufEnter *.c,*.cpp,*.h map <F2> :DoxAuthor<CR>
     " }
 
     " Indent Python in the Google way {
