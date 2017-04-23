@@ -135,6 +135,8 @@
             \'normal ,cs'],
         \['> Comment using one set                      (nerdcommenter)             Map: ,cm',
             \'normal ,cm'],
+        \['> show emmet tutorial                        (emmet-vim)                 Map: ',
+            \'h emmet-tutorial'],
         \]
     nnoremap <LocalLeader>c :Unite menu:code<CR>
 " }
@@ -355,6 +357,10 @@
     let g:unite_source_menu_menus.vim.command_candidates = [
         \['> edit configuration file (vimrc)                                        Map: ',
             \'edit $MYVIMRC'],
+        \['> edit plugin configuration file                                         Map: ',
+            \'edit ~/.vimrc.plugins'],
+        \['> edit menu configuration file                                           Map: ',
+            \'edit ~/.vimrc.menu'],
         \['> choose colorscheme                                                     Map: ',
             \'Unite colorscheme -auto-preview'],
         \['> mappings                                                               Map: ',
@@ -400,13 +406,19 @@
 " }
 
 " web {
-    let g:unite_source_menu_menus.web = {
-        \ 'description' : '            web development
-            \                                        Map: <Space>w',
+    let g:unite_source_menu_menus.vimplug = {
+        \ 'description' : '        vim plugins
+            \                                            Map: <Space>w',
         \}
-    let g:unite_source_menu_menus.web.command_candidates = [
-        \['> show emmet tutorial                                                    Map: ',
-            \'h emmet-tutorial'],
+    let g:unite_source_menu_menus.vimplug.command_candidates = [
+        \['> plug install                         (vim-plug)                        Map: ',
+            \':PlugInstall'],
+        \['> plug update                          (vim-plug)                        Map: ',
+            \':PlugUpdate'],
+        \['> plug remove                          (vim-plug)                        Map: ',
+            \':PlugClean'],
+        \['> update vim-plug                      (vim-plug)                        Map: ',
+            \':PlugUpgrade'],
         \]
-    nnoremap <LocalLeader>w :Unite -silent menu:web<CR>
+    nnoremap <LocalLeader>w :Unite -silent menu:vimplug<CR>
 " }

@@ -728,6 +728,19 @@
         let g:vim_json_syntax_conceal = 0
     " }
 
+    " Markdown {
+        if isdirectory(expand("~/.vim/bundle/vim-markdown"))
+            let g:vim_markdown_conceal = 0
+            let g:vim_markdown_folding_disabled = 1
+        endif
+    " }
+
+    " vim-polyglot {
+        if isdirectory(expand("~/.vim/bundle/vim-polyglot"))
+            let g:polyglot_disabled = ['markdown']
+        endif
+    " }
+
     " PyMode {
         if !has('python')
             let g:pymode = 0

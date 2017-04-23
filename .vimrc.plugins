@@ -177,7 +177,7 @@
 
     " Misc {
         if count(g:lcl_bundle_groups, 'misc')
-            Plug 'tpope/vim-markdown'
+            Plug 'plasticboy/vim-markdown'
             if has('mac')
                 Plug 'junegunn/vim-xmark', { 'do': 'make' }
             endif
