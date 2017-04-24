@@ -145,7 +145,7 @@
         if count(g:lcl_bundle_groups, 'html')
             Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css'] }
             Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
-            Plug 'gorodinskiy/vim-coloresque', { 'for': ['html', 'vim', 'css'] }
+            Plug 'gorodinskiy/vim-coloresque'
         endif
     " }
 

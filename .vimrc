@@ -207,7 +207,7 @@
 " Key (re)Mappings {
 
     let mapleader=","           " 映射<leader>键,默认'\'    remain y p [ ] ; ' . / 6~10; r o for go; maybe l v; overwrite <F2> <c-p> K
-    let maplocalleader=" "      " 映射<localleader>键       remain d [ ' .
+    let maplocalleader=" "      " 映射<localleader>键       remain [ ' .
     inoremap jj <ESC>
     vnoremap > >gv
     vnoremap < <gv
@@ -850,7 +850,7 @@
 
     " vim-youdao-translater {
         if isdirectory(expand("~/.vim/bundle/vim-youdao-translater"))
-            nmap <Leader><Leader>d :Ydc<CR>
+            nmap <LocalLeader>d :Ydc<CR>
             nmap <Leader><Leader>e :Yde<CR>
             nmap <Leader><Leader>v :Ydv<CR>
         endif
