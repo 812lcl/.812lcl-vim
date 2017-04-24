@@ -424,7 +424,7 @@
             let g:tagbar_autopreview = 0
             let g:tagbar_previewwin_pos = "rightbelow"
             if !&diff
-                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go,snippets nested :TagbarOpen
+                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go,snippets,javascript nested :TagbarOpen
             endif
 
             " If using go please install the gotags program
