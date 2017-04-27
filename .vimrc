@@ -260,7 +260,7 @@
     nnoremap <leader>4 m`^i#### <esc>``5l
     nnoremap <leader>5 m`^i##### <esc>``6l
 
-    nnoremap <leader>y :TagbarToggle<CR>:SignifyToggle<CR>:set nu! nu?<CR>:set list! list?<CR>
+    nnoremap <leader>y :TagbarToggle<CR>:SignifyToggle<CR>:set nu! nu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>
 
 " }
 
