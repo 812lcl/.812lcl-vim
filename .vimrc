@@ -858,6 +858,15 @@
         endif
     " }
 
+    " vim-nerdtree-syntax-highlight {
+        if isdirectory(expand("~/.vim/bundle/vim-nerdtree-syntax-highlight"))
+            let g:NERDTreeFileExtensionHighlightFullName = 1
+            let g:NERDTreeExactMatchHighlightFullName = 1
+            let g:NERDTreePatternMatchHighlightFullName = 1
+            let g:NERDTreeLimitedSyntax = 1
+        endif
+    " }
+
     " Unite {
         if count(g:lcl_bundle_groups, 'unite')
             nmap <silent> <Leader>f :Unite file_rec/async -start-insert<CR>

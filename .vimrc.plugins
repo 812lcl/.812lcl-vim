@@ -66,6 +66,7 @@
         if count(g:lcl_bundle_groups, 'general')
             Plug 'scrooloose/nerdtree'
             Plug 'Xuyuanp/nerdtree-git-plugin'
+            Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
             Plug 'ryanoasis/vim-devicons'
             Plug 'altercation/vim-colors-solarized'
             Plug 'tomasr/molokai'
