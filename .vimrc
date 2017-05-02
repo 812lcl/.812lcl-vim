@@ -867,6 +867,17 @@
         endif
     " }
 
+    " vim-devicons {
+        if isdirectory(expand("~/.vim/bundle/vim-devicons/"))
+            let g:webdevicons_enable = 1
+            let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+            let g:DevIconsEnableFoldersOpenClose = 1
+            let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = '.'
+            let g:DevIconsDefaultFolderOpenSymbol = '.'
+            let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+        endif
+    " }
+
     " Unite {
         if count(g:lcl_bundle_groups, 'unite')
             nmap <silent> <Leader>f :Unite file_rec/async -start-insert<CR>
