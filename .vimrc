@@ -835,6 +835,7 @@
             au BufEnter *.go nmap <Leader><Leader>g :GoDef<CR>
             au BufEnter *.go nmap <Leader><Leader>d :GoCallees<CR>
             au BufEnter *.go nmap <Leader><Leader>c :GoCallers<CR>
+            au BufEnter *.go nmap <Leader><Leader>s :GoImplements<CR>
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
