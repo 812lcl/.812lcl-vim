@@ -325,6 +325,8 @@
             \                                              Map: <Space>a',
         \}
     let g:unite_source_menu_menus.EasyAlign.command_candidates = [
+        \['> Json tool                                                              Map: ,jt',
+            \'normal ,jt'],
         \['> EasyAlign =                                                            Map: <Enter>=',
             \'EasyAlign ='],
         \['> EasyAlign *=                                                           Map: <Enter>*=',
