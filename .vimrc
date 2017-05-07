@@ -800,6 +800,7 @@
             let g:go_fmt_command = "goimports"
             let g:go_list_type = "locationlist"
             let g:go_snippet_case_type = "camelcase"
+            let g:go_addtags_transform = "camelcase"
 
             let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
             let g:go_metalinter_autosave = 0
@@ -873,8 +874,8 @@
             let g:webdevicons_enable = 1
             let g:WebDevIconsUnicodeDecorateFolderNodes = 1
             let g:DevIconsEnableFoldersOpenClose = 1
-            let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = '.'
-            let g:DevIconsDefaultFolderOpenSymbol = '.'
+            let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+            let g:DevIconsDefaultFolderOpenSymbol = ''
             let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
         endif
     " }
