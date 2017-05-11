@@ -799,8 +799,8 @@
             let g:go_fmt_fail_silently = 0
             let g:go_fmt_command = "goimports"
             let g:go_list_type = "locationlist"
-            let g:go_snippet_case_type = "camelcase"
-            let g:go_addtags_transform = "camelcase"
+            let g:go_snippet_case_type = "snakecase"
+            let g:go_addtags_transform = "snakecase"
 
             let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
             let g:go_metalinter_autosave = 0
