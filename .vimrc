@@ -874,8 +874,8 @@
             let g:webdevicons_enable = 1
             let g:WebDevIconsUnicodeDecorateFolderNodes = 1
             let g:DevIconsEnableFoldersOpenClose = 1
-            let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
-            let g:DevIconsDefaultFolderOpenSymbol = ''
+            let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = '.'
+            let g:DevIconsDefaultFolderOpenSymbol = '.'
             let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
         endif
     " }
