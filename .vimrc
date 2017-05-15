@@ -206,7 +206,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    remain y p [ ] ; ' . / 6~10; r o for go; maybe l v; overwrite <F2> <c-p> K
+    let mapleader=","           " 映射<leader>键,默认'\'    remain p [ ] ; ' . / 6~10; r o for go; maybe l v; overwrite <F2> <c-p> K
     let maplocalleader=" "      " 映射<localleader>键       remain [ ' .
     inoremap jj <ESC>
     vnoremap > >gv
@@ -837,6 +837,8 @@
             au BufEnter *.go nmap <Leader><Leader>d :GoCallees<CR>
             au BufEnter *.go nmap <Leader><Leader>c :GoCallers<CR>
             au BufEnter *.go nmap <Leader><Leader>s :GoImplements<CR>
+            au BufEnter *.go nmap <Leader><Leader>a <Plug>(go-test)
+            au BufEnter *.go nmap <Leader><Leader>z <Plug>(go-coverage-toggle)
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
