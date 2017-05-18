@@ -206,7 +206,7 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    remain p [ ] ; ' . / 6~10; r o for go; maybe l v; overwrite <F2> <c-p> K
+    let mapleader=","           " 映射<leader>键,默认'\'    remain l [ ] ; ' . / 6~10; r o for go; overwrite <F2> <c-p> K
     let maplocalleader=" "      " 映射<localleader>键       remain [ ' .
     inoremap jj <ESC>
     vnoremap > >gv
@@ -221,8 +221,8 @@
     vnoremap <silent> K :m '<-2<CR>gv=gv
     noremap <silent><Leader>h :noh<CR>
     noremap <silent><Leader>s :set rnu! rnu?<CR>
-    noremap <silent><Leader>l :set list! list?<CR>
-    noremap <silent><Leader>v :set spell! spell?<CR>
+    noremap <silent><Leader>p :set spell! spell?<CR>
+    noremap <silent><Leader><Leader>l :set list! list?<CR>
     nnoremap <LocalLeader>o @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
     nnoremap <LocalLeader>j <C-w>j:q<CR>
     nnoremap <LocalLeader>] :bd<CR>
@@ -837,8 +837,8 @@
             au BufEnter *.go nmap <Leader><Leader>d :GoCallees<CR>
             au BufEnter *.go nmap <Leader><Leader>c :GoCallers<CR>
             au BufEnter *.go nmap <Leader><Leader>s :GoImplements<CR>
-            au BufEnter *.go nmap <Leader><Leader>a <Plug>(go-test)
-            au BufEnter *.go nmap <Leader><Leader>z <Plug>(go-coverage-toggle)
+            au BufEnter *.go nmap <Leader>a <Plug>(go-test)
+            au BufEnter *.go nmap <Leader>v <Plug>(go-coverage-toggle)
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
@@ -894,8 +894,8 @@
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=10 location_list<CR>
             nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline<CR>
             nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=10 mark<CR>
-            nnoremap <silent><Leader>A :Unite -silent -auto-preview -winheight=10 -no-quit grep<CR>
-            nnoremap <silent><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=10 -no-quit grep<CR><CR>
+            nnoremap <silent><Leader><Leader>A :Unite -silent -auto-preview -winheight=10 -no-quit grep<CR>
+            nnoremap <silent><Leader><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=10 -no-quit grep<CR><CR>
 
             call unite#filters#matcher_default#use(['matcher_fuzzy'])
             call unite#filters#sorter_default#use(['sorter_rank'])
