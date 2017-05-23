@@ -243,13 +243,13 @@
     cnoremap <C-e> <End>
     cnoremap <C-p> <Up>
     cnoremap <C-n> <Down>
-    cmap w!! SudoWrite %
+    nmap <Leader>W :w !sudo tee > /dev/null %<CR>
+    command W w !sudo tee > /dev/null %
 
     " 修正易错命令
     command -bang -nargs=* Q q<bang>
     command -bang -nargs=* Wa wa<bang>
     command -bang -nargs=* WA wa<bang>
-    command -bang -nargs=* -complete=file W w<bang> <args>
     command -bang -nargs=* -complete=file Wq wq<bang> <args>
     command -bang -nargs=* -complete=file WQ wq<bang> <args>
 
