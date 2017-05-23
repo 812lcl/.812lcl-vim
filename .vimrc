@@ -803,8 +803,8 @@
             let g:go_addtags_transform = "snakecase"
 
             let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-            let g:go_metalinter_autosave = 0
-            let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+            let g:go_metalinter_autosave = 1
+            let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
             let g:go_metalinter_deadline = "5s"
 
             let g:go_highlight_types = 1
@@ -1055,6 +1055,7 @@
           endfor
           return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
         endfunction
+        autocmd FileType qf wincmd J
     " }
 
     " TitleInsert {
