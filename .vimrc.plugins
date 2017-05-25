@@ -213,6 +213,7 @@
             endif
             Plug 'Shougo/vimproc', { 'do': 'make' }
             Plug 'ianva/vim-youdao-translater'
+            Plug 'wakatime/vim-wakatime'
         endif
     " }
     endif
