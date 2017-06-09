@@ -84,6 +84,7 @@
             Plug 'TaskList.vim'
             Plug 'mbbill/fencview', { 'on': 'FencAutoDetect' }
             Plug 'sheerun/vim-polyglot'
+            Plug 'osyo-manga/vim-anzu'
         endif
     " }
 

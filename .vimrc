@@ -183,6 +183,7 @@
         set statusline+=\ [%{&ff}/%Y]            " Filetype
         set statusline+=\ [%{getcwd()}]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+        set statusline=%{anzu#search_status()}
     endif
 
 " }
@@ -879,6 +880,15 @@
             let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = '.'
             let g:DevIconsDefaultFolderOpenSymbol = '.'
             let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+        endif
+    " }
+
+    " vim-devicons {
+        if isdirectory(expand("~/.vim/bundle/vim-anzu/"))
+            nmap n <Plug>(anzu-n-with-echo)
+            nmap N <Plug>(anzu-N-with-echo)
+            nmap * <Plug>(anzu-star-with-echo)
+            nmap # <Plug>(anzu-sharp-with-echo)
         endif
     " }
 
