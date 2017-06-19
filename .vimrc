@@ -800,8 +800,8 @@
             let g:go_fmt_fail_silently = 0
             let g:go_fmt_command = "goimports"
             let g:go_list_type = "locationlist"
-            let g:go_snippet_case_type = "snakecase"
-            let g:go_addtags_transform = "snakecase"
+            let g:go_snippet_case_type = "camelcase"
+            let g:go_addtags_transform = "camelcase"
 
             let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
             let g:go_metalinter_autosave = 1
@@ -840,6 +840,10 @@
             au BufEnter *.go nmap <Leader><Leader>s :GoImplements<CR>
             au BufEnter *.go nmap <Leader>a <Plug>(go-test)
             au BufEnter *.go nmap <Leader>v <Plug>(go-coverage-toggle)
+            au BufEnter *.go nmap <Leader>6 :GoAddTags<CR>
+            au BufEnter *.go nmap <Leader>7 :GoRemoveTags<CR>
+            au BufEnter *.go vmap <Leader>7 :GoRemoveTags<CR>
+            au BufEnter *.go nmap <Leader>8 gv:GoAddTags<CR>
 
             " run :GoBuild or :GoTestCompile based on the go file
             function! s:build_go_files()
