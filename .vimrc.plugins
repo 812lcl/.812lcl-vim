@@ -71,8 +71,8 @@
             Plug 'altercation/vim-colors-solarized'
             Plug 'tomasr/molokai'
             Plug 'tpope/vim-surround'
-            Plug 'sessionman.vim'
-            Plug 'matchit.zip'
+            Plug 'vim-scripts/sessionman.vim'
+            Plug 'vim-scripts/matchit.zip'
             Plug 'bling/vim-airline'
             Plug 'vim-airline/vim-airline-themes'
             Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -81,7 +81,7 @@
             Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
             Plug 'Yggdroot/indentLine'
             Plug 'kshenoy/vim-signature'
-            Plug 'TaskList.vim'
+            Plug 'vim-scripts/TaskList.vim'
             Plug 'mbbill/fencview', { 'on': 'FencAutoDetect' }
             Plug 'sheerun/vim-polyglot'
             Plug 'osyo-manga/vim-anzu'
@@ -118,12 +118,12 @@
             Plug 'JazzCore/neocomplcache-ultisnips'
             Plug 'SirVer/ultisnips'
             Plug 'honza/vim-snippets'
-            Plug 'javacomplete', { 'for': 'java' }
+            Plug 'vim-scripts/javacomplete', { 'for': 'java' }
         elseif count(g:lcl_bundle_groups, 'neocomplete')
             Plug 'Shougo/neocomplete.vim'
             Plug 'Shougo/neosnippet'
             Plug 'Shougo/neosnippet-snippets'
-            Plug 'javacomplete', { 'for': 'java' }
+            Plug 'vim-scripts/javacomplete', { 'for': 'java' }
         endif
     " }
 
@@ -131,8 +131,8 @@
         if count(g:lcl_bundle_groups, 'python')
             Plug 'klen/python-mode', { 'for': 'python' }
             Plug 'yssource/python.vim', { 'for': 'python' }
-            Plug 'python_match.vim', { 'for': 'python' }
-            Plug 'pythoncomplete', { 'for': 'python' }
+            Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
+            Plug 'vim-scripts/pythoncomplete', { 'for': 'python' }
             Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
         endif
     " }
