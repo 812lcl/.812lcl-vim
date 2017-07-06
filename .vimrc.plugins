@@ -46,14 +46,14 @@
 
     " In your .vimrc.before.local file, list only the plugin groups you will use
     " 'general', 'programming', 'youcompleteme', 'neocomplcache', 'neocomplete',
-    " 'python', 'php', 'html', 'ruby', 'haskell','go', 'misc', 'unite', 'others'
+    " 'python', 'php', 'web', 'ruby', 'haskell','go', 'misc', 'unite', 'others'
     if !exists('g:lcl_bundle_groups')
         if has('win32') || has('win64')
-            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'php']
+            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'unite', 'php']
         elseif has('macunix')
-            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php', 'go']
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'unite', 'others', 'php', 'go']
         else
-            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'html', 'misc', 'unite', 'others', 'php', 'go']
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'unite', 'others', 'php', 'go']
         endif
     endif
 
@@ -144,11 +144,12 @@
         endif
     " }
 
-    " HTML {
-        if count(g:lcl_bundle_groups, 'html')
+    " Web {
+        if count(g:lcl_bundle_groups, 'web')
             Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css'] }
             Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
             Plug 'gorodinskiy/vim-coloresque'
+            Plug 'pangloss/vim-javascript', { 'for': ['js', 'javascript'] }
         endif
     " }
 
