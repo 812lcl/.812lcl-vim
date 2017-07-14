@@ -210,6 +210,7 @@
     let mapleader=","           " 映射<leader>键,默认'\'    remain l [ ] ; ' . / 6~10; r o for go; overwrite <F2> <c-p> K
     let maplocalleader=" "      " 映射<localleader>键       remain [ ' .
     inoremap jj <ESC>
+    inoremap jjj <ESC>:w<CR>
     vnoremap > >gv
     vnoremap < <gv
     noremap <Leader>x :lnext<CR>
@@ -910,8 +911,8 @@
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=10 location_list<CR>
             nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline<CR>
             nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=10 mark<CR>
-            nnoremap <silent><Leader><Leader>A :Unite -silent -auto-preview -winheight=10 -no-quit grep<CR>
-            nnoremap <silent><Leader><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=10 -no-quit grep<CR><CR>
+            nnoremap <silent><Leader><Leader>A :Unite -silent -auto-preview -winheight=10 grep<CR>
+            nnoremap <silent><Leader><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=10 grep<CR><CR>
 
             call unite#filters#matcher_default#use(['matcher_fuzzy'])
             call unite#filters#sorter_default#use(['sorter_rank'])
