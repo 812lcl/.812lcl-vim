@@ -391,17 +391,17 @@
             \                            Map: <Space>k',
         \}
     let g:unite_source_menu_menus.markdown.command_candidates = [
-        \['> Preview                                                                Map: ',
+        \['> Preview                               (vim-xmark)                      Map: ',
             \':Xmark'],
-        \['> On the right                                                           Map: ',
+        \['> On the right                          (vim-xmark)                      Map: ',
             \':Xmark>'],
-        \['> On the left                                                            Map: ',
+        \['> On the left                           (vim-xmark)                      Map: ',
             \':Xmark<'],
-        \['> On the top                                                             Map: ',
+        \['> On the top                            (vim-xmark)                      Map: ',
             \':Xmark+'],
-        \['> On the bottom                                                          Map: ',
+        \['> On the bottom                         (vim-xmark)                      Map: ',
             \':Xmark-'],
-        \['> Turn off Xmark                                                         Map: ',
+        \['> Turn off Xmark                        (vim-xmark)                      Map: ',
             \':Xmark!'],
         \]
     nnoremap <LocalLeader>k :Unite -silent menu:markdown<CR>
@@ -413,13 +413,15 @@
             \                                            Map: <Space>w',
         \}
     let g:unite_source_menu_menus.vimplug.command_candidates = [
-        \['> plug install                         (vim-plug)                        Map: ',
+        \['> Plug install                         (vim-plug)                        Map: ',
             \':PlugInstall'],
-        \['> plug update                          (vim-plug)                        Map: ',
+        \['> Plug update                          (vim-plug)                        Map: ',
             \':PlugUpdate'],
-        \['> plug remove                          (vim-plug)                        Map: ',
+        \['> Plug remove                          (vim-plug)                        Map: ',
             \':PlugClean'],
-        \['> update vim-plug                      (vim-plug)                        Map: ',
+        \['> Plug status                          (vim-plug)                        Map: ',
+            \':PlugStatus'],
+        \['> Update vim-plug                      (vim-plug)                        Map: ',
             \':PlugUpgrade'],
         \]
     nnoremap <LocalLeader>w :Unite -silent menu:vimplug<CR>

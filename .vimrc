@@ -579,8 +579,8 @@
     " Syntastic {
         if isdirectory(expand("~/.vim/bundle/syntastic/"))
             let g:syntastic_check_on_open = 0
-            let g:syntastic_error_symbol = 'E'
-            let g:syntastic_warning_symbol = 'W'
+            let g:syntastic_error_symbol = '✹'
+            let g:syntastic_warning_symbol = '⚠'
             let g:syntastic_auto_loc_list = 2
             let g:syntastic_check_on_wq = 0
             let g:syntastic_always_populate_loc_list=1
@@ -950,6 +950,55 @@
                 endif
             " }
         endif
+    " }
+
+    " vim-choosewin {
+        if isdirectory(expand("~/.vim/bundle/vim-choosewin"))
+            nmap - <Plug>(choosewin)
+            " use overlay feature
+            let g:choosewin_overlay_enable = 1
+
+            " workaround for the overlay font being broken on mutibyte buffer.
+            let g:choosewin_overlay_clear_multibyte = 1
+
+            " tmux-like overlay color
+            let g:choosewin_color_overlay = {
+                        \ 'gui': ['DodgerBlue3', 'DodgerBlue3'],
+                        \ 'cterm': [25, 25]
+                        \ }
+            let g:choosewin_color_overlay_current = {
+                        \ 'gui': ['firebrick1', 'firebrick1'],
+                        \ 'cterm': [124, 124]
+                        \ }
+
+            let g:choosewin_blink_on_land      = 0 " don't blink at land
+            let g:choosewin_statusline_replace = 0 " don't replace statusline
+            let g:choosewin_tabline_replace    = 0 " don't replace tabline
+        endif
+    " }
+
+    " vim-startify {
+        let g:startify_custom_header = [
+                    \'             __   _  ____  _        _               _',
+                    \'           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___',
+                    \'           \\__//| |  / / | | / __/| | _____\ \ / /| | `_ ` _ \',
+                    \'           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |',
+                    \'           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|',
+                    \]
+
+        let g:startify_list_order = [
+                    \ ['   Recent Files:'],
+                    \ 'files',
+                    \ ['   Project:'],
+                    \ 'dir',
+                    \ ['   Sessions:'],
+                    \ 'sessions',
+                    \ ['   Bookmarks:'],
+                    \ 'bookmarks',
+                    \ ['   Commands:'],
+                    \ 'commands',
+                    \ ]
+          let g:startify_change_to_vcs_root = 1
     " }
 
 " }
