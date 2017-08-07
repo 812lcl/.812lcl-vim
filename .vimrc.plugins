@@ -64,9 +64,9 @@
 
     " General {
         if count(g:lcl_bundle_groups, 'general')
-            Plug 'scrooloose/nerdtree'
-            Plug 'Xuyuanp/nerdtree-git-plugin'
-            Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+            Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+            Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+            Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
             Plug 'ryanoasis/vim-devicons'
             Plug 'altercation/vim-colors-solarized'
             Plug 'tomasr/molokai'
@@ -99,6 +99,7 @@
             Plug 'mhinz/vim-signify'
             Plug 'scrooloose/nerdcommenter'
             Plug 'majutsushi/tagbar'
+            Plug 'lvht/tagbar-markdown'
             Plug 'junegunn/vim-easy-align'
             Plug 'AndrewRadev/splitjoin.vim'
         endif
@@ -200,7 +201,6 @@
         if count(g:lcl_bundle_groups, 'unite')
             Plug 'Shougo/unite.vim'
             Plug 'Shougo/neomru.vim'
-            Plug 'Shougo/unite-outline'
             Plug 'osyo-manga/unite-quickfix'
             Plug 'ujihisa/unite-colorscheme'
             Plug 'ujihisa/unite-locate'

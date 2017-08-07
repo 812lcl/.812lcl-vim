@@ -207,8 +207,8 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    remain l [ ] ; ' . / 6~10; r o for go; overwrite <F2> <c-p> K
-    let maplocalleader=" "      " 映射<localleader>键       remain [ ' .
+    let mapleader=","           " 映射<leader>键,默认'\'    remain c l [ ] ; ' . / 6~10; r o for go; overwrite <F2> <c-p> K
+    let maplocalleader=" "      " 映射<localleader>键       remain ' .
     inoremap jj <ESC>
     inoremap jjj <ESC>:w<CR>
     vnoremap > >gv
@@ -348,7 +348,10 @@
             let NERDTreeShowHidden=1                " 显示隐藏文件
             let NERDTreeQuitOnOpen=0                " 打开后退出NERDTree
             let NERDTreeShowBookmarks=1             " 显示书签
-            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.out$', '\.bzr']
+            let g:NERDTreeIgnore=[
+                        \ '\.py[cd]$', '\~$', '\.swo$', '\.swp$', '\.DS_Store$',
+                        \ '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$', '\.out$',
+                        \ ]
             let NERDTreeSortOrder=['\/$', 'BCLOUD', 'Makefile', '\.sh$', '\.py$', '\.rb$', '\.php$', '*', '\.xml$', '\.conf$', '\.log$', '\~$']
             au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
         endif
@@ -579,7 +582,7 @@
     " Syntastic {
         if isdirectory(expand("~/.vim/bundle/syntastic/"))
             let g:syntastic_check_on_open = 0
-            let g:syntastic_error_symbol = '✹'
+            let g:syntastic_error_symbol = '✖'
             let g:syntastic_warning_symbol = '⚠'
             let g:syntastic_auto_loc_list = 2
             let g:syntastic_check_on_wq = 0
@@ -909,7 +912,6 @@
             nnoremap <LocalLeader>q :Unite register<CR>
             nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=10 quickfix<CR>
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=10 location_list<CR>
-            nnoremap <silent><Leader>c :Unite -silent -vertical -winwidth=40 -direction=topleft -no-auto-resize -toggle outline<CR>
             nnoremap <silent><Leader>k :Unite -silent -auto-preview -winheight=10 mark<CR>
             nnoremap <silent><Leader><Leader>A :Unite -silent -auto-preview -winheight=10 grep<CR>
             nnoremap <silent><Leader><Leader>a :UniteWithCursorWord -silent -auto-preview -winheight=10 grep<CR><CR>
@@ -978,6 +980,7 @@
     " }
 
     " vim-startify {
+        au User Startified setlocal buflisted
         au User Startified setlocal cursorline
         au User Startified setlocal buftype=nofile
         nnoremap <LocalLeader>[ :Startify<CR>
