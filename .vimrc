@@ -978,27 +978,41 @@
     " }
 
     " vim-startify {
+        au User Startified setlocal cursorline
+        au User Startified setlocal buftype=nofile
+        nnoremap <LocalLeader>[ :Startify<CR>
         let g:startify_custom_header = [
-                    \'             __   _  ____  _        _               _',
-                    \'           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___',
-                    \'           \\__//| |  / / | | / __/| | _____\ \ / /| | `_ ` _ \',
-                    \'           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |',
-                    \'           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|',
-                    \]
-
+                \'             __   _  ____  _        _               _',
+                \'           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___',
+                \'           \\__//| |  / / | | / __/| | _____\ \ / /| | `_ ` _ \',
+                \'           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |',
+                \'           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|',
+                \]
+        let g:startify_custom_footer =
+                \ ['', "   Vim is charityware. Please read ':help uganda'.", '']
         let g:startify_list_order = [
-                    \ ['   Recent Files:'],
-                    \ 'files',
-                    \ ['   Project:'],
-                    \ 'dir',
-                    \ ['   Sessions:'],
-                    \ 'sessions',
-                    \ ['   Bookmarks:'],
-                    \ 'bookmarks',
-                    \ ['   Commands:'],
-                    \ 'commands',
-                    \ ]
-          let g:startify_change_to_vcs_root = 1
+                \ ['   Recent Files:'],
+                \ 'files',
+                \ ['   Project:'],
+                \ 'dir',
+                \ ['   Sessions:'],
+                \ 'sessions',
+                \ ['   Bookmarks:'],
+                \ 'bookmarks',
+                \ ['   Commands:'],
+                \ 'commands',
+                \ ]
+        let g:startify_bookmarks = [
+                \ { 'v': '~/.vimrc' },
+                \ { 'z': '~/.zshrc' },
+                \ { 't': '~/.tmux.conf' },
+                \ { 'p': '~/.vimrc.plugins' },
+                \ { 'm': '~/.vimrc.menu' },
+                \ ]
+        let g:startify_change_to_vcs_root = 1
+        let g:startify_files_number = 7
+        let g:startify_session_dir = '~/.vim/sessions'
+        let g:startify_update_oldfiles = 1
     " }
 
 " }
@@ -1121,7 +1135,7 @@
           endfor
           return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
         endfunction
-        autocmd FileType qf wincmd J
+        au FileType qf wincmd J
     " }
 
     " TitleInsert {

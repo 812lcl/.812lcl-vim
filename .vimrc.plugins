@@ -87,7 +87,7 @@
             Plug 'sheerun/vim-polyglot'
             Plug 'osyo-manga/vim-anzu'
             Plug 't9md/vim-choosewin'
-            " Plug 'mhinz/vim-startify'
+            Plug 'mhinz/vim-startify'
         endif
     " }
 
