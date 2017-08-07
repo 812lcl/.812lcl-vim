@@ -346,7 +346,7 @@
             let NERDTreeWinPos=0                    " 在左侧
             let NERDTreeWinSize=25                  " 设置宽度
             let NERDTreeShowHidden=1                " 显示隐藏文件
-            let NERDTreeQuitOnOpen=0                " 打开后退出NERDTree
+            let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
             let NERDTreeShowBookmarks=1             " 显示书签
             let g:NERDTreeIgnore=[
                         \ '\.py[cd]$', '\~$', '\.swo$', '\.swp$', '\.DS_Store$',
@@ -395,6 +395,7 @@
     " sessionman.vim {
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
+            let g:sessionman_save_on_exit = 0
             nmap <LocalLeader>y :SessionList<CR>
             nmap <LocalLeader>u :SessionSave<CR>
             nmap <LocalLeader>i :SessionClose<CR>
@@ -1012,7 +1013,7 @@
                 \ { 'p': '~/.vimrc.plugins' },
                 \ { 'm': '~/.vimrc.menu' },
                 \ ]
-        let g:startify_change_to_vcs_root = 1
+        let g:startify_change_to_vcs_root = 0
         let g:startify_files_number = 7
         let g:startify_session_dir = '~/.vim/sessions'
         let g:startify_update_oldfiles = 1
