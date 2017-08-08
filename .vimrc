@@ -981,42 +981,61 @@
     " }
 
     " vim-startify {
-        au User Startified setlocal buflisted
-        au User Startified setlocal cursorline
-        au User Startified setlocal buftype=nofile
-        nnoremap <LocalLeader>[ :Startify<CR>
-        let g:startify_custom_header = [
-                \'             __   _  ____  _        _               _',
-                \'           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___',
-                \'           \\__//| |  / / | | / __/| | _____\ \ / /| | `_ ` _ \',
-                \'           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |',
-                \'           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|',
-                \]
-        let g:startify_custom_footer =
-                \ ['', "   Vim is charityware. Please read ':help uganda'.", '']
-        let g:startify_list_order = [
-                \ ['   Recent Files:'],
-                \ 'files',
-                \ ['   Project:'],
-                \ 'dir',
-                \ ['   Sessions:'],
-                \ 'sessions',
-                \ ['   Bookmarks:'],
-                \ 'bookmarks',
-                \ ['   Commands:'],
-                \ 'commands',
-                \ ]
-        let g:startify_bookmarks = [
-                \ { 'v': '~/.vimrc' },
-                \ { 'z': '~/.zshrc' },
-                \ { 't': '~/.tmux.conf' },
-                \ { 'p': '~/.vimrc.plugins' },
-                \ { 'm': '~/.vimrc.menu' },
-                \ ]
-        let g:startify_change_to_vcs_root = 0
-        let g:startify_files_number = 7
-        let g:startify_session_dir = '~/.vim/sessions'
-        let g:startify_update_oldfiles = 1
+        if isdirectory(expand("~/.vim/bundle/vim-startify"))
+            au User Startified setlocal buflisted
+            au User Startified setlocal cursorline
+            au User Startified setlocal buftype=nofile
+            nnoremap <LocalLeader>[ :Startify<CR>
+            let g:startify_custom_header = [
+                        \'             __   _  ____  _        _               _',
+                        \'           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___',
+                        \'           \\__//| |  / / | | / __/| | _____\ \ / /| | `_ ` _ \',
+                        \'           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |',
+                        \'           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|',
+                        \]
+            let g:startify_custom_footer =
+                        \ ['', "   Vim is charityware. Please read ':help uganda'.", '']
+            let g:startify_list_order = [
+                        \ ['   Recent Files:'],
+                        \ 'files',
+                        \ ['   Project:'],
+                        \ 'dir',
+                        \ ['   Sessions:'],
+                        \ 'sessions',
+                        \ ['   Bookmarks:'],
+                        \ 'bookmarks',
+                        \ ['   Commands:'],
+                        \ 'commands',
+                        \ ]
+            let g:startify_bookmarks = [
+                        \ { 'v': '~/.vimrc' },
+                        \ { 'z': '~/.zshrc' },
+                        \ { 't': '~/.tmux.conf' },
+                        \ { 'p': '~/.vimrc.plugins' },
+                        \ { 'm': '~/.vimrc.menu' },
+                        \ ]
+            let g:startify_change_to_vcs_root = 0
+            let g:startify_files_number = 7
+            let g:startify_session_dir = '~/.vim/sessions'
+            let g:startify_update_oldfiles = 1
+        endif
+    " }
+
+    " vim-leader-guide {
+        if isdirectory(expand("~/.vim/bundle/vim-leader-guide"))
+            let g:all_key_map    = {}
+            let g:leader_key_map = {}
+            let g:all_key_map['<Leader>']         = g:leader_key_map
+            let g:all_key_map['<Leader>']['name'] = '<Leader>'
+            let g:unite_key_map  = {}
+            let g:all_key_map['<Unite>']          = g:unite_key_map
+            let g:all_key_map['<Unite>']['name']  = '<Unite>'
+            let g:leaderGuide_max_size = 20
+            let g:leaderGuide_submode_mappings = { '<C-C>': 'win_close', '<C-F>': 'page_down', '<C-B>': 'page_up'}
+            map <leader>. <Plug>leaderguide-global
+            map <localleader>. <Plug>leaderguide-buffer
+            call leaderGuide#register_prefix_descriptions('', 'g:all_key_map')
+        endif
     " }
 
 " }

@@ -89,6 +89,7 @@
             Plug 't9md/vim-choosewin'
             Plug 'mhinz/vim-startify'
             Plug 'osyo-manga/vim-over'
+            Plug 'hecal3/vim-leader-guide'
         endif
     " }
 
