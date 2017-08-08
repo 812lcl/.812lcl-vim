@@ -88,6 +88,7 @@
             Plug 'osyo-manga/vim-anzu'
             Plug 't9md/vim-choosewin'
             Plug 'mhinz/vim-startify'
+            Plug 'osyo-manga/vim-over'
         endif
     " }
 
