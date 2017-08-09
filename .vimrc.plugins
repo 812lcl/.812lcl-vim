@@ -76,7 +76,7 @@
             Plug 'vim-scripts/matchit.zip'
             Plug 'bling/vim-airline'
             Plug 'vim-airline/vim-airline-themes'
-            Plug 'vim-scripts/DoxygenToolkit.vim'
+            Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
             Plug 'Lokaltog/vim-easymotion'
             Plug 'flazz/vim-colorschemes'
             Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
@@ -102,7 +102,7 @@
             Plug 'mhinz/vim-signify'
             Plug 'scrooloose/nerdcommenter'
             Plug 'majutsushi/tagbar'
-            Plug 'lvht/tagbar-markdown'
+            Plug 'lvht/tagbar-markdown', { 'for': 'markdown' }
             Plug 'junegunn/vim-easy-align'
             Plug 'AndrewRadev/splitjoin.vim'
             Plug 'jiangmiao/auto-pairs'
@@ -190,9 +190,9 @@
 
     " Misc {
         if count(g:lcl_bundle_groups, 'misc')
-            Plug 'plasticboy/vim-markdown'
+            Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
             if has('mac')
-                Plug 'junegunn/vim-xmark', { 'do': 'make' }
+                Plug 'junegunn/vim-xmark', { 'do': 'make', 'for': 'markdown' }
             endif
         endif
     " }
