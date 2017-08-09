@@ -207,8 +207,8 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    remain c l [ ] ; ' . / 6~10; r o for go; overwrite <F2> <c-p> K
-    let maplocalleader=" "      " 映射<localleader>键       remain ' .
+    let mapleader=","           " 映射<leader>键,默认'\'    remain c l p [ ] ; ' / 9 0; a v r o 6-8 for go; overwrite <F2> <c-p> K
+    let maplocalleader=" "      " 映射<localleader>键       remain ' . 0~9
     inoremap jj <ESC>
     inoremap jjj <ESC>:w<CR>
     vnoremap > >gv
@@ -833,9 +833,6 @@
             au BufEnter *.go nnoremap <Leader>i :GoMetaLinter<CR>
             au BufEnter *.go nnoremap <silent> <C-p> :GoDoc<CR>
             au BufLeave *.go nnoremap <silent> <C-p> K
-            if OSX()
-                au BufLeave *.go nmap <silent> <LocalLeader>p <Plug>DashSearch
-            endif
             au BufEnter *.go nnoremap <LocalLeader>; :GoInfo<CR>
             au BufEnter *.go nnoremap <Leader>r :GoRun<CR>
             au BufEnter *.go nnoremap <Leader>o :GoSameIdsAutoToggle<CR>
@@ -1024,16 +1021,9 @@
     " vim-leader-guide {
         if isdirectory(expand("~/.vim/bundle/vim-leader-guide"))
             let g:all_key_map    = {}
-            let g:leader_key_map = {}
-            let g:all_key_map['<Leader>']         = g:leader_key_map
-            let g:all_key_map['<Leader>']['name'] = '<Leader>'
-            let g:unite_key_map  = {}
-            let g:all_key_map['<Unite>']          = g:unite_key_map
-            let g:all_key_map['<Unite>']['name']  = '<Unite>'
             let g:leaderGuide_max_size = 20
             let g:leaderGuide_submode_mappings = { '<C-C>': 'win_close', '<C-F>': 'page_down', '<C-B>': 'page_up'}
             map <leader>. <Plug>leaderguide-global
-            map <localleader>. <Plug>leaderguide-buffer
             call leaderGuide#register_prefix_descriptions('', 'g:all_key_map')
         endif
     " }
