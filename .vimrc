@@ -1028,6 +1028,13 @@
         endif
     " }
 
+    " auto-pairs {
+        if isdirectory(expand("~/.vim/bundle/auto-pairs/"))
+            let g:AutoPairsShortcutToggle = '<C-e>'
+            let g:AutoPairsFlyMode = 1
+        endif
+    " }
+
 " }
 
 " Functions {

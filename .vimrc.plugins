@@ -105,6 +105,8 @@
             Plug 'lvht/tagbar-markdown'
             Plug 'junegunn/vim-easy-align'
             Plug 'AndrewRadev/splitjoin.vim'
+            Plug 'jiangmiao/auto-pairs'
+            Plug 'terryma/vim-multiple-cursors'
         endif
     " }
 
@@ -192,11 +194,6 @@
             if has('mac')
                 Plug 'junegunn/vim-xmark', { 'do': 'make' }
             endif
-            " Plug 'wting/rust.vim'
-            " Plug 'tpope/vim-cucumber'
-            " Plug 'cespare/vim-toml'
-            " Plug 'quentindecock/vim-cucumber-align-pipes'
-            " Plug 'Puppet-Syntax-Highlighting'
         endif
     " }
 
