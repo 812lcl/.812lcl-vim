@@ -643,7 +643,6 @@
             let g:ycm_use_ultisnips_completer = 1
             let g:ycm_semantic_triggers =  {
                         \   'c' : ['->', '.'],
-                        \   'go' : ['.'],
                         \   'objc' : ['->', '.'],
                         \   'ocaml' : ['.', '#'],
                         \   'cpp,objcpp' : ['->', '.', '::'],
