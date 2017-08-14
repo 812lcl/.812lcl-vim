@@ -839,6 +839,7 @@
             au BufEnter *.go nmap <Leader><Leader>d :GoCallees<CR>
             au BufEnter *.go nmap <Leader><Leader>c :GoCallers<CR>
             au BufEnter *.go nmap <Leader><Leader>s :GoImplements<CR>
+            au BufEnter *.go nmap <Leader><Leader>1 :GoDescribe<CR>
             au BufEnter *.go nmap <Leader>a <Plug>(go-test)
             au BufEnter *.go nmap <Leader>v <Plug>(go-coverage-toggle)
             au BufEnter *.go nmap <Leader>6 :GoAddTags<CR>
