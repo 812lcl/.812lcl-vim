@@ -1030,7 +1030,7 @@
     " auto-pairs {
         if isdirectory(expand("~/.vim/bundle/auto-pairs/"))
             let g:AutoPairsShortcutToggle = '<C-e>'
-            let g:AutoPairsFlyMode = 1
+            let g:AutoPairsFlyMode = 0
         endif
     " }
 
