@@ -81,7 +81,8 @@
     set foldmethod=marker           " 设置折叠模式
     set completeopt=longest,menuone " 关掉补全时的预览窗口
     set encoding=utf-8              " 编码，使汉语正常显示
-    set termencoding=utf-8,gb18030,ucs-bom,cp936,gb2312,big5,euc-jp,euc-kr,latin1
+    set termencoding=utf-8
+    " set termencoding=utf-8,gb18030,ucs-bom,cp936,gb2312,big5,euc-jp,euc-kr,latin1
     set fileencodings=utf-8,gb18030,ucs-bom,cp936,gb2312,big5,euc-jp,euc-kr,latin1
     set langmenu=zh_CN.UTF-8
     language message zh_CN.UTF-8
