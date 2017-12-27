@@ -356,7 +356,7 @@
             let NERDTreeSortOrder=['\/$', 'BCLOUD', 'Makefile', '\.sh$', '\.py$', '\.rb$', '\.php$', '*', '\.xml$', '\.conf$', '\.log$', '\~$']
             au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
             if !&diff
-                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go,snippets,javascript,json nested :call ToggleNERDTree()
+                au FileType * nested :call ToggleNERDTree()
             endif
         endif
     " }
@@ -1295,6 +1295,9 @@
             nnoremap <leader>w :call ToggleNERDTreeAndTagbar()<CR>
 
             function! ToggleNERDTree()
+                if &ft =~ 'tagbar\|nerdtree\|unite\|qf' || buffer_name("%") == '[Command Line]'
+                    return
+                endif
                 let w:jumpbacktohere = 1
                 NERDTreeFind
                 " Jump back to the original window
