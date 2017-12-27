@@ -347,7 +347,7 @@
             let NERDTreeWinPos=0                    " 在左侧
             let NERDTreeWinSize=25                  " 设置宽度
             let NERDTreeShowHidden=1                " 显示隐藏文件
-            let NERDTreeQuitOnOpen=1                " 打开后退出NERDTree
+            let NERDTreeQuitOnOpen=0                " 打开后退出NERDTree
             let NERDTreeShowBookmarks=1             " 显示书签
             let g:NERDTreeIgnore=[
                         \ '\.py[cd]$', '\~$', '\.swo$', '\.swp$', '\.DS_Store$',
@@ -355,6 +355,9 @@
                         \ ]
             let NERDTreeSortOrder=['\/$', 'BCLOUD', 'Makefile', '\.sh$', '\.py$', '\.rb$', '\.php$', '*', '\.xml$', '\.conf$', '\.log$', '\~$']
             au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+            if !&diff
+                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go,snippets,javascript,json nested :call ToggleNERDTree()
+            endif
         endif
     " }
 
@@ -1290,6 +1293,19 @@
                 endfor
             endfunction
             nnoremap <leader>w :call ToggleNERDTreeAndTagbar()<CR>
+
+            function! ToggleNERDTree()
+                let w:jumpbacktohere = 1
+                NERDTreeFind
+                " Jump back to the original window
+                for window in range(1, winnr('$'))
+                    execute window . 'wincmd w'
+                    if exists('w:jumpbacktohere')
+                        unlet w:jumpbacktohere
+                        break
+                    endif
+                endfor
+            endfunction
 
             " Zoom / Restore window.
             function! s:ZoomToggle() abort
