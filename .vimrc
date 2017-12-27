@@ -356,7 +356,7 @@
             let NERDTreeSortOrder=['\/$', 'BCLOUD', 'Makefile', '\.sh$', '\.py$', '\.rb$', '\.php$', '*', '\.xml$', '\.conf$', '\.log$', '\~$']
             au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
             if !&diff
-                au FileType * nested :call ToggleNERDTree()
+                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go,snippets,javascript nested :call ToggleNERDTree()
             endif
         endif
     " }
