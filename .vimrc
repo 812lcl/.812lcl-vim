@@ -808,8 +808,8 @@
             let g:go_fmt_fail_silently = 0
             let g:go_fmt_command = "goimports"
             let g:go_list_type = "locationlist"
-            let g:go_snippet_case_type = "camelcase"
-            let g:go_addtags_transform = "camelcase"
+            let g:go_snippet_case_type = "snakecase"
+            let g:go_addtags_transform = "snakecase"
 
             let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
             let g:go_metalinter_autosave = 1
@@ -1293,6 +1293,20 @@
                 endfor
             endfunction
             nnoremap <leader>w :call ToggleNERDTreeAndTagbar()<CR>
+
+            function! ToggleNERDTreeFind()
+                let w:jumpbacktohere = 1
+                NERDTreeFind
+                " Jump back to the original window
+                for window in range(1, winnr('$'))
+                    execute window . 'wincmd w'
+                    if exists('w:jumpbacktohere')
+                        unlet w:jumpbacktohere
+                        break
+                    endif
+                endfor
+            endfunction
+            nnoremap <leader>ww :call ToggleNERDTreeFind()<CR>
 
             function! ToggleNERDTree()
                 if &ft =~ 'tagbar\|nerdtree\|unite\|qf' || buffer_name("%") == '[Command Line]'
