@@ -643,7 +643,7 @@
             let g:ycm_min_num_of_chars_for_completion = 1   " 两个字开始补全
             let g:ycm_seed_identifiers_with_syntax = 1
             let g:ycm_collect_identifiers_from_tags_files = 1
-            let g:ycm_key_invoke_completion = '<C-Space>'
+            let g:ycm_key_invoke_completion = '<c-z>'
             let g:ycm_use_ultisnips_completer = 1
             let g:ycm_semantic_triggers =  {
                         \   'c' : ['->', '.'],
