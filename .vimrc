@@ -153,8 +153,8 @@
     endif
 
     set background=dark
+    set noshowmode
     set tabpagemax=15               " 最多15个Tab
-    set showmode                    " 显示当前mode
     set cursorline                  " 高亮当前行
     set list                        " 显示特殊符号
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
