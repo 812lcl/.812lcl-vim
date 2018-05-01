@@ -276,7 +276,7 @@
             set undofile
             set undolevels=1000
             set undoreload=10000
-            set undodir=~/.vim/.vimtmp/undo
+            set undodir=~/.vim/.vimtmp/vimundo
         endif
         set viminfo+=n$HOME/.vim/.vimtmp/viminfo
     " }
@@ -560,6 +560,37 @@
         if filereadable($CTAGS_DB)
             set tags+=$CTAGS_DB
         endif
+    " }
+
+    " gtags {
+        let $GTAGSLABEL = 'native-pygments'
+        let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+    " }
+
+    " vim-gutentags {
+        let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+        let g:gutentags_ctags_tagfile = '.tags'
+        let g:gutentags_cache_dir = expand('~/.vim/.vimtmp/vimcache/tags')
+
+        let g:gutentags_modules = []
+        if executable('ctags')
+            let g:gutentags_modules += ['ctags']
+        endif
+        if executable('gtags-cscope') && executable('gtags')
+            let g:gutentags_modules += ['gtags_cscope']
+        endif
+
+
+        " 配置 ctags 的参数
+        let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+        let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+        let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+        " 如果使用 universal ctags 需要增加下面一行
+        let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+
+        " 禁用 gutentags 自动加载 gtags 数据库的行为
+        let g:gutentags_auto_add_gtags_cscope = 0
     " }
 
     " Cscope {
@@ -1048,6 +1079,7 @@
             let parent = $HOME
             let prefix = 'vim'
             let dir_list = {
+                        \ 'cache': '',
                         \ 'backup': 'backupdir',
                         \ 'views': 'viewdir',
                         \ 'swap': 'directory' }
@@ -1077,7 +1109,7 @@
                 if !isdirectory(directory)
                     echo "Warning: Unable to create backup directory: " . directory
                     echo "Try: mkdir -p " . directory
-                else
+                elseif settingname != ''
                     let directory = substitute(directory, " ", "\\\\ ", "g")
                     exec "set " . settingname . "=" . directory
                 endif
