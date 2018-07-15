@@ -285,7 +285,11 @@
             set undoreload=10000
             set undodir=~/.vim/.vimtmp/vimundo
         endif
-        set viminfo+=n$HOME/.vim/.vimtmp/viminfo
+        if has('nvim')
+            set viminfo+=n$HOME/.vim/.vimtmp/nviminfo
+        else
+            set viminfo+=n$HOME/.vim/.vimtmp/viminfo
+        endif
     " }
 
     " vim-airline {
