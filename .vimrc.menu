@@ -11,6 +11,14 @@
 " }
 
 " unite menu {
+    " let s:menus = {}
+    " let s:menus.vim = {
+    "     \ 'description': 'Vim',
+    "     \ }
+    " let s:menus.vim.file_candidates = [
+    "     \ ['    > Edit configuation file (init.vim)', '~/.config/nvim/init.vim']
+    "     \ ]
+    " call denite#custom#var('menu', 'menus', s:menus)
     let g:unite_source_menu_menus = {}
     nnoremap <LocalLeader>m :Unite menu<CR>
 " }
