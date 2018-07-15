@@ -435,9 +435,9 @@
             let g:tagbar_autoclose = 0
             let g:tagbar_autopreview = 0
             let g:tagbar_previewwin_pos = "rightbelow"
-            if !&diff
-                au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go,snippets,javascript nested :TagbarOpen
-            endif
+            " if !&diff
+            "     au FileType c,cpp,python,java,vim,php,sh,perl,ruby,go,snippets,javascript nested :TagbarOpen
+            " endif
 
             " If using go please install the gotags program
             let g:tagbar_type_go = {
@@ -843,6 +843,7 @@
             let g:go_list_type = "locationlist"
             let g:go_snippet_case_type = "camelcase"
             let g:go_addtags_transform = "camelcase"
+            let g:go_def_reuse_buffer = 1
 
             let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
             let g:go_metalinter_autosave = 1
