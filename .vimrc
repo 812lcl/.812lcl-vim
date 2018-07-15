@@ -1080,6 +1080,13 @@
         endif
     " }
 
+    " auto-pairs {
+        if isdirectory(expand("~/.vim/bundle/auto-pairs/"))
+            let g:keysound_enable = 1
+            let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
+            let g:keysound_volume = 500
+        endif
+    " }
 " }
 
 " Functions {
