@@ -34,9 +34,16 @@
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         if WINDOWS()
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+            set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
     " }
+
+    " Silence impl warning when start vim {
+        " https://github.com/vim/vim/issues/3117
+        if has('python3')
+            silent! python3 1
+        endif
+    "}
 
 " }
 
