@@ -108,7 +108,7 @@
             Plug 'AndrewRadev/splitjoin.vim'
             Plug 'jiangmiao/auto-pairs'
             Plug 'terryma/vim-multiple-cursors'
-            Plug 'ludovicchabant/vim-gutentags'
+            " Plug 'ludovicchabant/vim-gutentags'
         endif
     " }
 
