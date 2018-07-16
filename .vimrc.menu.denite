@@ -1,0 +1,484 @@
+" Modeline and Notes {
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
+"             __   _  ____  _        _               _
+"           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___
+"           \\__//| |  / / | | / __/| | _____\ \ / /| | '_ ` _ \
+"           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |
+"           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|
+"
+"   This is the personal .vimrc file of 812lcl.
+"   You can find me at http://812lcl.com
+" }
+
+" denite menu {
+    let s:menus = {}
+    nnoremap <LocalLeader>m :Denite menu<CR>
+    call denite#custom#var('menu', 'menus', s:menus)
+" }
+
+" navigation {
+    let s:menus.navigation = {
+        \ 'description' : '     navigate by buffers, tabs & windows
+            \                    Map: <Space>n',
+        \}
+    let s:menus.navigation.command_candidates = [
+        \['> buffers                                                                Map: ,b',
+            \'Denite buffer'],
+        \['> tabs                                                                   Map: ',
+            \'Unite tab'],
+        \['> windows                                                                Map: ',
+            \'Unite window'],
+        \['> location list                                                          Map: <Space>x',
+            \'Unite location_list'],
+        \['> quickfix                                                               Map: <Space>z',
+            \'Unite quickfix'],
+        \['> next buffer                                                            Map: K',
+            \'bnext'],
+        \['> prev buffer                                                            Map: J',
+            \'bprevious'],
+        \['> delete buffer                                                          Map: :bd',
+            \'bd'],
+        \['> next tab                                                               Map: ',
+            \'tabn'],
+        \['> prev tab                                                               Map: ',
+            \'tabp'],
+        \['> NERDTree                     (NERDTRee)                                Map: ,wf',
+            \'NERDTreeToggle'],
+        \['> NERDTreeFind                 (NERDTRee)                                Map: ,w',
+            \'NERDTreeFind'],
+        \['> new vertical window                                                    Map: <C-w>v',
+            \'vsplit'],
+        \['> new horizontal window                                                  Map: <C-w>s',
+            \'split'],
+        \['> toggle quickfix window                                                 Map: :cw',
+            \'cw'],
+        \['> close current window                                                   Map: :c',
+            \'close'],
+        \]
+    nnoremap <LocalLeader>n :Denite menu:navigation<CR>
+" }
+
+" bookmarks {
+    let s:menus.bookmarks = {
+        \ 'description' : '      bookmarks
+            \                                              Map: <Space>b',
+        \}
+    let s:menus.bookmarks.command_candidates = [
+        \['> Unite open bookmarks                                                   Map: ',
+            \'Unite bookmark:*'],
+        \['> Unite add bookmark                                                     Map: ',
+            \'UniteBookmarkAdd'],
+        \['> Text add mark                                                          Map: m[a-zA-Z]',
+            \'normal m,'],
+        \['> Add next mark                  (vim-signature)                         Map: m,',
+            \'normal m,'],
+        \['> Next mark                      (vim-signature)                         Map: ]`',
+            \'normal ]`'],
+        \['> Prev mark                      (vim-signature)                         Map: [`',
+            \'normal [`'],
+        \['> Clear mark                     (vim-signature)                         Map: m<Space>',
+            \'normal m '],
+        \]
+    nnoremap <LocalLeader>b :Denite menu:bookmarks<CR>
+" }
+
+" cscope {
+    let s:menus.cscope = {
+        \ 'description' : '         cscope
+            \                                                 Map: <Space>e',
+        \}
+    let s:menus.cscope.command_candidates = [
+        \['> find definition                            (cscope)                    Map: ,,g',
+            \'normal ,,g'],
+        \['> find call it                               (cscope)                    Map: ,,c',
+            \'normal ,,c'],
+        \['> find it call                               (cscope)                    Map: ,,d',
+            \'normal ,,d'],
+        \['> find c symbol                              (cscope)                    Map: ,,s',
+            \'normal ,,s'],
+        \['> find word                                  (cscope)                    Map: ,,4',
+            \'normal ,,4'],
+        \['> egrep word                                 (cscope)                    Map: ,,6',
+            \'normal ,,6'],
+        \['> find file                                  (cscope)                    Map: ,,7',
+            \'normal ,,7'],
+        \['> find include this file                     (cscope)                    Map: ,,8',
+            \'normal ,,8'],
+        \]
+    nnoremap <LocalLeader>e :Denite menu:cscope<CR>
+" }
+
+" code {
+    let s:menus.code = {
+        \ 'description' : '           coding
+            \                                                 Map: <Space>c',
+        \}
+    let s:menus.code.command_candidates = [
+        \['> Edit snippets                              (UltiSnips)                 Map: ',
+            \':UltiSnipsEdit'],
+        \['> Edit all snippets                          (UltiSnips)                 Map: ',
+            \':UltiSnipsEdit!'],
+        \['> Count lines of code                                                    Map: ',
+            \'Unite -default-action= output:call\\ LinesOfCode()'],
+        \['> Toggle indent lines                        (indent-guides)             Map: ,g',
+            \'IndentLinesToggle'],
+        \['> Tagbar                                     (Tagbar)                    Map: ,e',
+            \'Tagbar'],
+        \['> Syntastic check                            (syntastic)                 Map: ,i',
+            \'normal ,i'],
+        \['> Comment current line                       (nerdcommenter)             Map: ,cc',
+            \'normal ,cc'],
+        \['> Same as cc but forces nesting              (nerdcommenter)             Map: ,cn',
+            \'normal ,cn'],
+        \['> Uncomment current line                     (nerdcommenter)             Map: ,cu',
+            \'normal ,cu'],
+        \['> Comment sexily                             (nerdcommenter)             Map: ,cs',
+            \'normal ,cs'],
+        \['> Comment using one set                      (nerdcommenter)             Map: ,cm',
+            \'normal ,cm'],
+        \['> show emmet tutorial                        (emmet-vim)                 Map: ',
+            \'h emmet-tutorial'],
+        \]
+    nnoremap <LocalLeader>c :Denite menu:code<CR>
+" }
+
+" files {
+    let s:menus.files = {
+        \ 'description' : '          files & dirs
+            \                                           Map: <Space>f',
+        \}
+    let s:menus.files.command_candidates = [
+        \['> open file                                                              Map: ',
+            \'Unite -start-insert file'],
+        \['> open file with recursive search                                        Map: ,f',
+            \'Unite -start-insert file_rec/async'],
+        \['> session list                                                           Map: <Space>y',
+            \':SessionList'],
+        \['> session save                                                           Map: <Space>u',
+            \':SessionSave'],
+        \['> session close                                                          Map: <Space>i',
+            \':SessionClose'],
+        \['> search directory                                                       Map: ',
+            \'Unite -start-insert directory'],
+        \['> search directory with recursive search                                 Map: ,fd',
+            \'Unite -start-insert directory_rec/async'],
+        \['> edit new file                                                          Map: ',
+            \'Unite -start-insert file/new'],
+        \['> make new directory                                                     Map: ',
+            \'Unite -start-insert directory/new'],
+        \['> change working directory                                               Map: ',
+            \'Unite -default-action=lcd directory'],
+        \['> know current working directory                                         Map: ',
+            \'Unite output:pwd'],
+        \['> search recently used files                                             Map: ,fr',
+            \'Unite -start-insert file_mru'],
+        \['> search recently used directories                                       Map: ,dr',
+            \'Unite -start-insert directory_mru'],
+        \['> save as root                                                           Map: :w!!',
+            \'exe "write !sudo tee % >/dev/null"'],
+        \['> open ranger                                                            Map: <Space>r',
+            \'call RangerChooser()'],
+        \]
+    nnoremap <LocalLeader>f :Denite menu:files<CR>
+" }
+
+" git {
+    let s:menus.git = {
+        \ 'description' : '            admin git repositories
+            \                                 Map: <Space>g',
+        \}
+    let s:menus.git.command_candidates = [
+        \['> git diff               (fugitive)                                      Map: ,gd',
+            \'Gvdiff'],
+        \['> git blame              (fugitive)                                      Map: ,gb',
+            \'Gblame'],
+        \['> git log                (fugitive)                                      Map: ,gl',
+            \'exe "silent Glog | Unite -no-quit quickfix"'],
+        \['> git init               (fugitive)                                      Map: ,gn',
+            \'Unite output:echo\ system("git\ init")'],
+        \['> git status             (fugitive)                                      Map: ,gs',
+            \'Gstatus'],
+        \['> git commit             (fugitive)                                      Map: ,gc',
+            \'Gcommit'],
+        \['> git log - all          (fugitive)                                      Map: ,gL',
+            \'exe "silent Glog -all | Unite -no-quit quickfix"'],
+        \['> git add/stage          (fugitive)                                      Map: ,gw',
+            \'Gwrite'],
+        \['> git checkout           (fugitive)                                      Map: ,go',
+            \'Gread'],
+        \['> git rm                 (fugitive)                                      Map: ,gR',
+            \'Gremove'],
+        \['> git mv                 (fugitive)                                      Map: ,gm',
+            \'exe "Gmove " input("destino: ")'],
+        \['> git push               (fugitive)                                      Map: ,gp',
+            \'Git! push'],
+        \['> git pull               (fugitive)                                      Map: ,gP',
+            \'Git! pull'],
+        \['> git command            (fugitive)                                      Map: ,gi',
+            \'exe "Git! " input("comando git: ")'],
+        \['> git edit               (fugitive)                                      Map: ,gE',
+            \'exe "command Gedit " input(":Gedit ")'],
+        \['> git grep               (fugitive)                                      Map: ,gg',
+            \'exe "silent Ggrep -i ".input("Pattern: ") | Unite -no-quit quickfix'],
+        \['> git grep - messages    (fugitive)                                      Map: ,ggm',
+            \'exe "silent Glog --grep=".input("Pattern: ")." | Unite -no-quit quickfix"'],
+        \['> git grep - text        (fugitive)                                      Map: ,ggt',
+            \'exe "silent Glog -S".input("Pattern: ")." | Unite -no-quit quickfix"'],
+        \['> git cd                 (fugitive)                                      Map: ,gcd',
+            \'Gcd'],
+        \['> git lcd                (fugitive)                                      Map: ,glc',
+            \'Glcd'],
+        \['> git browse             (fugitive)                                      Map: ,gB',
+            \'Gbrowse'],
+        \['> github issues & PR     (fugitive)                                      Map: ,gS',
+            \'normal ,gS'],
+        \['> next hunk              (vim-signify)                                   Map: gh',
+            \'GitGutterNextHunk'],
+        \['> prev hunk              (vim-signify)                                   Map: hg',
+            \'GitGutterPrevHunk'],
+        \]
+    nnoremap <LocalLeader>g :Denite menu:git<CR>
+" }
+
+" history {
+    let s:menus.history = {
+        \ 'description' : '        yanks, registers & history
+            \                             Map: <Space>h',
+        \}
+    let s:menus.history.command_candidates = [
+        \['> registers                                                              Map: <Space>q',
+            \'Unite register'],
+        \['> messages                                                               Map: ',
+            \'Unite output:messages'],
+        \['> search changes                                                         Map: ',
+            \'Unite change'],
+        \['> search jumps                                                           Map: ',
+            \'Unite jump'],
+        \['> search tasks                                                           Map: ,t',
+            \'TaskList'],
+        \['> undo tree      (Undotree)                                              Map: ,q',
+            \'UndotreeToggle'],
+        \]
+    nnoremap <LocalLeader>h :Denite menu:history<CR>
+" }
+
+" searching {
+    let s:menus.searching = {
+        \ 'description' : '      searchs inside the current buffer
+            \                      Map: <Space>s',
+        \}
+    let s:menus.searching.command_candidates = [
+        \['> search line                                                            Map: ',
+            \'Unite -auto-preview -start-insert line'],
+        \['> search word under the cursor in current buffer                         Map: ',
+            \'UniteWithCursorWord -auto-preview -winheight=25 -no-quit line'],
+        \['> grep (ag → ack → grep)                                                 Map: ,A',
+            \'Unite -auto-preview -winheight=25 -no-quit grep'],
+        \['> grep current word                                                      Map: ,a',
+            \'UniteWithCursorWord -auto-preview -winheight=25 -no-quit grep'],
+        \['> search marks                                                           Map: ,k',
+            \'Unite -auto-preview -winheight=25 mark'],
+        \['> find                                                                   Map: ',
+            \'Unite find'],
+        \['> vimgrep (very slow)                                                    Map: ',
+            \'Unite vimgrep'],
+        \['> trigger easymotion               (easymotion)                          Map: ,,',
+            \''],
+        \]
+    nnoremap <LocalLeader>s :Denite menu:searching<CR>
+" }
+
+" text {
+    let s:menus.text = {
+        \ 'description' : '           text edition
+            \                                           Map: <Space>t',
+        \}
+    let s:menus.text.command_candidates = [
+        \['> toggle search results highlight                                        Map: ,h',
+            \'normal ,h'],
+        \['> toggle nu or rnu                                                       Map: ,s',
+            \'normal ,s'],
+        \['> spell check                                                            Map: ,p',
+            \'normal ,p'],
+        \['> toggle fold                                                            Map: <Space>o',
+            \'normal <Space>o'],
+        \['> FencAutoDetect                       (fencview)                        Map: ,m',
+            \'FencAutoDetect'],
+        \['> toggle surround in visualmode        (surround)                        Map: S',
+            \'visual S'],
+        \['> add surroundings in visualmode       (surround)                        Map: ys',
+            \''],
+        \['> change surroundings in visualmode    (surround)                        Map: cs',
+            \''],
+        \['> delete surroundings in visualmode    (surround)                        Map: ds',
+            \''],
+        \]
+    nnoremap <LocalLeader>t :Denite menu:text<CR>
+" }
+
+" EasyAlign {
+    let s:menus.EasyAlign = {
+        \ 'description' : '      EasyAlign
+            \                                              Map: <Space>a',
+        \}
+    let s:menus.EasyAlign.command_candidates = [
+        \['> Json tool                                                              Map: ,jt',
+            \'normal ,jt'],
+        \['> EasyAlign =                                                            Map: <Enter>=',
+            \'EasyAlign ='],
+        \['> EasyAlign *=                                                           Map: <Enter>*=',
+            \'EasyAlign *='],
+        \['> EasyAlign **=                                                          Map: <Enter>**=',
+            \'EasyAlign **='],
+        \['> EasyAlign 2=                                                           Map: <Enter>2=',
+            \'EasyAlign 2='],
+        \['> EasyAlign =<                                                           Map: <Enter><Right>=',
+            \'EasyAlign =<'],
+        \['> EasyAlign :                                                            Map: <Enter>:',
+            \'EasyAlign :'],
+        \['> EasyAlign #                                                            Map: <Enter>#',
+            \'EasyAlign #'],
+        \['> EasyAlign ,                                                            Map: <Enter>,',
+            \'EasyAlign ,'],
+        \['> EasyAlign &                                                            Map: <Enter>&',
+            \'EasyAlign &'],
+        \['> EasyAlign <Bar>                                                        Map: <Enter><Bar>',
+            \'EasyAlign <Bar>'],
+        \]
+    nnoremap <LocalLeader>a :Denite menu:EasyAlign<CR>
+" }
+
+" vim {
+    let s:menus.vim = {
+        \ 'description' : '            vim
+            \                                                    Map: <Space>v',
+        \}
+    let s:menus.vim.command_candidates = [
+        \['> edit configuration file (vimrc)                                        Map: ',
+            \'edit $MYVIMRC'],
+        \['> edit plugin configuration file                                         Map: ',
+            \'edit ~/.vimrc.plugins'],
+        \['> edit menu configuration file                                           Map: ',
+            \'edit ~/.vimrc.menu'],
+        \['> choose colorscheme                                                     Map: ',
+            \'Unite colorscheme -auto-preview'],
+        \['> mappings                                                               Map: ',
+            \'Unite mapping -start-insert'],
+        \['> vim commands                                                           Map: ',
+            \'Unite -start-insert command'],
+        \['> vim functions                                                          Map: ',
+            \'Unite -start-insert function'],
+        \['> vim runtimepath                                                        Map: ',
+            \'Unite -start-insert runtimepath'],
+        \['> vim command output                                                     Map: ',
+            \'Unite output'],
+        \['> unite sources                                                          Map: ',
+            \'Unite source'],
+        \['> kill process                                                           Map: ',
+            \'Unite -default-action=sigkill -start-insert process'],
+        \['> launch executable (dmenu like)                                         Map: ',
+            \'Unite -start-insert launcher'],
+        \]
+    nnoremap <LocalLeader>v :Denite menu:vim<CR>
+" }
+
+" markdown {
+    let s:menus.markdown = {
+        \ 'description' : '       preview markdown extra docs
+            \                            Map: <Space>k',
+        \}
+    let s:menus.markdown.command_candidates = [
+        \['> Preview                               (vim-xmark)                      Map: ',
+            \':Xmark'],
+        \['> On the right                          (vim-xmark)                      Map: ',
+            \':Xmark>'],
+        \['> On the left                           (vim-xmark)                      Map: ',
+            \':Xmark<'],
+        \['> On the top                            (vim-xmark)                      Map: ',
+            \':Xmark+'],
+        \['> On the bottom                         (vim-xmark)                      Map: ',
+            \':Xmark-'],
+        \['> Turn off Xmark                        (vim-xmark)                      Map: ',
+            \':Xmark!'],
+        \]
+    nnoremap <LocalLeader>k :Denite -silent menu:markdown<CR>
+" }
+
+" web {
+    let s:menus.vimplug = {
+        \ 'description' : '        vim plugins
+            \                                            Map: <Space>w',
+        \}
+    let s:menus.vimplug.command_candidates = [
+        \['> Plug install                         (vim-plug)                        Map: ',
+            \':PlugInstall'],
+        \['> Plug update                          (vim-plug)                        Map: ',
+            \':PlugUpdate'],
+        \['> Plug remove                          (vim-plug)                        Map: ',
+            \':PlugClean'],
+        \['> Plug status                          (vim-plug)                        Map: ',
+            \':PlugStatus'],
+        \['> Update vim-plug                      (vim-plug)                        Map: ',
+            \':PlugUpgrade'],
+        \]
+    nnoremap <LocalLeader>w :Denite -silent menu:vimplug<CR>
+" }
+
+" denite option {
+    let s:denite_options = {
+          \ 'default' : {
+          \ 'winheight' : 15,
+          \ 'mode' : 'insert',
+          \ 'quit' : 'true',
+          \ 'highlight_matched_char' : 'MoreMsg',
+          \ 'highlight_matched_range' : 'MoreMsg',
+          \ 'direction': 'rightbelow',
+          \ 'statusline' : has('patch-7.4.1154') ? v:false : 0,
+          \ 'prompt' : '➭',
+          \ }}
+
+    function! s:profile(opts) abort
+      for fname in keys(a:opts)
+        for dopt in keys(a:opts[fname])
+          call denite#custom#option(fname, dopt, a:opts[fname][dopt])
+        endfor
+      endfor
+    endfunction
+
+    call s:profile(s:denite_options)
+" }
+
+" KEY MAPPINGS {
+    let s:insert_mode_mappings = [
+          \   ['jj',      '<denite:enter_mode:normal>',            'noremap'],
+          \   ['<Tab>',   '<denite:move_to_next_line>',            'noremap'],
+          \   ['<S-tab>', '<denite:move_to_previous_line>',        'noremap'],
+          \   ['<Esc>',   '<denite:enter_mode:normal>',            'noremap'],
+          \   ['<C-N>',   '<denite:assign_next_matched_text>',     'noremap'],
+          \   ['<C-P>',   '<denite:assign_previous_matched_text>', 'noremap'],
+          \   ['<Up>',    '<denite:assign_previous_text>',         'noremap'],
+          \   ['<Down>',  '<denite:assign_next_text>',             'noremap'],
+          \   ['<C-Y>',   '<denite:redraw>',                       'noremap'],
+          \ ]
+
+    let s:normal_mode_mappings = [
+          \   ["'",     '<denite:toggle_select_down>',      'noremap'],
+          \   ['<C-n>', '<denite:jump_to_next_source>',     'noremap'],
+          \   ['<C-p>', '<denite:jump_to_previous_source>', 'noremap'],
+          \   ['gg',    '<denite:move_to_first_line>',      'noremap'],
+          \   ['st',    '<denite:do_action:tabopen>',       'noremap'],
+          \   ['sg',    '<denite:do_action:vsplit>',        'noremap'],
+          \   ['sv',    '<denite:do_action:split>',         'noremap'],
+          \   ['q',     '<denite:quit>',                    'noremap'],
+          \   ['r',     '<denite:redraw>',                  'noremap'],
+          \ ]
+
+    for s:m in s:insert_mode_mappings
+      call denite#custom#map('insert', s:m[0], s:m[1], s:m[2])
+    endfor
+    for s:m in s:normal_mode_mappings
+      call denite#custom#map('normal', s:m[0], s:m[1], s:m[2])
+    endfor
+
+    unlet s:m s:insert_mode_mappings s:normal_mode_mappings
+" }
