@@ -428,7 +428,7 @@
     let s:denite_options = {
           \ 'default' : {
           \ 'winheight' : 15,
-          \ 'mode' : 'insert',
+          \ 'mode' : 'normal',
           \ 'quit' : 'true',
           \ 'highlight_matched_char' : 'MoreMsg',
           \ 'highlight_matched_range' : 'MoreMsg',
