@@ -187,7 +187,7 @@
 
     " Go Lang {
         if count(g:lcl_bundle_groups, 'go')
-            Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
+            Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
         endif
     " }
 
