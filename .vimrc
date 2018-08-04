@@ -145,7 +145,7 @@
 
     " }
 
-    colorscheme molokai             " 载入皮肤主题
+    colorscheme solarized             " 载入皮肤主题
     if colors_name == 'molokai'
         let g:molokai_original = 1
     elseif colors_name == 'solarized' && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
