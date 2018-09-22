@@ -544,7 +544,7 @@
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
 
-        fun! MatchCaseTag()
+        fun! MatchCaseTag()     " https://stackoverflow.com/questions/7640663/use-tjump-instead-of-tag-vim-on-pressing-ctrl
             let ic = &ic
             set noic
             try
@@ -573,16 +573,14 @@
         endif
     " }
 
-    " gtags {
-        let $GTAGSLABEL = 'native-pygments'
-        let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
-    " }
-
     " vim-gutentags {
         if isdirectory(expand("~/.vim/bundle/vim-gutentags/"))
+            let $GTAGSLABEL = 'native-pygments'
+            let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
             let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-            let g:gutentags_ctags_tagfile = '.tags'
-            let g:gutentags_cache_dir = expand('~/.vim/.vimtmp/vimcache/tags')
+            let g:gutentags_ctags_tagfile = 'tags'
+            let s:vim_tags = expand('~/.vim/.vimtmp/vimcache/tags')
+            let g:gutentags_cache_dir = s:vim_tags
 
             let g:gutentags_modules = []
             if executable('ctags')
@@ -594,7 +592,7 @@
 
 
             " 配置 ctags 的参数
-            let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+            let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
             let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
             let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
@@ -603,29 +601,50 @@
 
             " 禁用 gutentags 自动加载 gtags 数据库的行为
             let g:gutentags_auto_add_gtags_cscope = 0
+
+            if !isdirectory(s:vim_tags)
+                silent! call mkdir(s:vim_tags, 'p')
+            endif
         endif
     " }
 
     " Cscope {
-        set cscopetag
-        set cscopequickfix=s-,c-,d-,i-,t-,e-   " 使用QuickFix窗口来显示cscope查找结果
-        let $CSCOPE_DIR=s:FindFile("cscope.out")
-        let $CSCOPE_DB=$CSCOPE_DIR."/cscope.out"
-        if filereadable($CSCOPE_DB)
-            cs add $CSCOPE_DB $CSCOPE_DIR
+        if isdirectory(expand("~/.vim/bundle/gutentags_plus/"))    " 如果使用 gutentags_plus 则不自定义 cscope 操作
+            noremap <silent> <Leader><Leader>g :GscopeFind g <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>1 :GscopeFind g<Space>
+            noremap <silent> <Leader><Leader>d :GscopeFind d <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>2 :GscopeFind d<Space>
+            noremap <silent> <Leader><Leader>c :GscopeFind c <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>3 :GscopeFind c<Space>
+            noremap <silent> <Leader><Leader>s :GscopeFind s <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>0 :GscopeFind s<Space>
+            noremap <silent> <Leader><Leader>4 :GscopeFind t <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>6 :GscopeFind e <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>7 :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>8 :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>a :GscopeFind a <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
+            noremap <silent> <Leader><Leader>k :GscopeKill<cr>
+        else
+            set cscopetag
+            set cscopequickfix=s-,c-,d-,i-,t-,e-   " 使用QuickFix窗口来显示cscope查找结果
+            let $CSCOPE_DIR=s:FindFile("cscope.out")
+            let $CSCOPE_DB=$CSCOPE_DIR."/cscope.out"
+            if filereadable($CSCOPE_DB)
+                cs add $CSCOPE_DB $CSCOPE_DIR
+            endif
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>1 :cs find g<Space>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>2 :cs find d<Space>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>3 :cs find c<Space>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>0 :cs find s<Space>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>4 :cs find t <C-R>=expand("<cword>")<CR><CR>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>6 :cs find e <C-R>=expand("<cword>")<CR><CR>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>7 :cs find f <C-R>=expand("<cfile>")<CR><CR>
+            au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>8 :cs find i <C-R>=expand("<cfile>")<CR><CR>
         endif
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>1 :cs find g<Space>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>2 :cs find d<Space>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>3 :cs find c<Space>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>0 :cs find s<Space>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>4 :cs find t <C-R>=expand("<cword>")<CR><CR>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>6 :cs find e <C-R>=expand("<cword>")<CR><CR>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>7 :cs find f <C-R>=expand("<cfile>")<CR><CR>
-        au BufEnter *.c,*.cpp,*.h nmap <Leader><Leader>8 :cs find i <C-R>=expand("<cfile>")<CR><CR>
     " }
 
     " Syntastic {
@@ -938,7 +957,7 @@
         endif
     " }
 
-    " vim-devicons {
+    " vim-anzu {
         if isdirectory(expand("~/.vim/bundle/vim-anzu/"))
             nmap n <Plug>(anzu-n-with-echo)
             nmap N <Plug>(anzu-N-with-echo)
@@ -1084,8 +1103,8 @@
         endif
     " }
 
-    " auto-pairs {
-        if isdirectory(expand("~/.vim/bundle/auto-pairs/"))
+    " vim-keysound {
+        if isdirectory(expand("~/.vim/bundle/vim-keysound/"))
             let g:keysound_enable = 1
             let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
             let g:keysound_volume = 1000
