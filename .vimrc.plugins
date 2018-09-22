@@ -109,7 +109,8 @@
             Plug 'AndrewRadev/splitjoin.vim'
             Plug 'jiangmiao/auto-pairs'
             Plug 'terryma/vim-multiple-cursors'
-            " Plug 'ludovicchabant/vim-gutentags'
+            Plug 'ludovicchabant/vim-gutentags'
+            Plug '812lcl/gutentags_plus'
         endif
     " }
 

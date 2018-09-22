@@ -1223,7 +1223,8 @@
     " }
 
     " Quickfix {
-        command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()     " :Qargs 提取quicklist中文件为arglist
+     " https://stackoverflow.com/questions/5686206/search-replace-using-quickfix-list-in-vim/5686810#5686810
+        command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
         function! QuickfixFilenames()
           let buffer_numbers = {}
           for quickfix_item in getqflist()
