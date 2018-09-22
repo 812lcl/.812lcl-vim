@@ -73,6 +73,7 @@
             Plug 'tpope/vim-surround'
             Plug 'tpope/vim-repeat'
             Plug 'tpope/vim-rsi'
+            Plug 'tpope/vim-unimpaired'
             Plug 'vim-scripts/sessionman.vim'
             Plug 'vim-scripts/matchit.zip'
             Plug 'bling/vim-airline'
@@ -111,6 +112,14 @@
             Plug 'terryma/vim-multiple-cursors'
             Plug 'ludovicchabant/vim-gutentags'
             Plug '812lcl/gutentags_plus'
+            Plug 'kana/vim-textobj-user'
+            Plug 'kana/vim-textobj-indent'
+            Plug 'kana/vim-textobj-syntax'
+            Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
+            Plug 'sgur/vim-textobj-parameter'
+            Plug 'octol/vim-cpp-enhanced-highlight', { 'for':['c', 'cpp'] }
+            Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+            Plug 'Shougo/echodoc.vim'
         endif
     " }
 

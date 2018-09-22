@@ -84,7 +84,7 @@
     set smartcase                   " 智能大小写搜索
     set wildmenu                    " 命令模式下补全以菜单形式显示
     set wildmode=list:longest,full  " 命令模式补全模式
-    set foldenable                  " 启动折叠
+    set nofoldenable                " 启动折叠
     set foldmethod=marker           " 设置折叠模式
     set completeopt=longest,menuone " 关掉补全时的预览窗口
     set encoding=utf-8              " 编码，使汉语正常显示
@@ -215,14 +215,12 @@
 
 " Key (re)Mappings {
 
-    let mapleader=","           " 映射<leader>键,默认'\'    remain c l p [ ] ; ' / 9 0; a v r o 6-8 for go; overwrite <F2> <c-p> K
+    let mapleader=","           " 映射<leader>键,默认'\'    remain x, z, c l p [ ] ; ' / 9 0; a v r o 6-8 for go; overwrite <F2> <c-p> K
     let maplocalleader=" "      " 映射<localleader>键       remain ' . 0~9
     inoremap jj <ESC>
     inoremap jjj <ESC>:w<CR>
     vnoremap > >gv
     vnoremap < <gv
-    noremap <Leader>x :lnext<CR>
-    noremap <Leader>z :lpre<CR>
     noremap <Leader>n ggVG
     noremap <Leader>du :diffupdate<CR>
     nnoremap <silent> J :bp<CR>
@@ -622,7 +620,6 @@
             noremap <silent> <Leader><Leader>6 :GscopeFind e <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
             noremap <silent> <Leader><Leader>7 :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
             noremap <silent> <Leader><Leader>8 :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
-            noremap <silent> <Leader><Leader>a :GscopeFind a <C-R><C-W><cr>:Unite -silent -auto-preview -winheight=10 quickfix<CR>
             noremap <silent> <Leader><Leader>k :GscopeKill<cr>
         else
             set cscopetag
@@ -697,30 +694,27 @@
 
     " YouCompleteMe {
         if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
-            au BufEnter *.c,*.cpp,*.java,*.py,*.php,*.go set completefunc=youcompleteme#Complete
+            au BufEnter *.c,*.cpp,*.java,*.py,*.php,*.go,*.sh,*.zsh set completefunc=youcompleteme#Complete
+            let g:ycm_min_num_identifier_candidate_chars = 2
+            let g:ycm_collect_identifiers_from_comments_and_strings = 1
             let g:ycm_confirm_extra_conf = 0                " 不用每次提示加载.ycm_extra_conf.py文件
             let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
             let g:ycm_show_diagnostics_ui = 0               " 关闭ycm的syntastic
-            let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'java': 1, 'python': 1, 'php': 1, 'go': 1}
+            let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'objc': 1, 'java': 1, 'python': 1, 'php': 1, 'go': 1, 'sh': 1, 'zsh': 1}
             let g:ycm_complete_in_comments = 1              " 评论中也应用补全
             let g:ycm_min_num_of_chars_for_completion = 1   " 两个字开始补全
             let g:ycm_seed_identifiers_with_syntax = 1
             let g:ycm_collect_identifiers_from_tags_files = 1
             let g:ycm_key_invoke_completion = '<c-z>'
             let g:ycm_use_ultisnips_completer = 1
-            let g:ycm_semantic_triggers =  {
-                        \   'c' : ['->', '.'],
-                        \   'objc' : ['->', '.'],
-                        \   'ocaml' : ['.', '#'],
-                        \   'cpp,objcpp' : ['->', '.', '::'],
-                        \   'perl' : ['->'],
-                        \   'php' : ['->', '::'],
-                        \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
-                        \   'ruby' : ['.', '::'],
-                        \   'lua' : ['.', ':'],
-                        \   'erlang' : [':'],
-                        \ }
             let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+            let g:ycm_semantic_triggers =  {
+                        \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+                        \ 'cs,lua,javascript': ['re!\w{2}'],
+                        \ }
+set completeopt=menu,menuone
+
+noremap <c-z> <NOP>
         endif
     " }
 
@@ -737,7 +731,7 @@
             let g:neocomplete#sources#dictionary#dictionaries = {'_' : $HOME.'/.vim/static/dict_with_cases'}
             if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
                 au Filetype c,cpp,java,python,php,go let g:neocomplete#enable_at_startup = 0
-                au BufLeave *.c,*.cpp,*.java,*.py,*.php,*.go set completefunc=neocomplete#complete
+                au BufLeave *.c,*.cpp,*.java,*.py,*.php,*.go,*.sh,*.zsh set completefunc=neocomplete#complete
             endif
         elseif count(g:lcl_bundle_groups, 'neocomplcache')
             let g:acp_enableAtStartup = 0
@@ -753,7 +747,7 @@
             let g:neocomplcache_dictionary_filetype_lists = {'_' : $HOME.'/.vim/static/dict_with_cases'}
             if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
                 au Filetype c,cpp,java,python,php,go let g:neocomplcache_enable_at_startup = 0
-                au BufLeave *.c,*.cpp,*.java,*.py,*.php,*.go set completefunc=neocomplcache#complete
+                au BufLeave *.c,*.cpp,*.java,*.py,*.php,*.go,*.sh,*.zsh set completefunc=neocomplcache#complete
             endif
         endif
         if isdirectory(expand("~/.vim/bundle/ultisnips/"))
@@ -1108,6 +1102,15 @@
             let g:keysound_enable = 1
             let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
             let g:keysound_volume = 1000
+        endif
+    " }
+
+    " LeaderF {
+        if isdirectory(expand("~/.vim/bundle/LeaderF"))
+            let g:Lf_CommandMap = {'<Tab>': ['<ESC>']}
+            let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+            let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+            let g:Lf_StlColorscheme = 'powerline'
         endif
     " }
 " }
