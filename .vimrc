@@ -716,7 +716,7 @@
     " }
 
     " neocomplete or neocomplcache {
-        if count(g:lcl_bundle_groups, 'neocomplete')
+        if isdirectory(expand("~/.vim/bundle/neocomplete/"))
             let g:acp_enableAtStartup = 0
             let g:neocomplete#max_list = 15
             let g:neocomplete#enable_at_startup = 1
@@ -730,7 +730,7 @@
                 au Filetype c,cpp,java,python,php,go let g:neocomplete#enable_at_startup = 0
                 au BufLeave *.c,*.cpp,*.java,*.py,*.php,*.go,*.sh,*.zsh set completefunc=neocomplete#complete
             endif
-        elseif count(g:lcl_bundle_groups, 'neocomplcache')
+        elseif isdirectory(expand("~/.vim/bundle/neocomplcache/"))
             let g:acp_enableAtStartup = 0
             let g:neocomplcache_max_list = 15
             let g:neocomplcache_enable_at_startup = 1
@@ -959,13 +959,28 @@
         endif
     " }
 
+    " menu {
+        if filereadable(expand("~/.vimrc.menu"))
+            source ~/.vimrc.menu
+        endif
+    " }
+
     " Unite {
-        if count(g:lcl_bundle_groups, 'unite')
-            nmap <silent> <Leader>f :Unite file_rec/async -start-insert<CR>
+        if isdirectory(expand("~/.vim/bundle/unite.vim/"))
+            au FileType unite call s:unite_settings()
+            function! s:unite_settings()
+                imap <buffer> <C-j> <Plug>(unite_select_next_line)
+                imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+                nmap <buffer> <C-h> <C-w>h
+                nmap <buffer> <C-j> <C-w>j
+                nmap <buffer> <C-k> <C-w>k
+                nmap <buffer> <C-l> <C-w>l
+            endfunction
+
+            nmap <silent> <Leader>ff :Unite file_rec/async -start-insert<CR>
             nmap <silent> <Leader>fr :Unite file_mru -start-insert<CR>
             nmap <silent> <Leader>fd :Unite -start-insert directory_rec/async<CR>
-            nmap <silent> <Leader>dr :Unite file_mru -start-insert<CR>
-            nmap <silent> <Leader>b :Unite buffer<CR>
+            nmap <silent> <Leader>fb :Unite buffer<CR>
             nnoremap <LocalLeader>q :Unite register<CR>
             nnoremap <LocalLeader>z :Unite -silent -auto-preview -winheight=10 quickfix<CR>
             nnoremap <LocalLeader>x :Unite -silent -auto-preview -winheight=10 location_list<CR>
@@ -1002,12 +1017,47 @@
                 let g:unite_source_grep_default_opts='--no-group --no-color'
                 let g:unite_source_grep_recursive_opt=''
             endif
+        endif
+    " }
 
-            " Unite menu {
-                if filereadable(expand("~/.vimrc.menu"))
-                    source ~/.vimrc.menu
-                endif
-            " }
+    " Denite {
+        if isdirectory(expand("~/.vim/bundle/denite.nvim/"))
+            nmap <silent> <Leader>fb :Denite buffer<CR>
+            nmap <silent> <Leader>fe :Denite register<CR>
+            nmap <silent> <Leader>ff :Denite file/rec<CR>
+            nmap <silent> <Leader>fd :Denite directory_rec<CR>
+            nmap <silent> <Leader>fj :Denite jump change<CR>
+            nmap <silent> <Leader>fr :Denite file_mru<CR>
+            nmap <silent> <Leader>fl :Denite location_list<CR>
+            nmap <silent> <Leader>fq :Denite quickfix<CR>
+            nmap <silent> <Leader>fm :Denite output:messages<CR>
+            nmap <silent> <Leader>fo :Denite outline<CR>
+            nmap <silent> <Leader>fk :Denite -auto-preview -vertical-preview mark<CR>
+            nmap <silent> <Leader><Leader>a :DeniteCursorWord -auto-preview grep<CR>
+
+            let ignore=&wildignore .
+                \ ',*.pyc,.git,.hg,.svn'
+            call denite#custom#var('file/rec', 'command',
+                \ ['scantree.py', '--ignore', ignore])
+
+            if executable('ag')
+                call denite#custom#var('grep', 'command', ['ag'])
+                call denite#custom#var('grep', 'default_opts',
+                        \ ['--skip-vcs-ignores', '--vimgrep', '--smart-case', '--hidden'])
+                call denite#custom#var('grep', 'recursive_opts', [])
+                call denite#custom#var('grep', 'pattern_opt', [])
+                call denite#custom#var('grep', 'separator', ['--'])
+                call denite#custom#var('grep', 'final_opts', [])
+            elseif executable('ack')
+                call denite#custom#var('grep', 'command', ['ack'])
+                call denite#custom#var('grep', 'default_opts',
+                        \ ['--ackrc', $HOME.'/.ackrc', '-H',
+                        \  '--nopager', '--nocolor', '--nogroup', '--column'])
+                call denite#custom#var('grep', 'recursive_opts', [])
+                call denite#custom#var('grep', 'pattern_opt', ['--match'])
+                call denite#custom#var('grep', 'separator', ['--'])
+                call denite#custom#var('grep', 'final_opts', [])
+            endif
         endif
     " }
 
@@ -1318,18 +1368,6 @@
                 redraw!
             endfunction
             map <LocalLeader>r :call RangerChooser()<CR>
-        " }
-
-        " Unite {
-            au FileType unite call s:unite_settings()
-            function! s:unite_settings()
-                imap <buffer> <C-j> <Plug>(unite_select_next_line)
-                imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-                nmap <buffer> <C-h> <C-w>h
-                nmap <buffer> <C-j> <C-w>j
-                nmap <buffer> <C-k> <C-w>k
-                nmap <buffer> <C-l> <C-w>l
-            endfunction
         " }
 
         " nerdtree and tagbar {

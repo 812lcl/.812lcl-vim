@@ -49,11 +49,11 @@
     " 'python', 'php', 'web', 'ruby', 'haskell','go', 'misc', 'unite', 'others'
     if !exists('g:lcl_bundle_groups')
         if has('win32') || has('win64')
-            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'unite', 'php']
+            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'denite', 'php']
         elseif has('macunix')
             let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'unite', 'others', 'php', 'go']
         else
-            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'unite', 'others', 'php', 'go']
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'denite', 'others', 'php', 'go']
         endif
     endif
 
@@ -118,7 +118,6 @@
             Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
             Plug 'sgur/vim-textobj-parameter'
             Plug 'octol/vim-cpp-enhanced-highlight', { 'for':['c', 'cpp'] }
-            Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
             Plug 'Shougo/echodoc.vim'
         endif
     " }
@@ -212,14 +211,29 @@
 
     " Unite {
         if count(g:lcl_bundle_groups, 'unite')
-            Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins'  }
             Plug 'Shougo/unite.vim'
             Plug 'Shougo/neomru.vim'
-            Plug 'osyo-manga/unite-quickfix'
             Plug 'ujihisa/unite-colorscheme'
             Plug 'ujihisa/unite-locate'
             Plug 'tacroe/unite-mark'
             Plug 'kmnk/vim-unite-svn'
+            Plug 'chemzqm/unite-location'
+        endif
+    " }
+
+    " Denite {
+        if count(g:lcl_bundle_groups, 'denite')
+            if has('nvim')
+                Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins'  }
+                Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+            else
+                Plug 'Shougo/defx.nvim'
+                Plug 'roxma/nvim-yarp'
+                Plug 'roxma/vim-hug-neovim-rpc'
+            endif
+            Plug 'ozelentok/denite-gtags'
+            Plug 'chemzqm/unite-location'
+            Plug 'Shougo/neomru.vim'
         endif
     " }
 

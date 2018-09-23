@@ -24,14 +24,10 @@
     let s:menus.navigation.command_candidates = [
         \['> buffers                                                                Map: ,b',
             \'Denite buffer'],
-        \['> tabs                                                                   Map: ',
-            \'Unite tab'],
-        \['> windows                                                                Map: ',
-            \'Unite window'],
         \['> location list                                                          Map: <Space>x',
-            \'Unite location_list'],
+            \'Denite location_list'],
         \['> quickfix                                                               Map: <Space>z',
-            \'Unite quickfix'],
+            \'Denite quickfix'],
         \['> next buffer                                                            Map: K',
             \'bnext'],
         \['> prev buffer                                                            Map: J',
@@ -64,10 +60,6 @@
             \                                              Map: <Space>b',
         \}
     let s:menus.bookmarks.command_candidates = [
-        \['> Unite open bookmarks                                                   Map: ',
-            \'Unite bookmark:*'],
-        \['> Unite add bookmark                                                     Map: ',
-            \'UniteBookmarkAdd'],
         \['> Text add mark                                                          Map: m[a-zA-Z]',
             \'normal m,'],
         \['> Add next mark                  (vim-signature)                         Map: m,',
@@ -119,7 +111,7 @@
         \['> Edit all snippets                          (UltiSnips)                 Map: ',
             \':UltiSnipsEdit!'],
         \['> Count lines of code                                                    Map: ',
-            \'Unite -default-action= output:call\\ LinesOfCode()'],
+            \'Denite -default-action= output:call\\ LinesOfCode()'],
         \['> Toggle indent lines                        (indent-guides)             Map: ,g',
             \'IndentLinesToggle'],
         \['> Tagbar                                     (Tagbar)                    Map: ,e',
@@ -149,31 +141,25 @@
         \}
     let s:menus.files.command_candidates = [
         \['> open file                                                              Map: ',
-            \'Unite -start-insert file'],
+            \'Denite file'],
         \['> open file with recursive search                                        Map: ,f',
-            \'Unite -start-insert file_rec/async'],
+            \'Denite file/rec'],
         \['> session list                                                           Map: <Space>y',
             \':SessionList'],
         \['> session save                                                           Map: <Space>u',
             \':SessionSave'],
         \['> session close                                                          Map: <Space>i',
             \':SessionClose'],
-        \['> search directory                                                       Map: ',
-            \'Unite -start-insert directory'],
         \['> search directory with recursive search                                 Map: ,fd',
-            \'Unite -start-insert directory_rec/async'],
-        \['> edit new file                                                          Map: ',
-            \'Unite -start-insert file/new'],
-        \['> make new directory                                                     Map: ',
-            \'Unite -start-insert directory/new'],
+            \'Denite directory_rec'],
         \['> change working directory                                               Map: ',
-            \'Unite -default-action=lcd directory'],
+            \'Denite -default-action=lcd directory_rec'],
         \['> know current working directory                                         Map: ',
-            \'Unite output:pwd'],
+            \'Denite output:pwd'],
         \['> search recently used files                                             Map: ,fr',
-            \'Unite -start-insert file_mru'],
+            \'Denite file_mru'],
         \['> search recently used directories                                       Map: ,dr',
-            \'Unite -start-insert directory_mru'],
+            \'Denite directory_mru'],
         \['> save as root                                                           Map: :w!!',
             \'exe "write !sudo tee % >/dev/null"'],
         \['> open ranger                                                            Map: <Space>r',
@@ -193,15 +179,15 @@
         \['> git blame              (fugitive)                                      Map: ,gb',
             \'Gblame'],
         \['> git log                (fugitive)                                      Map: ,gl',
-            \'exe "silent Glog | Unite -no-quit quickfix"'],
+            \'exe "silent Glog | Denite -no-quit quickfix"'],
         \['> git init               (fugitive)                                      Map: ,gn',
-            \'Unite output:echo\ system("git\ init")'],
+            \'Denite output:echo\ system("git\ init")'],
         \['> git status             (fugitive)                                      Map: ,gs',
             \'Gstatus'],
         \['> git commit             (fugitive)                                      Map: ,gc',
             \'Gcommit'],
         \['> git log - all          (fugitive)                                      Map: ,gL',
-            \'exe "silent Glog -all | Unite -no-quit quickfix"'],
+            \'exe "silent Glog -all | Denite -no-quit quickfix"'],
         \['> git add/stage          (fugitive)                                      Map: ,gw',
             \'Gwrite'],
         \['> git checkout           (fugitive)                                      Map: ,go',
@@ -219,11 +205,11 @@
         \['> git edit               (fugitive)                                      Map: ,gE',
             \'exe "command Gedit " input(":Gedit ")'],
         \['> git grep               (fugitive)                                      Map: ,gg',
-            \'exe "silent Ggrep -i ".input("Pattern: ") | Unite -no-quit quickfix'],
+            \'exe "silent Ggrep -i ".input("Pattern: ") | Denite -no-quit quickfix'],
         \['> git grep - messages    (fugitive)                                      Map: ,ggm',
-            \'exe "silent Glog --grep=".input("Pattern: ")." | Unite -no-quit quickfix"'],
+            \'exe "silent Glog --grep=".input("Pattern: ")." | Denite -no-quit quickfix"'],
         \['> git grep - text        (fugitive)                                      Map: ,ggt',
-            \'exe "silent Glog -S".input("Pattern: ")." | Unite -no-quit quickfix"'],
+            \'exe "silent Glog -S".input("Pattern: ")." | Denite -no-quit quickfix"'],
         \['> git cd                 (fugitive)                                      Map: ,gcd',
             \'Gcd'],
         \['> git lcd                (fugitive)                                      Map: ,glc',
@@ -247,13 +233,13 @@
         \}
     let s:menus.history.command_candidates = [
         \['> registers                                                              Map: <Space>q',
-            \'Unite register'],
+            \'Denite register'],
         \['> messages                                                               Map: ',
-            \'Unite output:messages'],
+            \'Denite output:messages'],
         \['> search changes                                                         Map: ',
-            \'Unite change'],
+            \'Denite change'],
         \['> search jumps                                                           Map: ',
-            \'Unite jump'],
+            \'Denite jump'],
         \['> search tasks                                                           Map: ,t',
             \'TaskList'],
         \['> undo tree      (Undotree)                                              Map: ,q',
@@ -269,19 +255,15 @@
         \}
     let s:menus.searching.command_candidates = [
         \['> search line                                                            Map: ',
-            \'Unite -auto-preview -start-insert line'],
+            \'Denite -auto-preview line'],
         \['> search word under the cursor in current buffer                         Map: ',
-            \'UniteWithCursorWord -auto-preview -winheight=25 -no-quit line'],
+            \'DeniteWithCursorWord -auto-preview -no-quit line'],
         \['> grep (ag → ack → grep)                                                 Map: ,A',
-            \'Unite -auto-preview -winheight=25 -no-quit grep'],
+            \'Denite -auto-preview -no-quit grep'],
         \['> grep current word                                                      Map: ,a',
-            \'UniteWithCursorWord -auto-preview -winheight=25 -no-quit grep'],
+            \'DeniteWithCursorWord -auto-preview -no-quit grep'],
         \['> search marks                                                           Map: ,k',
-            \'Unite -auto-preview -winheight=25 mark'],
-        \['> find                                                                   Map: ',
-            \'Unite find'],
-        \['> vimgrep (very slow)                                                    Map: ',
-            \'Unite vimgrep'],
+            \'Denite -auto-preview mark'],
         \['> trigger easymotion               (easymotion)                          Map: ,,',
             \''],
         \]
@@ -361,23 +343,13 @@
         \['> edit menu configuration file                                           Map: ',
             \'edit ~/.vimrc.menu'],
         \['> choose colorscheme                                                     Map: ',
-            \'Unite colorscheme -auto-preview'],
+            \'Denite colorscheme -auto-preview'],
         \['> mappings                                                               Map: ',
-            \'Unite mapping -start-insert'],
+            \'Unite mapping'],
         \['> vim commands                                                           Map: ',
-            \'Unite -start-insert command'],
-        \['> vim functions                                                          Map: ',
-            \'Unite -start-insert function'],
-        \['> vim runtimepath                                                        Map: ',
-            \'Unite -start-insert runtimepath'],
+            \'Denite command'],
         \['> vim command output                                                     Map: ',
-            \'Unite output'],
-        \['> unite sources                                                          Map: ',
-            \'Unite source'],
-        \['> kill process                                                           Map: ',
-            \'Unite -default-action=sigkill -start-insert process'],
-        \['> launch executable (dmenu like)                                         Map: ',
-            \'Unite -start-insert launcher'],
+            \'Denite output'],
         \]
     nnoremap <LocalLeader>v :Denite menu:vim<CR>
 " }
@@ -401,7 +373,7 @@
         \['> Turn off Xmark                        (vim-xmark)                      Map: ',
             \':Xmark!'],
         \]
-    nnoremap <LocalLeader>k :Denite -silent menu:markdown<CR>
+    nnoremap <LocalLeader>k :Denite menu:markdown<CR>
 " }
 
 " web {
@@ -421,20 +393,25 @@
         \['> Update vim-plug                      (vim-plug)                        Map: ',
             \':PlugUpgrade'],
         \]
-    nnoremap <LocalLeader>w :Denite -silent menu:vimplug<CR>
+    nnoremap <LocalLeader>w :Denite menu:vimplug<CR>
 " }
 
 " denite option {
     let s:denite_options = {
-          \ 'default' : {
+          \ '_' : {
           \ 'winheight' : 15,
-          \ 'mode' : 'normal',
+          \ 'mode' : 'insert',
           \ 'quit' : 'true',
+          \ 'auto_resize' : 'true',
           \ 'highlight_matched_char' : 'MoreMsg',
           \ 'highlight_matched_range' : 'MoreMsg',
-          \ 'direction': 'rightbelow',
+          \ 'direction': 'botright',
+          \ 'cursor_wrap': 'true',
+          \ 'auto_resume': 'false',
+          \ 'vertical_preview': 'true',
+          \ 'post_action': 'quit',
           \ 'statusline' : has('patch-7.4.1154') ? v:false : 0,
-          \ 'prompt' : '➭',
+          \ 'prompt' : '➭'
           \ }}
 
     function! s:profile(opts) abort
@@ -450,15 +427,15 @@
 
 " KEY MAPPINGS {
     let s:insert_mode_mappings = [
-          \   ['jj',      '<denite:enter_mode:normal>',            'noremap'],
-          \   ['<Tab>',   '<denite:move_to_next_line>',            'noremap'],
-          \   ['<S-tab>', '<denite:move_to_previous_line>',        'noremap'],
-          \   ['<Esc>',   '<denite:enter_mode:normal>',            'noremap'],
-          \   ['<C-N>',   '<denite:assign_next_matched_text>',     'noremap'],
-          \   ['<C-P>',   '<denite:assign_previous_matched_text>', 'noremap'],
-          \   ['<Up>',    '<denite:assign_previous_text>',         'noremap'],
-          \   ['<Down>',  '<denite:assign_next_text>',             'noremap'],
-          \   ['<C-Y>',   '<denite:redraw>',                       'noremap'],
+          \   ['jj',      '<denite:enter_mode:normal>',             'noremap'],
+          \   ['<Tab>',   '<denite:move_to_next_line>',             'noremap'],
+          \   ['<S-tab>', '<denite:move_to_previous_line>',         'noremap'],
+          \   ['<Esc>',   '<denite:quit>',                          'noremap'],
+          \   ['<C-N>',   '<denite:assign_next_matched_text>',      'noremap'],
+          \   ['<C-P>',   '<denite:assign_previous_matched_text>',  'noremap'],
+          \   ['<Up>',    '<denite:assign_previous_text>',          'noremap'],
+          \   ['<Down>',  '<denite:assign_next_text>',              'noremap'],
+          \   ['<C-Y>',   '<denite:redraw>',                        'noremap'],
           \ ]
 
     let s:normal_mode_mappings = [
