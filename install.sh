@@ -174,6 +174,8 @@ clone_repo      "Successfully cloned $app_name"
 
 create_symlinks "Setting up vim symlinks"
 
+sh $app_dir/installer.sh $HOME/.vim/bundle
+
 #clone_vundle    "Successfully cloned vundle"
 
 curl -fLo ~/.vim/autoload/plug.vim \

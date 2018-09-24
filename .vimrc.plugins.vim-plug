@@ -1,0 +1,260 @@
+" Modeline and Notes {
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
+"             __   _  ____  _        _               _
+"           //  \\/ |/__  || |  ____| |      __   __(_)_ __ ___
+"           \\__//| |  / / | | / __/| | _____\ \ / /| | '_ ` _ \
+"           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |
+"           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|
+
+"   This is the personal .vimrc.plugins file of 812lcl.
+"   You can find me at http://812lcl.com
+" }
+
+" Environment {
+
+    " Basics {
+        set nocompatible        " Must be first line
+        set background=dark     " Assume a dark background
+    " }
+
+    " Windows Compatible {
+        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+        if has('win32') || has('win64')
+          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+
+          " Be nice and check for multi_byte even if the config requires
+          " multi_byte support most of the time
+          if has("multi_byte")
+            " Windows cmd.exe still uses cp850. If Windows ever moved to
+            " Powershell as the primary terminal, this would be utf-8
+            set termencoding=cp850
+            " Let Vim use utf-8 internally, because many scripts require this
+            set encoding=utf-8
+            setglobal fileencoding=utf-8
+            " Windows has traditionally used cp1252, so it's probably wise to
+            " fallback into cp1252 instead of eg. iso-8859-15.
+            " Newer Windows files might contain utf-8 or utf-16 LE so we might
+            " want to try them first.
+            set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+          endif
+        endif
+    " }
+    call plug#begin('~/.vim/bundle')
+" }
+
+" Plugins {
+
+    " In your .vimrc.before.local file, list only the plugin groups you will use
+    " 'general', 'programming', 'youcompleteme', 'neocomplcache', 'neocomplete',
+    " 'python', 'php', 'web', 'ruby', 'haskell','go', 'misc', 'unite', 'others'
+    if !exists('g:lcl_bundle_groups')
+        if has('win32') || has('win64')
+            let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'denite', 'php']
+        elseif has('macunix')
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'unite', 'others', 'php', 'go']
+        else
+            let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'denite', 'others', 'php', 'go']
+        endif
+    endif
+
+    " To override all the included bundles, add the following to your
+    " .vimrc.plugins.local file:
+    "   let g:override_812lcl_bundles = 1
+    if !exists("g:override_812lcl_bundles")
+
+    " General {
+        if count(g:lcl_bundle_groups, 'general')
+            Plug 'scrooloose/nerdtree', { 'on': ['NERDTree', 'NERDTreeToggle', 'NERDTreeFind'] }
+            Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+            Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+            Plug 'ryanoasis/vim-devicons'
+            Plug 'altercation/vim-colors-solarized'
+            Plug 'tomasr/molokai'
+            Plug 'tpope/vim-surround'
+            Plug 'tpope/vim-repeat'
+            Plug 'tpope/vim-rsi'
+            Plug 'tpope/vim-unimpaired'
+            Plug 'vim-scripts/sessionman.vim'
+            Plug 'vim-scripts/matchit.zip'
+            Plug 'bling/vim-airline'
+            Plug 'vim-airline/vim-airline-themes'
+            Plug 'vim-scripts/DoxygenToolkit.vim', { 'for': ['c', 'cpp'] }
+            Plug 'Lokaltog/vim-easymotion'
+            Plug 'flazz/vim-colorschemes'
+            Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+            Plug 'Yggdroot/indentLine'
+            Plug 'kshenoy/vim-signature'
+            Plug 'vim-scripts/TaskList.vim'
+            Plug 'mbbill/fencview', { 'on': 'FencAutoDetect' }
+            Plug 'sheerun/vim-polyglot'
+            Plug 'osyo-manga/vim-anzu'
+            Plug 't9md/vim-choosewin'
+            Plug 'mhinz/vim-startify'
+            Plug 'osyo-manga/vim-over'
+            Plug 'hecal3/vim-leader-guide'
+            Plug 'justinmk/vim-gtfo'
+            Plug 'skywind3000/vim-keysound' "pip3 install pysdl2 && brew install sdl2 sdl2_mixer
+        endif
+    " }
+
+    " General Programming {
+        if count(g:lcl_bundle_groups, 'programming')
+            Plug 'scrooloose/syntastic'
+            Plug 'tpope/vim-fugitive'
+            Plug 'gregsexton/gitv', { 'on': 'Gitv' }
+            Plug 'mhinz/vim-signify'
+            Plug 'scrooloose/nerdcommenter'
+            Plug 'majutsushi/tagbar'
+            Plug 'lvht/tagbar-markdown', { 'for': 'markdown' }
+            Plug 'junegunn/vim-easy-align'
+            Plug 'AndrewRadev/splitjoin.vim'
+            Plug 'jiangmiao/auto-pairs'
+            Plug 'terryma/vim-multiple-cursors'
+            Plug 'ludovicchabant/vim-gutentags'
+            Plug '812lcl/gutentags_plus'
+            Plug 'kana/vim-textobj-user'
+            Plug 'kana/vim-textobj-indent'
+            Plug 'kana/vim-textobj-syntax'
+            Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
+            Plug 'sgur/vim-textobj-parameter'
+            Plug 'octol/vim-cpp-enhanced-highlight', { 'for':['c', 'cpp'] }
+            Plug 'Shougo/echodoc.vim'
+        endif
+    " }
+
+    " Snippets & AutoComplete {
+        if count(g:lcl_bundle_groups, 'youcompleteme')
+            if has('mac')
+                " Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
+                " Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer --system-libclang --system-boost' }
+                Plug 'Valloric/YouCompleteMe', { 'do': './install.py  --clang-completer --gocode-completer' }
+            elseif has('unix')
+                Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
+            endif
+        else
+            Plug 'ervandew/supertab'
+        endif
+        if count(g:lcl_bundle_groups, 'neocomplcache')
+            Plug 'Shougo/neocomplcache.vim'
+            Plug 'JazzCore/neocomplcache-ultisnips'
+            Plug 'SirVer/ultisnips'
+            Plug 'honza/vim-snippets'
+            Plug 'vim-scripts/javacomplete', { 'for': 'java' }
+        elseif count(g:lcl_bundle_groups, 'neocomplete')
+            Plug 'Shougo/neocomplete.vim'
+            Plug 'Shougo/neosnippet'
+            Plug 'Shougo/neosnippet-snippets'
+            Plug 'vim-scripts/javacomplete', { 'for': 'java' }
+        endif
+    " }
+
+    " Python {
+        if count(g:lcl_bundle_groups, 'python')
+            Plug 'klen/python-mode', { 'for': 'python' }
+            Plug 'yssource/python.vim', { 'for': 'python' }
+            Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
+            Plug 'vim-scripts/pythoncomplete', { 'for': 'python' }
+            Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
+        endif
+    " }
+
+    " PHP {
+        if count(g:lcl_bundle_groups, 'php')
+            Plug 'spf13/PIV', { 'for': 'php' }
+            Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+        endif
+    " }
+
+    " Web {
+        if count(g:lcl_bundle_groups, 'web')
+            Plug 'hail2u/vim-css3-syntax', { 'for': ['html', 'css'] }
+            Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
+            Plug 'gorodinskiy/vim-coloresque'
+            Plug 'pangloss/vim-javascript', { 'for': ['js', 'javascript'] }
+        endif
+    " }
+
+    " Ruby {
+        if count(g:lcl_bundle_groups, 'ruby')
+            Plug 'tpope/vim-rails', { 'for': 'ruby' }
+        endif
+    " }
+
+    " Haskell {
+        if count(g:lcl_bundle_groups, 'haskell')
+            Plug 'travitch/hasksyn'
+            Plug 'dag/vim2hs'
+            Plug 'Twinside/vim-haskellConceal'
+            Plug 'Twinside/vim-haskellFold'
+            Plug 'lukerandall/haskellmode-vim'
+            Plug 'eagletmt/neco-ghc'
+            Plug 'eagletmt/ghcmod-vim'
+            Plug 'adinapoli/cumino'
+            Plug 'bitc/vim-hdevtools'
+        endif
+    " }
+
+    " Go Lang {
+        if count(g:lcl_bundle_groups, 'go')
+            Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
+        endif
+    " }
+
+    " Misc {
+        if count(g:lcl_bundle_groups, 'misc')
+            Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+            if has('mac')
+                Plug 'junegunn/vim-xmark', { 'do': 'make', 'for': 'markdown' }
+            endif
+        endif
+    " }
+
+    " Unite {
+        if count(g:lcl_bundle_groups, 'unite')
+            Plug 'Shougo/unite.vim'
+            Plug 'Shougo/neomru.vim'
+            Plug 'ujihisa/unite-colorscheme'
+            Plug 'ujihisa/unite-locate'
+            Plug 'tacroe/unite-mark'
+            Plug 'kmnk/vim-unite-svn'
+            Plug 'chemzqm/unite-location'
+        endif
+    " }
+
+    " Denite {
+        if count(g:lcl_bundle_groups, 'denite')
+            if has('nvim')
+                Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins'  }
+                Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+            else
+                Plug 'Shougo/defx.nvim'
+                Plug 'roxma/nvim-yarp'
+                Plug 'roxma/vim-hug-neovim-rpc'
+            endif
+            Plug 'ozelentok/denite-gtags'
+            Plug 'chemzqm/unite-location'
+            Plug 'Shougo/neomru.vim'
+        endif
+    " }
+
+    " Others {
+        if count(g:lcl_bundle_groups, 'others')
+            if has('mac')
+                Plug 'rizzatti/dash.vim'
+                Plug 'mattn/webapi-vim'
+                Plug 'mattn/gist-vim'
+            endif
+            Plug 'Shougo/vimproc', { 'do': 'make' }
+            Plug 'ianva/vim-youdao-translater'
+            Plug 'wakatime/vim-wakatime'
+        endif
+    " }
+    endif
+" }
+
+" Use local bundles config if available {
+    if filereadable(expand("~/.vimrc.plugins.local"))
+        source ~/.vimrc.plugins.local
+    endif
+    call plug#end()
+" }
