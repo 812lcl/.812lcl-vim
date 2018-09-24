@@ -647,6 +647,11 @@
         endif
     " }
 
+    " ale {
+        if isdirectory(expand("~/.vim/bundle/ale/"))
+        endif
+    " }
+
     " Doxygentoolkit {
         let g:DoxygenToolkit_authorName="liuchunlei <812liuchunlei@163.com>"
         let g:DoxygenToolkit_briefTag_funcName="yes"

@@ -100,6 +100,7 @@
     " General Programming {
         if count(g:lcl_bundle_groups, 'programming')
             Plug 'scrooloose/syntastic'
+            Plug 'w0rp/ale'
             Plug 'tpope/vim-fugitive'
             Plug 'gregsexton/gitv', { 'on': 'Gitv' }
             Plug 'mhinz/vim-signify'
