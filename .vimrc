@@ -584,6 +584,9 @@
             if !isdirectory(s:vim_tags)
                 silent! call mkdir(s:vim_tags, 'p')
             endif
+
+            " https://github.com/ludovicchabant/vim-gutentags/issues/167
+            au FileType gitcommit,gitrebase let g:gutentags_enabled=0
         endif
     " }
 
