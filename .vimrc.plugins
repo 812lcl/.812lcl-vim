@@ -19,7 +19,7 @@
 
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        if has('win32') || has('win64')
+        if WINDOWS()
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 
           " Be nice and check for multi_byte even if the config requires
@@ -48,9 +48,9 @@
     " 'general', 'programming', 'youcompleteme', 'neocomplcache', 'neocomplete',
     " 'python', 'php', 'web', 'ruby', 'haskell','go', 'misc', 'unite', 'others'
     if !exists('g:lcl_bundle_groups')
-        if has('win32') || has('win64')
+        if WINDOWS()
             let g:lcl_bundle_groups=['general', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'denite', 'php']
-        elseif has('macunix')
+        elseif OSX()
             let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'unite', 'others', 'php', 'go']
         else
             let g:lcl_bundle_groups=['general', 'youcompleteme', 'neocomplcache', 'programming', 'python', 'web', 'misc', 'denite', 'others', 'php', 'go']
@@ -252,9 +252,4 @@
     endif
 " }
 
-" Use local bundles config if available {
-    if filereadable(expand("~/.vimrc.plugins.local"))
-        source ~/.vimrc.plugins.local
-    endif
-    call plug#end()
-" }
+call plug#end()

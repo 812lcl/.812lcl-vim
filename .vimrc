@@ -415,24 +415,6 @@
         endif
     " }
 
-    " ctrlp {
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
-            let g:ctrlp_map = '<c-p>'
-            let g:ctrlp_cmd = 'CtrlP'
-            let g:ctrlp_open_multiple_files = 'v'   " <C-Z><C-O>时垂直分屏打开多个文件
-            let g:ctrlp_working_path_mode= 'ra'
-            let g:ctrlp_match_window_bottom= 1
-            let g:ctrlp_max_height= 10
-            let g:ctrlp_match_window_reversed=0
-            let g:ctrlp_mruf_max=500
-            let g:ctrlp_follow_symlinks=1
-            let g:ctrlp_custom_ignore = {
-              \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-              \ 'file': '\v\.(log|jpg|png|jpeg|exe|so|dll|zip|swp)$',
-              \ }
-        endif
-    " }
-
     " TagBar {
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
             nnoremap <silent> <Leader>e :TagbarToggle<CR>
@@ -587,7 +569,6 @@
             if executable('gtags-cscope') && executable('gtags')
                 let g:gutentags_modules += ['gtags_cscope']
             endif
-
 
             " 配置 ctags 的参数
             let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
@@ -777,14 +758,6 @@
     " Misc {
         if isdirectory(expand("~/.vim/bundle/matchit.zip"))
             let b:match_ignorecase = 1
-        endif
-    " }
-
-    " AutoCloseTag {
-        " Make it so AutoCloseTag works for xml and xhtml files as well
-        if isdirectory(expand("~/.vim/bundle/AutoCloseTag"))
-            au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-            nmap <Leader>ac <Plug>ToggleAutoCloseMappings
         endif
     " }
 
@@ -1151,15 +1124,6 @@
             let g:keysound_volume = 1000
         endif
     " }
-
-    " LeaderF {
-        if isdirectory(expand("~/.vim/bundle/LeaderF"))
-            let g:Lf_CommandMap = {'<Tab>': ['<ESC>']}
-            let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
-            let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
-            let g:Lf_StlColorscheme = 'powerline'
-        endif
-    " }
 " }
 
 " Functions {
@@ -1403,7 +1367,7 @@
                     endif
                 endfor
             endfunction
-            nnoremap <leader>w :call ToggleNERDTreeAndTagbar()<CR>
+            nnoremap <leader>we :call ToggleNERDTreeAndTagbar()<CR>
 
             function! ToggleNERDTreeFind()
                 let w:jumpbacktohere = 1
@@ -1417,14 +1381,13 @@
                     endif
                 endfor
             endfunction
-            nnoremap <leader>ww :call ToggleNERDTreeFind()<CR>
 
             function! ToggleNERDTree()
                 if &ft =~ 'tagbar\|nerdtree\|unite\|qf' || buffer_name("%") == '[Command Line]'
                     return
                 endif
                 let w:jumpbacktohere = 1
-                NERDTreeFind
+                NERDTreeToggle
                 " Jump back to the original window
                 for window in range(1, winnr('$'))
                     execute window . 'wincmd w'
@@ -1434,6 +1397,7 @@
                     endif
                 endfor
             endfunction
+            nnoremap <leader>w :call ToggleNERDTree()<CR>
 
             " Zoom / Restore window.
             function! s:ZoomToggle() abort
@@ -1450,13 +1414,5 @@
             command! ZoomToggle call s:ZoomToggle()
             nnoremap <silent> <Leader>d :ZoomToggle<CR>
         " }
-
     " }
-
-" }
-
-" Use local vimrc if available {
-    if filereadable(expand("~/.vimrc.local"))
-        source ~/.vimrc.local
-    endif
 " }
