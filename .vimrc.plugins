@@ -94,6 +94,7 @@
             Plug 'hecal3/vim-leader-guide'
             Plug 'justinmk/vim-gtfo'
             Plug 'skywind3000/vim-keysound' "pip3 install pysdl2 && brew install sdl2 sdl2_mixer
+            Plug 'wsdjeg/FlyGrep.vim'
         endif
     " }
 
