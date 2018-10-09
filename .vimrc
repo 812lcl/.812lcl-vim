@@ -584,6 +584,9 @@
                 silent! call mkdir(s:vim_tags, 'p')
             endif
 
+            let g:gutentags_exclude_project_root = ['/usr/local', $HOME.'/go/src/gitlab.myteksi.net/gophers/go']
+            " let g:gutentags_define_advanced_commands = 1
+
             " https://github.com/ludovicchabant/vim-gutentags/issues/167
             au FileType gitcommit,gitrebase let g:gutentags_enabled=0
         endif
