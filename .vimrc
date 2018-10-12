@@ -650,6 +650,18 @@
 
     " ale {
         if isdirectory(expand("~/.vim/bundle/ale/"))
+            let g:ale_sign_error = get(g:, 'spacevim_error_symbol', '✖')
+            let g:ale_sign_warning = get(g:,'spacevim_warning_symbol', '➤')
+            let g:ale_sign_info = get(g:,'spacevim_info_symbol', '🛈')
+            let g:ale_echo_msg_format = get(g:, 'ale_echo_msg_format', '%severity%: %linter%: %s')
+            let g:ale_lint_on_text_changed = 'always'
+            let g:ale_lint_delay = 750
+        endif
+    " }
+
+    " echodoc {
+        if isdirectory(expand("~/.vim/bundle/echodoc.vim/"))
+            let g:echodoc#enable_at_startup = 1
         endif
     " }
 
