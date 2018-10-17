@@ -23,6 +23,7 @@ let g:spacevim_enable_tabline_filetype_icon = 1
 let g:spacevim_windows_index_type = 2
 let g:spacevim_buffer_index_type = 4
 let g:spacevim_enable_statusline_mode = 1
+let g:_spacevim_autocomplete_delay = 50
 
 set wrap
 set noswapfile
@@ -60,7 +61,6 @@ autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod 
 autocmd FileType vim setlocal keywordprg=:help
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-call SpaceVim#layers#load('autocomplete')
 call SpaceVim#layers#load('shell')
 call SpaceVim#layers#load('cscope')
 call SpaceVim#layers#load('git')
