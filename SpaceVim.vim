@@ -19,8 +19,12 @@ let g:spacevim_enable_language_specific_leader = 0
 let g:spacevim_github_username = '812lcl'
 let g:spacevim_enable_vimfiler_gitstatus = 0
 let g:spacevim_enable_vimfiler_filetypeicon = 0
+let g:spacevim_enable_tabline_filetype_icon = 1
 let g:spacevim_windows_index_type = 2
+let g:spacevim_buffer_index_type = 4
+let g:spacevim_enable_statusline_mode = 1
 
+set wrap
 set noswapfile
 set ignorecase
 set smartcase
@@ -57,6 +61,7 @@ autocmd FileType vim setlocal keywordprg=:help
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 call SpaceVim#layers#load('autocomplete')
+call SpaceVim#layers#load('shell')
 call SpaceVim#layers#load('cscope')
 call SpaceVim#layers#load('git')
 call SpaceVim#layers#load('chinese')
@@ -83,6 +88,7 @@ call SpaceVim#layers#load('lang#xml')
 
 let g:spacevim_custom_plugins = [
             \ ['skywind3000/vim-keysound'],
+            \ ['wakatime/vim-wakatime'],
             \ ]
 let g:keysound_enable = 1
 let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
@@ -128,3 +134,14 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> ,d :ZoomToggle<CR>
+
+function! s:VSetSearch()
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+    let @s = temp
+endfunction
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+xnoremap ,j :s@\%V@@gn<Left><Left><Left><Left>
+nnoremap ,j :%s@@@gn<Left><Left><Left><Left><CR>
