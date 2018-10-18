@@ -22,6 +22,7 @@
     statusline_inactive_separator = "arrow"
     enable_tabline_filetype_icon = true
     enable_statusline_display_mode = true
+    default_indent = 4
 
     bootstrap_before = "myspacevim#init"
     bootstrap_after = "myspacevim#after"
