@@ -1,4 +1,6 @@
 function! myspacevim#init() abort
+    let g:spacevim_project_rooter_automatically = 1
+    let g:spacevim_project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore']
     let g:spacevim_force_global_config = 1
     let g:spacevim_relativenumber = 1
     let g:spacevim_enable_language_specific_leader = 0
