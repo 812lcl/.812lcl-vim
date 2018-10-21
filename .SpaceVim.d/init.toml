@@ -64,6 +64,9 @@ name = 'unite'
 name = 'git'
 
 [[layers]]
+name = 'github'
+
+[[layers]]
 name = 'chinese'
 
 [[layers]]
