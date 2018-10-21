@@ -27,6 +27,7 @@
     bootstrap_before = "myspacevim#init"
     bootstrap_after = "myspacevim#after"
 
+    enable_ycm = 1
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore']
     project_rooter_automatically = 1
     force_global_config = 1
@@ -47,7 +48,7 @@ auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
 name = 'shell'
-default_position = 'top'
+default_position = 'bottom'
 default_height = 30
 
 [[layers]]
