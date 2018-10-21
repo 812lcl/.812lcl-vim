@@ -61,8 +61,8 @@ endfunction
 
 function! myspacevim#after() abort
     inoremap jj <esc>
-    nnoremap <silent> J :bp<CR>
-    nnoremap <silent> K :bn<CR>
+    nnoremap <silent> E :bp<CR>
+    nnoremap <silent> R :bn<CR>
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
     nnoremap <silent> _$ :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
@@ -78,6 +78,7 @@ function! myspacevim#after() abort
     nnoremap <silent>,e :TagbarToggle<CR>
     nnoremap <silent>,w :VimFiler<CR>
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>
+    nnoremap <silent>,q :MundoToggle<CR>
 
     let g:incsearch#auto_nohlsearch = 0
     xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
