@@ -84,8 +84,24 @@ function! myspacevim#after() abort
     xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
     xnoremap ,j :s@\%V@@gn<Left><Left><Left><Left>
     nnoremap ,j :%s@@@gn<Left><Left><Left><Left><CR>
+    nnoremap <silent> n  :call <SID>update_search_index('d')<cr>
+    nnoremap <silent> N  :call <SID>update_search_index('r')<cr>
 
     nnoremap <silent> ,d :ZoomToggle<CR>
+endfunction
+
+function! s:update_search_index(key) abort
+    if a:key ==# 'd'
+        normal! n
+    elseif a:key ==# 'r'
+        normal! N
+    endif
+    normal! ml
+    if !SpaceVim#layers#core#statusline#check_section('search status')
+        call SpaceVim#layers#core#statusline#toggle_section('search status')
+    endif
+    let &l:statusline = SpaceVim#layers#core#statusline#get(1)
+    normal! `l
 endfunction
 
 function! s:ZoomToggle() abort

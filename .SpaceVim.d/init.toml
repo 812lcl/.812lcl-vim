@@ -64,7 +64,7 @@ name = 'chinese'
 
 [[layers]]
 name = 'incsearch'
-enable = true
+enable = false
 
 [[layers]]
 name = 'sudo'
