@@ -61,10 +61,6 @@ endfunction
 
 function! myspacevim#after() abort
     inoremap jj <esc>
-    nnoremap <silent> E :bp<CR>
-    nnoremap <silent> R :bn<CR>
-    vnoremap <silent> J :m '>+1<CR>gv=gv
-    vnoremap <silent> K :m '<-2<CR>gv=gv
     nnoremap <silent> _$ :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
     nmap gh <plug>(signify-next-hunk)
     nmap hg <plug>(signify-prev-hunk)
@@ -89,6 +85,8 @@ function! myspacevim#after() abort
     nnoremap <silent> N  :call <SID>update_search_index('r')<cr>
 
     nnoremap <silent> ,d :ZoomToggle<CR>
+    map + <Plug>(expand_region_expand)
+    map _ <Plug>(expand_region_shrink)
 endfunction
 
 function! s:update_search_index(key) abort
