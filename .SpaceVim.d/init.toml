@@ -135,3 +135,6 @@ name = "wakatime/vim-wakatime"
 
 [[custom_plugins]]
 name = "gorodinskiy/vim-coloresque"
+
+[[custom_plugins]]
+name = "812lcl/gutentags_plus"

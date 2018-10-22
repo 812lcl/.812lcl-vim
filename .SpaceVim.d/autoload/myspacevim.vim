@@ -87,6 +87,16 @@ function! myspacevim#after() abort
     nnoremap <silent> ,d :ZoomToggle<CR>
     map + <Plug>(expand_region_expand)
     map _ <Plug>(expand_region_shrink)
+
+    noremap <silent> ,,g :GscopeFind g <C-R><C-W><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,d :GscopeFind d <C-R><C-W><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,c :GscopeFind c <C-R><C-W><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,s :GscopeFind s <C-R><C-W><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,4 :GscopeFind t <C-R><C-W><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,6 :GscopeFind e <C-R><C-W><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,7 :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,8 :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,k :GscopeKill<cr>
 endfunction
 
 function! s:update_search_index(key) abort
