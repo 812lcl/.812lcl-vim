@@ -112,6 +112,7 @@ function! myspacevim#after() abort
     nnoremap <silent> ,d :ZoomToggle<CR>
     map + <Plug>(expand_region_expand)
     map _ <Plug>(expand_region_shrink)
+    nmap ,jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
     noremap <silent> ,,g :GscopeFind g <C-R><C-W><cr>:call <SID>open_qf()<CR>
     noremap <silent> ,,d :GscopeFind d <C-R><C-W><cr>:call <SID>open_qf()<CR>
@@ -122,6 +123,11 @@ function! myspacevim#after() abort
     noremap <silent> ,,7 :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:call <SID>open_qf()<CR>
     noremap <silent> ,,8 :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:call <SID>open_qf()<CR>
     noremap <silent> ,,k :GscopeKill<cr>
+
+    nmap ,6 :GoAddTags<CR>
+    nmap ,7 :GoRemoveTags<CR>
+    vmap ,7 :GoRemoveTags<CR>
+    nmap ,8 gv:GoAddTags<CR>
 
     call unite#custom#profile('default', 'context', {
                 \   'prompt_direction' : 'top',
