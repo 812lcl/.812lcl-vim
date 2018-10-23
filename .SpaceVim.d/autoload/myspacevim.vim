@@ -82,6 +82,24 @@ function! myspacevim#init() abort
                 \     }
                 \   }
                 \ }
+
+    if g:spacevim_enable_ycm
+        let g:ycm_min_num_of_chars_for_completion = 1
+        let g:ycm_min_num_identifier_candidate_chars = 2
+        let g:ycm_collect_identifiers_from_comments_and_strings = 1
+        let g:ycm_confirm_extra_conf = 0
+        let g:ycm_global_ycm_extra_conf = '~/.cache/vimfiles/repos/github.com/Valloric/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+        let g:ycm_show_diagnostics_ui = 0
+        let g:ycm_complete_in_comments = 1
+        let g:ycm_seed_identifiers_with_syntax = 1
+        let g:ycm_key_invoke_completion = '<c-z>'
+        let g:ycm_use_ultisnips_completer = 1
+        let g:ycm_semantic_triggers =  {
+                    \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+                    \ 'cs,lua,javascript': ['re!\w{2}'],
+                    \ }
+    endif
+
 endfunction
 
 function! myspacevim#after() abort
