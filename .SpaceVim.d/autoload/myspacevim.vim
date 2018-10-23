@@ -108,6 +108,8 @@ function! myspacevim#after() abort
     nnoremap ,j :%s@@@gn<Left><Left><Left><Left><CR>
     nnoremap <silent> n  :call <SID>update_search_index('d')<cr>
     nnoremap <silent> N  :call <SID>update_search_index('r')<cr>
+	nmap * <Plug>(anzu-star)
+	nmap # <Plug>(anzu-sharp)
 
     nnoremap <silent> ,d :ZoomToggle<CR>
     map + <Plug>(expand_region_expand)
@@ -158,9 +160,17 @@ endfunction
 
 function! s:update_search_index(key) abort
     if a:key ==# 'd'
-        normal! n
+        if mapcheck('<Plug>(anzu-n)') !=# ''
+            call feedkeys("\<Plug>(anzu-n)")
+        else
+            normal! n
+        endif
     elseif a:key ==# 'r'
-        normal! N
+        if mapcheck('<Plug>(anzu-N)') !=# ''
+            call feedkeys("\<Plug>(anzu-N)")
+        else
+            normal! N
+        endif
     endif
     normal! ml
     if !SpaceVim#layers#core#statusline#check_section('search status')

@@ -131,3 +131,6 @@ name = "gorodinskiy/vim-coloresque"
 
 [[custom_plugins]]
 name = "812lcl/gutentags_plus"
+
+[[custom_plugins]]
+name = "osyo-manga/vim-anzu"
