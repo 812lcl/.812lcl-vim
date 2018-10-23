@@ -57,6 +57,31 @@ function! myspacevim#init() abort
     let g:go_template_autocreate = 0
     let g:go_doc_keywordprg_enabled = 0
     let g:go_auto_sameids = 0
+
+    let g:projectionist_heuristics = {
+                \   '*': {
+                \     '*.c': {
+                \         'alternate': '{}.h',
+                \         'type': 'source'
+                \     },
+                \     '*.h': {
+                \         'alternate': '{}.c',
+                \         'type': 'header'
+                \     },
+                \     '*.cc': {
+                \         'alternate': '{}.h',
+                \         'type': 'source'
+                \     },
+                \     '*.go': {
+                \         'alternate': '{}_test.go',
+                \         'type': 'source'
+                \     },
+                \     '*_test.go': {
+                \         'alternate': '{}.go',
+                \         'type': 'test'
+                \     }
+                \   }
+                \ }
 endfunction
 
 function! myspacevim#after() abort
@@ -88,15 +113,41 @@ function! myspacevim#after() abort
     map + <Plug>(expand_region_expand)
     map _ <Plug>(expand_region_shrink)
 
-    noremap <silent> ,,g :GscopeFind g <C-R><C-W><cr>:Unite -silent quickfix<CR>
-    noremap <silent> ,,d :GscopeFind d <C-R><C-W><cr>:Unite -silent quickfix<CR>
-    noremap <silent> ,,c :GscopeFind c <C-R><C-W><cr>:Unite -silent quickfix<CR>
-    noremap <silent> ,,s :GscopeFind s <C-R><C-W><cr>:Unite -silent quickfix<CR>
-    noremap <silent> ,,4 :GscopeFind t <C-R><C-W><cr>:Unite -silent quickfix<CR>
-    noremap <silent> ,,6 :GscopeFind e <C-R><C-W><cr>:Unite -silent quickfix<CR>
-    noremap <silent> ,,7 :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:Unite -silent quickfix<CR>
-    noremap <silent> ,,8 :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:Unite -silent quickfix<CR>
+    noremap <silent> ,,g :GscopeFind g <C-R><C-W><cr>:call <SID>open_qf()<CR>
+    noremap <silent> ,,d :GscopeFind d <C-R><C-W><cr>:call <SID>open_qf()<CR>
+    noremap <silent> ,,c :GscopeFind c <C-R><C-W><cr>:call <SID>open_qf()<CR>
+    noremap <silent> ,,s :GscopeFind s <C-R><C-W><cr>:call <SID>open_qf()<CR>
+    noremap <silent> ,,4 :GscopeFind t <C-R><C-W><cr>:call <SID>open_qf()<CR>
+    noremap <silent> ,,6 :GscopeFind e <C-R><C-W><cr>:call <SID>open_qf()<CR>
+    noremap <silent> ,,7 :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:call <SID>open_qf()<CR>
+    noremap <silent> ,,8 :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:call <SID>open_qf()<CR>
     noremap <silent> ,,k :GscopeKill<cr>
+
+    call unite#custom#profile('default', 'context', {
+                \   'prompt_direction' : 'top',
+                \   'safe': 0,
+                \   'start_insert': 1,
+                \   'ignorecase' : 1,
+                \   'short_source_names': 1,
+                \   'update_time': 200,
+                \   'direction': 'rightbelow',
+                \   'winwidth': 40,
+                \   'winheight': 15,
+                \   'max_candidates': 100,
+                \   'no_auto_resize': 1,
+                \   'vertical_preview': 1,
+                \   'cursor_line_time': '0.10',
+                \   'hide_icon': 0,
+                \   'candidate-icon': ' ',
+                \   'marked_icon': '✓',
+                \   'prompt' : '➭ '
+                \ })
+endfunction
+
+function! s:open_qf() abort
+    if len(getqflist()) > 1
+        Unite -silent quickfix
+    endif
 endfunction
 
 function! s:update_search_index(key) abort
