@@ -92,6 +92,7 @@ function! myspacevim#init() abort
         let g:ycm_show_diagnostics_ui = 0
         let g:ycm_complete_in_comments = 1
         let g:ycm_seed_identifiers_with_syntax = 1
+        let g:ycm_collect_identifiers_from_tags_files = 1
         let g:ycm_key_invoke_completion = '<c-z>'
         let g:ycm_use_ultisnips_completer = 1
         let g:ycm_semantic_triggers =  {
@@ -107,6 +108,14 @@ function! myspacevim#after() abort
     nnoremap <silent> _$ :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
     nmap gh <plug>(signify-next-hunk)
     nmap hg <plug>(signify-prev-hunk)
+    omap ic <plug>(signify-motion-inner-pending)
+    xmap ic <plug>(signify-motion-inner-visual)
+    omap ac <plug>(signify-motion-outer-pending)
+    xmap ac <plug>(signify-motion-outer-visual)
+    nnoremap gt :SignifyToggle<CR>
+    nnoremap hl :SignifyToggleHighlight<CR>
+    nnoremap gr :SignifyRefresh<CR>
+    nnoremap gd :SignifyDebug<CR>
     map f <Plug>(easymotion-overwin-f)
 
     nnoremap <silent>,h :noh<CR>
@@ -115,9 +124,11 @@ function! myspacevim#after() abort
     nnoremap <silent>,l :set list! list?<CR>
     nnoremap <silent>,g :IndentLinesToggle<CR>
     nnoremap <silent>,e :TagbarToggle<CR>
-    nnoremap <silent>,w :VimFiler<CR>
+    nnoremap <silent>,w :VimFilerCurrentDir<CR>
+    nnoremap <silent>,wf :VimFilerBuffer<CR>
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
+    nnoremap <silent>,m :FencAutoDetect<CR>
 
     let g:incsearch#auto_nohlsearch = 0
     xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -149,6 +160,13 @@ function! myspacevim#after() abort
     vmap ,7 :GoRemoveTags<CR>
     nmap ,8 gv:GoAddTags<CR>
 
+    au FileType unite call s:unite_settings()
+    function! s:unite_settings()
+        nmap <buffer> <C-h> <C-w>h
+        nmap <buffer> <C-j> <C-w>j
+        nmap <buffer> <C-k> <C-w>k
+        nmap <buffer> <C-l> <C-w>l
+    endfunction
     call unite#custom#profile('default', 'context', {
                 \   'prompt_direction' : 'top',
                 \   'safe': 0,
