@@ -27,6 +27,8 @@
     bootstrap_before = "myspacevim#init"
     bootstrap_after = "myspacevim#after"
 
+    enable_neomake = false
+    enable_ale = true
     enable_ycm = 1
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore']
     project_rooter_automatically = 1

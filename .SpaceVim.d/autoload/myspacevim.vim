@@ -42,8 +42,8 @@ function! myspacevim#init() abort
     let g:go_addtags_transform = "camelcase"
     let g:go_def_reuse_buffer = 1
 
+    let g:go_metalinter_autosave = 0
     let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-    let g:go_metalinter_autosave = 1
     let g:go_metalinter_autosave_enabled = ['vet', 'golint']
     let g:go_metalinter_deadline = "5s"
 
@@ -55,7 +55,7 @@ function! myspacevim#init() abort
     let g:go_highlight_generate_tags = 1
 
     let g:go_template_autocreate = 0
-    let g:go_doc_keywordprg_enabled = 0
+    let g:go_doc_keywordprg_enabled = 1
     let g:go_auto_sameids = 0
 
     let g:projectionist_heuristics = {
