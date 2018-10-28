@@ -27,6 +27,7 @@ function! myspacevim#init() abort
     autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
     autocmd FileType vim setlocal keywordprg=:help
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    autocmd FileType go,gitcommit,gitrebase let g:gutentags_enabled=0
 
     " skywind3000/vim-keysound
     let g:keysound_enable = 1
