@@ -188,6 +188,8 @@ function! myspacevim#after() abort
                 \   'marked_icon': '✓',
                 \   'prompt' : '➭ '
                 \ })
+    call SpaceVim#mapping#space#def('nnoremap', ['g', 'b'], 'Gblame', 'view git blame', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['g', 'd'], 'Gdiff', 'view git diff', 1)
 endfunction
 
 function! s:open_qf() abort
