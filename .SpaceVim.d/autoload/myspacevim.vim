@@ -130,6 +130,7 @@ function! myspacevim#after() abort
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
     nnoremap <silent>,m :FencAutoDetect<CR>
+    nnoremap <silent>,t :TaskList<CR>
     nmap <silent>,v <Plug>(go-coverage-toggle)
 
     let g:incsearch#auto_nohlsearch = 0
