@@ -146,7 +146,7 @@ function! myspacevim#after() abort
     nnoremap <silent> ,d :ZoomToggle<CR>
     map + <Plug>(expand_region_expand)
     map _ <Plug>(expand_region_shrink)
-    nmap ,jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+    nmap ,jt <Esc>:s/\\//g<CR><Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
     noremap <silent> ,,g :GscopeFind g <C-R><C-W><cr>:call <SID>open_qf()<CR>
     noremap <silent> ,,d :GscopeFind d <C-R><C-W><cr>:call <SID>open_qf()<CR>
