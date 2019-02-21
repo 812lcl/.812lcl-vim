@@ -140,3 +140,6 @@ name = "AndrewRadev/splitjoin.vim"
 
 [[custom_plugins]]
 name = "vim-scripts/TaskList.vim"
+
+[[custom_plugins]]
+name = "tpope/vim-projectionist"

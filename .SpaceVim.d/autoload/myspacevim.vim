@@ -127,7 +127,7 @@ function! myspacevim#after() abort
     nnoremap <silent>,e :TagbarToggle<CR>
     nnoremap <silent>,w :VimFilerCurrentDir<CR>
     nnoremap <silent>,wf :VimFilerBuffer<CR>
-    nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>
+    nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>:ALEToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
     nnoremap <silent>,m :FencAutoDetect<CR>
     nnoremap <silent>,t :TaskList<CR>
