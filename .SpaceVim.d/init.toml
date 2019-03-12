@@ -61,9 +61,6 @@ name = 'git'
 name = 'github'
 
 [[layers]]
-name = 'chinese'
-
-[[layers]]
 name = 'sudo'
 
 [[layers]]
