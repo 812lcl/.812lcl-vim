@@ -125,8 +125,8 @@ function! myspacevim#after() abort
     nnoremap <silent>,l :set list! list?<CR>
     nnoremap <silent>,g :IndentLinesToggle<CR>
     nnoremap <silent>,e :TagbarToggle<CR>
-    nnoremap <silent>,w :VimFilerCurrentDir<CR>
-    nnoremap <silent>,wf :VimFilerBuffer<CR>
+    nnoremap <silent>,w :call ToggleFileTree()<CR>
+    nnoremap <silent>,wf :NERDTreeFind<CR>
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>:ALEToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
     nnoremap <silent>,m :FencAutoDetect<CR>
@@ -240,7 +240,7 @@ function! ToggleFileTree()
         return
     endif
     let w:jumpbacktohere = 1
-    VimFiler
+    NERDTreeToggle
     " Jump back to the original window
     for window in range(1, winnr('$'))
         execute window . 'wincmd w'
