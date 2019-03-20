@@ -67,9 +67,6 @@ name = 'github'
 name = 'sudo'
 
 [[layers]]
-name = 'tags'
-
-[[layers]]
 name = 'tmux'
 
 [[layers]]
@@ -130,6 +127,9 @@ name = "gorodinskiy/vim-coloresque"
 name = "812lcl/gutentags_plus"
 
 [[custom_plugins]]
+name = "ludovicchabant/vim-gutentags"
+
+[[custom_plugins]]
 name = "osyo-manga/vim-anzu"
 
 [[custom_plugins]]
@@ -143,6 +143,3 @@ name = "vim-scripts/TaskList.vim"
 
 [[custom_plugins]]
 name = "tpope/vim-projectionist"
-
-[[custom_plugins]]
-name = "ludovicchabant/vim-gutentags"
