@@ -42,6 +42,7 @@
     windows_index_type = 2
     buffer_index_type = 4
     enable_statusline_mode = 1
+    disabled_plugins = ["clever-f.vim", "limelight.vim", "vim-choosewin"]
 
 # Enable autocomplete layer
 [[layers]]
