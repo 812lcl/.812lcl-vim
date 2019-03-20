@@ -193,7 +193,6 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'd'], 'Gdiff', 'view git diff', 1)
 
     if g:spacevim_snippet_engine ==# 'ultisnips'
-        inoremap <silent> <c-l> <C-R>=UltiSnips#ExpandSnippetOrJump()<cr>
         smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
         imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
         smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
