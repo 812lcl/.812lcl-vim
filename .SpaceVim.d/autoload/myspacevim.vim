@@ -230,6 +230,7 @@ function! myspacevim#after() abort
         imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
     endif
 
+    nnoremap <silent> <C-p> :FzfFiles<cr>
 endfunction
 
 function! s:open_qf() abort
@@ -297,3 +298,10 @@ function! s:VSetSearch()
     let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
     let @s = temp
 endfunction
+
+command! FzfFiles call <SID>files()
+function! s:files() abort
+    let s:source = 'files'
+    call fzf#run(fzf#wrap('files', {'sink': 'e', 'options': '--reverse', 'down' : '40%'}))
+endfunction
+
