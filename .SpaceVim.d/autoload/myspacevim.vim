@@ -20,7 +20,7 @@ function! myspacevim#init() abort
     set scrolloff=2
     set mouse=v
     set mousehide
-    set list
+    set nolist
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
 
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
