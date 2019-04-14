@@ -192,13 +192,13 @@ function! myspacevim#after() abort
     vmap ,7 :GoRemoveTags<CR>
     nmap ,8 gv:GoAddTags<CR>
 
-    au FileType unite call s:unite_settings()
-    function! s:unite_settings()
-        nmap <buffer> <C-h> <C-w>h
-        nmap <buffer> <C-j> <C-w>j
-        nmap <buffer> <C-k> <C-w>k
-        nmap <buffer> <C-l> <C-w>l
-    endfunction
+    " au FileType unite call s:unite_settings()
+    " function! s:unite_settings()
+    "     nmap <buffer> <C-h> <C-w>h
+    "     nmap <buffer> <C-j> <C-w>j
+    "     nmap <buffer> <C-k> <C-w>k
+    "     nmap <buffer> <C-l> <C-w>l
+    " endfunction
     " call unite#custom#profile('default', 'context', {
     "             \   'prompt_direction' : 'top',
     "             \   'safe': 0,
