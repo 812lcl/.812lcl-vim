@@ -20,7 +20,7 @@ function! myspacevim#init() abort
     set scrolloff=2
     set mouse=v
     set mousehide
-    set nolist
+    set list
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
 
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
@@ -199,25 +199,25 @@ function! myspacevim#after() abort
         nmap <buffer> <C-k> <C-w>k
         nmap <buffer> <C-l> <C-w>l
     endfunction
-    call unite#custom#profile('default', 'context', {
-                \   'prompt_direction' : 'top',
-                \   'safe': 0,
-                \   'start_insert': 1,
-                \   'ignorecase' : 1,
-                \   'short_source_names': 1,
-                \   'update_time': 200,
-                \   'direction': 'rightbelow',
-                \   'winwidth': 40,
-                \   'winheight': 15,
-                \   'max_candidates': 100,
-                \   'no_auto_resize': 1,
-                \   'vertical_preview': 1,
-                \   'cursor_line_time': '0.10',
-                \   'hide_icon': 0,
-                \   'candidate-icon': ' ',
-                \   'marked_icon': '✓',
-                \   'prompt' : '➭ '
-                \ })
+    " call unite#custom#profile('default', 'context', {
+    "             \   'prompt_direction' : 'top',
+    "             \   'safe': 0,
+    "             \   'start_insert': 1,
+    "             \   'ignorecase' : 1,
+    "             \   'short_source_names': 1,
+    "             \   'update_time': 200,
+    "             \   'direction': 'rightbelow',
+    "             \   'winwidth': 40,
+    "             \   'winheight': 15,
+    "             \   'max_candidates': 100,
+    "             \   'no_auto_resize': 1,
+    "             \   'vertical_preview': 1,
+    "             \   'cursor_line_time': '0.10',
+    "             \   'hide_icon': 0,
+    "             \   'candidate-icon': ' ',
+    "             \   'marked_icon': '✓',
+    "             \   'prompt' : '➭ '
+    "             \ })
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'b'], 'Gblame', 'view git blame', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'd'], 'Gdiff', 'view git diff', 1)
 
