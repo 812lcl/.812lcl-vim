@@ -156,8 +156,6 @@ function! myspacevim#after() abort
     nnoremap <silent>,l :set list! list?<CR>
     nnoremap <silent>,g :IndentLinesToggle<CR>
     nnoremap <silent>,e :TagbarToggle<CR>
-    nnoremap <silent>,w :call ToggleFileTree()<CR>
-    nnoremap <silent>,wf :NERDTreeFind<CR>
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>:ALEToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
     nnoremap <silent>,m :FencAutoDetect<CR>
@@ -235,7 +233,7 @@ function! myspacevim#after() abort
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
-    }
+    let g:fzf_layout = {'window': 'enew'}
 
 endfunction
 

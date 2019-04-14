@@ -36,7 +36,7 @@
     relativenumber = 1
     enable_language_specific_leader = 0
     github_username = '812lcl'
-    filemanager = 'nerdtree'
+    filemanager = 'vimfiler'
     enable_vimfiler_gitstatus = 0
     enable_vimfiler_filetypeicon = 0
     windows_index_type = 2
@@ -53,9 +53,6 @@ auto-completion-tab-key-behavior = "smart"
 
 [[layers]]
 name = 'denite'
-
-[[layers]]
-name = 'unite'
 
 [[layers]]
 name = 'git'
@@ -146,3 +143,9 @@ name = "tpope/vim-projectionist"
 
 [[custom_plugins]]
 name = "junegunn/fzf"
+
+[[custom_plugins]]
+name = "SpaceVim/nvim-yarp"
+
+[[custom_plugins]]
+name = "SpaceVim/vim-hug-neovim-rpc"
