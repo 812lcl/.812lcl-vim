@@ -33,7 +33,7 @@ function! myspacevim#init() abort
     let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
     let g:gutentags_ctags_tagfile = 'tags'
     let g:gutentags_exclude_filetypes = ['go']
-    let s:vim_tags = expand('~/.vim/.vimtmp/vimcache/tags')
+    let s:vim_tags = expand('$HOME/.cache/tags')
     let g:gutentags_cache_dir = s:vim_tags
 
     let g:gutentags_modules = []
