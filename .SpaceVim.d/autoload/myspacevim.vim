@@ -239,7 +239,7 @@ endfunction
 
 function! s:open_qf() abort
     if len(getqflist()) > 1
-        Unite -silent quickfix
+        Denite quickfix
     endif
 endfunction
 
