@@ -79,6 +79,11 @@ name = 'VersionControl'
 name = 'colorscheme'
 
 [[layers]]
+name = 'shell'
+default_position = 'top'
+default_hight = 30
+
+[[layers]]
 name = 'lang#c'
 
 [[layers]]
@@ -149,3 +154,6 @@ name = "SpaceVim/nvim-yarp"
 
 [[custom_plugins]]
 name = "SpaceVim/vim-hug-neovim-rpc"
+
+[[custom_plugins]]
+name = "tweekmonster/startuptime.vim"
