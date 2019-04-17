@@ -65,31 +65,6 @@ function! myspacevim#init() abort
     let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
     let g:keysound_volume = 1000
 
-    " vim-go
-    let g:go_fmt_autosave = 1
-    let g:go_fmt_fail_silently = 0
-    let g:go_fmt_command = "goimports"
-    let g:go_list_type = "locationlist"
-    let g:go_snippet_case_type = "camelcase"
-    let g:go_addtags_transform = "camelcase"
-    let g:go_def_reuse_buffer = 1
-
-    let g:go_metalinter_autosave = 0
-    let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-    let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-    let g:go_metalinter_deadline = "5s"
-
-    let g:go_highlight_types = 1
-    let g:go_highlight_fields = 1
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_build_constraints = 1
-    let g:go_highlight_generate_tags = 1
-
-    let g:go_template_autocreate = 0
-    let g:go_doc_keywordprg_enabled = 1
-    let g:go_auto_sameids = 0
-
     let g:projectionist_heuristics = {
                 \   '*': {
                 \     '*.c': {
@@ -160,7 +135,6 @@ function! myspacevim#after() abort
     nnoremap <silent>,q :MundoToggle<CR>
     nnoremap <silent>,m :FencAutoDetect<CR>
     nnoremap <silent>,t :TaskList<CR>
-    nmap <silent>,v <Plug>(go-coverage-toggle)
 
     let g:incsearch#auto_nohlsearch = 0
     xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -186,11 +160,6 @@ function! myspacevim#after() abort
     noremap <silent> ,,7 :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:call <SID>open_qf()<CR>
     noremap <silent> ,,8 :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:call <SID>open_qf()<CR>
     noremap <silent> ,,k :GscopeKill<cr>
-
-    nmap ,6 :GoAddTags<CR>
-    nmap ,7 :GoRemoveTags<CR>
-    vmap ,7 :GoRemoveTags<CR>
-    nmap ,8 gv:GoAddTags<CR>
 
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'b'], 'Gblame', 'view git blame', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'd'], 'Gdiff', 'view git diff', 1)
