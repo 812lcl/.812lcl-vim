@@ -101,7 +101,6 @@ function! myspacevim#after() abort
     nnoremap <silent>,e :TagbarToggle<CR>
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>:ALEToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
-    nnoremap <silent>,m :FencAutoDetect<CR>
     nnoremap <silent>,t :TaskList<CR>
 
     let g:incsearch#auto_nohlsearch = 0
