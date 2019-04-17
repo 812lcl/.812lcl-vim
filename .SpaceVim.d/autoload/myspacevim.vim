@@ -153,7 +153,6 @@ function! myspacevim#after() abort
 
     nnoremap <silent>,h :noh<CR>
     nnoremap <silent>,s :set rnu! rnu?<CR>
-    nnoremap <silent>,p :set spell! spell?<CR>
     nnoremap <silent>,l :set list! list?<CR>
     nnoremap <silent>,g :IndentLinesToggle<CR>
     nnoremap <silent>,e :TagbarToggle<CR>
@@ -193,32 +192,6 @@ function! myspacevim#after() abort
     vmap ,7 :GoRemoveTags<CR>
     nmap ,8 gv:GoAddTags<CR>
 
-    " au FileType unite call s:unite_settings()
-    " function! s:unite_settings()
-    "     nmap <buffer> <C-h> <C-w>h
-    "     nmap <buffer> <C-j> <C-w>j
-    "     nmap <buffer> <C-k> <C-w>k
-    "     nmap <buffer> <C-l> <C-w>l
-    " endfunction
-    " call unite#custom#profile('default', 'context', {
-    "             \   'prompt_direction' : 'top',
-    "             \   'safe': 0,
-    "             \   'start_insert': 1,
-    "             \   'ignorecase' : 1,
-    "             \   'short_source_names': 1,
-    "             \   'update_time': 200,
-    "             \   'direction': 'rightbelow',
-    "             \   'winwidth': 40,
-    "             \   'winheight': 15,
-    "             \   'max_candidates': 100,
-    "             \   'no_auto_resize': 1,
-    "             \   'vertical_preview': 1,
-    "             \   'cursor_line_time': '0.10',
-    "             \   'hide_icon': 0,
-    "             \   'candidate-icon': ' ',
-    "             \   'marked_icon': '✓',
-    "             \   'prompt' : '➭ '
-    "             \ })
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'b'], 'Gblame', 'view git blame', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'd'], 'Gdiff', 'view git diff', 1)
 
@@ -236,6 +209,9 @@ function! myspacevim#after() abort
       \ 'ctrl-v': 'vsplit' }
     " let g:fzf_layout = {'window': 'enew'}
     let g:fzf_layout = { 'window': '15split' }
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'm'], 'FzfMaps', 'FZF mappings', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'h'], 'FzfHelptags', 'FZF Helptags', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'l'], 'FzfLines', 'FZF lines', 1)
 
 endfunction
 
