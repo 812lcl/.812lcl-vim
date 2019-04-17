@@ -75,8 +75,6 @@ function! myspacevim#init() abort
                     \ 'cs,lua,javascript': ['re!\w{2}'],
                     \ }
     endif
-
-    let g:fzf_command_prefix = 'Fzf'
 endfunction
 
 function! myspacevim#after() abort
@@ -128,18 +126,6 @@ function! myspacevim#after() abort
         smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
         imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
     endif
-
-    nnoremap <silent> <C-p> :FZF<cr>
-    let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit' }
-    " let g:fzf_layout = {'window': 'enew'}
-    let g:fzf_layout = { 'window': '15split' }
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'm'], 'FzfMaps', 'FZF mappings', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'h'], 'FzfHelptags', 'FZF Helptags', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'l'], 'FzfLines', 'FZF lines', 1)
-
 endfunction
 
 function! s:update_search_index(key) abort

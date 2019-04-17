@@ -119,6 +119,9 @@ name = 'lang#xml'
 [[layers]]
 name = 'tags'
 
+[[layers]]
+name = 'fzf'
+
 [[custom_plugins]]
 name = "skywind3000/vim-keysound"
 
@@ -142,14 +145,6 @@ name = "vim-scripts/TaskList.vim"
 
 [[custom_plugins]]
 name = "tpope/vim-projectionist"
-
-[[custom_plugins]]
-name = "junegunn/fzf"
-build = './install --all'
-
-[[custom_plugins]]
-name = "junegunn/fzf.vim"
-depends = 'fzf'
 
 [[custom_plugins]]
 name = "SpaceVim/nvim-yarp"
