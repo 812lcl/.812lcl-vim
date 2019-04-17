@@ -28,38 +28,6 @@ function! myspacevim#init() abort
     autocmd FileType vim setlocal keywordprg=:help
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-    let $GTAGSLABEL = 'native-pygments'
-    let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
-    let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-    let g:gutentags_ctags_tagfile = 'tags'
-    let g:gutentags_exclude_filetypes = ['go']
-    let s:vim_tags = expand('$HOME/.cache/tags')
-    let g:gutentags_cache_dir = s:vim_tags
-
-    let g:gutentags_modules = []
-    if executable('ctags')
-        let g:gutentags_modules += ['ctags']
-    endif
-    if executable('gtags-cscope') && executable('gtags')
-        let g:gutentags_modules += ['gtags_cscope']
-    endif
-
-    " 配置 ctags 的参数
-    let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extras=+q']
-    let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-    let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-    " 如果使用 universal ctags 需要增加下面一行
-    let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
-
-    " 禁用 gutentags 自动加载 gtags 数据库的行为
-    let g:gutentags_auto_add_gtags_cscope = 0
-
-    if !isdirectory(s:vim_tags)
-        silent! call mkdir(s:vim_tags, 'p')
-    endif
-    autocmd FileType go,gitcommit,gitrebase let g:gutentags_enabled=0
-
     " skywind3000/vim-keysound
     let g:keysound_enable = 1
     let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
@@ -151,16 +119,6 @@ function! myspacevim#after() abort
     map _ <Plug>(expand_region_shrink)
     nmap ,jt <Esc>:s/\\//g<CR><Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
-    noremap <silent> ,,g :GscopeFind g <C-R><C-W><cr>:call <SID>open_qf()<CR>
-    noremap <silent> ,,d :GscopeFind d <C-R><C-W><cr>:call <SID>open_qf()<CR>
-    noremap <silent> ,,c :GscopeFind c <C-R><C-W><cr>:call <SID>open_qf()<CR>
-    noremap <silent> ,,s :GscopeFind s <C-R><C-W><cr>:call <SID>open_qf()<CR>
-    noremap <silent> ,,4 :GscopeFind t <C-R><C-W><cr>:call <SID>open_qf()<CR>
-    noremap <silent> ,,6 :GscopeFind e <C-R><C-W><cr>:call <SID>open_qf()<CR>
-    noremap <silent> ,,7 :GscopeFind f <C-R>=expand("<cfile>")<cr><cr>:call <SID>open_qf()<CR>
-    noremap <silent> ,,8 :GscopeFind i <C-R>=expand("<cfile>")<cr><cr>:call <SID>open_qf()<CR>
-    noremap <silent> ,,k :GscopeKill<cr>
-
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'b'], 'Gblame', 'view git blame', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['g', 'd'], 'Gdiff', 'view git diff', 1)
 
@@ -182,12 +140,6 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['j', 'h'], 'FzfHelptags', 'FZF Helptags', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['j', 'l'], 'FzfLines', 'FZF lines', 1)
 
-endfunction
-
-function! s:open_qf() abort
-    if len(getqflist()) > 1
-        Denite quickfix
-    endif
 endfunction
 
 function! s:update_search_index(key) abort
