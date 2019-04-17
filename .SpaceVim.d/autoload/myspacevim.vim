@@ -234,6 +234,7 @@ function! myspacevim#after() abort
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
     let g:fzf_layout = {'window': 'enew'}
+    let g:fzf_command_prefix = 'Fzf'
 
 endfunction
 
