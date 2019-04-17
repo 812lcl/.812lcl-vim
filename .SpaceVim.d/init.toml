@@ -148,6 +148,11 @@ name = "tpope/vim-projectionist"
 
 [[custom_plugins]]
 name = "junegunn/fzf"
+build = './install --all'
+
+[[custom_plugins]]
+name = "junegunn/fzf.vim"
+depends = 'fzf'
 
 [[custom_plugins]]
 name = "SpaceVim/nvim-yarp"

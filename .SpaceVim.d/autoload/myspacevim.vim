@@ -133,6 +133,7 @@ function! myspacevim#init() abort
                     \ }
     endif
 
+    let g:fzf_command_prefix = 'Fzf'
 endfunction
 
 function! myspacevim#after() abort
@@ -233,8 +234,8 @@ function! myspacevim#after() abort
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
-    let g:fzf_layout = {'window': 'enew'}
-    let g:fzf_command_prefix = 'Fzf'
+    " let g:fzf_layout = {'window': 'enew'}
+    let g:fzf_layout = { 'window': '15split' }
 
 endfunction
 
