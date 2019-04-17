@@ -94,6 +94,8 @@ function! myspacevim#after() abort
 
     nnoremap <silent>,h :noh<CR>
     nnoremap <silent>,s :set rnu! rnu?<CR>
+    nnoremap <silent>,w :ToggleFileTree<CR>
+    nnoremap <silent>,wf :NERDTreeFind<CR>
     nnoremap <silent>,l :set list! list?<CR>
     nnoremap <silent>,g :IndentLinesToggle<CR>
     nnoremap <silent>,e :TagbarToggle<CR>
