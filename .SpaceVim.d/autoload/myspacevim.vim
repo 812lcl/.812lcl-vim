@@ -129,6 +129,7 @@ function! myspacevim#after() abort
     endif
     nnoremap gob :OpenBrowser http://www.baidu.com/s?wd=<C-R>=expand("<cword>")<cr><cr>
     nnoremap gog :OpenBrowser http://www.google.com/?#newwindow=1&q=<C-R>=expand("<cword>")<cr><cr>
+    let g:mkdp_browserfunc = ''
 endfunction
 
 function! s:update_search_index(key) abort
