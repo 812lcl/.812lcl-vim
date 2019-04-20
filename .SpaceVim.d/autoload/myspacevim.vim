@@ -94,14 +94,12 @@ function! myspacevim#after() abort
 
     nnoremap <silent>,h :noh<CR>
     nnoremap <silent>,s :set rnu! rnu?<CR>
-    nnoremap <silent>,w :ToggleFileTree<CR>
-    nnoremap <silent>,wf :NERDTreeFind<CR>
-    nnoremap <silent>,l :set list! list?<CR>
-    nnoremap <silent>,g :IndentLinesToggle<CR>
     nnoremap <silent>,e :TagbarToggle<CR>
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>:ALEToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
     nnoremap <silent>,t :TaskList<CR>
+    vnoremap <silent> J :m '>+1<CR>gv=gv
+    vnoremap <silent> K :m '<-2<CR>gv=gv
 
     let g:incsearch#auto_nohlsearch = 0
     xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>

@@ -55,6 +55,9 @@ auto-completion-tab-key-behavior = "smart"
 name = 'denite'
 
 [[layers]]
+name = 'chinese'
+
+[[layers]]
 name = 'git'
 
 [[layers]]
