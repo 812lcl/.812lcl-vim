@@ -55,8 +55,8 @@ endfunction
 function! s:language_specified_mappings() abort
 
   call SpaceVim#mapping#space#langSPC('nmap', ['l','a'],
-        \ ':GoAlternate',
-        \ 'go alternate', 1)
+        \ '<Plug>(go-alternate-vertical)',
+        \ 'go alternate vertical', 0)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','b'],
         \ '<Plug>(go-build)',
         \ 'go build', 0)
@@ -72,6 +72,9 @@ function! s:language_specified_mappings() abort
   call SpaceVim#mapping#space#langSPC('nmap', ['l','e'],
         \ '<Plug>(go-rename)',
         \ 'go rename', 0)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l','f'],
+        \ '<Plug>(go-def-vertical)',
+        \ 'go def vertical', 0)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','g'],
         \ '<Plug>(go-def)',
         \ 'go def', 0)
