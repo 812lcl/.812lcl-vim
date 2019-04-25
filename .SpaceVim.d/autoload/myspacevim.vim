@@ -83,10 +83,10 @@ function! myspacevim#after() abort
     nnoremap <silent> _$ :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
     nmap gh :GitGutterNextHunk<CR>
     nmap hg :GitGutterPrevHunk<CR>
-    omap ic <Plug>GitGutterTextObjectInnerPending
-    omap ac <Plug>GitGutterTextObjectOuterPending
-    xmap ic <Plug>GitGutterTextObjectInnerVisual
-    xmap ac <Plug>GitGutterTextObjectOuterVisual
+    omap ic <Plug>(GitGutterTextObjectInnerPending)
+    omap ac <Plug>(GitGutterTextObjectOuterPending)
+    xmap ic <Plug>(GitGutterTextObjectInnerVisual)
+    xmap ac <Plug>(GitGutterTextObjectOuterVisual)
     nnoremap gt :GitGutterToggle<CR>
     nnoremap hl :GitGutterLineHighlightsToggle<CR>
     nnoremap gr :GitGutterAll<CR>
@@ -95,7 +95,7 @@ function! myspacevim#after() abort
     nnoremap <silent>,h :noh<CR>
     nnoremap <silent>,s :set rnu! rnu?<CR>
     nnoremap <silent>,e :TagbarToggle<CR>
-    nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:SignifyToggle<CR>:ALEToggle<CR>
+    nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
     nnoremap <silent>,t :TaskList<CR>
     vnoremap <silent> J :m '>+1<CR>gv=gv
