@@ -22,6 +22,7 @@ function! myspacevim#init() abort
     set mousehide
     set list
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
+    set updatetime=100
 
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
@@ -80,16 +81,15 @@ endfunction
 function! myspacevim#after() abort
     inoremap jj <esc>
     nnoremap <silent> _$ :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
-    nmap gh <plug>(signify-next-hunk)
-    nmap hg <plug>(signify-prev-hunk)
-    omap ic <plug>(signify-motion-inner-pending)
-    xmap ic <plug>(signify-motion-inner-visual)
-    omap ac <plug>(signify-motion-outer-pending)
-    xmap ac <plug>(signify-motion-outer-visual)
-    nnoremap gt :SignifyToggle<CR>
-    nnoremap hl :SignifyToggleHighlight<CR>
-    nnoremap gr :SignifyRefresh<CR>
-    nnoremap gd :SignifyDebug<CR>
+    nmap gh :GitGutterNextHunk<CR>
+    nmap hg :GitGutterPrevHunk<CR>
+    omap ic <Plug>GitGutterTextObjectInnerPending
+    omap ac <Plug>GitGutterTextObjectOuterPending
+    xmap ic <Plug>GitGutterTextObjectInnerVisual
+    xmap ac <Plug>GitGutterTextObjectOuterVisual
+    nnoremap gt :GitGutterToggle<CR>
+    nnoremap hl :GitGutterLineHighlightsToggle<CR>
+    nnoremap gr :GitGutterAll<CR>
     map f <Plug>(easymotion-overwin-f)
 
     nnoremap <silent>,h :noh<CR>

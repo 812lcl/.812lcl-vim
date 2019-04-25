@@ -76,9 +76,6 @@ name = 'tools'
 name = 'tools#dash'
 
 [[layers]]
-name = 'VersionControl'
-
-[[layers]]
 name = 'colorscheme'
 
 [[layers]]
