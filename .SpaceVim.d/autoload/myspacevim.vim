@@ -92,6 +92,7 @@ function! myspacevim#after() abort
     nnoremap hl :GitGutterLineHighlightsToggle<CR>
     nnoremap gr :GitGutterAll<CR>
     map f <Plug>(easymotion-f)
+    map F <Plug>(easymotion-F)
 
     nnoremap <silent>,h :noh<CR>
     nnoremap <silent>,s :set rnu! rnu?<CR>
