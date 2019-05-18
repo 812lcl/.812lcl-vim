@@ -103,7 +103,7 @@ function! myspacevim#after() abort
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
 
-    let g:incsearch#auto_nohlsearch = 0
+    " let g:incsearch#auto_nohlsearch = 0
     xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
     xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
     xnoremap ,j :s@\%V@@gn<Left><Left><Left><Left>
