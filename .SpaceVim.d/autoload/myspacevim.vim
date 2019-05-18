@@ -27,6 +27,8 @@ function! myspacevim#init() abort
     autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
     autocmd FileType vim setlocal keywordprg=:help
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    autocmd BufWritePost * GitGutter
+    autocmd! gitgutter CursorHold,CursorHoldI
 
     " skywind3000/vim-keysound
     let g:keysound_enable = 1
@@ -89,7 +91,7 @@ function! myspacevim#after() abort
     nnoremap gt :GitGutterToggle<CR>
     nnoremap hl :GitGutterLineHighlightsToggle<CR>
     nnoremap gr :GitGutterAll<CR>
-    map f <Plug>(easymotion-overwin-f)
+    map f <Plug>(easymotion-f)
 
     nnoremap <silent>,h :noh<CR>
     nnoremap <silent>,s :set rnu! rnu?<CR>
