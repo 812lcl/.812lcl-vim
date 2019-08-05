@@ -22,6 +22,8 @@ function! myspacevim#init() abort
     set mousehide
     set list
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
+    set updatetime=100
+    set signcolumn=yes
 
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
