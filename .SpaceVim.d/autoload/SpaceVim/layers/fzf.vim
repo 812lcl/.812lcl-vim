@@ -16,7 +16,9 @@ function! SpaceVim#layers#fzf#config() abort
     let g:fzf_command_prefix = 'Fzf'
 
     nnoremap <silent> <C-p> :FZF<cr>
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'm'], 'FzfMaps', 'FZF mappings', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'h'], 'FzfHelptags', 'FZF Helptags', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'l'], 'FzfLines', 'FZF lines', 1)
+    let g:_spacevim_mappings_space.j.f = {'name' : '+FZF'}
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'f', 'm'], 'FzfMaps', 'FZF mappings', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'f', 'h'], 'FzfHelptags', 'FZF Helptags', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'f', 'l'], 'FzfLines', 'FZF lines', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'f', 's'], 'FzfSnippets', 'FZF snippets', 1)
 endfunction
