@@ -131,6 +131,7 @@ function! myspacevim#after() abort
     nnoremap gob :OpenBrowser http://www.baidu.com/s?wd=<C-R>=expand("<cword>")<cr><cr>
     nnoremap gog :OpenBrowser http://www.google.com/?#newwindow=1&q=<C-R>=expand("<cword>")<cr><cr>
     let g:mkdp_browserfunc = ''
+    autocmd! gitgutter CursorHold,CursorHoldI
 endfunction
 
 function! s:update_search_index(key) abort
