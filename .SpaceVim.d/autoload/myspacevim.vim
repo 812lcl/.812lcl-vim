@@ -24,61 +24,6 @@ function! myspacevim#init() abort
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
     set updatetime=100
     set signcolumn=yes
-
-    autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-    autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
-    autocmd FileType vim setlocal keywordprg=:help
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    autocmd BufWritePost * GitGutter
-    autocmd! gitgutter CursorHold,CursorHoldI
-
-    " skywind3000/vim-keysound
-    let g:keysound_enable = 1
-    let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
-    let g:keysound_volume = 1000
-
-    let g:projectionist_heuristics = {
-                \   '*': {
-                \     '*.c': {
-                \         'alternate': '{}.h',
-                \         'type': 'source'
-                \     },
-                \     '*.h': {
-                \         'alternate': '{}.c',
-                \         'type': 'header'
-                \     },
-                \     '*.cc': {
-                \         'alternate': '{}.h',
-                \         'type': 'source'
-                \     },
-                \     '*.go': {
-                \         'alternate': '{}_test.go',
-                \         'type': 'source'
-                \     },
-                \     '*_test.go': {
-                \         'alternate': '{}.go',
-                \         'type': 'test'
-                \     }
-                \   }
-                \ }
-
-    if g:spacevim_enable_ycm
-        let g:ycm_min_num_of_chars_for_completion = 1
-        let g:ycm_min_num_identifier_candidate_chars = 2
-        let g:ycm_collect_identifiers_from_comments_and_strings = 1
-        let g:ycm_confirm_extra_conf = 0
-        let g:ycm_global_ycm_extra_conf = '~/.cache/vimfiles/repos/github.com/Valloric/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-        let g:ycm_show_diagnostics_ui = 0
-        let g:ycm_complete_in_comments = 1
-        let g:ycm_seed_identifiers_with_syntax = 1
-        let g:ycm_collect_identifiers_from_tags_files = 1
-        let g:ycm_key_invoke_completion = '<c-z>'
-        let g:ycm_use_ultisnips_completer = 1
-        let g:ycm_semantic_triggers =  {
-                    \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-                    \ 'cs,lua,javascript': ['re!\w{2}'],
-                    \ }
-    endif
 endfunction
 
 function! myspacevim#after() abort
@@ -133,10 +78,71 @@ function! myspacevim#after() abort
     let g:mkdp_browserfunc = ''
     autocmd! gitgutter CursorHold,CursorHoldI
     let g:coc_global_extensions = ['coc-marketplace', 'coc-ccls', 'coc-dictionary', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-ultisnips', 'coc-snippets', 'coc-tag', 'coc-python', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-yaml', 'coc-vimlsp']
+    autocmd FileType denite-filter let b:coc_suggest_disable = 1
+    autocmd FileType denite, denite-filter call s:denite_settings()
+    function! s:denite_settings()
+        call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+        call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+    endfunction
 
     " nmap <silent> gd <Plug>(coc-definition)
     " nmap <silent> <c-]> <Plug>(coc-definition)
     " nmap <silent> gy <Plug>(coc-type-definition)
+
+    autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+    autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
+    autocmd FileType vim setlocal keywordprg=:help
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    autocmd BufWritePost * GitGutter
+    autocmd! gitgutter CursorHold,CursorHoldI
+
+    " skywind3000/vim-keysound
+    let g:keysound_enable = 1
+    let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
+    let g:keysound_volume = 1000
+
+    if g:spacevim_enable_ycm
+        let g:ycm_min_num_of_chars_for_completion = 1
+        let g:ycm_min_num_identifier_candidate_chars = 2
+        let g:ycm_collect_identifiers_from_comments_and_strings = 1
+        let g:ycm_confirm_extra_conf = 0
+        let g:ycm_global_ycm_extra_conf = '~/.cache/vimfiles/repos/github.com/Valloric/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+        let g:ycm_show_diagnostics_ui = 0
+        let g:ycm_complete_in_comments = 1
+        let g:ycm_seed_identifiers_with_syntax = 1
+        let g:ycm_collect_identifiers_from_tags_files = 1
+        let g:ycm_key_invoke_completion = '<c-z>'
+        let g:ycm_use_ultisnips_completer = 1
+        let g:ycm_semantic_triggers =  {
+                    \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+                    \ 'cs,lua,javascript': ['re!\w{2}'],
+                    \ }
+    endif
+
+    let g:projectionist_heuristics = {
+                \   '*': {
+                \     '*.c': {
+                \         'alternate': '{}.h',
+                \         'type': 'source'
+                \     },
+                \     '*.h': {
+                \         'alternate': '{}.c',
+                \         'type': 'header'
+                \     },
+                \     '*.cc': {
+                \         'alternate': '{}.h',
+                \         'type': 'source'
+                \     },
+                \     '*.go': {
+                \         'alternate': '{}_test.go',
+                \         'type': 'source'
+                \     },
+                \     '*_test.go': {
+                \         'alternate': '{}.go',
+                \         'type': 'test'
+                \     }
+                \   }
+                \ }
 endfunction
 
 function! s:update_search_index(key) abort

@@ -29,8 +29,8 @@
 
     enable_neomake = false
     enable_ale = true
-    enable_ycm = 0
-    autocomplete_method = 'coc'
+    enable_ycm = 1
+    autocomplete_method = 'ycm'
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
     project_rooter_automatically = 1
     force_global_config = 1
@@ -105,7 +105,7 @@ name = 'colorscheme'
 
 [[layers]]
 name = 'shell'
-default_position = 'top'
+default_position = 'bottom'
 default_hight = 30
 
 [[layers]]
