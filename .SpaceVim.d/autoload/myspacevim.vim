@@ -43,7 +43,7 @@ function! myspacevim#init() abort
         let g:ycm_key_invoke_completion = '<c-z>'
         let g:ycm_use_ultisnips_completer = 1
         let g:ycm_semantic_triggers =  {
-                    \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+                    \ 'c,cpp,python,java,erlang,perl': ['re!\w{2}'],
                     \ 'cs,lua,javascript': ['re!\w{2}'],
                     \ }
     endif

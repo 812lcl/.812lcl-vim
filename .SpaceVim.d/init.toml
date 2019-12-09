@@ -81,6 +81,7 @@ name = 'chinese'
 
 [[layers]]
 name = 'git'
+git-plugin = "fugitive"
 
 [[layers]]
 name = 'VersionControl'
