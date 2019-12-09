@@ -112,9 +112,6 @@ function! myspacevim#after() abort
     map _ <Plug>(expand_region_shrink)
     nmap ,jt <Esc>:s/\\//g<CR><Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
-    call SpaceVim#mapping#space#def('nnoremap', ['g', 'b'], 'Gblame', 'view git blame', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['g', 'd'], 'Gdiff', 'view git diff', 1)
-
     if g:spacevim_snippet_engine ==# 'ultisnips'
         smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
         imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
