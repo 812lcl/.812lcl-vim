@@ -6,6 +6,18 @@ function! myspacevim#init() abort
                 \'           //  \\| | / /_ | | | |_ | ||_____|\ V / | | | | | | |',
                 \'           \\__//|_|/____||_| \___\|_|        \_/  |_|_| |_| |_|',
                 \]
+    let g:startify_custom_footer =
+                \ ['', "   Vim is charityware. Please read ':help uganda'.", '']
+    let g:startify_bookmarks = [
+                \ { 'f': '~/go/src/gitlab.myteksi.net/gophers/go/food/food-delivery-taskpool/server/serve.go' },
+                \ { 'o': '~/go/src/gitlab.myteksi.net/gophers/go/food/food-order-batching/server/serve.go' },
+                \ { 'c': '~/go/src/gitlab.myteksi.net/gophers/go/food/food-dax-capability/server/serve.go' },
+                \ { 'v': '~/.SpaceVim.d/init.toml' },
+                \ { 'm': '~/.SpaceVim.d/autoload/myspacevim.vim' },
+                \ { 'z': '~/.zshrc' },
+                \ { 't': '~/.tmux.conf' },
+                \ ]
+    let g:sessionman_save_on_exit = 0
 
     set wrap
     set noswapfile

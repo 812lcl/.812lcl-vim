@@ -38,6 +38,7 @@
     enable_language_specific_leader = 0
     github_username = '812lcl'
     filemanager = 'vimfiler'
+    enable_vimfiler_welcome = false
     enable_vimfiler_gitstatus = 0
     enable_vimfiler_filetypeicon = 0
     windows_index_type = 2
