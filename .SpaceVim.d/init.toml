@@ -37,7 +37,7 @@
     relativenumber = 1
     enable_language_specific_leader = 0
     github_username = '812lcl'
-    filemanager = 'nerdtree'
+    filemanager = 'vimfiler'
     enable_vimfiler_gitstatus = 0
     enable_vimfiler_filetypeicon = 0
     windows_index_type = 2
@@ -56,6 +56,9 @@ auto-completion-tab-key-behavior = "smart"
 name = 'checkers'
 
 [[layers]]
+name = 'format'
+
+[[layers]]
 name = 'edit'
 
 [[layers]]
@@ -72,31 +75,17 @@ name = 'core#tabline'
 
 [[layers]]
 name = 'core#statusline'
+# above layers are default layers
 
 [[layers]]
 name = 'denite'
-
-[[layers]]
-name = 'chinese'
 
 [[layers]]
 name = 'git'
 git-plugin = "fugitive"
 
 [[layers]]
-name = 'VersionControl'
-
-[[layers]]
-name = 'github'
-
-[[layers]]
-name = 'sudo'
-
-[[layers]]
 name = 'tmux'
-
-[[layers]]
-name = 'tools'
 
 [[layers]]
 name = 'tools#dash'
@@ -116,15 +105,6 @@ name = 'lang#c'
 name = 'lang#go'
 
 [[layers]]
-name = 'lang#html'
-
-[[layers]]
-name = 'lang#javascript'
-
-[[layers]]
-name = 'lang#typescript'
-
-[[layers]]
 name = 'lang#json'
 
 [[layers]]
@@ -137,22 +117,10 @@ name = 'lang#python'
 name = 'lang#sh'
 
 [[layers]]
-name = 'lang#toml'
-
-[[layers]]
 name = 'lang#vim'
 
 [[layers]]
-name = 'lang#xml'
-
-[[layers]]
 name = 'lang#lua'
-
-[[layers]]
-name = 'lang#php'
-
-[[layers]]
-name = 'exprfold'
 
 [[layers]]
 name = 'tags'
@@ -165,9 +133,6 @@ name = "skywind3000/vim-keysound"
 
 [[custom_plugins]]
 name = "wakatime/vim-wakatime"
-
-[[custom_plugins]]
-name = "gorodinskiy/vim-coloresque"
 
 [[custom_plugins]]
 name = "osyo-manga/vim-anzu"
@@ -192,3 +157,42 @@ name = "SpaceVim/vim-hug-neovim-rpc"
 
 [[custom_plugins]]
 name = "tweekmonster/startuptime.vim"
+
+# [[layers]]
+# name = 'chinese'
+
+# [[layers]]
+# name = 'VersionControl'
+
+# [[layers]]
+# name = 'github'
+
+# [[layers]]
+# name = 'sudo'
+
+# [[layers]]
+# name = 'tools'
+
+# [[layers]]
+# name = 'lang#html'
+
+# [[layers]]
+# name = 'lang#javascript'
+
+# [[layers]]
+# name = 'lang#typescript'
+
+# [[layers]]
+# name = 'lang#toml'
+
+# [[layers]]
+# name = 'lang#xml'
+
+# [[layers]]
+# name = 'lang#php'
+
+# [[layers]]
+# name = 'exprfold'
+
+# [[custom_plugins]]
+# name = "gorodinskiy/vim-coloresque"

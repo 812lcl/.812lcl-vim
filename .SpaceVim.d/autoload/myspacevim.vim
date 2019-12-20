@@ -23,7 +23,7 @@ function! myspacevim#init() abort
     set list
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
     set updatetime=100
-    set signcolumn=yes
+    " set signcolumn=yes
 
     " skywind3000/vim-keysound
     let g:keysound_enable = 1
