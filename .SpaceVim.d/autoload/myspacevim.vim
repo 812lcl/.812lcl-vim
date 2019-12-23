@@ -58,6 +58,20 @@ function! myspacevim#init() abort
                     \ 'c,cpp,python,java,erlang,perl': ['re!\w{2}'],
                     \ 'cs,lua,javascript': ['re!\w{2}'],
                     \ }
+        let g:ycm_filetype_blacklist = {
+                    \ 'tagbar': 1,
+                    \ 'notes': 1,
+                    \ 'markdown': 1,
+                    \ 'netrw': 1,
+                    \ 'unite': 1,
+                    \ 'denite': 1,
+                    \ 'denite-filter': 1,
+                    \ 'text': 1,
+                    \ 'vimwiki': 1,
+                    \ 'pandoc': 1,
+                    \ 'infolog': 1,
+                    \ 'mail': 1
+                    \}
     endif
 
     let g:projectionist_heuristics = {
@@ -136,10 +150,13 @@ function! myspacevim#after() abort
     autocmd! gitgutter CursorHold,CursorHoldI
     let g:coc_global_extensions = ['coc-marketplace', 'coc-ccls', 'coc-dictionary', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-ultisnips', 'coc-snippets', 'coc-tag', 'coc-python', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-yaml', 'coc-vimlsp']
     autocmd FileType denite-filter let b:coc_suggest_disable = 1
-    autocmd FileType denite, denite-filter call s:denite_settings()
+    autocmd FileType denite-filter call s:denite_settings()
     function! s:denite_settings()
-        call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-        call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+		imap <silent><buffer> jj <Plug>(denite_filter_quit)
+		imap <silent><buffer> <Esc> <Plug>(denite_filter_quit):q<Cr>
+		imap <silent><buffer> <C-c> <Plug>(denite_filter_quit):q<Cr>
+		inoremap <silent><buffer> <c-j> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+		inoremap <silent><buffer> <c-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
     endfunction
 
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
