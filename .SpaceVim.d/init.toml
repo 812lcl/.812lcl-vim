@@ -78,8 +78,14 @@ name = 'core#tabline'
 name = 'core#statusline'
 # above layers are default layers
 
+# [[layers]]
+# name = 'denite'
+
+# [[layers]]
+# name = 'fzf'
+
 [[layers]]
-name = 'denite'
+name = 'leaderf'
 
 [[layers]]
 name = 'git'
@@ -125,9 +131,6 @@ name = 'lang#lua'
 
 [[layers]]
 name = 'tags'
-
-[[layers]]
-name = 'fzf'
 
 [[custom_plugins]]
 name = "skywind3000/vim-keysound"

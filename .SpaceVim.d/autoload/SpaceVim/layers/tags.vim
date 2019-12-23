@@ -58,7 +58,13 @@ function! s:CscopeFind(...) abort
     let query = get(a:000, 0, '')
     exe "GscopeFind " . query . " " . expand("<cword>")
     if len(getqflist()) > 1
-        Denite quickfix
+        if SpaceVim#layers#isLoaded("leaderf")
+            Leaderf quickfix
+        elseif SpaceVim#layers#isLoaded("fzf")
+            FzfQuickfix
+        elseif SpaceVim#layers#isLoaded("denite")
+            Denite quickfix
+        endif
     endif
 endfunction
 
@@ -68,6 +74,12 @@ function! s:CscopeFindFile(...) abort
     let query = get(a:000, 0, '')
     exe "GscopeFind " . query . " " . expand("<cfile>")
     if len(getqflist()) > 1
-        Denite quickfix
+        if SpaceVim#layers#isLoaded("leaderf")
+            Leaderf quickfix
+        elseif SpaceVim#layers#isLoaded("fzf")
+            FzfQuickfix
+        elseif SpaceVim#layers#isLoaded("denite")
+            Denite quickfix
+        endif
     endif
 endfunction
