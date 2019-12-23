@@ -98,6 +98,14 @@ function! myspacevim#init() abort
                 \     }
                 \   }
                 \ }
+    " don't show the help in normal mode
+    let g:Lf_UseCache = 0
+    let g:Lf_UseVersionControlTool = 0
+    let g:Lf_IgnoreCurrentBufferName = 1
+    " popup mode
+    let g:Lf_WindowPosition = 'popup'
+    let g:Lf_PopupPreviewPosition = 'bottom'
+    let g:Lf_PreviewInPopup = 1
 endfunction
 
 function! myspacevim#after() abort
@@ -165,6 +173,13 @@ function! myspacevim#after() abort
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     autocmd BufWritePost * GitGutter
     autocmd! gitgutter CursorHold,CursorHoldI
+
+    let g:Lf_CommandMap = {
+          \ '<C-X>'  : ['<C-S>'],
+          \ '<C-]>'  : ['<C-V>'],
+          \ '<Home>' : ['<C-A>'],
+          \ '<End>'  : ['<C-E>'],
+          \ }
 endfunction
 
 function! s:update_search_index(key) abort
