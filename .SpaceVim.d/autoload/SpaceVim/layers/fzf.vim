@@ -13,10 +13,10 @@ let s:SYS = SpaceVim#api#import('system')
 
 function! SpaceVim#layers#fzf#plugins() abort
   let plugins = []
-  call add(plugins, ['junegunn/fzf',                { 'merged' : 0}])
+  call add(plugins, ['junegunn/fzf', { 'merged' : 0}])
   call add(plugins, ['Shougo/neoyank.vim', {'merged' : 0}])
   call add(plugins, ['Shougo/neomru.vim', {'merged' : 0}])
-  call add(plugins, ['SpaceVim/fzf-neoyank',                { 'merged' : 0}])
+  call add(plugins, ['SpaceVim/fzf-neoyank', { 'merged' : 0}])
   return plugins
 endfunction
 
