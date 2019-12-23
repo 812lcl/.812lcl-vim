@@ -152,11 +152,11 @@ function! myspacevim#after() abort
     autocmd FileType denite-filter let b:coc_suggest_disable = 1
     autocmd FileType denite-filter call s:denite_settings()
     function! s:denite_settings()
-		imap <silent><buffer> jj <Plug>(denite_filter_quit)
-		imap <silent><buffer> <Esc> <Plug>(denite_filter_quit):q<Cr>
-		imap <silent><buffer> <C-c> <Plug>(denite_filter_quit):q<Cr>
-		inoremap <silent><buffer> <c-j> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-		inoremap <silent><buffer> <c-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+        imap <silent><buffer> jj <Plug>(denite_filter_quit)
+        imap <silent><buffer> <Esc> <Plug>(denite_filter_quit):q<Cr>
+        imap <silent><buffer> <C-c> <Plug>(denite_filter_quit):q<Cr>
+        inoremap <silent><buffer> <c-j> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+        inoremap <silent><buffer> <c-k> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
     endfunction
 
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
