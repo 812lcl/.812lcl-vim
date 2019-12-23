@@ -142,10 +142,6 @@ function! myspacevim#after() abort
         call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
     endfunction
 
-    " nmap <silent> gd <Plug>(coc-definition)
-    " nmap <silent> <c-]> <Plug>(coc-definition)
-    " nmap <silent> gy <Plug>(coc-type-definition)
-
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
     autocmd FileType vim setlocal keywordprg=:help
