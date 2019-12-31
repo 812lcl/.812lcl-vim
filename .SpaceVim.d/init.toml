@@ -139,9 +139,6 @@ name = "skywind3000/vim-keysound"
 name = "wakatime/vim-wakatime"
 
 [[custom_plugins]]
-name = "osyo-manga/vim-anzu"
-
-[[custom_plugins]]
 name = "rdnetto/YCM-Generator"
 
 [[custom_plugins]]
@@ -200,3 +197,6 @@ name = "tweekmonster/startuptime.vim"
 
 # [[custom_plugins]]
 # name = "gorodinskiy/vim-coloresque"
+
+# [[custom_plugins]]
+# name = "osyo-manga/vim-anzu"
