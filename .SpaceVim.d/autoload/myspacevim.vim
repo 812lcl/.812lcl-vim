@@ -140,6 +140,7 @@ function! myspacevim#after() abort
     nnoremap <silent> N  :call <SID>update_search_index('r')<cr>
 
     nnoremap <silent> ,d :ZoomToggle<CR>
+    nnoremap <silent> ,r :call RangerChooser()<CR>
     map + <Plug>(expand_region_expand)
     map _ <Plug>(expand_region_shrink)
     nmap ,jt <Esc>:s/\\//g<CR><Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
@@ -239,3 +240,13 @@ function! s:VSetSearch()
     let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
     let @s = temp
 endfunction
+
+function! RangerChooser()                       " Ranger文件管理器
+    exec "silent !ranger --choosefile=/tmp/chosenfile " . expand("%:p:h")
+    if filereadable('/tmp/chosenfile')
+        exec 'edit ' . system('cat /tmp/chosenfile')
+        call system('rm /tmp/chosenfile')
+    endif
+    redraw!
+endfunction
+command! ranger call RangerChooser()
