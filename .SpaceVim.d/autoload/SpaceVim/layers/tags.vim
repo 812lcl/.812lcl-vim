@@ -42,15 +42,17 @@ function! SpaceVim#layers#tags#config() abort
     autocmd FileType go,gitcommit,gitrebase let g:gutentags_enabled=0
 
     let g:_spacevim_mappings_space.m.g = {'name' : '+gtags'}
-    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'g'] , ':CscopeFindCurrentWord g'                  , 'Find this definition'                   , 1)
-    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'd'] , ':CscopeFindCurrentWord d'                  , 'Find functions called by this function' , 1)
-    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'c'] , ':CscopeFindCurrentWord c'                  , 'Find functions calling this function'   , 1)
-    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 's'] , ':CscopeFindCurrentWord s'                  , 'Find this C symbol'                     , 1)
-    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 't'] , ':CscopeFindCurrentWord t'                  , 'Find this text string'                  , 1)
-    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'e'] , ':CscopeFindCurrentWord e'                  , 'Find this egrep pattern'                , 1)
+    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'g'] , ':CscopeFindCurrentWord g' , 'Find this definition'                   , 1)
+    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'd'] , ':CscopeFindCurrentWord d' , 'Find functions called by this function' , 1)
+    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'c'] , ':CscopeFindCurrentWord c' , 'Find functions calling this function'   , 1)
+    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 's'] , ':CscopeFindCurrentWord s' , 'Find this C symbol'                     , 1)
+    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 't'] , ':CscopeFindCurrentWord t' , 'Find this text string'                  , 1)
+    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'e'] , ':CscopeFindCurrentWord e' , 'Find this egrep pattern'                , 1)
     call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'f'] , ':CscopeFindCurrentFile f' , 'Find this file'                         , 1)
     call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'i'] , ':CscopeFindCurrentFile i' , 'Find files #including this file'        , 1)
-    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'k'] , ':GscopeKill<CR>'                                                       , 'GscopeKill'                             , 1)
+    call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'k'] , ':GscopeKill<CR>'          , 'GscopeKill'                             , 1)
+
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'Jump to a tag in buffer', 1)
 endfunction
 
 command! -nargs=? CscopeFindCurrentWord call <SID>CscopeFind(<q-args>)

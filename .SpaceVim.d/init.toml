@@ -45,7 +45,8 @@
     buffer_index_type = 4
     enable_statusline_mode = 1
     snippet_engine = "ultisnips"
-    disabled_plugins = ["clever-f.vim", "limelight.vim", "vnote", "wildfire.vim", "ChineseLinter.vim"]
+    disabled_plugins = ["clever-f.vim", "limelight.vim", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar"]
+    autocomplete_parens = 1
 
 # Enable autocomplete layer
 [[layers]]
