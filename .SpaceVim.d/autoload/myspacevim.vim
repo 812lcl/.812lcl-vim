@@ -251,4 +251,4 @@ function! RangerChooser()                       " Ranger文件管理器
     endif
     redraw!
 endfunction
-command! ranger call RangerChooser()
+command! Ranger call RangerChooser()
