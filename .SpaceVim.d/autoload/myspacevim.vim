@@ -138,6 +138,8 @@ function! myspacevim#after() abort
     nnoremap ,j :%s@@@gn<Left><Left><Left><Left><CR>
     nnoremap <silent> n  :call <SID>update_search_index('d')<cr>
     nnoremap <silent> N  :call <SID>update_search_index('r')<cr>
+    nmap * <Plug>(anzu-star)
+    nmap # <Plug>(anzu-sharp)
 
     nnoremap <silent> ,d :ZoomToggle<CR>
     nnoremap <silent> ,r :call RangerChooser()<CR>

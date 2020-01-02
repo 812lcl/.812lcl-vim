@@ -159,6 +159,9 @@ name = "SpaceVim/vim-hug-neovim-rpc"
 [[custom_plugins]]
 name = "tweekmonster/startuptime.vim"
 
+[[custom_plugins]]
+name = "osyo-manga/vim-anzu"
+
 # [[layers]]
 # name = 'chinese'
 
@@ -197,6 +200,3 @@ name = "tweekmonster/startuptime.vim"
 
 # [[custom_plugins]]
 # name = "gorodinskiy/vim-coloresque"
-
-# [[custom_plugins]]
-# name = "osyo-manga/vim-anzu"
