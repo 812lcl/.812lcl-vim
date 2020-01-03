@@ -106,6 +106,7 @@ function! myspacevim#init() abort
     let g:Lf_WindowPosition = 'popup'
     let g:Lf_PopupPreviewPosition = 'bottom'
     let g:Lf_PreviewInPopup = 1
+    " hi link Lf_hl_cursorline Underlined
 endfunction
 
 function! myspacevim#after() abort
