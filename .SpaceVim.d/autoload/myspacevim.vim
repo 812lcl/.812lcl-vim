@@ -174,10 +174,12 @@ function! myspacevim#after() abort
 
     let g:Lf_RootMarkers = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
     let g:Lf_CommandMap = {
-          \ '<C-X>'  : ['<C-S>'],
-          \ '<C-]>'  : ['<C-V>'],
-          \ '<Home>' : ['<C-A>'],
-          \ '<End>'  : ['<C-E>'],
+          \ '<C-X>'    : ['<C-S>'],
+          \ '<C-]>'    : ['<C-V>'],
+          \ '<Home>'   : ['<C-A>'],
+          \ '<End>'    : ['<C-E>'],
+          \ '<C-Up>'   : ['<C-N>'],
+          \ '<C-Down>' : ['<c-M>'],
           \ }
     noremap <silent>,f :<C-U><C-R>=printf("Leaderf rg --hidden -S --wd-mode=ac -e %s", expand("<cword>"))<CR><CR>
     call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'Jump to a tag in buffer', 1)
