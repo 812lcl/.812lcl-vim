@@ -124,10 +124,10 @@ function! myspacevim#after() abort
 
     nnoremap <silent>,h :noh<CR>
     nnoremap <silent>,s :set rnu! rnu?<CR>
-    nnoremap <silent>,e :TagbarToggle<CR>
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
     nnoremap <silent>,t :TaskList<CR>
+    noremap <C-F> :<C-U><C-R>=printf("Leaderf rg --wd-mode=ac -e %s", expand("<cword>"))<CR><CR>
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
 
@@ -135,7 +135,6 @@ function! myspacevim#after() abort
     xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
     xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
     xnoremap ,j :s@\%V@@gn<Left><Left><Left><Left>
-    nnoremap ,j :%s@@@gn<Left><Left><Left><Left><CR>
     nnoremap <silent> n  :call <SID>update_search_index('d')<cr>
     nnoremap <silent> N  :call <SID>update_search_index('r')<cr>
     nmap * <Plug>(anzu-star)
