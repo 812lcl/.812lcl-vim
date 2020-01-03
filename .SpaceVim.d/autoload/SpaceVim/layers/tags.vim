@@ -51,8 +51,6 @@ function! SpaceVim#layers#tags#config() abort
     call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'f'] , ':CscopeFindCurrentFile f' , 'Find this file'                         , 1)
     call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'i'] , ':CscopeFindCurrentFile i' , 'Find files #including this file'        , 1)
     call SpaceVim#mapping#space#def('noremap' , ['m' , 'g' , 'k'] , ':GscopeKill<CR>'          , 'GscopeKill'                             , 1)
-
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'Jump to a tag in buffer', 1)
 endfunction
 
 command! -nargs=? CscopeFindCurrentWord call <SID>CscopeFind(<q-args>)

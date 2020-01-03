@@ -126,8 +126,6 @@ function! myspacevim#after() abort
     nnoremap <silent>,s :set rnu! rnu?<CR>
     nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle<CR>
     nnoremap <silent>,q :MundoToggle<CR>
-    nnoremap <silent>,t :TaskList<CR>
-    noremap <C-F> :<C-U><C-R>=printf("Leaderf rg --wd-mode=ac -e %s", expand("<cword>"))<CR><CR>
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
 
@@ -174,12 +172,16 @@ function! myspacevim#after() abort
     autocmd BufWritePost * GitGutter
     autocmd! gitgutter CursorHold,CursorHoldI
 
+    let g:Lf_RootMarkers = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
     let g:Lf_CommandMap = {
           \ '<C-X>'  : ['<C-S>'],
           \ '<C-]>'  : ['<C-V>'],
           \ '<Home>' : ['<C-A>'],
           \ '<End>'  : ['<C-E>'],
           \ }
+    noremap <silent>,f :<C-U><C-R>=printf("Leaderf rg --hidden -S --wd-mode=ac -e %s", expand("<cword>"))<CR><CR>
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'Jump to a tag in buffer', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['a', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
 endfunction
 
 function! s:update_search_index(key) abort
