@@ -173,6 +173,8 @@ function! myspacevim#after() abort
     autocmd! gitgutter CursorHold,CursorHoldI
 
     let g:Lf_RootMarkers = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
+    let g:Lf_PopupHeight = 0.5
+    let g:Lf_PopupWidth = 0.75
     let g:Lf_CommandMap = {
           \ '<C-X>'    : ['<C-S>'],
           \ '<C-]>'    : ['<C-V>'],
