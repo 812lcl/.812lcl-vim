@@ -156,9 +156,14 @@ name = "SpaceVim/vim-hug-neovim-rpc"
 
 [[custom_plugins]]
 name = "tweekmonster/startuptime.vim"
+on_cmd = 'StartupTime'
 
 [[custom_plugins]]
 name = "osyo-manga/vim-anzu"
+
+[[custom_plugins]]
+name = "simnalamburt/vim-mundo"
+on_cmd = 'MundoToggle'
 
 # [[layers]]
 # name = 'chinese'
