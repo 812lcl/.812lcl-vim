@@ -182,6 +182,7 @@ function! myspacevim#after() abort
           \ '<End>'    : ['<C-E>'],
           \ '<C-Up>'   : ['<C-N>'],
           \ '<C-Down>' : ['<c-M>'],
+          \ '<CR>'     : ['<CR>'],
           \ }
     noremap <silent>,f :<C-U><C-R>=printf("Leaderf rg --hidden -S --wd-mode=ac -e %s", expand("<cword>"))<CR><CR>
     call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'Jump to a tag in buffer', 1)
