@@ -143,6 +143,7 @@ function! myspacevim#after() abort
     nnoremap <silent> ,r :call RangerChooser()<CR>
     map + <Plug>(expand_region_expand)
     map _ <Plug>(expand_region_shrink)
+    nmap - <Plug>(choosewin)
     nmap ,jt <Esc>:s/\\//g<CR><Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
     if g:spacevim_snippet_engine ==# 'ultisnips'

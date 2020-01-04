@@ -37,7 +37,7 @@
     relativenumber = 1
     enable_language_specific_leader = 0
     github_username = '812lcl'
-    filemanager = 'vimfiler'
+    filemanager = 'defx'
     enable_vimfiler_welcome = false
     enable_vimfiler_gitstatus = 0
     enable_vimfiler_filetypeicon = 0
@@ -45,7 +45,7 @@
     buffer_index_type = 4
     enable_statusline_mode = 1
     snippet_engine = "ultisnips"
-    disabled_plugins = ["clever-f.vim", "limelight.vim", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar"]
+    disabled_plugins = ["clever-f.vim", "limelight.vim", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus"]
     autocomplete_parens = 1
 
 # Enable autocomplete layer
@@ -59,6 +59,7 @@ name = 'checkers'
 
 [[layers]]
 name = 'format'
+enable = false
 
 [[layers]]
 name = 'edit'
@@ -71,6 +72,7 @@ name = 'core'
 
 [[layers]]
 name = 'core#banner'
+enable = false
 
 [[layers]]
 name = 'core#tabline'
@@ -123,9 +125,6 @@ name = 'lang#python'
 
 [[layers]]
 name = 'lang#sh'
-
-[[layers]]
-name = 'lang#vim'
 
 [[layers]]
 name = 'lang#lua'
@@ -197,6 +196,9 @@ on_cmd = 'MundoToggle'
 
 # [[layers]]
 # name = 'lang#php'
+
+# [[layers]]
+# name = 'lang#vim'
 
 # [[layers]]
 # name = 'exprfold'
