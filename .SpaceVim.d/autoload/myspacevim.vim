@@ -66,6 +66,7 @@ function! myspacevim#init() abort
                     \ 'unite': 1,
                     \ 'denite': 1,
                     \ 'denite-filter': 1,
+                    \ 'vimcalc': 1,
                     \ 'text': 1,
                     \ 'vimwiki': 1,
                     \ 'pandoc': 1,
@@ -187,8 +188,9 @@ function! myspacevim#after() abort
           \ '<CR>'     : ['<CR>'],
           \ }
     noremap <silent>,f :<C-U><C-R>=printf("Leaderf rg --hidden -S --wd-mode=ac -e %s", expand("<cword>"))<CR><CR>
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'Jump to a tag in buffer', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'jump to a tag in buffer', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['a', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['f', 'b'], 'LeaderfMarks', 'open marks list', 1)
 endfunction
 
 function! s:update_search_index(key) abort
