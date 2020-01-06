@@ -207,12 +207,12 @@ function! s:update_search_index(key) abort
             normal! N
         endif
     endif
-    normal! ml
+    let save_cursor = getpos('.')
     if !SpaceVim#layers#core#statusline#check_section('search status')
         call SpaceVim#layers#core#statusline#toggle_section('search status')
     endif
     let &l:statusline = SpaceVim#layers#core#statusline#get(1)
-    normal! `l
+    keepjumps call setpos('.', save_cursor)
 endfunction
 
 function! s:ZoomToggle() abort
