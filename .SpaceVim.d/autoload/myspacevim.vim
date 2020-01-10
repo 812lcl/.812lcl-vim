@@ -191,6 +191,15 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'jump to a tag in buffer', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['a', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['f', 'b'], 'LeaderfMarks', 'open marks list', 1)
+
+    let g:terminal_height=20
+    let g:terminal_pos='bo'
+    nnoremap <silent>,t :call TerminalToggle()<cr>
+    if has('nvim') == 0
+        tnoremap <silent>,t <c-_>p:call TerminalToggle()<cr>
+    else
+        tnoremap <silent>,t <c-\><c-n>:call TerminalToggle()<cr>
+    endif
 endfunction
 
 function! s:update_search_index(key) abort
