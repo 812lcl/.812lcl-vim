@@ -196,17 +196,17 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'q'], 'MundoToggle', 'undo toggle', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'r'], 'call RangerChooser()', 'ranger', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 's'], 'set rnu! run?', 'releated line num', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['k', 't'], 'call TerminalToggle()', 'open terminal', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'y'], 'set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle', 'copy mode', 1)
 
     let g:terminal_kill='kill'
     let g:terminal_list=0
     let g:terminal_height=10
     let g:terminal_pos='bo'
+    call SpaceVim#mapping#space#def('nnoremap', ["'"], 'call TerminalToggle()', 'open terminal', 1)
     if has('nvim') == 0
-        tnoremap <silent><space>kt <c-_>:call TerminalToggle()<cr>
+        tnoremap <silent><space>' <c-_>:call TerminalToggle()<cr>
     else
-        tnoremap <silent><space>kt <c-\><c-n>:call TerminalToggle()<cr>
+        tnoremap <silent><space>' <c-\><c-n>:call TerminalToggle()<cr>
     endif
 endfunction
 
