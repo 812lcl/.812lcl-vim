@@ -124,10 +124,6 @@ function! myspacevim#after() abort
     nnoremap gr :GitGutterAll<CR>
     map f <Plug>(easymotion-bd-f)
 
-    nnoremap <silent>,h :noh<CR>
-    nnoremap <silent>,s :set rnu! rnu?<CR>
-    nnoremap <silent>,y :set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle<CR>
-    nnoremap <silent>,q :MundoToggle<CR>
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
 
@@ -140,8 +136,6 @@ function! myspacevim#after() abort
     nmap * <Plug>(anzu-star)
     nmap # <Plug>(anzu-sharp)
 
-    nnoremap <silent> ,d :ZoomToggle<CR>
-    nnoremap <silent> ,r :call RangerChooser()<CR>
     map + <Plug>(expand_region_expand)
     map _ <Plug>(expand_region_shrink)
     nmap - <Plug>(choosewin)
@@ -153,7 +147,9 @@ function! myspacevim#after() abort
         smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
         imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
     endif
+    vnoremap gob :OpenBrowser http://www.baidu.com/s?wd=<C-R>=expand("<cword>")<cr><cr>
     nnoremap gob :OpenBrowser http://www.baidu.com/s?wd=<C-R>=expand("<cword>")<cr><cr>
+    vnoremap gog :OpenBrowser http://www.google.com/?#newwindow=1&q=<C-R>=expand("<cword>")<cr><cr>
     nnoremap gog :OpenBrowser http://www.google.com/?#newwindow=1&q=<C-R>=expand("<cword>")<cr><cr>
     let g:mkdp_browserfunc = ''
     autocmd! gitgutter CursorHold,CursorHoldI
@@ -187,10 +183,20 @@ function! myspacevim#after() abort
           \ '<C-Down>' : ['<c-M>'],
           \ '<CR>'     : ['<CR>'],
           \ }
-    noremap <silent>,f :<C-U><C-R>=printf("Leaderf rg --hidden -S --wd-mode=ac -e %s", expand("<cword>"))<CR><CR>
     call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'jump to a tag in buffer', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['a', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['f', 'b'], 'LeaderfMarks', 'open marks list', 1)
+
+    " space mode mapping leader key remain: o u v y z
+    let g:_spacevim_mappings_space.k = {'name' : '+MyOwn'}
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'd'], 'ZoomToggle', 'zoom toggle', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'h'], 'nohl', 'no highlight', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'p'], 'Leaderf rg --hidden -S --wd-mode=ac', 'search in project dir', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'P'], 'Leaderf rg --hidden -S --wd-mode=ac -e <C-R><C-W>', 'search cword in project dir', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'q'], 'MundoToggle', 'undo toggle', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'r'], 'call RangerChooser()', 'ranger', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 's'], 'set rnu! run?', 'releated line num', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'y'], 'set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle', 'copy mode', 1)
 
     let g:terminal_kill='kill'
     let g:terminal_list=0
@@ -198,7 +204,7 @@ function! myspacevim#after() abort
     let g:terminal_pos='bo'
     nnoremap <silent>,t :call TerminalToggle()<cr>
     if has('nvim') == 0
-        tnoremap <silent>,t <c-_>p:call TerminalToggle()<cr>
+        tnoremap <silent>,t <c-_>:call TerminalToggle()<cr>
     else
         tnoremap <silent>,t <c-\><c-n>:call TerminalToggle()<cr>
     endif
