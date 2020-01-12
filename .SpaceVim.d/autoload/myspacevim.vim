@@ -146,10 +146,11 @@ function! myspacevim#after() abort
         imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
     endif
 
-    vnoremap gob :OpenBrowser http://www.baidu.com/s?wd=<C-R>=expand("<cword>")<cr><cr>
-    nnoremap gob :OpenBrowser http://www.baidu.com/s?wd=<C-R>=expand("<cword>")<cr><cr>
-    vnoremap gog :OpenBrowser http://www.google.com/?#newwindow=1&q=<C-R>=expand("<cword>")<cr><cr>
-    nnoremap gog :OpenBrowser http://www.google.com/?#newwindow=1&q=<C-R>=expand("<cword>")<cr><cr>
+    nnoremap gob :OpenBrowserSmartSearch -baidu <C-R>=expand("<cword>")<cr><cr>
+    nnoremap gog :OpenBrowserSmartSearch -google <C-R>=expand("<cword>")<cr><cr>
+    nnoremap goh :OpenBrowserSmartSearch -github <C-R>=expand("<cword>")<cr><cr>
+    nnoremap god :OpenBrowserSmartSearch -devdocs <C-R>=expand("<cword>")<cr><cr>
+    vmap gog <Plug>(openbrowser-smart-search)
 
     let g:mkdp_browserfunc = ''
     let g:coc_global_extensions = ['coc-marketplace', 'coc-ccls', 'coc-dictionary', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-ultisnips', 'coc-snippets', 'coc-tag', 'coc-python', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-yaml', 'coc-vimlsp']
