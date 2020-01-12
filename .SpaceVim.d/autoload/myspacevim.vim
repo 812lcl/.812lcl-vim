@@ -9,9 +9,6 @@ function! myspacevim#init() abort
     let g:startify_custom_footer =
                 \ ['', "   Vim is charityware. Please read ':help uganda'.", '']
     let g:startify_bookmarks = [
-                \ { 'f': '~/go/src/gitlab.myteksi.net/gophers/go/food/food-delivery-taskpool/server/serve.go' },
-                \ { 'o': '~/go/src/gitlab.myteksi.net/gophers/go/food/food-order-batching/server/serve.go' },
-                \ { 'c': '~/go/src/gitlab.myteksi.net/gophers/go/food/food-dax-capability/server/serve.go' },
                 \ { 'v': '~/.SpaceVim.d/init.toml' },
                 \ { 'm': '~/.SpaceVim.d/autoload/myspacevim.vim' },
                 \ { 'z': '~/.zshrc' },
@@ -35,7 +32,6 @@ function! myspacevim#init() abort
     set list
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
     set updatetime=100
-    " set signcolumn=yes
 
     " skywind3000/vim-keysound
     let g:keysound_enable = 1
@@ -113,6 +109,11 @@ endfunction
 function! myspacevim#after() abort
     inoremap jj <esc>
     nnoremap <silent> _$ :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
+    map f <Plug>(easymotion-bd-f)
+    map + <Plug>(expand_region_expand)
+    map _ <Plug>(expand_region_shrink)
+
+    " gitgutter
     nmap gh :GitGutterNextHunk<CR>
     nmap hg :GitGutterPrevHunk<CR>
     omap ic <Plug>(GitGutterTextObjectInnerPending)
@@ -122,7 +123,8 @@ function! myspacevim#after() abort
     nnoremap gt :GitGutterToggle<CR>
     nnoremap hl :GitGutterLineHighlightsToggle<CR>
     nnoremap gr :GitGutterAll<CR>
-    map f <Plug>(easymotion-bd-f)
+    autocmd! gitgutter CursorHold,CursorHoldI
+    autocmd BufWritePost * GitGutter
 
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
@@ -135,11 +137,7 @@ function! myspacevim#after() abort
     nnoremap <silent> N  :call <SID>update_search_index('r')<cr>
     nmap * <Plug>(anzu-star)
     nmap # <Plug>(anzu-sharp)
-
-    map + <Plug>(expand_region_expand)
-    map _ <Plug>(expand_region_shrink)
     nmap - <Plug>(choosewin)
-    nmap ,jt <Esc>:s/\\//g<CR><Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
     if g:spacevim_snippet_engine ==# 'ultisnips'
         smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
@@ -147,13 +145,16 @@ function! myspacevim#after() abort
         smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
         imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
     endif
+
     vnoremap gob :OpenBrowser http://www.baidu.com/s?wd=<C-R>=expand("<cword>")<cr><cr>
     nnoremap gob :OpenBrowser http://www.baidu.com/s?wd=<C-R>=expand("<cword>")<cr><cr>
     vnoremap gog :OpenBrowser http://www.google.com/?#newwindow=1&q=<C-R>=expand("<cword>")<cr><cr>
     nnoremap gog :OpenBrowser http://www.google.com/?#newwindow=1&q=<C-R>=expand("<cword>")<cr><cr>
+
     let g:mkdp_browserfunc = ''
-    autocmd! gitgutter CursorHold,CursorHoldI
     let g:coc_global_extensions = ['coc-marketplace', 'coc-ccls', 'coc-dictionary', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-ultisnips', 'coc-snippets', 'coc-tag', 'coc-python', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-yaml', 'coc-vimlsp']
+
+    " denite
     autocmd FileType denite-filter let b:coc_suggest_disable = 1
     autocmd FileType denite-filter call s:denite_settings()
     function! s:denite_settings()
@@ -168,8 +169,6 @@ function! myspacevim#after() abort
     autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
     autocmd FileType vim setlocal keywordprg=:help
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    autocmd BufWritePost * GitGutter
-    autocmd! gitgutter CursorHold,CursorHoldI
 
     let g:Lf_RootMarkers = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
     let g:Lf_PopupHeight = 0.5
@@ -196,17 +195,17 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'q'], 'MundoToggle', 'undo toggle', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'r'], 'call RangerChooser()', 'ranger', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 's'], 'set rnu! run?', 'releated line num', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 't'], 'call TerminalToggle()', 'open terminal', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'y'], 'set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle', 'copy mode', 1)
 
     let g:terminal_kill='kill'
     let g:terminal_list=0
     let g:terminal_height=10
     let g:terminal_pos='bo'
-    nnoremap <silent>,t :call TerminalToggle()<cr>
     if has('nvim') == 0
-        tnoremap <silent>,t <c-_>:call TerminalToggle()<cr>
+        tnoremap <silent><space>kt <c-_>:call TerminalToggle()<cr>
     else
-        tnoremap <silent>,t <c-\><c-n>:call TerminalToggle()<cr>
+        tnoremap <silent><space>kt <c-\><c-n>:call TerminalToggle()<cr>
     endif
 endfunction
 
@@ -245,23 +244,6 @@ function! s:ZoomToggle() abort
 endfunction
 " Zoom / Restore window.
 command! ZoomToggle call s:ZoomToggle()
-
-function! ToggleFileTree()
-    if &ft =~ 'tagbar\|nerdtree\|unite\|qf' || buffer_name("%") == '[Command Line]'
-        return
-    endif
-    let w:jumpbacktohere = 1
-    NERDTreeToggle
-    " Jump back to the original window
-    for window in range(1, winnr('$'))
-        execute window . 'wincmd w'
-        if exists('w:jumpbacktohere')
-            unlet w:jumpbacktohere
-            break
-        endif
-    endfor
-endfunction
-command! ToggleFileTree call ToggleFileTree()
 
 function! s:VSetSearch()
     let temp = @s

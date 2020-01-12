@@ -59,7 +59,7 @@ name = 'checkers'
 
 [[layers]]
 name = 'format'
-enable = false
+enable = true
 
 [[layers]]
 name = 'edit'
