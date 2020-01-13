@@ -154,8 +154,6 @@ function! myspacevim#after() abort
 
     let g:mkdp_browserfunc = ''
     let g:coc_global_extensions = ['coc-marketplace', 'coc-ccls', 'coc-dictionary', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-ultisnips', 'coc-snippets', 'coc-tag', 'coc-python', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-yaml', 'coc-vimlsp']
-
-    " denite
     autocmd FileType denite-filter let b:coc_suggest_disable = 1
     autocmd FileType denite-filter call s:denite_settings()
     function! s:denite_settings()
