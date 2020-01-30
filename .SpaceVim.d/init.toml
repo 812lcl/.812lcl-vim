@@ -29,6 +29,9 @@
 
     enable_neomake = false
     enable_ale = true
+    error_symbol = '✖'
+    warning_symbol = '⚠'
+    info_symbol = 'ⓘ'
     enable_ycm = 1
     autocomplete_method = 'ycm'
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
