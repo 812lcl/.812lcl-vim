@@ -34,6 +34,7 @@
     info_symbol = 'ⓘ'
     enable_ycm = 1
     autocomplete_method = 'ycm'
+    autocomplete_parens = 1
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
     project_rooter_automatically = 1
     force_global_config = 1
@@ -49,7 +50,6 @@
     enable_statusline_mode = 1
     snippet_engine = "ultisnips"
     disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim"]
-    autocomplete_parens = 1
 
 # Enable autocomplete layer
 [[layers]]
