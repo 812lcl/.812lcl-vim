@@ -197,6 +197,7 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'r'], 'call RangerChooser()', 'ranger', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 's'], 'set rnu! run?', 'releated line num', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'y'], 'set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle', 'copy mode', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['b', 'j'], 'wincmd j<CR>:q', 'close below buffer', 1)
 
     let g:terminal_kill='kill'
     let g:terminal_list=0

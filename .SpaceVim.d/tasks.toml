@@ -1,0 +1,5 @@
+[my-first-task]
+command = 'echo'
+args = ['hello world']
+[go-run]
+command = 'go run $(file)'

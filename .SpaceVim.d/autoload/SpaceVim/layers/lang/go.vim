@@ -118,7 +118,7 @@ function! s:language_specified_mappings() abort
   call SpaceVim#mapping#space#langSPC('nmap', ['l','M'],
         \ ':GoImport ',
         \ 'add import', 0)
-  call SpaceVim#mapping#space#langSPC('nmap', ['l','r'],
+  call SpaceVim#mapping#space#langSPC('nmap', ['l','x'],
         \ ':GoReferrers',
         \ 'go referrers', 1)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','s'],
@@ -130,5 +130,5 @@ function! s:language_specified_mappings() abort
   call SpaceVim#mapping#space#langSPC('nmap', ['l','v'],
         \ 'gv:GoFreevars<CR>',
         \ 'freevars', 0)
-  call SpaceVim#mapping#space#langSPC('nmap', ['l','x'], 'call SpaceVim#plugins#runner#open()', 'execute current file', 1)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l','r'], 'call SpaceVim#plugins#runner#open()', 'execute current file', 1)
 endfunction
