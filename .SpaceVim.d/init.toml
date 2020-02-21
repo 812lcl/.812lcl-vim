@@ -174,3 +174,6 @@ name = "kshenoy/vim-signature"
 
 [[custom_plugins]]
 name = "skywind3000/vim-terminal-help"
+
+# [[custom_plugins]]
+# name = "voldikss/vim-floaterm"
