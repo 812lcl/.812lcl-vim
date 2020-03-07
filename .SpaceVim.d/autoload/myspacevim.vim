@@ -184,8 +184,6 @@ function! myspacevim#after() abort
           \ '<CR>'     : ['<CR>'],
           \ }
     call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'jump to a tag in buffer', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['a', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['f', 'b'], 'LeaderfMarks', 'open marks list', 1)
 
     " space mode mapping leader key remain: o u v y z
     let g:_spacevim_mappings_space.k = {'name' : '+MyOwn'}
@@ -197,6 +195,8 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'r'], 'call RangerChooser()', 'ranger', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 's'], 'set rnu! run?', 'releated line num', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'y'], 'set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle', 'copy mode', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'b'], 'LeaderfMarks', 'open marks list', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['b', 'j'], 'wincmd j<CR>:q', 'close below buffer', 1)
 
     let g:terminal_kill='kill'
