@@ -106,12 +106,6 @@ function! s:language_specified_mappings() abort
   call SpaceVim#mapping#space#langSPC('nmap', ['l','J'],
         \ 'gv:GoRemoveTags<CR>',
         \ 'remove tags for virtual block', 0)
-  call SpaceVim#mapping#space#langSPC('nmap', ['l','l'],
-        \ ':GoDecls',
-        \ 'decl file', 1)
-  call SpaceVim#mapping#space#langSPC('nmap', ['l','L'],
-        \ ':GoDeclsDir',
-        \ 'decl dir', 1)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','m'],
         \ ':GoImports',
         \ 'format imports', 1)
