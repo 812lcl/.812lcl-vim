@@ -20,8 +20,24 @@
     # install nerd fonts
     statusline_separator = "arrow"
     statusline_inactive_separator = "arrow"
-    enable_tabline_filetype_icon = true
     enable_statusline_display_mode = true
+    enable_statusline_mode = 1
+    statusline_left_sections = [
+        'winnr',
+        'filename',
+        'major mode',
+        'search count',
+        'minor mode lighters',
+        'version control info'
+    ]
+    statusline_right_sections = [
+        'fileformat',
+        'cursorpos',
+        'percentage',
+        'syntax checking',
+        'whitespace'
+    ]
+    enable_tabline_filetype_icon = true
     default_indent = 4
 
     bootstrap_before = "myspacevim#init"
@@ -47,7 +63,6 @@
     enable_vimfiler_filetypeicon = 0
     windows_index_type = 2
     buffer_index_type = 4
-    enable_statusline_mode = 1
     snippet_engine = "ultisnips"
     disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim"]
     todo_labels = ['TODO', 'FIXME', '@bug', '@question', '@idea', '@fixme']
@@ -96,7 +111,7 @@ name = "Yggdroot/LeaderF-marks"
 
 [[layers]]
 name = 'git'
-git-plugin = "fugitive"
+git-plugin = "gina"
 
 [[layers]]
 name = 'tmux'
