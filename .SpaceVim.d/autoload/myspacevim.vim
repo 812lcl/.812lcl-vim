@@ -95,15 +95,17 @@ function! myspacevim#init() abort
                 \     }
                 \   }
                 \ }
-    " don't show the help in normal mode
-    let g:Lf_UseCache = 0
-    let g:Lf_UseVersionControlTool = 0
-    let g:Lf_IgnoreCurrentBufferName = 1
-    " popup mode
-    let g:Lf_WindowPosition = 'popup'
-    let g:Lf_PopupPreviewPosition = 'bottom'
-    let g:Lf_PreviewInPopup = 1
-    " hi link Lf_hl_cursorline Underlined
+    if SpaceVim#layers#isLoaded('leaderf')
+        " leaderf don't show the help in normal mode
+        let g:Lf_UseCache = 0
+        let g:Lf_UseVersionControlTool = 0
+        let g:Lf_IgnoreCurrentBufferName = 1
+        " popup mode
+        let g:Lf_WindowPosition = 'popup'
+        let g:Lf_PopupPreviewPosition = 'bottom'
+        let g:Lf_PreviewInPopup = 1
+        " hi link Lf_hl_cursorline Underlined
+    endif
 endfunction
 
 function! myspacevim#after() abort
@@ -171,34 +173,24 @@ function! myspacevim#after() abort
     autocmd FileType vim setlocal keywordprg=:help
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-    let g:Lf_RootMarkers = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
-    let g:Lf_PopupHeight = 0.5
-    let g:Lf_PopupWidth = 0.75
-    let g:Lf_CommandMap = {
-          \ '<C-X>'    : ['<C-S>'],
-          \ '<C-]>'    : ['<C-V>'],
-          \ '<Home>'   : ['<C-A>'],
-          \ '<End>'    : ['<C-E>'],
-          \ '<C-Up>'   : ['<C-N>'],
-          \ '<C-Down>' : ['<c-M>'],
-          \ '<CR>'     : ['<CR>'],
-          \ }
-    call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'jump to a tag in buffer', 1)
-
     " space mode mapping leader key remain: o u v y z
     let g:_spacevim_mappings_space.k = {'name' : '+MyOwn'}
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'd'], 'ZoomToggle', 'zoom toggle', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'h'], 'nohl', 'no highlight', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['k', 'p'], 'Leaderf rg --hidden -S --wd-mode=ac', 'search in project dir', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['k', 'P'], 'Leaderf rg --hidden -S --wd-mode=ac -e <C-R><C-W>', 'search cword in project dir', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'q'], 'MundoToggle', 'undo toggle', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'r'], 'call RangerChooser()', 'ranger', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 's'], 'set rnu! run?', 'releated line num', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'y'], 'set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle', 'copy mode', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['k', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['k', 'b'], 'LeaderfMarks', 'open marks list', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['k', 't'], 'Leaderf --nowrap task', 'open task list', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['b', 'j'], 'wincmd j<CR>:q', 'close below buffer', 1)
+
+    if SpaceVim#layers#isLoaded('leaderf')
+        call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'jump to a tag in buffer', 1)
+        call SpaceVim#mapping#space#def('nnoremap', ['k', 'p'], 'Leaderf rg --hidden -S --wd-mode=ac', 'search in project dir', 1)
+        call SpaceVim#mapping#space#def('nnoremap', ['k', 'P'], 'Leaderf rg --hidden -S --wd-mode=ac -e <C-R><C-W>', 'search cword in project dir', 1)
+        call SpaceVim#mapping#space#def('nnoremap', ['k', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
+        call SpaceVim#mapping#space#def('nnoremap', ['k', 'b'], 'LeaderfMarks', 'open marks list', 1)
+        call SpaceVim#mapping#space#def('nnoremap', ['k', 't'], 'Leaderf --nowrap task', 'open task list', 1)
+    endif
 
     let g:terminal_kill='kill'
     let g:terminal_list=0
@@ -218,16 +210,31 @@ function! myspacevim#after() abort
     let g:asynctasks_term_focus = 0
     let g:asynctasks_term_reuse = 1
     let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
-    let g:Lf_Extensions = get(g:, 'Lf_Extensions', {})
-    let g:Lf_Extensions.task = {
-                \ 'source': string(function('s:lf_task_source'))[10:-3],
-                \ 'accept': string(function('s:lf_task_accept'))[10:-3],
-                \ 'get_digest': string(function('s:lf_task_digest'))[10:-3],
-                \ 'highlights_def': {
-                \     'Lf_hl_funcScope': '^\S\+',
-                \     'Lf_hl_funcDirname': '^\S\+\s*\zs<.*>\ze\s*:',
-                \ },
-                \ }
+
+    if SpaceVim#layers#isLoaded('leaderf')
+        let g:Lf_RootMarkers = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
+        let g:Lf_PopupHeight = 0.5
+        let g:Lf_PopupWidth = 0.75
+        let g:Lf_CommandMap = {
+                    \ '<C-X>'    : ['<C-S>'],
+                    \ '<C-]>'    : ['<C-V>'],
+                    \ '<Home>'   : ['<C-A>'],
+                    \ '<End>'    : ['<C-E>'],
+                    \ '<C-Up>'   : ['<C-N>'],
+                    \ '<C-Down>' : ['<c-M>'],
+                    \ '<CR>'     : ['<CR>'],
+                    \ }
+        let g:Lf_Extensions = get(g:, 'Lf_Extensions', {})
+        let g:Lf_Extensions.task = {
+                    \ 'source': string(function('s:lf_task_source'))[10:-3],
+                    \ 'accept': string(function('s:lf_task_accept'))[10:-3],
+                    \ 'get_digest': string(function('s:lf_task_digest'))[10:-3],
+                    \ 'highlights_def': {
+                    \     'Lf_hl_funcScope': '^\S\+',
+                    \     'Lf_hl_funcDirname': '^\S\+\s*\zs<.*>\ze\s*:',
+                    \ },
+                    \ }
+    endif
 endfunction
 
 function! s:update_search_index(key) abort

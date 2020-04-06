@@ -11,7 +11,7 @@
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
-    colorscheme = "gruvbox"
+    colorscheme = "molokai"
     background = "dark"
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
@@ -86,13 +86,13 @@ name = 'core#statusline'
 # above layers are default layers
 
 # [[layers]]
-# name = 'denite'
-
-# [[layers]]
 # name = 'fzf'
 
 [[layers]]
 name = 'leaderf'
+
+[[custom_plugins]]
+name = "Yggdroot/LeaderF-marks"
 
 [[layers]]
 name = 'git'
@@ -165,9 +165,6 @@ name = "osyo-manga/vim-anzu"
 name = "simnalamburt/vim-mundo"
 
 [[custom_plugins]]
-name = "Yggdroot/LeaderF-marks"
-
-[[custom_plugins]]
 name = "kshenoy/vim-signature"
 
 [[custom_plugins]]
@@ -183,6 +180,10 @@ on_cmd = ['AsyncRun', 'AsyncStop']
 [[custom_plugins]]
 name = "skywind3000/asynctasks.vim"
 on_cmd = ['AsyncTask', 'AsyncTaskMacro', 'AsyncTaskList', 'AsyncTaskEdit']
+
+[[custom_plugins]]
+name = "gorodinskiy/vim-coloresque"
+on_ft = ['vim']
 
 # [[custom_plugins]]
 # name = "voldikss/vim-floaterm"
