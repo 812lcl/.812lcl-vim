@@ -168,9 +168,10 @@ function! myspacevim#after() abort
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
     let g:terminal_kill='kill'
+    let g:terminal_close=1
     let g:terminal_list=0
     let g:terminal_height=15
-    " let g:terminal_pos='bo'
+    let g:terminal_pos='bo'
     call SpaceVim#mapping#space#def('nnoremap', ["'"], 'call TerminalToggle()', 'open terminal', 1)
     if has('nvim') == 0
         tnoremap <silent><space>' <c-_>:call TerminalToggle()<cr>
