@@ -222,6 +222,14 @@ function! myspacevim#after() abort
         call SpaceVim#mapping#space#def('nnoremap', ['k', 'b'], 'LeaderfMarks', 'open marks list', 1)
         call SpaceVim#mapping#space#def('nnoremap', ['k', 't'], 'Leaderf --nowrap task', 'open task list', 1)
     endif
+    call gina#custom#mapping#nmap(
+          \ 'blame', 'c',
+          \ ':call gina#action#call(''show:commit:below'')<CR>',
+          \ {'noremap': 1, 'silent': 1},
+          \)
+    highlight GitGutterAdd ctermfg=46 ctermbg=235
+    highlight GitGutterChange ctermfg=255 ctermbg=235
+    highlight GitGutterDelete ctermfg=196 ctermbg=235
 endfunction
 
 function! s:update_search_index(key) abort
