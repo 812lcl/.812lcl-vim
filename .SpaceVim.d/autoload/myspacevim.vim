@@ -130,8 +130,8 @@ function! myspacevim#after() abort
     nnoremap gt :GitGutterToggle<CR>
     nnoremap hl :GitGutterLineHighlightsToggle<CR>
     nnoremap gr :GitGutterAll<CR>
-    autocmd! gitgutter CursorHold,CursorHoldI
-    autocmd BufWritePost * GitGutter
+    " autocmd! gitgutter CursorHold,CursorHoldI
+    " autocmd BufWritePost * GitGutter
 
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
@@ -173,7 +173,7 @@ function! myspacevim#after() abort
     let g:terminal_close=1
     let g:terminal_list=0
     let g:terminal_height=15
-    let g:terminal_pos='bo'
+    " let g:terminal_pos='bo'
     call SpaceVim#mapping#space#def('nnoremap', ["'"], 'call TerminalToggle()', 'open terminal', 1)
     if has('nvim') == 0
         tnoremap <silent><space>' <c-_>:call TerminalToggle()<cr>
