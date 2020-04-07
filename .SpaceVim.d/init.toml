@@ -114,9 +114,6 @@ name = 'git'
 git-plugin = "gina"
 
 [[layers]]
-name = 'tmux'
-
-[[layers]]
 name = 'tools#dash'
 
 [[layers]]
