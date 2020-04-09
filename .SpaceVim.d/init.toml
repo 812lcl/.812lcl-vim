@@ -48,9 +48,9 @@
     error_symbol = '✖'
     warning_symbol = '⚠'
     info_symbol = 'ⓘ'
-    enable_ycm = 1
-    autocomplete_method = 'ycm'
-    autocomplete_parens = 1
+    enable_ycm = 0
+    autocomplete_method = 'coc'
+    autocomplete_parens = 0
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
     project_rooter_automatically = 1
     force_global_config = 1
@@ -64,7 +64,7 @@
     windows_index_type = 2
     buffer_index_type = 4
     snippet_engine = "ultisnips"
-    disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim"]
+    disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim", "CompleteParameter.vim", "echodoc.vim"]
     todo_labels = ['TODO', 'FIXME', '@bug', '@question', '@idea', '@fixme']
 
 # Enable autocomplete layer
@@ -196,6 +196,9 @@ on_cmd = ['AsyncTask', 'AsyncTaskMacro', 'AsyncTaskList', 'AsyncTaskEdit']
 [[custom_plugins]]
 name = "gorodinskiy/vim-coloresque"
 on_ft = ['vim']
+
+[[custom_plugins]]
+name = "jiangmiao/auto-pairs"
 
 # [[custom_plugins]]
 # name = "voldikss/vim-floaterm"

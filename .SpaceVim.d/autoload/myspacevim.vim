@@ -130,8 +130,8 @@ function! myspacevim#after() abort
     nnoremap gt :GitGutterToggle<CR>
     nnoremap hl :GitGutterLineHighlightsToggle<CR>
     nnoremap gr :GitGutterAll<CR>
-    " autocmd! gitgutter CursorHold,CursorHoldI
-    " autocmd BufWritePost * GitGutter
+    autocmd! gitgutter CursorHold,CursorHoldI
+    autocmd BufWritePost * GitGutter
 
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
@@ -146,7 +146,7 @@ function! myspacevim#after() abort
     nmap # <Plug>(anzu-sharp)
     nmap - <Plug>(choosewin)
 
-    if g:spacevim_snippet_engine ==# 'ultisnips'
+    if g:spacevim_snippet_engine ==# 'ultisnips' && g:spacevim_enable_ycm == 1
         smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
         imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
         smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)

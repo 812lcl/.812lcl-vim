@@ -1,7 +1,10 @@
 {
     "diagnostic.enable": false,
-    "suggest.timeout": 5000,
-	"coc.preferences.diagnostic.displayByAle": true,
+    "suggest.timeout": 2000,
+	"diagnostic.displayByAle": true,
+    "signature.target": "echo",
+    "signature.preferShownAbove": false,
+    "signature.hideOnTextChange": false,
     "languageserver": {
         "golang": {
             "command": "gopls",
