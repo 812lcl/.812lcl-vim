@@ -146,13 +146,6 @@ function! myspacevim#after() abort
     nmap # <Plug>(anzu-sharp)
     nmap - <Plug>(choosewin)
 
-    if g:spacevim_snippet_engine ==# 'ultisnips' && g:spacevim_enable_ycm == 1
-        smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-        imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
-        smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
-        imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
-    endif
-
     nnoremap gob :OpenBrowserSmartSearch -baidu <C-R>=expand("<cword>")<cr><cr>
     nnoremap gog :OpenBrowserSmartSearch -google <C-R>=expand("<cword>")<cr><cr>
     nnoremap goh :OpenBrowserSmartSearch -github <C-R>=expand("<cword>")<cr><cr>
