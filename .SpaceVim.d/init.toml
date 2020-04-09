@@ -197,8 +197,5 @@ on_cmd = ['AsyncTask', 'AsyncTaskMacro', 'AsyncTaskList', 'AsyncTaskEdit']
 name = "gorodinskiy/vim-coloresque"
 on_ft = ['vim']
 
-[[custom_plugins]]
-name = "jiangmiao/auto-pairs"
-
 # [[custom_plugins]]
 # name = "voldikss/vim-floaterm"
