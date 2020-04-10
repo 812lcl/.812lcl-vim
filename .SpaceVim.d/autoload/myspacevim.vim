@@ -108,6 +108,8 @@ function! myspacevim#init() abort
         let g:Lf_PreviewInPopup = 1
         " hi link Lf_hl_cursorline Underlined
     endif
+
+    let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 endfunction
 
 function! myspacevim#after() abort
@@ -189,7 +191,7 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'h'], 'nohl', 'no highlight', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'r'], 'call RangerChooser()', 'ranger', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 's'], 'set rnu! run?', 'releated line num', 1)
-    call SpaceVim#mapping#space#def('nnoremap', ['k', 'y'], 'set nu! nu?<CR>:set rnu! rnu?<CR>:set list! list?<CR>:IndentLinesToggle<CR>:GitGutterToggle<CR>:ALEToggle', 'copy mode', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'y'], 'ToggleCopyMode', 'copy mode', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['b', 'j'], 'wincmd j<CR>:q', 'close below buffer', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'q'], 'MundoToggle', 'undo toggle', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', '?'], 'Leaderf menu --name CustomKeyMaps --input [SPC]k', 'Fuzzy find my own key bindings', 1)
@@ -375,3 +377,18 @@ function! s:lf_map_accept(line, arg)
     echohl 'Yanked!'
     echohl None
 endfunction
+
+function! s:ToggleCopyMode()
+    silent set nu! nu?
+    silent set rnu! rnu?
+    silent set list! list?
+    IndentLinesToggle
+    if !exists("b:signcolumn_on") || b:signcolumn_on
+        set signcolumn=no
+        let b:signcolumn_on=0
+    else
+        set signcolumn=yes
+        let b:signcolumn_on=1
+    endif
+endfunction
+command! ToggleCopyMode call s:ToggleCopyMode()
