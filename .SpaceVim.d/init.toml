@@ -151,8 +151,8 @@ name = 'tags'
 [[custom_plugins]]
 name = "wakatime/vim-wakatime"
 
-[[custom_plugins]]
-name = "rdnetto/YCM-Generator"
+# [[custom_plugins]]
+# name = "rdnetto/YCM-Generator"
 
 [[custom_plugins]]
 name = "AndrewRadev/splitjoin.vim"
@@ -160,11 +160,11 @@ name = "AndrewRadev/splitjoin.vim"
 [[custom_plugins]]
 name = "tpope/vim-projectionist"
 
-[[custom_plugins]]
-name = "SpaceVim/nvim-yarp"
+# [[custom_plugins]]
+# name = "SpaceVim/nvim-yarp"
 
-[[custom_plugins]]
-name = "SpaceVim/vim-hug-neovim-rpc"
+# [[custom_plugins]]
+# name = "SpaceVim/vim-hug-neovim-rpc"
 
 [[custom_plugins]]
 name = "tweekmonster/startuptime.vim"

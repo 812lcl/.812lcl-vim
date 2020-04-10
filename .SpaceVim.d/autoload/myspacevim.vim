@@ -150,17 +150,17 @@ function! myspacevim#after() abort
     nnoremap gog :OpenBrowserSmartSearch -google <C-R>=expand("<cword>")<cr><cr>
     nnoremap goh :OpenBrowserSmartSearch -github <C-R>=expand("<cword>")<cr><cr>
     nnoremap god :OpenBrowserSmartSearch -devdocs <C-R>=expand("<cword>")<cr><cr>
-    vmap gog <Plug>(openbrowser-smart-search)
+	nmap gx <Plug>(openbrowser-smart-search)
+	vmap gx <Plug>(openbrowser-smart-search)
+	nmap gl <Plug>(openbrowser-open)
+	vmap gl <Plug>(openbrowser-open)
 
     let g:mkdp_browserfunc = ''
     let g:coc_global_extensions = ['coc-marketplace', 'coc-dictionary', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-ultisnips', 'coc-snippets', 'coc-tag', 'coc-python', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-yaml', 'coc-vimlsp', 'coc-lua', 'coc-pairs']
 
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     autocmd BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | exe "silent !chmod a+x <afile>" | endif
-    autocmd FileType vim setlocal keywordprg=:help
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    autocmd BufLeave * let b:winview = winsaveview()
-    autocmd BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 
     let g:terminal_kill='kill'
     let g:terminal_close=1
