@@ -150,10 +150,10 @@ function! myspacevim#after() abort
     nnoremap gog :OpenBrowserSmartSearch -google <C-R>=expand("<cword>")<cr><cr>
     nnoremap goh :OpenBrowserSmartSearch -github <C-R>=expand("<cword>")<cr><cr>
     nnoremap god :OpenBrowserSmartSearch -devdocs <C-R>=expand("<cword>")<cr><cr>
-	nmap gx <Plug>(openbrowser-smart-search)
-	vmap gx <Plug>(openbrowser-smart-search)
-	nmap gl <Plug>(openbrowser-open)
-	vmap gl <Plug>(openbrowser-open)
+    nmap gx <Plug>(openbrowser-smart-search)
+    vmap gx <Plug>(openbrowser-smart-search)
+    nmap gl <Plug>(openbrowser-open)
+    vmap gl <Plug>(openbrowser-open)
 
     let g:mkdp_browserfunc = ''
     let g:coc_global_extensions = ['coc-marketplace', 'coc-dictionary', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-ultisnips', 'coc-snippets', 'coc-tag', 'coc-python', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-yaml', 'coc-vimlsp', 'coc-lua', 'coc-pairs']
@@ -216,12 +216,21 @@ function! myspacevim#after() abort
                     \     'Lf_hl_funcDirname': '^\S\+\s*\zs<.*>\ze\s*:',
                     \ },
                     \ }
+        let g:Lf_Extensions.map = {
+                    \ 'source': string(function('s:lf_map_source'))[10:-3],
+                    \ 'accept': string(function('s:lf_map_accept'))[10:-3],
+                    \ 'highlights_def': {
+                    \     'Lf_hl_funcScope': '^\S\+',
+                    \     'Lf_hl_funcDirname': '^\S\+\s*\zs<.*>\ze\s*:',
+                    \ },
+                    \ }
         call SpaceVim#mapping#space#def('nnoremap', ['j', 'v'], 'LeaderfBufTag', 'jump to a tag in buffer', 1)
         call SpaceVim#mapping#space#def('nnoremap', ['k', 'p'], 'Leaderf rg --hidden -S --wd-mode=ac', 'search in project dir', 1)
         call SpaceVim#mapping#space#def('nnoremap', ['k', 'P'], 'Leaderf rg --hidden -S --wd-mode=ac -e <C-R><C-W>', 'search cword in project dir', 1)
         call SpaceVim#mapping#space#def('nnoremap', ['k', 'o'], 'Leaderf rg --hidden -S --wd-mode=ac -w -e "FIXME|TODO"', 'open todo manager', 1)
         call SpaceVim#mapping#space#def('nnoremap', ['k', 'b'], 'LeaderfMarks', 'open marks list', 1)
         call SpaceVim#mapping#space#def('nnoremap', ['k', 't'], 'Leaderf --nowrap task', 'open task list', 1)
+        call SpaceVim#mapping#space#def('nnoremap', ['k', 'm'], 'Leaderf --nowrap map', 'open map list', 1)
     endif
     call gina#custom#mapping#nmap(
           \ 'blame', 'c',
@@ -321,4 +330,47 @@ endfunction
 function! s:lf_win_init(...)
     setlocal nonumber
     setlocal nowrap
+endfunction
+
+function! s:align_pairs(list)
+  let maxlen = 0
+  let pairs = []
+  for elem in a:list
+    let match = matchlist(elem, '^\(\S*\)\s*\(.*\)$')
+    let [_, k, v] = match[0:2]
+    let maxlen = max([maxlen, len(k)])
+    call add(pairs, [k, substitute(v, '^\*\?[@ ]\?', '', '')])
+  endfor
+  let maxlen = min([maxlen, 35])
+  return map(pairs, "printf('%-'.maxlen.'s', v:val[0]).' '.v:val[1]")
+endfunction
+
+function! s:lf_map_source(...)
+    redir => cout
+    silent execute 'verbose' 'nmap'
+    redir END
+    let list = []
+    let curr = ''
+    for line in split(cout, '\n')
+        if line =~ "^\t"
+            let src = '  '.join(reverse(reverse(split(split(line)[-1], '/'))[0:2]), '/')
+            call add(list, printf('%s %s', curr, src))
+            let curr = ''
+        else
+            let curr = line[3:]
+        endif
+    endfor
+    if !empty(curr)
+        call add(list, curr)
+    endif
+    let aligned = s:align_pairs(list)
+    let sorted  = sort(aligned)
+    return sorted
+endfunction
+
+function! s:lf_map_accept(line, arg)
+    let @" = a:line
+    echohl ModeMsg
+    echohl 'Yanked!'
+    echohl None
 endfunction
