@@ -29,7 +29,7 @@ function! myspacevim#init() abort
     set scrolloff=2
     set mouse=v
     set mousehide
-    set list
+    set nolist
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
     set updatetime=100
     set signcolumn=yes

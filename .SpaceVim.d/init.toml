@@ -57,10 +57,10 @@
     relativenumber = 1
     enable_language_specific_leader = 0
     github_username = '812lcl'
-    filemanager = 'vimfiler'
+    filemanager = 'defx'
     enable_vimfiler_welcome = false
     enable_vimfiler_gitstatus = 0
-    enable_vimfiler_filetypeicon = 0
+    enable_vimfiler_filetypeicon = 1
     windows_index_type = 2
     buffer_index_type = 4
     snippet_engine = "ultisnips"
@@ -160,11 +160,11 @@ name = "AndrewRadev/splitjoin.vim"
 [[custom_plugins]]
 name = "tpope/vim-projectionist"
 
-# [[custom_plugins]]
-# name = "SpaceVim/nvim-yarp"
+[[custom_plugins]]
+name = "SpaceVim/nvim-yarp"
 
-# [[custom_plugins]]
-# name = "SpaceVim/vim-hug-neovim-rpc"
+[[custom_plugins]]
+name = "SpaceVim/vim-hug-neovim-rpc"
 
 [[custom_plugins]]
 name = "tweekmonster/startuptime.vim"
@@ -202,6 +202,9 @@ name = "kana/vim-textobj-function"
 
 [[custom_plugins]]
 name = "sgur/vim-textobj-parameter"
+
+[[custom_plugins]]
+name = "itchyny/vim-cursorword"
 
 # [[custom_plugins]]
 # name = "voldikss/vim-floaterm"

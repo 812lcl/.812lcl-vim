@@ -11,6 +11,9 @@
 - context_filetype.vim
 - coveragepy.vim
 - dash.vim
+- defx-git
+- defx-icons
+- defx.nvim
 - dein.vim
 - deoplete-zsh
 - devdocs.vim
@@ -19,8 +22,10 @@
 - gruvbox
 - gutentags_plus
 - indentLine
+- itchyny/vim-cursorword
 - jedi-vim
 - jellybeans.vim
+- kana/vim-textobj-function
 - kshenoy/vim-signature
 - lua-support
 - markdown-preview.nvim
@@ -35,7 +40,7 @@
 - open-browser.vim
 - osyo-manga/vim-anzu
 - palenight.vim
-- rdnetto/YCM-Generator
+- sgur/vim-textobj-parameter
 - simnalamburt/vim-mundo
 - skywind3000/asyncrun.vim
 - skywind3000/asynctasks.vim
@@ -46,7 +51,6 @@
 - tpope/vim-projectionist
 - tweekmonster/startuptime.vim
 - ultisnips
-- unite.vim
 - vim-better-whitespace
 - vim-choosewin
 - vim-cpp-enhanced-highlight
@@ -81,6 +85,5 @@
 - vim-textobj-line
 - vim-textobj-user
 - vim-zsh
-- vimfiler.vim
-- vimproc.vim
 - wakatime/vim-wakatime
+- SpaceVim
