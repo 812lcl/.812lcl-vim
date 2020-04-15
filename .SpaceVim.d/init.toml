@@ -206,5 +206,5 @@ name = "sgur/vim-textobj-parameter"
 [[custom_plugins]]
 name = "itchyny/vim-cursorword"
 
-# [[custom_plugins]]
-# name = "voldikss/vim-floaterm"
+[[custom_plugins]]
+name = "voldikss/vim-floaterm"

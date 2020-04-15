@@ -243,6 +243,10 @@ function! myspacevim#after() abort
     highlight GitGutterAdd ctermfg=46 ctermbg=235
     highlight GitGutterChange ctermfg=255 ctermbg=235
     highlight GitGutterDelete ctermfg=196 ctermbg=235
+
+    nnoremap <silent> <space>ka :FloatermToggle<CR>
+    tnoremap <silent> <space>ka <C-\><c-n>:FloatermToggle<CR>
+    let g:asynctasks_term_pos = "floaterm"
 endfunction
 
 function! s:update_search_index(key) abort
