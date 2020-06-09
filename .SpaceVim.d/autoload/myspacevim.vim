@@ -110,6 +110,7 @@ function! myspacevim#init() abort
     endif
 
     let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+    let g:python3_host_prog = "/usr/local/opt/python@3.8/bin/python3"
 endfunction
 
 function! myspacevim#after() abort
