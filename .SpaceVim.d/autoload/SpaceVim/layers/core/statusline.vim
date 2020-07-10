@@ -69,6 +69,11 @@ let s:modes = {
       \ 'icon_asc' : 'S',
       \ 'desc' : 'spell-checking mode',
       \ },
+      \ 'paste-mode' :{
+      \ 'icon' : s:MESSLETTERS.circled_letter('p'),
+      \ 'icon_asc' : 'p',
+      \ 'desc' : 'paste mode',
+      \ },
       \ 'whitespace' :{
       \ 'icon' : s:MESSLETTERS.circled_letter('w'),
       \ 'icon_asc' : 'w',
@@ -87,6 +92,9 @@ let [s:ilsep , s:irsep] = get(s:i_separators, g:spacevim_statusline_iseparator, 
 
 if SpaceVim#layers#isLoaded('checkers')
   call add(s:loaded_modes, 'syntax-checking')
+endif
+if &spell
+  call add(s:loaded_modes, 'spell-checking')
 endif
 if &cc ==# '80'
   call add(s:loaded_modes, 'fill-column-indicator')
@@ -436,6 +444,9 @@ function! SpaceVim#layers#core#statusline#get(...) abort
   elseif &filetype ==# 'MundoDiff'
     return '%#SpaceVim_statusline_ia#' . s:winnr(1) . '%#SpaceVim_statusline_ia_SpaceVim_statusline_b#' . s:lsep
           \ . '%#SpaceVim_statusline_b# MundoDiff %#SpaceVim_statusline_b_SpaceVim_statusline_c#' . s:lsep . ' '
+  elseif &filetype ==# 'SpaceVimMessageBuffer'
+    return '%#SpaceVim_statusline_ia#' . s:winnr(1) . '%#SpaceVim_statusline_ia_SpaceVim_statusline_b#' . s:lsep
+          \ . '%#SpaceVim_statusline_b# Message %#SpaceVim_statusline_b_SpaceVim_statusline_c#' . s:lsep . ' '
   elseif &filetype ==# 'startify'
     try
       call fugitive#detect(getcwd())
@@ -462,7 +473,8 @@ function! SpaceVim#layers#core#statusline#get(...) abort
     return '%#SpaceVim_statusline_a# WinDisk %#SpaceVim_statusline_a_SpaceVim_statusline_b#' . s:lsep
   elseif &filetype ==# 'SpaceVimTodoManager'
     return '%#SpaceVim_statusline_a# TODO manager %#SpaceVim_statusline_a_SpaceVim_statusline_b#' . s:lsep
-
+  elseif &filetype ==# 'SpaceVimGitBranchManager'
+    return '%#SpaceVim_statusline_a# Branch manager %#SpaceVim_statusline_a_SpaceVim_statusline_b#' . s:lsep
   elseif &filetype ==# 'SpaceVimPlugManager'
     return '%#SpaceVim_statusline_a#' . s:winnr(1) . '%#SpaceVim_statusline_a_SpaceVim_statusline_b#' . s:lsep
           \ . '%#SpaceVim_statusline_b# PlugManager %#SpaceVim_statusline_b_SpaceVim_statusline_c#' . s:lsep
