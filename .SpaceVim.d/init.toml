@@ -53,7 +53,7 @@
     autocomplete_parens = 0
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
     project_rooter_automatically = 1
-    project_rooter_outermost = true
+    project_rooter_outermost = false
     force_global_config = 1
     relativenumber = 1
     enable_language_specific_leader = 0
