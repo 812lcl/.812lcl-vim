@@ -8,7 +8,7 @@
     "languageserver": {
         "golang": {
             "command": "gopls",
-            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/", ".gitignore", "ci.json", "config-ci.json"],
             "filetypes": ["go"]
         },
         "ccls": {
