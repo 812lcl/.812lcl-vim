@@ -184,7 +184,7 @@ function! myspacevim#after() abort
     let g:asynctasks_term_cols = 80
     let g:asynctasks_term_focus = 0
     let g:asynctasks_term_reuse = 1
-    let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
+    let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', '.gitignore', 'ci.json', 'config-ci.json']
 
     " space mode mapping leader key remain: o u v y z
     let g:_spacevim_mappings_space.k = {'name' : '+MyOwn'}
