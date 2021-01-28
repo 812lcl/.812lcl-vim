@@ -11,10 +11,11 @@ function! SpaceVim#layers#lang#go#config() abort
   let g:go_highlight_function_calls = 1
   let g:go_highlight_structs = 1
   let g:go_highlight_operators = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_fmt_command = "goimports"
   let g:neomake_go_gometalinter_args = ['--disable-all']
   let g:go_fmt_autosave = 1
   let g:go_fmt_fail_silently = 0
-  let g:go_fmt_command = "goimports"
   let g:go_list_type = "locationlist"
   let g:go_snippet_case_type = "camelcase"
   let g:go_addtags_transform = "camelcase"
@@ -35,7 +36,6 @@ function! SpaceVim#layers#lang#go#config() abort
   let g:go_highlight_fields = 1
   let g:go_highlight_functions = 1
   let g:go_highlight_methods = 1
-  let g:go_highlight_build_constraints = 1
   let g:go_highlight_generate_tags = 1
 
   let g:go_template_autocreate = 0
@@ -45,10 +45,10 @@ function! SpaceVim#layers#lang#go#config() abort
   let g:go_decls_includes = 'func,type'
 
   if SpaceVim#layers#lsp#check_filetype('go')
-      call SpaceVim#mapping#gd#add('go',
-                  \ function('SpaceVim#lsp#go_to_def'))
+    call SpaceVim#mapping#gd#add('go',
+          \ function('SpaceVim#lsp#go_to_def'))
   else
-      call SpaceVim#mapping#gd#add('go', function('s:go_to_def'))
+    call SpaceVim#mapping#gd#add('go', function('s:go_to_def'))
   endif
   call SpaceVim#mapping#space#regesit_lang_mappings('go', function('s:language_specified_mappings'))
   call SpaceVim#plugins#runner#reg_runner('go', 'go run %s')
