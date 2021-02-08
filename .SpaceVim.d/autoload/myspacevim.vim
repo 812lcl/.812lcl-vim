@@ -245,10 +245,10 @@ function! myspacevim#after() abort
     highlight GitGutterChange ctermfg=255 ctermbg=235
     highlight GitGutterDelete ctermfg=196 ctermbg=235
 
-    nnoremap <silent> <space>ka :FloatermToggle<CR>
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'a'], 'FloatermToggle', 'Toggle Floaterm', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'c'], 'FloatermKill', 'Kill Floaterm', 1)
     tnoremap <silent> <space>ka <C-\><c-n>:FloatermToggle<CR>
     tnoremap <silent> <space>kc <C-\><c-n>:FloatermKill<CR>
-    nnoremap <silent> <space>kc :FloatermKill<CR>
     let g:asynctasks_term_pos = "floaterm"
 endfunction
 
