@@ -247,6 +247,8 @@ function! myspacevim#after() abort
 
     nnoremap <silent> <space>ka :FloatermToggle<CR>
     tnoremap <silent> <space>ka <C-\><c-n>:FloatermToggle<CR>
+    tnoremap <silent> <space>kc <C-\><c-n>:FloatermKill<CR>
+    nnoremap <silent> <space>kc :FloatermKill<CR>
     let g:asynctasks_term_pos = "floaterm"
 endfunction
 
