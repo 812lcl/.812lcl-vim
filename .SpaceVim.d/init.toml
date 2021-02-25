@@ -22,6 +22,7 @@
     statusline_inactive_separator = "arrow"
     enable_statusline_display_mode = true
     enable_statusline_mode = 1
+    windows_smartclose = 'q'
     statusline_left_sections = [
         'winnr',
         'filename',
