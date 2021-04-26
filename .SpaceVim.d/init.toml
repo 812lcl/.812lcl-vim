@@ -66,7 +66,7 @@
     windows_index_type = 2
     buffer_index_type = 4
     snippet_engine = "ultisnips"
-    disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim", "CompleteParameter.vim", "echodoc.vim"]
+    disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim", "CompleteParameter.vim", "echodoc.vim", "vim-node-rpc"]
     todo_labels = ['TODO', 'FIXME', '@bug', '@question', '@idea', '@fixme']
 
 # Enable autocomplete layer
