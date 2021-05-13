@@ -163,10 +163,10 @@ name = "AndrewRadev/splitjoin.vim"
 name = "tpope/vim-projectionist"
 
 [[custom_plugins]]
-name = "SpaceVim/nvim-yarp"
+name = "roxma/nvim-yarp"
 
 [[custom_plugins]]
-name = "SpaceVim/vim-hug-neovim-rpc"
+name = "roxma/vim-hug-neovim-rpc"
 
 [[custom_plugins]]
 name = "tweekmonster/startuptime.vim"

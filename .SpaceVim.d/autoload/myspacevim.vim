@@ -29,7 +29,7 @@ function! myspacevim#init() abort
     set scrolloff=2
     set mouse=v
     set mousehide
-    set nolist
+    set list
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
     set updatetime=100
     set signcolumn=yes
@@ -110,7 +110,8 @@ function! myspacevim#init() abort
     endif
 
     let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-    let g:python3_host_prog = "/usr/local/opt/python@3.8/bin/python3"
+    " roxma/nvim-yarp needs
+    let g:python3_host_prog = "/usr/local/opt/python/bin/python3"
 endfunction
 
 function! myspacevim#after() abort
