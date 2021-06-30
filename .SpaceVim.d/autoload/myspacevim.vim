@@ -251,6 +251,7 @@ function! myspacevim#after() abort
     tnoremap <silent> <space>ka <C-\><c-n>:FloatermToggle<CR>
     tnoremap <silent> <space>kc <C-\><c-n>:FloatermKill<CR>
     let g:asynctasks_term_pos = "floaterm"
+    hi FloatermBorder guibg=orange guifg=cyan
 endfunction
 
 function! s:update_search_index(key) abort
