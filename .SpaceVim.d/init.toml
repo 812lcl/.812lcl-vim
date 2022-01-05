@@ -22,6 +22,7 @@
     statusline_inactive_separator = "arrow"
     enable_statusline_display_mode = true
     enable_statusline_mode = 1
+    wrap_line = true
     windows_smartclose = 'q'
     statusline_left_sections = [
         'winnr',
@@ -52,7 +53,7 @@
     enable_ycm = 0
     autocomplete_method = 'coc'
     autocomplete_parens = 0
-    project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']
+    project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json', 'go.mod', 'go.sum']
     project_rooter_automatically = 1
     project_rooter_outermost = false
     force_global_config = 1
@@ -90,6 +91,7 @@ name = 'ui'
 
 [[layers]]
 name = 'core'
+enable_smooth_scrolling = false
 
 [[layers]]
 name = 'core#banner'
