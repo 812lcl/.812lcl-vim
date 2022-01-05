@@ -1,7 +1,9 @@
 {
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
     "diagnostic.enable": false,
     "suggest.timeout": 2000,
-	"diagnostic.displayByAle": true,
+    "diagnostic.displayByAle": true,
     "signature.target": "echo",
     "signature.preferShownAbove": false,
     "signature.hideOnTextChange": false,
