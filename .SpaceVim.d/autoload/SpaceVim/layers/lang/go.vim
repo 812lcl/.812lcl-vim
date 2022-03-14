@@ -40,6 +40,7 @@ function! SpaceVim#layers#lang#go#config() abort
 
   let g:go_template_autocreate = 0
   let g:go_doc_keywordprg_enabled = 1
+  let g:go_doc_popup_window=1
   let g:go_auto_sameids = 0
 
   let g:go_decls_includes = 'func,type'

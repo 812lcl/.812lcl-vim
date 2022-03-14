@@ -135,7 +135,7 @@ function! myspacevim#after() abort
     nnoremap gt :GitGutterToggle<CR>
     nnoremap hl :GitGutterLineHighlightsToggle<CR>
     nnoremap gr :GitGutterAll<CR>
-    autocmd! gitgutter CursorHold,CursorHoldI
+    " autocmd! gitgutter CursorHold,CursorHoldI
     autocmd BufWritePost * GitGutter
 
     vnoremap <silent> J :m '>+1<CR>gv=gv
