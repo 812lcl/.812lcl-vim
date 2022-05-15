@@ -45,14 +45,14 @@
     bootstrap_before = "myspacevim#init"
     bootstrap_after = "myspacevim#after"
 
-    enable_neomake = false
-    enable_ale = true
+    lint_engine = 'ale'
+    lint_on_the_fly = true
     error_symbol = '✖'
     warning_symbol = '⚠'
     info_symbol = 'ⓘ'
-    enable_ycm = 0
-    autocomplete_method = 'coc'
-    autocomplete_parens = 0
+    enable_ycm = 1
+    autocomplete_method = 'ycm'
+    autocomplete_parens = 1
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json', 'go.mod', 'go.sum']
     project_rooter_automatically = 1
     project_rooter_outermost = false
@@ -67,7 +67,7 @@
     windows_index_type = 2
     buffer_index_type = 4
     snippet_engine = "ultisnips"
-    disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim", "CompleteParameter.vim", "echodoc.vim", "vim-node-rpc"]
+    disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim", "vim-node-rpc", "vim-smoothie"]
     todo_labels = ['TODO', 'FIXME', '@bug', '@question', '@idea', '@fixme']
 
 # Enable autocomplete layer
@@ -124,11 +124,6 @@ name = 'tools#dash'
 name = 'colorscheme'
 
 [[layers]]
-name = 'shell'
-default_position = 'bottom'
-default_hight = 30
-
-[[layers]]
 name = 'lang#c'
 
 [[layers]]
@@ -155,20 +150,11 @@ name = 'tags'
 [[custom_plugins]]
 name = "wakatime/vim-wakatime"
 
-# [[custom_plugins]]
-# name = "rdnetto/YCM-Generator"
-
 [[custom_plugins]]
-name = "AndrewRadev/splitjoin.vim"
+name = "rdnetto/YCM-Generator"
 
 [[custom_plugins]]
 name = "tpope/vim-projectionist"
-
-[[custom_plugins]]
-name = "roxma/nvim-yarp"
-
-[[custom_plugins]]
-name = "roxma/vim-hug-neovim-rpc"
 
 [[custom_plugins]]
 name = "tweekmonster/startuptime.vim"
@@ -206,9 +192,6 @@ name = "kana/vim-textobj-function"
 
 [[custom_plugins]]
 name = "sgur/vim-textobj-parameter"
-
-[[custom_plugins]]
-name = "itchyny/vim-cursorword"
 
 [[custom_plugins]]
 name = "voldikss/vim-floaterm"

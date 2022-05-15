@@ -51,6 +51,7 @@ function! myspacevim#init() abort
         let g:ycm_collect_identifiers_from_tags_files = 1
         let g:ycm_key_invoke_completion = '<c-z>'
         let g:ycm_use_ultisnips_completer = 1
+        let g:ycm_auto_hover = ''
         let g:ycm_semantic_triggers =  {
                     \ 'c,cpp,python,java,erlang,perl': ['re!\w{2}'],
                     \ 'cs,lua,javascript': ['re!\w{2}'],
@@ -197,6 +198,8 @@ function! myspacevim#after() abort
     call SpaceVim#mapping#space#def('nnoremap', ['b', 'j'], 'wincmd j<CR>:q', 'close below buffer', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'q'], 'MundoToggle', 'undo toggle', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', '?'], 'Leaderf menu --name CustomKeyMaps --regexMode --input \[SPC\]k', 'Fuzzy find my own key bindings', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'D'], '<Plug>(YCMHover)', 'YCMHover', 0, 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'w'], '<Plug>(YCMFindSymbolInWorkspace)', 'YCMFindSymbolInWorkspace', 0, 1)
 
     if SpaceVim#layers#isLoaded('leaderf')
         let g:Lf_RootMarkers = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json']

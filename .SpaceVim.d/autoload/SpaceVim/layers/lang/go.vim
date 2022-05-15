@@ -8,13 +8,14 @@ endfunction
 
 
 function! SpaceVim#layers#lang#go#config() abort
+  let g:go_highlight_functions = 1
   let g:go_highlight_function_calls = 1
   let g:go_highlight_structs = 1
   let g:go_highlight_operators = 1
   let g:go_highlight_build_constraints = 1
-  let g:go_fmt_command = "goimports"
-  let g:neomake_go_gometalinter_args = ['--disable-all']
+  let g:go_fmt_command = "gopls"
   let g:go_fmt_autosave = 1
+  let g:go_imports_autosave = 1
   let g:go_fmt_fail_silently = 0
   let g:go_list_type = "locationlist"
   let g:go_snippet_case_type = "camelcase"
@@ -25,7 +26,9 @@ function! SpaceVim#layers#lang#go#config() abort
   let g:go_def_mode = 'gopls'
   let g:go_info_mode = 'gopls'
   let g:go_rename_command = 'gopls'
-  let g:go_gopls_options = []
+  let g:go_referrers_mode = 'gopls'
+  let g:go_implements_mode = 'gopls'
+  let g:go_gopls_options = ['-remote=auto']
 
   let g:go_metalinter_autosave = 0
   let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
@@ -41,7 +44,9 @@ function! SpaceVim#layers#lang#go#config() abort
   let g:go_template_autocreate = 0
   let g:go_doc_keywordprg_enabled = 1
   let g:go_doc_popup_window=1
-  let g:go_auto_sameids = 0
+  let g:go_auto_sameids = 1
+  let g:go_auto_type_info = 1
+  let g:go_doc_balloon = 0
 
   let g:go_decls_includes = 'func,type'
 
@@ -74,14 +79,17 @@ function! s:language_specified_mappings() abort
         \ '<Plug>(go-doc)',
         \ 'go doc', 0)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','D'],
-        \ '<Plug>(go-doc-vertical)',
-        \ 'go doc (vertical)', 0)
+        \ '<Plug>(go-doc-browser)',
+        \ 'go doc (browser)', 0)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','e'],
         \ '<Plug>(go-rename)',
         \ 'go rename', 0)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','f'],
         \ '<Plug>(go-def-vertical)',
         \ 'go def vertical', 0)
+  call SpaceVim#mapping#space#langSPC('nmap', ['l','o'],
+        \ '<Plug>(go-def-type)',
+        \ 'go def type', 0)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','g'],
         \ '<Plug>(go-def)',
         \ 'go def', 0)
