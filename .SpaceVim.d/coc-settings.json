@@ -9,7 +9,7 @@
     "signature.hideOnTextChange": false,
     "languageserver": {
         "golang": {
-            "command": "gopls",
+            "command": "$GOPATH/bin/gopls",
             "args": ["-remote=auto"],
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/", ".gitignore", "ci.json", "config-ci.json", "go.mod", "go.sum"],
             "filetypes": ["go"]
