@@ -150,7 +150,7 @@ function! myspacevim#after() abort
     nnoremap <silent> N  :call <SID>update_search_index('r')<cr>
     nmap * <Plug>(anzu-star)
     nmap # <Plug>(anzu-sharp)
-    nmap - <Plug>(choosewin)
+    nmap - :ChooseWin<CR>
 
     nnoremap gob :OpenBrowserSmartSearch -baidu <C-R>=expand("<cword>")<cr><cr>
     nnoremap gog :OpenBrowserSmartSearch -google <C-R>=expand("<cword>")<cr><cr>
