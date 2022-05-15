@@ -28,7 +28,7 @@ function! SpaceVim#layers#lang#go#config() abort
   let g:go_rename_command = 'gopls'
   let g:go_referrers_mode = 'gopls'
   let g:go_implements_mode = 'gopls'
-  let g:go_gopls_options = ['-remote=auto']
+  let g:go_gopls_options = ['-remote=auto', "-logfile", "/tmp/gopls-vim-go.log"]
 
   let g:go_metalinter_autosave = 0
   let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']

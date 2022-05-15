@@ -7,13 +7,9 @@
     "signature.target": "echo",
     "signature.preferShownAbove": false,
     "signature.hideOnTextChange": false,
+    "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls-coc.log"],
+    "go.goplsPath": "/Users/chunlei.liu/go/bin/gopls",
     "languageserver": {
-        "golang": {
-            "command": "$GOPATH/bin/gopls",
-            "args": ["-remote=auto"],
-            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/", ".gitignore", "ci.json", "config-ci.json", "go.mod", "go.sum"],
-            "filetypes": ["go"]
-        },
         "ccls": {
             "command": "ccls",
             "filetypes": ["c", "cpp", "objc", "objcpp"],
