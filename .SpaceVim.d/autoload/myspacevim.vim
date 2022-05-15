@@ -33,6 +33,7 @@ function! myspacevim#init() abort
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
     set updatetime=100
     set signcolumn=yes
+    set cmdheight=2
 
     " skywind3000/vim-keysound
     let g:keysound_enable = 1
@@ -73,6 +74,7 @@ function! myspacevim#init() abort
                     \ 'infolog': 1,
                     \ 'mail': 1
                     \}
+        let g:echodoc#type = 'echo'
     endif
 
     let g:projectionist_heuristics = {
