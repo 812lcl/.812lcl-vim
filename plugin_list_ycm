@@ -1,95 +1,113 @@
-- CompleteParameter.vim
-- LeaderF
-- LeaderF-snippet
-- NeoSolarized
-- Unite-sources
-- Yggdroot/LeaderF-marks
-- YouCompleteMe
-- ale
-- context_filetype.vim
-- coveragepy.vim
-- dash.vim
-- defx-git
-- defx-icons
-- defx-sftp
-- defx.nvim
-- dein.vim
-- delimitMate
-- devdocs.vim
-- dracula
-- echodoc.vim
-- gina.vim
-- gorodinskiy/vim-coloresque
-- gruvbox
-- gutentags_plus
-- indentLine
-- jedi-vim
-- jellybeans.vim
-- kana/vim-textobj-function
-- kshenoy/vim-signature
-- markdown-preview.nvim
-- mathjax-support-for-mkdp
-- molokai
-- neoformat
-- neomru.vim
-- neoyank.vim
-- nerdcommenter
-- nord-vim
-- nvim-yarp
-- onedark.vim
-- open-browser.vim
-- osyo-manga/vim-anzu
-- palenight.vim
-- rdnetto/YCM-Generator
-- sgur/vim-textobj-parameter
-- simnalamburt/vim-mundo
-- skywind3000/asyncrun.vim
-- skywind3000/asynctasks.vim
-- skywind3000/vim-keysound
-- skywind3000/vim-terminal-help
-- splitjoin.vim
-- srcery-vim
-- tabular
-- tpope/vim-projectionist
-- tweekmonster/startuptime.vim
-- ultisnips
-- vim-better-whitespace
-- vim-choosewin
-- vim-cpp-enhanced-highlight
-- vim-cursorword
-- vim-easymotion
-- vim-easyoperator-line
-- vim-expand-region
-- vim-fish
-- vim-gitgutter
-- vim-go
-- vim-grepper
-- vim-gutentags
-- vim-hug-neovim-rpc
-- vim-hybrid
-- vim-json
-- vim-lua
-- vim-markdown
-- vim-markdown-quote-syntax
-- vim-markdown-toc
-- vim-matchup
-- vim-material
-- vim-mundo
-- vim-one
-- vim-pydocstring
-- vim-python-pep8-indent
-- vim-pythonsense
-- vim-repeat
-- vim-snippets
-- vim-startify
-- vim-surround
-- vim-table-mode
-- vim-textobj-entire
-- vim-textobj-indent
-- vim-textobj-line
-- vim-textobj-user
-- vim-virtualenv
-- vim-zsh
-- vim-zsh-completion
-- voldikss/vim-floaterm
-- wakatime/vim-wakatime
+name = 'autocomplete'
+    - context_filetype.vim
+    - ultisnips
+    - vim-snippets
+    - YouCompleteMe
+    - CompleteParameter.vim
+    - echodoc.vim
+name = 'checkers'
+    - ale
+name = 'format'
+    - neoformat
+name = 'edit'
+    - vim-textobj-entire
+    - vim-textobj-indent
+    - vim-textobj-line
+    - vim-textobj-user
+    - splitjoin.vim
+    - tabular
+    - vim-mundo
+    - vim-easymotion
+    - vim-easyoperator-line
+    - vim-expand-region
+    - vim-table-mode
+    - vim-repeat
+    - vim-surround
+name = 'ui'
+    - indentLine
+    - vim-better-whitespace
+    - vim-choosewin
+    - vim-cursorword
+    - vim-startify
+name = 'core'
+    - dein.vim
+    - defx-git
+    - defx-icons
+    - defx-sftp
+    - defx.nvim
+    - nvim-yarp
+    - vim-hug-neovim-rpc
+    - nerdcommenter
+    - open-browser.vim
+    - vim-grepper
+    - vim-matchup
+name = 'leaderf'
+    - LeaderF
+    - LeaderF-snippet
+    - Yggdroot/LeaderF-marks
+    - Unite-sources
+    - delimitMate
+    - neomru.vim
+    - neoyank.vim
+name = 'git'
+    - vim-gitgutter
+    - gina.vim
+name = 'tools#dash'
+    - dash.vim
+    - devdocs.vim
+name = 'colorscheme'
+    - onedark.vim
+    - NeoSolarized
+    - dracula
+    - molokai
+    - gruvbox
+    - jellybeans.vim
+    - nord-vim
+    - palenight.vim
+    - vim-hybrid
+    - vim-one
+    - srcery-vim
+    - vim-material
+name = 'lang#c'
+    - vim-cpp-enhanced-highlight
+name = 'lang#go'
+    - vim-go
+name = 'lang#json'
+    - vim-json
+name = 'lang#markdown'
+    - vim-markdown
+    - vim-markdown-quote-syntax
+    - vim-markdown-toc
+    - markdown-preview.nvim
+    - mathjax-support-for-mkdp
+name = 'lang#python'
+    - jedi-vim
+    - vim-pydocstring
+    - vim-python-pep8-indent
+    - vim-pythonsense
+    - vim-virtualenv
+    - coveragepy.vim
+name = 'lang#sh'
+    - vim-fish
+    - vim-zsh
+    - vim-zsh-completion
+name = 'lang#lua'
+    - vim-lua
+name = 'tags'
+    - gutentags_plus
+    - vim-gutentags
+name = "custom"
+    - wakatime/vim-wakatime
+    - rdnetto/YCM-Generator
+    - tpope/vim-projectionist
+    - tweekmonster/startuptime.vim
+    - osyo-manga/vim-anzu
+    - kshenoy/vim-signature
+    - skywind3000/vim-terminal-help
+    - skywind3000/vim-keysound
+    - skywind3000/asyncrun.vim
+    - skywind3000/asynctasks.vim
+    - gorodinskiy/vim-coloresque
+    - kana/vim-textobj-function
+    - sgur/vim-textobj-parameter
+    - voldikss/vim-floaterm

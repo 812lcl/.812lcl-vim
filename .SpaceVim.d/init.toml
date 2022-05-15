@@ -164,9 +164,6 @@ on_cmd = 'StartupTime'
 name = "osyo-manga/vim-anzu"
 
 [[custom_plugins]]
-name = "simnalamburt/vim-mundo"
-
-[[custom_plugins]]
 name = "kshenoy/vim-signature"
 
 [[custom_plugins]]
