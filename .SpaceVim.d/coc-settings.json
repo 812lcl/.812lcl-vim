@@ -8,7 +8,7 @@
     "signature.preferShownAbove": false,
     "signature.hideOnTextChange": false,
     "go.goplsArgs": ["-remote=auto", "-logfile", "/tmp/gopls-coc.log"],
-    "go.goplsPath": "/Users/chunlei.liu/go/bin/gopls",
+    "go.goplsPath": "gopls",
     "languageserver": {
         "ccls": {
             "command": "ccls",
