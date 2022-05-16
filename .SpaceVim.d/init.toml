@@ -24,7 +24,7 @@
     enable_statusline_mode = 1
     wrap_line = true
     windows_smartclose = 'q'
-    statusline_left_sections = [
+    statusline_left = [
         'winnr',
         'filename',
         'major mode',
@@ -32,7 +32,7 @@
         'minor mode lighters',
         'version control info'
     ]
-    statusline_right_sections = [
+    statusline_right = [
         'fileformat',
         'cursorpos',
         'percentage',
@@ -45,16 +45,17 @@
     bootstrap_before = "myspacevim#init"
     bootstrap_after = "myspacevim#after"
 
-    lint_engine = 'neomake'
+    lint_engine = 'ale'
     lint_on_the_fly = true
     error_symbol = '✖'
     warning_symbol = '⚠'
     info_symbol = 'ⓘ'
-    enable_ycm = 0
-    autocomplete_method = 'coc'
-    autocomplete_parens = 0
+    commandline_prompt = '➭'
+    enable_ycm = 1
+    autocomplete_method = 'ycm'
+    autocomplete_parens = 1
+    project_auto_root = true
     project_rooter_patterns = ['.git/', '_darcs/', '.hg/', '.bzr/', '.svn/', '.gitignore', 'ci.json', 'config-ci.json', 'go.mod', 'go.sum']
-    project_rooter_automatically = 1
     project_rooter_outermost = false
     force_global_config = 1
     relativenumber = 1
@@ -67,7 +68,7 @@
     windows_index_type = 2
     buffer_index_type = 4
     snippet_engine = "ultisnips"
-    disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim", "vim-node-rpc", "vim-smoothie", "echodoc.vim", "CompleteParameter.vim"]
+    disabled_plugins = ["clever-f.vim", "vim-scriptease", "vimloo", "vnote", "wildfire.vim", "ChineseLinter.vim", "tagbar", "tagbar-makefile.vim", "tagbar-proto.vim", "tagbar-markdown", "vim-emoji", "editorconfig-vim", "deoplete-dictionary", "neco-syntax", "neco-vim", "neoinclude.vim", "neopairs.vim", "neosnippet-snippets", "vim-jplus", "vim-dispatch", "vimshell.vim", "vim-node-rpc", "vim-smoothie"]
     todo_labels = ['TODO', 'FIXME', '@bug', '@question', '@idea', '@fixme']
 
 # Enable autocomplete layer
