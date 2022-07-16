@@ -214,8 +214,8 @@ function! myspacevim#after() abort
                     \ '<C-]>'    : ['<C-V>'],
                     \ '<Home>'   : ['<C-A>'],
                     \ '<End>'    : ['<C-E>'],
-                    \ '<C-Up>'   : ['<C-N>'],
-                    \ '<C-Down>' : ['<c-M>'],
+                    \ '<C-Up>'   : ['<C-H>'],
+                    \ '<C-Down>' : ['<c-N>'],
                     \ '<CR>'     : ['<CR>'],
                     \ }
         let g:Lf_Extensions = get(g:, 'Lf_Extensions', {})
