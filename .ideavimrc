@@ -1,0 +1,53 @@
+let mapleader=","
+set easymotion
+set hlsearch                    " 检索时高亮显示匹配项
+set incsearch                   " 边输入边搜索
+set ignorecase
+set smartcase
+set nu                          " 显示行号
+set rnu                         " 显示行号
+set nocp                        " 不兼容vi
+set hidden                      " 允许不保存切换buffer
+set splitright                  " 新分割窗口在右边
+set splitbelow                  " 新分割窗口在下边
+set autoread                    " 文件在Vim之外修改过，自动重新读入
+set scrolljump=1                " 当光标离开屏幕滑动行数
+set scrolloff=2                 " 保持在光标上下最少行数
+map f <Plug>(easymotion-bd-f)
+inoremap jj <esc>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+function! s:VSetSearch()
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+    let @s = temp
+endfunction
+
+nnoremap sg :action SplitVertically<CR>
+nnoremap sv :action SplitHorizontally<CR>
+nnoremap <Leader>q :action CloseContent<CR>
+nnoremap <Leader>qa :action CloseAllEditors<CR>
+nnoremap <Leader>n :action NextWindow<CR>
+
+nnoremap <leader>u :action FindUsages<CR>
+nnoremap <leader>s :action GotoRelated<CR>
+nnoremap <leader>h :action CallHierarchy<CR>
+nnoremap <leader>b :action ShowNavBar<CR>
+nnoremap <c-s> :action FileStructurePopup<CR>
+nnoremap gc :action GotoClass<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotToDeclaration<CR>
+nnoremap gp :action GotToSuperMethod<CR>
+nnoremap gt :action GotoTest<CR>
+nnoremap gb :action Back<CR>
+nnoremap gf :action Forward<CR>
