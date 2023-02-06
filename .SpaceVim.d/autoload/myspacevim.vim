@@ -116,7 +116,8 @@ function! myspacevim#init() abort
 
     let g:ale_echo_msg_format = '[%linter%] %code: %%s'
     " roxma/nvim-yarp needs
-    let g:python3_host_prog = "/usr/local/opt/python/bin/python3"
+    " let g:python3_host_prog = "/usr/local/opt/python/bin/python3"
+    let g:python3_host_prog = "/opt/homebrew/bin/python3"
 endfunction
 
 function! myspacevim#after() abort
