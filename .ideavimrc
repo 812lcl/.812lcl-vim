@@ -1,3 +1,7 @@
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+Plug 'vim-exchange'
+Plug 'vim-scripts/argtextobj.vim'
 let mapleader=","
 set easymotion
 set hlsearch                    " 检索时高亮显示匹配项
@@ -15,6 +19,24 @@ set scrolljump=1                " 当光标离开屏幕滑动行数
 set scrolloff=2                 " 保持在光标上下最少行数
 map f <Plug>(easymotion-bd-f)
 inoremap jj <esc>
+nnoremap <silent> \1 :b 1<CR>
+nnoremap <silent> \2 :b 2<CR>
+nnoremap <silent> \3 :b 3<CR>
+nnoremap <silent> \4 :b 4<CR>
+nnoremap <silent> \5 :b 5<CR>
+nnoremap <silent> \6 :b 6<CR>
+nnoremap <silent> \7 :b 7<CR>
+nnoremap <silent> \8 :b 8<CR>
+nnoremap <silent> \9 :b 9<CR>
+nnoremap <silent> <leader>1 :b 1<CR>
+nnoremap <silent> <leader>2 :b 2<CR>
+nnoremap <silent> <leader>3 :b 3<CR>
+nnoremap <silent> <leader>4 :b 4<CR>
+nnoremap <silent> <leader>5 :b 5<CR>
+nnoremap <silent> <leader>6 :b 6<CR>
+nnoremap <silent> <leader>7 :b 7<CR>
+nnoremap <silent> <leader>8 :b 8<CR>
+nnoremap <silent> <leader>9 :b 9<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -37,7 +59,9 @@ nnoremap sg :action SplitVertically<CR>
 nnoremap sv :action SplitHorizontally<CR>
 nnoremap <Leader>q :action CloseContent<CR>
 nnoremap <Leader>qa :action CloseAllEditors<CR>
+nnoremap <Leader>qq :action CloseAllEditorsButActive<CR>
 nnoremap <Leader>n :action NextWindow<CR>
+nnoremap <Leader>t :action ActivateTerminalToolWindow<CR>
 
 nnoremap <leader>u :action FindUsages<CR>
 nnoremap <leader>s :action GotoRelated<CR>
@@ -51,3 +75,5 @@ nnoremap gp :action GotToSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
+nnoremap gh :action VcsShowNextChangeMarker<CR>
+nnoremap hg :action VcsShowPrevChangeMarker<CR>

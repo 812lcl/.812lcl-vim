@@ -14,8 +14,8 @@ function! SpaceVim#layers#lang#go#config() abort
   let g:go_highlight_operators = 1
   let g:go_highlight_build_constraints = 1
   let g:go_fmt_command = "gopls"
-  let g:go_fmt_autosave = 1
-  let g:go_imports_autosave = 1
+  let g:go_fmt_autosave = 0
+  let g:go_imports_autosave = 0
   let g:go_fmt_fail_silently = 0
   let g:go_list_type = "locationlist"
   let g:go_snippet_case_type = "camelcase"
