@@ -143,13 +143,7 @@ function! myspacevim#after() abort
     nnoremap gr :GitGutterAll<CR>
     " autocmd! gitgutter CursorHold,CursorHoldI
     autocmd BufWritePost * GitGutter
-
-    " By default vista.vim never run if you don't call it explicitly.
-    " If you want to show the nearest function in your statusline automatically,
-    " you can add the following line to your vimrc
-    autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-    " autocmd BufWritePost * call vista#RunForNearestMethodOrFunction()
-    " autocmd CursorHold * call vista#RunForNearestMethodOrFunction()
+    autocmd CursorHold * call s:update_tag()
 
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
@@ -289,6 +283,13 @@ function! s:update_search_index(key) abort
     endif
     let &l:statusline = SpaceVim#layers#core#statusline#get(1)
     keepjumps call setpos('.', save_cursor)
+endfunction
+
+function! s:update_tag() abort
+    if !SpaceVim#layers#core#statusline#check_section('vista tag')
+        call SpaceVim#layers#core#statusline#toggle_section('vista tag')
+    endif
+    let &l:statusline = SpaceVim#layers#core#statusline#get(1)
 endfunction
 
 function! s:ZoomToggle() abort
