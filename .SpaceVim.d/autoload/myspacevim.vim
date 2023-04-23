@@ -143,7 +143,9 @@ function! myspacevim#after() abort
     nnoremap gr :GitGutterAll<CR>
     " autocmd! gitgutter CursorHold,CursorHoldI
     autocmd BufWritePost * GitGutter
-    autocmd CursorHold * call s:update_tag()
+    if has('nvim') == 0
+        autocmd CursorHold * call s:update_tag()
+    endif
 
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
