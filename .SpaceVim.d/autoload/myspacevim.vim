@@ -144,6 +144,13 @@ function! myspacevim#after() abort
     " autocmd! gitgutter CursorHold,CursorHoldI
     autocmd BufWritePost * GitGutter
 
+    " By default vista.vim never run if you don't call it explicitly.
+    " If you want to show the nearest function in your statusline automatically,
+    " you can add the following line to your vimrc
+    autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+    " autocmd BufWritePost * call vista#RunForNearestMethodOrFunction()
+    " autocmd CursorHold * call vista#RunForNearestMethodOrFunction()
+
     vnoremap <silent> J :m '>+1<CR>gv=gv
     vnoremap <silent> K :m '<-2<CR>gv=gv
 

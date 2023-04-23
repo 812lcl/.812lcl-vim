@@ -67,6 +67,8 @@ nnoremap <leader>u :action FindUsages<CR>
 nnoremap <leader>s :action GotoRelated<CR>
 nnoremap <leader>h :action CallHierarchy<CR>
 nnoremap <leader>b :action ShowNavBar<CR>
+nnoremap <leader>ff :NERDTreeFind<CR>
+nnoremap <leader>ft :NERDTreeToggle<CR>
 nnoremap <c-s> :action FileStructurePopup<CR>
 nnoremap gc :action GotoClass<CR>
 nnoremap gi :action GotoImplementation<CR>

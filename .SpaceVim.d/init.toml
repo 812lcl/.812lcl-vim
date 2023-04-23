@@ -33,6 +33,7 @@
         'version control info'
     ]
     statusline_right = [
+        'vista tag',
         'fileformat',
         'cursorpos',
         'percentage',
@@ -148,6 +149,15 @@ name = 'lang#lua'
 [[layers]]
 name = 'tags'
 
+# load the zettelkasten layer
+[[layers]]
+name = "zettelkasten"
+enable = false
+
+# load the fuzzy finder layer: telescope
+[[layers]]
+name = "telescope"
+
 [[custom_plugins]]
 name = "wakatime/vim-wakatime"
 
@@ -193,3 +203,6 @@ name = "sgur/vim-textobj-parameter"
 
 [[custom_plugins]]
 name = "voldikss/vim-floaterm"
+
+[[custom_plugins]]
+name = "liuchengxu/vista.vim"
