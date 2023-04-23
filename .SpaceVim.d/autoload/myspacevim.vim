@@ -257,6 +257,7 @@ function! myspacevim#after() abort
 
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'a'], 'FloatermToggle', 'Toggle Floaterm', 1)
     call SpaceVim#mapping#space#def('nnoremap', ['k', 'c'], 'FloatermKill', 'Kill Floaterm', 1)
+    call SpaceVim#mapping#space#def('nnoremap', ['k', 'v'], 'Vista show', 'open tag list', 1)
     tnoremap <silent> <space>ka <C-\><c-n>:FloatermToggle<CR>
     tnoremap <silent> <space>kc <C-\><c-n>:FloatermKill<CR>
     let g:asynctasks_term_pos = "floaterm"
