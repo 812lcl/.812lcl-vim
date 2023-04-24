@@ -1,3 +1,7 @@
+function! SpaceVim#layers#tags#loadable() abort
+  return !has('nvim')
+endfunction
+
 function! SpaceVim#layers#tags#plugins() abort
   return [
         \ ['812lcl/gutentags_plus', {
