@@ -180,8 +180,8 @@ name = "kshenoy/vim-signature"
 [[custom_plugins]]
 name = "skywind3000/vim-terminal-help"
 
-[[custom_plugins]]
-name = "skywind3000/vim-keysound"
+# [[custom_plugins]]
+# name = "skywind3000/vim-keysound"
 
 [[custom_plugins]]
 name = "skywind3000/asyncrun.vim"

@@ -33,12 +33,12 @@ function! myspacevim#init() abort
     set listchars=tab:›\ ,trail:•,extends:❯,precedes:❮,nbsp:.
     set updatetime=100
     set signcolumn=yes
-    set cmdheight=2
+    " set cmdheight=2
 
     " skywind3000/vim-keysound
-    let g:keysound_enable = 1
-    let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
-    let g:keysound_volume = 1000
+    " let g:keysound_enable = 1
+    " let g:keysound_theme = 'default'    " default, typewriter, mario, bubble, sword
+    " let g:keysound_volume = 1000
 
     if g:spacevim_enable_ycm
         let g:ycm_min_num_of_chars_for_completion = 1
