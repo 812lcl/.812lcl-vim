@@ -71,7 +71,7 @@ nnoremap <leader>ff :NERDTreeFind<CR>
 nnoremap <leader>ft :NERDTreeToggle<CR>
 nnoremap <c-s> :action FileStructurePopup<CR>
 nnoremap gc :action GotoClass<CR>
-nnoremap gi :action GotoImplementation<CR>
+nnoremap gI :action GotoImplementation<CR>
 nnoremap gd :action GotToDeclaration<CR>
 nnoremap gp :action GotToSuperMethod<CR>
 nnoremap gt :action GotoTest<CR>
@@ -79,3 +79,6 @@ nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
 nnoremap gh :action VcsShowNextChangeMarker<CR>
 nnoremap hg :action VcsShowPrevChangeMarker<CR>
+
+nnoremap gr :action FindUsages<CR>
+nnoremap K :action ShowHoverInfo<CR>

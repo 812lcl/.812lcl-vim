@@ -3,12 +3,12 @@
 app_dir="$HOME/.812lcl-vim"
 
 warn() {
-    echo "$1" >&2
+	echo "$1" >&2
 }
 
 die() {
-    warn "$1"
-    exit 1
+	warn "$1"
+	exit 1
 }
 
 rm $HOME/.vimrc
