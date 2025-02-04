@@ -219,11 +219,6 @@ snippet yaml "\`yaml:key\`"
 \`yaml:"${1:`!v  go#util#snippetcase(matchstr(getline("."), '\w\+'))`}"\`
 endsnippet
 
-# fallthrough
-snippet ft "fallthrough"
-fallthrough
-endsnippet
-
 # for loop
 snippet for "for ... { ... }"
 for ${1} {
