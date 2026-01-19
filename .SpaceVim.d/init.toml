@@ -106,14 +106,14 @@ name = 'core#tabline'
 name = 'core#statusline'
 # above layers are default layers
 
-# [[layers]]
-# name = 'fzf'
-
 [[layers]]
-name = 'leaderf'
+name = 'fzf'
 
-[[custom_plugins]]
-name = "Yggdroot/LeaderF-marks"
+#[[layers]]
+#name = 'leaderf'
+
+#[[custom_plugins]]
+#name = "Yggdroot/LeaderF-marks"
 
 [[layers]]
 name = 'git'
@@ -146,8 +146,8 @@ name = 'lang#sh'
 [[layers]]
 name = 'lang#lua'
 
-[[layers]]
-name = 'tags'
+# [[layers]]
+# name = 'tags'
 
 # load the zettelkasten layer
 [[layers]]
